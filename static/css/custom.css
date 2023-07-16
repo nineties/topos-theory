@@ -1,0 +1,19 @@
+.box {
+    position: relative;
+    padding: 0px 16px 16px;
+    padding-bottom: 0px;
+    margin-top: 26px;
+    margin-bottom: 20px;
+    border: 1px solid;
+}
+
+.box .title {
+    position: absolute;
+    top: -20px;
+    left: 12px;
+    line-height: 40px;
+    margin: 0px;
+    padding: 0 10px;
+    background: #fff;
+    font-weight: bold;
+}

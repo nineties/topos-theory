@@ -1,0 +1,22 @@
+{{- $kind := "命題" }}
+
+{{- .Page.Scratch.Add "counter" 1 }}
+{{- $name := printf "%s%d.%d" $kind .Page.Params.section (.Page.Scratch.Get "counter") }}
+{{- $label := .Get "label" }}
+{{- if (not $label) }}
+    {{- $label = $name }}
+{{- end }}
+{{- $url := printf "%s#%s" .Page.Permalink $label }}
+{{- $title := .Get "title" }}
+
+{{- .Page.Scratch.SetInMap "references" $label (slice "proposition" $name $title $url) }}
+<div id="{{ $label }}" style="padding-top:100px;margin-top:-100px"></div>
+
+<div class="box"
+    >
+    <div class="title">
+        {{ $name }}
+        {{- if .Get "title" }}:  {{ .Get "title" }} {{- end }}
+    </div>
+    {{ .Inner }}
+</div>

@@ -1,0 +1,15 @@
+{{- range .Site.Pages }}
+    {{- $map := .Scratch.Get "references" }}
+    {{- if $map }}
+        {{- $slice := index $map ($.Get 0) }}
+        {{- if $slice }}
+            <a href="{{ index $slice 3 }}">
+                {{- if (index $slice 2) }}
+                    {{ index $slice 2 }}
+                {{- else }}
+                    {{ index $slice 1 }}
+                {{- end }}
+            </a>
+        {{- end }}
+    {{- end }}
+{{- end }}

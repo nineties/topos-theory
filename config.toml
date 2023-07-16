@@ -1,0 +1,13 @@
+baseURL = "https://nineties.github.io/topos-theory/"
+languageCode = "ja-jp"
+title = "Topos Theory"
+theme = "hugo-theme-basic"
+publishDir = "docs"
+
+[params]
+customCSS = ["static/custom.css"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
