@@ -1,1 +1,1 @@
-# topos-theory
+# トポス理論
