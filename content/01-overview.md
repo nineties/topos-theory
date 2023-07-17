@@ -7,7 +7,7 @@ section: 1
 
 # 統一概念としてのトポス
 
-**トポス(Topos)** を発明した **アレクサンドル・グロタンディーク (A. Grothendieck)** はトポス理論のテーマを以下のように述べている。 <font color="blue"> (要確認: この文章の出自) </font>
+**トポス(topos)** を発明した **アレクサンドル・グロタンディーク (A. Grothendieck)** はトポス理論のテーマを以下のように述べている。 <font color="blue"> (要確認: この文章の出自) </font>
 
 > "It is the **topos** theme which is this “bed” or “deep river” where come to be married geometry and algebra, topology and arithmetic, mathematical logic and category theory, the world of the “continuous” and that of “discontinuous” or discrete structures. It is what I have conceived of most broad to perceive with finesse, by the same language rich of geometric resonances, an “essence” which is common to situations most distant from each other coming from one region or another of the vast universe of mathematical things".  **A. Grothendieck**
 
@@ -20,9 +20,9 @@ section: 1
 
 その方法は様々な分野に **横断的** であり、それぞれの専門的な技法を **補完** するものである。その一般性にもかかわらず、トポス理論的技法は、他の方法では到底到達できないような洞察を生み出し、 **異なる文脈間での知識の効果的な伝達** を可能にする深いつながりを確立する。このようなトポスの役割は、それが **多面的** な性質を持つことと結びついている。例えばトポスは
 
-- 一般化された空間概念(Generalized space)
-- 数学的宇宙(Mathematical universe)
-- 理論(Theory)
+- 一般化された空間概念(generalized space)
+- 数学的宇宙(mathematical universe)
+- 理論(theory)
 
 などと見なすことが出来る。
 
@@ -47,10 +47,10 @@ X \ar@{~>}[d] \ar@{.>}[r] & \mathbf{Sh}(X) \ar@{~>}[d] \\\\
 $$
 
 {{% definition title="トポス理論的不変量" %}}
-**トポス理論的不変量(Topos-theoretic invariant)** とは **圏同値(Categorical equivalence)** な圏の間で変わらないトポスの性質のことである。
+**トポス理論的不変量(topos-theoretic invariant)** とは **圏同値(equivalence of categories, categorical equivalence)** な圏の間で変わらないトポスの性質のことである。
 {{% /definition %}}
 
-トポスの間のGeometric morphism(<font color="blue">日本語訳不明)の概念は、トポス内のアーベル群やモジュールのカテゴリから一般的なコモロジー理論を構築するのに特に有用であることが示されている。これらのコホモロジー不変量は、現代の代数幾何学の発展に、そしてそれを超えて大きな影響を与えている。一方、基本群や高次ホモトピー群のようなホモトピー理論的な不変量は、トポスの不変量として定義することができる。これらはトポスの唯一の不変量ではなく、実際、代数的、論理的、幾何学的、またはそれ以外の性質のトポスの不変量は無数に存在する。
+トポスの間のGeometric morphism(<font color="blue">日本語訳不明</font>)の概念は、トポス内のアーベル群やモジュールのカテゴリから一般的なコモロジー理論を構築するのに特に有用であることが示されている。これらのコホモロジー不変量は、現代の代数幾何学の発展に、そしてそれを超えて大きな影響を与えている。一方、基本群や高次ホモトピー群のようなホモトピー理論的な不変量は、トポスの不変量として定義することができる。これらはトポスの唯一の不変量ではなく、実際、代数的、論理的、幾何学的、またはそれ以外の性質のトポスの不変量は無数に存在する。
 
 # 数学宇宙としてのトポス
 
