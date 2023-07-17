@@ -3,6 +3,8 @@ title: 1. トポス理論の概要
 section: 1
 ---
 
+[元になったOlivia先生の講義スライド](https://www.oliviacaramello.com/Teaching/Lecture1.pdf)
+
 # 統一概念としてのトポス
 
 **トポス(Topos)** を発明した **アレクサンドル・グロタンディーク (A. Grothendieck)** はトポス理論のテーマを以下のように述べている。 <font color="blue"> (要確認: この文章の出自) </font>
