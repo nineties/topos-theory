@@ -10,7 +10,7 @@
           color: [],
           colorV2: ['color']
         },
-        packages: {'[+]': ['noerrors']}
+        packages: {'[+]': ['noerrors', 'xypic']}
       },
       chtml: {
         matchFontHeight: false,
@@ -34,7 +34,8 @@
         }
       },
       loader: {
-        load: ['[tex]/noerrors']
+        load: ['[tex]/noerrors', '[custom]/xypic.js'],
+        paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
       }
     };
 </script>
