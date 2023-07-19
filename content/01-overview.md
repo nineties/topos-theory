@@ -76,7 +76,7 @@ $$
 $$
 \xymatrix {
 & f(a) \simeq {\color{blue}u} \simeq g(b) & \\\\
-a \ar@{.>}@/^1pc/[ru] & & b \ar@{.>}@/_1pc/[lu]
+a \ar@{.}@/^1pc/[ru] & & b \ar@{.}@/_1pc/[lu]
 }
 $$
 
