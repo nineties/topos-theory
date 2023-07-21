@@ -43,11 +43,10 @@ $f \in\mathcal{C}(a,b)$ の代わりに、$f \in\mathrm{Hom}\_{\mathcal{C}}(a,b)
 
 {{% definition title="圏の一階述語論理的公理化" %}}
 
-圏とは以下の6つの述語・関数及び等号をもち
+圏とは以下の6つの述語・関数と等号をもち
 
 - 一引数の述語 $\mathrm{Obj},\mathrm{Arr}$
-- 一引数の関数 $\mathrm{Dom},\mathrm{Cod}$
-- 一引数の関数 $\mathrm{Id}$
+- 一引数の関数 $\mathrm{Dom},\mathrm{Cod},\mathrm{Id}$
 - 二引数の関数 $\circ$
 
 以下の公理を満たすものである。
