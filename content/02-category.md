@@ -59,8 +59,8 @@ $$
 & \forall a,\ \mathrm{Obj}(a)\Rightarrow\mathrm{Arr}(\mathrm{Id}(a))\wedge\mathrm{Dom}(\mathrm{Id}(a))=\mathrm{Cod}(\mathrm{Id}(a))=a \\\\
 & \forall f,g,h,\ (\mathrm{Arr}(f)\wedge\mathrm{Arr}(g)\wedge\mathrm{Arr}(h)\wedge\mathrm{Cod}(f)=\mathrm{Dom}(g)\wedge\mathrm{Cod}(g)=\mathrm{Dom}(h) \\\\
 & \Rightarrow h\circ(g\circ f)=(h\circ g)\circ f \\\\
-& \forall f,a\ (\mathrm{Arr}(f)\wedge\mathrm{Obj}(a) \\\\
-& \Rightarrow((\mathrm{Dom}(f)=a\Rightarrow f\circ\mathrm{Id}(a)=f)\wedge(\mathrm{Cod}(f)=a\Rightarrow \mathrm{Id}(a)\circ f=f))
+& \forall f,a\ \mathrm{Arr}(f)\wedge\mathrm{Obj}(a) \\\\
+& \Rightarrow(\mathrm{Dom}(f)=a\Rightarrow f\circ\mathrm{Id}(a)=f)\wedge(\mathrm{Cod}(f)=a\Rightarrow \mathrm{Id}(a)\circ f=f)
 \end{align*}
 $$
 
