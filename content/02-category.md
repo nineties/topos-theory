@@ -72,8 +72,7 @@ $$
 
 - $\mathrm{Obj}(a)$ を $a\in\mathrm{Ob}(\mathcal{C})$
 - $\mathrm{Arr}(f)$ を $f\in\coprod_{a,b\in\mathrm{Ob}(\mathcal{C})}\mathcal{C}(a,b)$
-- $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$
-- $\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$
+- $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$、$\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$
 - $\mathrm{Id}(a)$ を $1_a$
 - $\circ$ を $\circ$
 
