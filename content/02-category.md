@@ -17,6 +17,7 @@ toc: true
 圏論の大きな成果の一つがトポス理論であり、これは全面的に圏論の言語で書かれた理論である。
 
 ## 圏論の諸概念
+### 圏
 
 {{% definition title="圏" %}}
 (小さな) **圏(category)** $\mathcal{C}$ は
@@ -42,14 +43,14 @@ $f \in\mathcal{C}(a,b)$ の代わりに、$f \in\mathrm{Hom}\_{\mathcal{C}}(a,b)
 
 {{% definition title="圏の一階述語論理的公理化" %}}
 
-圏とは以下の6つの述語及び等号をもち
+圏とは以下の6つの述語・関数及び等号をもち
 
 - 一引数の述語 $\mathrm{Obj},\mathrm{Arr}$
-- 一引数の述語 $\mathrm{Dom},\mathrm{Cod}$
-- 一引数の述語 $\mathrm{Id}$
-- 二引数の述語 $\circ$
+- 一引数の関数 $\mathrm{Dom},\mathrm{Cod}$
+- 一引数の関数 $\mathrm{Id}$
+- 二引数の関数 $\circ$
 
-以下の公理を満たすものである。(<font color="blue">スライドでは$\circ$は三引数と書いてあるが誤りと思われる。</font>)
+以下の公理を満たすものである。
 
 $$
 \begin{align*}
@@ -63,5 +64,17 @@ $$
 & \Rightarrow(\mathrm{Dom}(f)=a\Rightarrow f\circ\mathrm{Id}(a)=f)\wedge(\mathrm{Cod}(f)=a\Rightarrow \mathrm{Id}(a)\circ f=f)
 \end{align*}
 $$
+<font color="blue">(Olivia先生のスライドでは二引数関数 $\circ$ の代わりに合成に関する三引数の *述語* を用いると書いてある。$f,g$ を合成して $h=g\circ f$ となることを $\mathrm{Comp}(f, g, h)$ といった述語で表す公理系を指しているのだろう。) </font>
 
 {{% /definition %}}
+
+圏 $\mathcal{C}$ は
+
+- $\mathrm{Obj}(a)$ を $a\in\mathrm{Ob}(\mathcal{C})$
+- $\mathrm{Arr}(f)$ を $f\in\coprod_{a,b\in\mathrm{Ob}(\mathcal{C})}\mathcal{C}(a,b)$
+- $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$
+- $\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$
+- $\mathrm{Id}(a)$ を $1_a$
+- $\circ$ を $\circ$
+
+と解釈することでこの公理系を満たす。
