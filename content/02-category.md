@@ -98,6 +98,8 @@ $$
 
 このような図式を辿る事による証明方法をdiagram chasingという。
 
+### 双対原理
+
 {{% definition title="双対圏" %}}
 圏 $\mathcal{C}$ の **双対圏(dual category)** $\mathcal{C}^{\mathrm{op}}$とは
 $$ \mathrm{Ob}(\mathcal{C}^{\mathrm{op}}) = \mathrm{Ob}(\mathcal{C}),\ \mathcal{C}^{\mathrm{op}}(a,b)=\mathcal{C}(b,a) $$
@@ -120,3 +122,100 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 である。単純な原理であるが、圏論の言語での2つの双対命題は、それを「具体的な」圏で解釈したときには、非常に異なる(しかも同値ではない!)命題となる事がある。
 時折、通常の数学的命題の圏論の言語を用いた抽象的な証明を得ることが可能である。そのような場合は、双対原理を用いることで、元の文脈における双対バージョンの命題を得ることができる。
 
+### 圏の例
+
+数学対象と対象とし、その間の写像を射とする圏は様々な存在する。例えば
+
+- $\mathbf{Set}$: **集合**と**写像**
+- $\mathbf{Top}$: **位相空間**と**連続写像**
+- $\mathbf{Gr}$: *群* と **群の準同型写像**
+- $\mathbf{Rng}$: *環* と **間の準同型写像**
+- $\mathbf{Vect}\_{K}$: 体 $K$ 上の **線形空間** と **線型写像**
+
+などである。実際、任意の一階の理論(一階述語理論で記述された理論) $\mathbb{T}$ に対して、(集合論ベースの)モデルを対象とし、その間の準同型写像を射とする圏 $\mathbb{T}\mathrm{-mod}(\mathbf{Set})$ を考える事ができる。
+
+また、数学的対象「1つ」を圏と見なす事もできる。例えば
+
+- 集合: 要素を対象とし、射は恒等射のみとしたもの。**離散圏(discrete category)** という。
+- 前順序集合: 要素を対象とし、$a \leq b$ を射 $a\rightarrow b$ とみなしたもの。任意の対象 $a,b$ について射 $a\rightarrow b$ が高々一つしかない圏。
+- モノイド: 対象が1つの圏。モノイドの元を射としたもの。
+- 亜群(groupoid): 全ての射が同型射である圏。
+- 群: 全ての射が同型射で対象が一つの圏。
+
+### 同型、モノ射、エピ射
+
+{{% definition title="同型" %}}
+$f: a\rightarrow b,\ g: b\rightarrow a$ が
+$$ g\circ f=1_a,\ f\circ g=b $$
+を満たす時、 $f,g$ を **同型射(isomorphism)** という。 $g$ を $f$ の **逆射(inverse morphism)** と呼び $f^{-1}$ と書く。
+
+$$
+\xymatrix {
+a \ar@(ul,dl)[]_{1_a} \ar@/^/[rr]|{f} && b \ar@/^/[ll]|{g} \ar@(ur,dr)[]^{1_b}
+}
+$$
+
+対象 $a,b$ の間に同型射が存在する時これらは **同型(isomorphic)** であるといい、
+$$ a\simeq b $$
+と書く。
+{{% /definition %}}
+{{% proposition %}}
+$f: a\rightarrow b$ が同型射の時、その逆射は一意に定まる。
+{{% /proposition %}}
+{{% details 証明 %}}
+$f: a\rightarrow b$ が同型射であるとし $g,h:b\rightarrow a$ は共に逆射 であるとすると $ g = g\circ 1_b = g\circ f\circ h = 1_a\circ h = h $ (証明終)
+{{% /details %}}
+
+{{% definition title="モノ射" %}}
+射 $m: a\rightarrow b$ が **モノ射(mono-morphism)** もしくは **モニック射(monic)** であるとは、任意の対象 $c$ と射 $f,g: c\rightarrow a$ について
+$$ m\circ f = m\circ g \quad\Rightarrow\quad f=g $$
+が成り立つことである。この性質を$m$は **左簡約可能(left cancelable)** であるという。
+
+$$
+\xymatrix {
+c \ar@<2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & a \ar[r]^{m} & b
+}
+$$
+{{% /definition %}}
+
+モノ射の双対をエピ射という。
+
+{{% definition title="エピ射" %}}
+射 $e: a\rightarrow b$ が **エピ射(epi-morphism)** もしくは **エピック射(epic)** であるとは、任意の対象 $c$ と射 $f,g: b\rightarrow c$ について
+$$ f\circ e = g\circ e \quad\Rightarrow\quad f=g $$
+が成り立つことである。この性質を$e$は **右簡約可能(right cancelable)** であるという。
+
+$$
+\xymatrix {
+a \ar[r]^{e} & b \ar@<2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & c
+}
+$$
+{{% /definition %}}
+
+以下のように、モノ射・エピ射は単射・全射の概念を抽象化したものと考える事が出来る。ただ一般の圏においては、単射・全射そのものではない。
+
+{{% proposition %}}
+$\mathbf{Set}$ おいてモノ射と単射は一致する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$m: A\rightarrow B$ をモノ射とする。対象$x,y\in A$ について $m(x) = m(y)$  であるとすると、$x,y$ を一点集合からの写像 $1\rightarrow A$ と見なせば $m\circ x=m\circ y$ であるので $m$ がモノ射であることより $x=y$。従って $m$ は単射である。
+
+逆に $m: A\rightarrow B$ が単射であるとする。集合 $C$ と写像 $f,g: C\rightarrow A$ が $m\circ f=m\circ g$ をみたするとする。任意の $x\in C$ について $m(f(x))=m(g(x))$ であるから $m$ が単射であることより $f(x)=g(x)$。従って $f=g$ であるから $m$ はモノ射である。(証明終)
+{{% /details %}}
+
+{{% proposition %}}
+$\mathbf{Set}$ おいてエピ射と全射は一致する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$e: A\rightarrow B$ をエピ射とする。$e$ が全射でないととし、写像 $f,g:B\rightarrow\\{0,1\\}$ を以下のように定義する。
+
+$$ f(x) = 0,\ g(x)=\begin{cases}
+0   & (x\in e(A)) \\\\
+1   & (x\not\in e(A))
+\end{cases}
+$$
+
+すると、$f\circ e = g\circ e$ であるが $e$ が前者でないことより$x\not\in e(A)$ となる$x\in B$が少なくも一つ存在するから $f\neq g$ である。これは矛盾であるので $e$ は全射である。
+
+逆に $e:A\rightarrow B$ を全射とし、集合 $C$ と写像 $f,g:B\rightarrow C$ が $f\circ e = g\circ e$ をみたするとする。任意の $x\in B$ についてある $y\in A$ が存在して $x=e(y)$ と書けるので $f(x)=g(x)$ である。よって $e$ はエピ射。(証明終)
+{{% /details %}}
