@@ -219,3 +219,31 @@ $$
 
 逆に $e:A\rightarrow B$ を全射とし、集合 $C$ と写像 $f,g:B\rightarrow C$ が $f\circ e = g\circ e$ をみたするとする。任意の $x\in B$ についてある $y\in A$ が存在して $x=e(y)$ と書けるので $f(x)=g(x)$ である。よって $e$ はエピ射。(証明終)
 {{% /details %}}
+
+モノ射とエピ射は圏論の世界では対称的な定義だが、具体的な集合と関数では一見そのように見えないというところが面白い。また、これらの命題から直ちに以下が言える。
+
+{{% proposition %}}
+$\mathbf{Set}$ おいて同型射と全単射は一致する。
+{{% /proposition %}}
+
+より一般に、以下が言える。逆射を両辺に合成することで、左簡約も右簡約も可能であるからである。
+
+{{% proposition %}}
+同型射はモノかつエピである。
+{{% /proposition %}}
+
+ただし、この逆は成立しない。例えば、順序集合を$\leq$を射とする圏とみなしたとき、全ての射はモノかつエピだが同型射とは限らない。
+
+### 関手
+
+圏から圏への準同型写像(構造を保つ写像)を関手という。
+
+{{% definition title="関手" %}}
+圏 $\mathcal{C}$ から圏 $\mathcal{D}$ への **関手(functor)** $F$ とは
+写像 $F:\mathrm{Ob}(\mathcal{C})\rightarrow\mathrm{Ob}(\mathcal{D})$ と任意の対象 $a,b\in\mathcal{C}$ に対する写像 $F:\mathcal{C}(a,b)\rightarrow \mathcal{D}(F(a), F(b))$ であり
+
+- 任意の対象 $a\in\mathcal{C}$ について $F(1\_a)=1\_{F(a)}$
+- 任意の$f:a\rightarrow b, g:b\rightarrow f$ について $F(g\circ f)=F(g)\circ F(f)$
+
+を満たすものである。
+{{% /definition %}}
