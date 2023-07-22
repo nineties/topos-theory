@@ -19,7 +19,7 @@ toc: true
 ## 圏論の諸概念
 ### 圏
 
-{{% definition title="圏" %}}
+{{% definition title="圏" label="def.category" %}}
 (小さな) **圏(category)** $\mathcal{C}$ は
 
 - **対象(object)** の 集合 $\mathrm{Ob}(\mathcal{C})$
@@ -67,12 +67,56 @@ $$
 
 {{% /definition %}}
 
-圏 $\mathcal{C}$ は
+{{< refn def.category >}}を満たす圏 $\mathcal{C}$ は
 
 - $\mathrm{Obj}(a)$ を $a\in\mathrm{Ob}(\mathcal{C})$
 - $\mathrm{Arr}(f)$ を $f\in\coprod_{a,b\in\mathrm{Ob}(\mathcal{C})}\mathcal{C}(a,b)$
-- $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$、$\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$
-- $\mathrm{Id}(a)$ を $1_a$
-- $\circ$ を $\circ$
+- $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$、$\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$、$\mathrm{Id}(a)$ を $1_a$、$\circ$ を $\circ$
 
 と解釈することでこの公理系を満たす。
+
+圏論では等式の代わりに **可換図式(commutative diagram)** を用いる事が多い。例えば $g\circ f=h$ であるということを「以下の図式が可換である」などと表現する。図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の捕り方によらず一致するということ。
+
+$$
+\xymatrix {
+a \ar[d]^f \ar[rd]^h &      \\\\
+b \ar[r]^g & c
+}
+$$
+
+{{% proposition %}}
+任意の対象 $a$ に対して、恒等射 $1_a$ は一意に定まる。
+{{% /proposition %}}
+{{% details 証明 %}}
+$1_a,1'_a: a\rightarrow a$ が共に恒等射であるとすると、以下の図式が可換となるから $1_a=1'_a$ (証明終)
+$$
+\xymatrix {
+a \ar[r]^{1_a} \ar@/^2pc/[rr]^{1_a} \ar@/_2pc/[rr]\_{1'\_a} & a \ar[r]^{1'_a} & a 
+}
+$$
+{{% /details %}}
+
+このような図式を辿る事による証明方法をdiagram chasingという。
+
+{{% definition title="双対圏" %}}
+圏 $\mathcal{C}$ の **双対圏(dual category)** $\mathcal{C}^{\mathrm{op}}$とは
+$$ \mathrm{Ob}(\mathcal{C}^{\mathrm{op}}) = \mathrm{Ob}(\mathcal{C}),\ \mathcal{C}^{\mathrm{op}}(a,b)=\mathcal{C}(b,a) $$
+
+であり $f\in\mathcal{C}^{\mathrm{op}}(a,b), g\in\mathcal{C}^{\mathrm{op}}(b,c)$ に対してその合成を
+$$ g\circ_{\mathcal{C}^\mathrm{op}}f = f\circ_{\mathcal{C}} g $$
+と定めたもの。${\mathcal{C}^{\mathrm{op}}}^{\mathrm{op}}$ は $\mathcal{C}$ と一致する。
+{{% /definition %}}
+
+つまり、双対圏は元の圏の射の向きを全て逆にしたもの。
+
+{{% theorem title="双対原理" %}}
+ある命題が圏 $\mathcal{C}$ で真であるとき、射の向きを全て逆に合成の順序を入れ替えて得られる **双対命題(dual statement)** は圏 $\mathcal{C}^{\mathrm{op}}$ でも真である。
+{{% /theorem %}}
+
+$\mathcal{C}^{\mathrm{op}}$ の双対は $\mathcal{C}$ だから結局
+
+$$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の双対命題が $\mathcal{C}^{\mathrm{op}}$ で真} $$
+
+である。単純な原理であるが、圏論の言語での2つの双対命題は、それを「具体的な」圏で解釈したときには、非常に異なる(しかも同値ではない!)命題となる事がある。
+時折、通常の数学的命題の圏論の言語を用いた抽象的な証明を得ることが可能である。そのような場合は、双対原理を用いることで、元の文脈における双対バージョンの命題を得ることができる。
+
