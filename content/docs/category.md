@@ -1,14 +1,13 @@
 ---
-title: 2. 圏論的準備
+title: 圏論的準備
+weight: 3
 section: 2
 toc: true
 ---
 
-{{% toc %}}
-
+## 圏論の概要
 [元になったOlivia先生の講義スライド](https://www.oliviacaramello.com/Teaching/Lectures2_3_4.pdf)
 
-## 圏論の概要
 **圏論(category theory)** は、1942-45年にSamuel EilenbergとSaunders Mac Laneによって代数的位相幾何学の文脈で発明された数学の一分野であり、数学的概念を表現し議論するための抽象的な言語を提供する。
 実際、圏論の諸概念は、それらの例を数学のあらゆる分野で見つけることができる統一的な概念である。
 圏論に通底する哲学は、集合論を構成する、集合とその所属関係という原始的な概念を、集合と関数の概念を抽象化した、対象と射という概念で置き換えることである。
@@ -130,7 +129,7 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 - $\mathbf{Top}$: **位相空間**と**連続写像**
 - $\mathbf{Gr}$: *群* と **群の準同型写像**
 - $\mathbf{Rng}$: *環* と **間の準同型写像**
-- $\mathbf{Vect}\_{K}$: 体 $K$ 上の **線形空間** と **線型写像**
+- $\mathbf{Vect}\_{K}$: 体 $K$ 上の **ベクトル空間** と **線型写像**
 
 などである。実際、任意の一階の理論(一階述語理論で記述された理論) $\mathbb{T}$ に対して、(集合論ベースの)モデルを対象とし、その間の準同型写像を射とする圏 $\mathbb{T}\mathrm{-mod}(\mathbf{Set})$ を考える事ができる。
 
@@ -142,7 +141,7 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 - 亜群(groupoid): 全ての射が同型射である圏。
 - 群: 全ての射が同型射で対象が一つの圏。
 
-### 同型、モノ射、エピ射
+### 同型・モノ射・エピ射
 
 {{% definition title="同型" %}}
 $f: a\rightarrow b,\ g: b\rightarrow a$ が
@@ -234,7 +233,7 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 
 ただし、この逆は成立しない。例えば、順序集合を$\leq$を射とする圏とみなしたとき、全ての射はモノかつエピだが同型射とは限らない。
 
-### 関手
+### 関手・自然変換
 
 圏から圏への準同型写像(構造を保つ写像)を関手という。
 
@@ -247,3 +246,40 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 
 を満たすものである。
 {{% /definition %}}
+
+恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $\mathrm{id}_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
+また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。
+
+{{% definition title="反変関手" %}}
+$\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{D}$ を、$\mathcal{C}$ から $\mathcal{D}$ への **反変関手(contravariant functor)** という。
+{{% /definition %}}
+
+{{% definition title="小さい圏の圏" %}}
+小さい圏を対象、関手を射とした圏は(小さくない)圏となる。これを $\mathbf{Cat}$ と書く。
+{{% /definition %}}
+
+{{% definition title="前層" %}}
+圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手
+$$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
+を $\mathcal{C}$ 上の **前層(presheaf)** という。
+{{% /definition %}}
+
+{{% definition title="自然変換" %}}
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の対象 $a$ に、$\mathcal{D}$の射 $\phi(a): F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
+
+$$\xymatrix{
+F(a) \ar[r]^{\phi(a)} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
+F(b) \ar[r]^{\phi(b)} & G(b)
+}$$
+
+$\phi(a)$ が全て同型射であるとき $phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。
+
+{{% /definition %}}
+
+{{% example %}}
+ベクトル空間をその双対ベクトル空間に写す反変関手
+$$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
+
+について $\mathrm{Id}\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
+{{% /example %}}
+これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$

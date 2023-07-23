@@ -1,7 +1,7 @@
 baseURL = "https://nineties.github.io/topos-theory/"
 languageCode = "ja-jp"
 title = "Topos Theory"
-theme = "hugo-theme-basic"
+theme = "hugo-book"
 publishDir = "docs"
 
 [params]
