@@ -3,6 +3,7 @@ languageCode = "ja-jp"
 title = "Topos Theory"
 theme = "hugo-book"
 publishDir = "docs"
+defaultContentLanguage = "ja"
 
 [params]
 customCSS = ["static/custom.css"]
