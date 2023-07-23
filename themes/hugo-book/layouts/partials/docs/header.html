@@ -3,6 +3,8 @@
     <img src="{{ "svg/menu.svg" | relURL }}" class="book-icon" alt="Menu" />
   </label>
 
+  {{ partial "head_includes.html" . }}
+
   <strong>{{ partial "docs/title" . }}</strong>
 
   <label for="toc-control">
