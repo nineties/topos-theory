@@ -272,8 +272,7 @@ F(a) \ar[r]^{\phi(a)} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
 F(b) \ar[r]^{\phi(b)} & G(b)
 }$$
 
-$\phi(a)$ が全て同型射であるとき $phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。
-
+$\phi(a)$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:\mathcal{C}\rightarrow\mathcal{D}$ が存在する時 $\mathcal{C}\simeq\mathcal{D}$ と書く。
 {{% /definition %}}
 
 {{% example %}}
