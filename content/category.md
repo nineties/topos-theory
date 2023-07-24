@@ -341,5 +341,18 @@ $$
 
 - $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について全射の時 $F$ は **充満(full)** であるという。
 - $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について単射の時 $F$ は **忠実(faithful)** であるという。
-- $F: \mathrm{Ob}(\mathcal{C})\rightarrow\mathrm{Ob}(\mathcal{D})$ が全射の時 $F$ は **本質的全射(essentially surjective)**  であるという。
+- 任意の$b\in\mathcal{D}$ についてある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となるとき $F$ は **本質的全射(essentially surjective)**  であるという。
+{{% /definition %}}
+
+本質的全射が全射と異なるのは $F(a)\simeq b$ と $F(a)=b$ の違い。
+圏論では同型な対象は、それが満たす圏論的な性質によっては区別する事ができず、実質的に1つの対象と見なすことが自然であるので、対象の厳密な一致ではなく同型 $\simeq$ を元に論じた方がより本質的な性質のみを調べる事が可能になる。
+
+### 圏同値
+
+圏 $\mathcal{C}$ と $\mathcal{D}$ が本質的に同じとはどういう事かを考える。素朴には、まず圏の同型という関係性がある。
+
+{{% definition title="圏の同型" %}}
+圏 $\mathcal{C},\mathcal{D}$ が **同型(isomorphic)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で
+$$ G\circ F = \mathrm{id}_{\mathcal{C}},\ F\circ G=\mathrm{id}_{\mathcal{D}}$$
+を満たすものが存在する事である。
 {{% /definition %}}
