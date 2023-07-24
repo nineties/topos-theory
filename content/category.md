@@ -332,7 +332,7 @@ $$
 ある $a\in\mathcal{C}$ に対して $\mathcal{C}(a, -): \mathcal{C}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
 
 同様に $\mathcal{C}(-,a)$ と自然同型である関手を余表現可能関手(co-representable functor)という。
-{{% /definitio %}}
+{{% /definition %}}
 
 表現可能という言葉の意味については、後述する米田の補題の所で説明する。
 
