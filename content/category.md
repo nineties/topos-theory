@@ -272,7 +272,7 @@ F(a) \ar[r]^{\phi(a)} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
 F(b) \ar[r]^{\phi(b)} & G(b)
 }$$
 
-$\phi(a)$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:\mathcal{C}\rightarrow\mathcal{D}$ が存在する時 $\mathcal{C}\simeq\mathcal{D}$ と書く。
+$\phi(a)$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
 {{% /definition %}}
 
 {{% example %}}
@@ -282,3 +282,64 @@ $$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\i
 について $\mathrm{Id}\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
 {{% /example %}}
 これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
+
+{{% definition title="共変Hom関手" %}}
+圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+$\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
+- $\mathcal{C}(a,-)(b) = \mathcal{C}(a,b)$
+- $f:b\rightarrow c$ に対して
+$$\mathcal{C}(f): \mathcal{C}(a,b) \ni g \mapsto f\circ g \in\mathcal{C}(a,c)$$
+
+$\mathcal{C}(a,-)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(a,-)$ とも書く。これを **共変Hom関手(covariant hom functor)** という。
+
+$$
+\xymatrix{
+            & a \ar[ld]_{\mathcal{C}(a,b)\ni g} \ar[rd]^{f\circ g\in\mathcal{C}(a,c)} &    \\\\
+b \ar[rr]^f &             & c
+}
+$$
+{{% /definition %}}
+
+{{% details 証明 %}}
+任意の $a,b\in\mathcal{C}$, $f:a\rightarrow b$ について
+$$ \mathcal{C}(a,-)(1_b): f\longmapsto 1_b\circ f = f$$
+であるから $ \mathcal{C}(a,-)(1_b) = 1_{\mathcal{C}(a,b)} $
+また、任意の $f: b\rightarrow c, g:c\rightarrow d$ と $p:a\rightarrow b$ について
+$$ (\mathcal{C}(a,-)(g)\circ\mathcal{C}(a,-)(f))(p) = g\circ(f\circ p) = (g\circ f)\circ p = \mathcal{C}(a,-)(g\circ f)(p) $$
+(証明終)
+{{% /details %}}
+
+{{% definition title="反変Hom関手" %}}
+圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+$\mathcal{C}(-,a):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は関手となる。
+- $\mathcal{C}(-,a)(b) = \mathcal{C}(b,a)$
+- $f:b\rightarrow c$ に対して
+$$\mathcal{C}(f): \mathcal{C}(c,a) \ni g \mapsto g\circ f \in\mathcal{C}(b,a)$$
+
+$\mathcal{C}(-,a)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(-,a)$ とも書く。これを **反変Hom関手(contravariant hom functor)** という。
+
+$$
+\xymatrix{
+            & a \ar@{<-}[ld]_{\mathcal{C}(b,a)\ni g\circ f} \ar@{<-}[rd]^{g\in\mathcal{C}(c,a)} &    \\\\
+b \ar[rr]^f &             & c
+}
+$$
+{{% /definition %}}
+
+証明は共変Hom関手と同様なので省略。
+
+{{% definition title="表現可能関手" %}}
+ある $a\in\mathcal{C}$ に対して $\mathcal{C}(a, -): \mathcal{C}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
+
+同様に $\mathcal{C}(-,a)$ と自然同型である関手を余表現可能関手(co-representable functor)という。
+{{% /definitio %}}
+
+表現可能という言葉の意味については、後述する米田の補題の所で説明する。
+
+{{% definition title="充満・忠実・本質的全射" %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ について
+
+- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について全射の時 $F$ は **充満(full)** であるという。
+- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について単射の時 $F$ は **忠実(faithful)** であるという。
+- $F: \mathrm{Ob}(\mathcal{C})\rightarrow\mathrm{Ob}(\mathcal{D})$ が全射の時 $F$ は **本質的全射(essentially surjective)**  であるという。
+{{% /definition %}}
