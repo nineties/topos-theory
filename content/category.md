@@ -353,6 +353,14 @@ $$
 
 {{% definition title="圏の同型" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同型(isomorphic)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で
-$$ G\circ F = \mathrm{id}_{\mathcal{C}},\ F\circ G=\mathrm{id}_{\mathcal{D}}$$
+$$ G\circ F = \mathrm{id}\_{\mathcal{C}},\ F\circ G=\mathrm{id}\_{\mathcal{D}}$$
 を満たすものが存在する事である。
+{{% /definition %}}
+
+これは、本質的全射の所で述べたのと同じ理由で条件が強すぎて、同型な対象 $a\simeq b$ を同じものと見なした時に本質的に等しくなる圏の関係性としては使えない。そこで、圏同値という概念が重要となる。
+
+{{% definition title="圏同値" %}}
+圏 $\mathcal{C},\mathcal{D}$ が **同値(equivalent)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で自然同型
+$$ G\circ F \simeq \mathrm{id}\_{\mathcal{C}},\ F\circ G \simeq\mathrm{id}\_{\mathcal{D}}$$
+を満たすものが存在する事である。$F,G$ を **圏同値(equivalence of categories)** という。
 {{% /definition %}}
