@@ -394,7 +394,7 @@ $F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であ
 
 $$\mathcal{C}(G(x), G(y)) \simeq \mathcal{D}(FG(x), FG(y)) \simeq \mathcal{D}(x, y)$$
 
-が存在する。 この対応を射の対応 $G:\mathcal{D}(x,y)\rightarrow\mathcal{C}(G(x), G(y))$ とすると $G$ は関手となる。なぜならば、以下の図式の一番右に $1_x:x\rightarrow x$ を入れると、真ん中は $1_{FG(x)}=F(1_{G(x)})$ となる($\because$ $F$ は関手) ので $1_x:x\rightarrow x$ に対応する左の射は $1_{G(x)}$。すなわち $G(1_x)=1_{G(x)}$。
+が存在する。 この対応を射の対応 $G:\mathcal{D}(x,y)\rightarrow\mathcal{C}(G(x), G(y))$ とすると $G$ は関手となる。なぜならば、以下の図式の一番右に $1_x:x\rightarrow x$ を入れると、真ん中は $1_{FG(x)}=F(1_{G(x)})$ となる($\because$ $F$ は関手) ので対応する左の射は $1_{G(x)}$。すなわち $G(1_x)=1_{G(x)}$。
 
 同様に、この図式を2つ重ねる事により右側の $g\circ f$ に対応する真ん中の射は $FG(g)\circ FG(f)=F(G(g)\circ G(f))$ となるので、 対応する左の射は $G(g)\circ G(f)$。すなわち $G(g\circ f)=G(g)\circ G(f)$ となるから。
 $$
@@ -432,7 +432,7 @@ b          \ar[r]_q & d          \\\\
 }$$
 {{% /example %}}
 
-{{% example title="$M$-$\mathbf{Set}$" %}}
+{{% example title="$M$-作用をもつ集合の圏" %}}
 モノイド $M$ (を圏と見なしたもの)から$\mathbf{Set}$ への関手の圏
 $\[M,\mathbf{Set}\]$ を$M$-$\mathbf{Set}$ と書く。
 
@@ -450,4 +450,12 @@ $$ \cdot: M\times X \rightarrow X$$
 と同値。これはつまり $M$ が $X$ への **モノイド作用(monoid act)**  になっている事を表す。
 
 すなわち $M$-$\mathbf{Set}$ とは $M$-作用を持つ集合が対象であり、それらの間の準同型写像が射である圏となる。 
+{{% /example %}}
+
+{{% example title="バンドルの圏" %}}
+離散圏 $I$ から $\mathbf{Set}$ への関手の圏 $\[I,\mathbf{Set}\]$ を **$I$の上のバンドルの圏 (categories of bundles over $I$)** といい $\mathbf{Bn}(I)$ と書く。
+
+一般に、集合 $I,X$ と関数 $p:I\rightarrow X$ の三つ組 $(I,p,X)$ をバンドルといい、$\mathbf{Bn}(I)$ はこのバンドルを対象とする圏である。
+
+もしくは $I$ を添字集合とする集合族 $\\{X_i\\}\_{i\in I}$ を対象とし、関数の族 $\\{X_i\rightarrow Y_i\\}_{i\in i}$ を射とする圏とみなすこともできる。
 {{% /example %}}
