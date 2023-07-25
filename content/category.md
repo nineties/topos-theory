@@ -265,21 +265,21 @@ $$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
 {{% /definition %}}
 
 {{% definition title="自然変換" %}}
-関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の対象 $a$ に、$\mathcal{D}$の射 $\phi(a): F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
 
 $$\xymatrix{
-F(a) \ar[r]^{\phi(a)} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
-F(b) \ar[r]^{\phi(b)} & G(b)
+F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
+F(b) \ar[r]^{\phi_b} & G(b)
 }$$
 
-$\phi(a)$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
+$\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
 {{% /definition %}}
 
 {{% example %}}
 ベクトル空間をその双対ベクトル空間に写す反変関手
 $$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
 
-について $\mathrm{Id}\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
+について $\mathrm{id}\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
 {{% /example %}}
 これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
 
@@ -359,8 +359,95 @@ $$ G\circ F = \mathrm{id}\_{\mathcal{C}},\ F\circ G=\mathrm{id}\_{\mathcal{D}}$$
 
 これは、本質的全射の所で述べたのと同じ理由で条件が強すぎて、同型な対象 $a\simeq b$ を同じものと見なした時に本質的に等しくなる圏の関係性としては使えない。そこで、圏同値という概念が重要となる。
 
-{{% definition title="圏同値" %}}
+{{% definition title="圏の同値" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同値(equivalent)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で自然同型
 $$ G\circ F \simeq \mathrm{id}\_{\mathcal{C}},\ F\circ G \simeq\mathrm{id}\_{\mathcal{D}}$$
 を満たすものが存在する事である。$F,G$ を **圏同値(equivalence of categories)** という。
 {{% /definition %}}
+
+{{% proposition %}}
+選択公理を仮定すると、
+$$ \text{関手 $F$ が圏同値} \Leftrightarrow \text{関手 $F$ が充満忠実かつ本質的に全射} $$
+{{% /proposition %}}
+
+{{% details 証明 %}}
+($\Rightarrow$)
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: G\circ F\rightarrow\mathrm{id}\_{\mathcal{C}}, \psi: F\circ G\rightarrow\mathrm{id}\_{\mathcal{D}}$ が存在するとする。
+
+任意の$b\in\mathcal{D}$ に対して $FG(b)\simeq b$ であるか $a=G(b)$ とおけば $F(a)\simeq b$。従って $F$ は本質的全射。
+
+任意の$f,g\in\mathcal{C}(a,b)$ について $F(f)=F(g)$ であるとすると $GF(f)=GF(g)$ であるから、$\phi_b\circ GF(f)\circ\phi_a^{-1} = f$ であることより $f = g$。従って$F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は単射であるから $F$ は忠実。
+
+$$\xymatrix{
+GF(a) \ar[d]\_{GF(f)} \ar@{<-}[r]^{\phi^{-1}_a} & a \ar[d]^{f} \\\\
+GF(b) \ar[r]\_{\phi_b} & b \\\\
+}$$
+
+また、任意の $g:F(a)\rightarrow F(b)$ についてこれを $G$ で移した $G(g):GF(a)\rightarrow GF(b)$ を $GF\simeq\mathrm{id}\_{\mathcal{C}}$ によって射 $a\rightarrow b$ と見なしたものを $f$ とする。すなわち$ f = \phi\_{b}\circ G(g)\circ \phi^{-1}\_{a} $とおく。これを変形して $G(g) = \phi_b^{-1}\circ f\circ\phi_a = GF(f)$ となるが、 $G$ は単射なので $g=F(f)$ となる。よって $F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は全射であるから $F$ は充満である。(証明終)
+
+($\Leftarrow$)
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であるとする。
+
+本質的全射であることより、任意の $b\in\mathcal{D}$ に対してある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となる。選択公理を用いてそのような $a$ を各 $b$ について選ぶ事によって、対象間の写像 $G:\mathrm{Ob}(\mathcal{D})\rightarrow\mathrm{Ob}(\mathcal{C})$ を作る事が出来る。
+
+ここで、任意の $x,y\in\mathcal{D}$ に対して $F$ が充満忠実であることと、 $G$ の定義より $FG(x)\simeq x, FG(y)\simeq y$ であるから全単射
+
+$$\mathcal{C}(G(x), G(y)) \simeq \mathcal{D}(FG(x), FG(y)) \simeq \mathcal{D}(x, y)$$
+
+が存在する。 この対応を射の対応 $G:\mathcal{D}(x,y)\rightarrow\mathcal{C}(G(x), G(y))$ とすると $G$ は関手となる。なぜならば、以下の図式の一番右に $1_x:x\rightarrow x$ を入れると、真ん中は $1_{FG(x)}=F(1_{G(x)})$ となる($\because$ $F$ は関手) ので $1_x:x\rightarrow x$ に対応する左の射は $1_{G(x)}$。すなわち $G(1_x)=1_{G(x)}$。
+
+同様に、この図式を2つ重ねる事により右側の $g\circ f$ に対応する真ん中の射は $FG(g)\circ FG(f)=F(G(g)\circ G(f))$ となるので、 対応する左の射は $G(g)\circ G(f)$。すなわち $G(g\circ f)=G(g)\circ G(f)$ となるから。
+$$
+\xymatrix{
+G(x) \ar[d]^{G(f)}=\"a\" & & FG(x) \ar[d]\_{FG(f)}=\"b\" \ar[r]^{\phi_x} & x \ar[d]_{f} \\\\
+G(y)               & & FG(y) \ar[r]\_{\phi_y}                & y
+\ar@{~>}^F \"a\";\"b\"
+}
+$$
+
+$FG\simeq\mathrm{id}\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq\mathrm{id}\_{\mathcal{C}}$ となる。(証明終)
+{{% /details %}}
+
+## 代表的な圏の構成
+
+{{% definition title="関手圏" %}}
+圏 $\mathcal{C},\mathcal{D}$ について、関手 $\mathcal{C}\rightarrow \mathcal{D}$ を対象とし、それらの間の自然変換を射とする圏を **関手圏(functor category)** といい、 $\[\mathcal{C},\mathcal{D}\]$ や $\mathcal{D}^{\mathcal{C}}$ と書く。
+{{% /definition %}}
+
+{{% example title="射圏" %}}
+対象が2つで、恒等射と対象の間に射が一本あるような圏 $\mathbf{2}$ から圏 $\mathcal{C}$ への関手のなす圏 $\[\mathbf{2},\mathcal{C}\]$ を **射圏(arrow category)** といい$\mathcal{C}^{\rightarrow}$ と書く。
+
+関手 $\mathbf{2}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の射と一対一対応する。
+
+$$\xymatrix{
+0 \ar[d]^{}=\"x\" & a \ar[d]_{}=\"y\"^f \\\\
+1              & b
+\ar@{~>} \"x\";\"y\"
+}$$
+
+従って、射圏とは射が対象で、可換な四角形が射となるような圏の事である。
+$$\xymatrix{
+a \ar[d]^f \ar[r]^p & c \ar[d]^g \\\\
+b          \ar[r]_q & d          \\\\
+}$$
+{{% /example %}}
+
+{{% example title="$M$-$\mathbf{Set}$" %}}
+モノイド $M$ (を圏と見なしたもの)から$\mathbf{Set}$ への関手の圏
+$\[M,\mathbf{Set}\]$ を$M$-$\mathbf{Set}$ と書く。
+
+関手 $F:M\rightarrow\mathbf{Set}$ とはどんなものか考えると、
+$M$ は対象が1つの圏であるから、$\mathbf{Set}$ の1つの対象と対応するのでこの集合を $X$ とする。$M$ の各射(これはモノイドの元)事に、対応する関数 $X\rightarrow X$ が存在する。つまり、写像(もしくは演算)
+$$ \cdot: M\times X \rightarrow X$$
+が存在する。そして $F$ が関手であることから、$M$の単位元を $e$ とすると $F(e)=1_x$ である。これは
+
+- $M$ の単位元 $e$ と任意の $x\in X$ に対して $e\cdot x=x$
+
+と同値。そして、任意の $a,b\in M$ に対して $F(ab)=F(a)\circ F(b)$ であるというのは
+
+- 任意の $a,b\in M, x\in X$ に対して $a\cdot(b\cdot x)=(ab)\cdot x$
+
+と同値。これはつまり $M$ が $X$ への **モノイド作用(monoid act)**  になっている事を表す。
+
+すなわち $M$-$\mathbf{Set}$ とは $M$-作用を持つ集合が対象であり、それらの間の準同型写像が射である圏となる。 
+{{% /example %}}
