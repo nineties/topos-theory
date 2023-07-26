@@ -166,7 +166,7 @@ $f: a\rightarrow b$ が同型射であるとし $g,h:b\rightarrow a$ は共に�
 {{% /details %}}
 
 {{% definition title="モノ射" %}}
-射 $m: a\rightarrow b$ が **モノ射(mono-morphism)** もしくは **モニック射(monic)** であるとは、任意の対象 $c$ と射 $f,g: c\rightarrow a$ について
+射 $m: a\rightarrow b$ が **モノ射(monomorphism)** もしくは **モニック射(monic)** であるとは、任意の対象 $c$ と射 $f,g: c\rightarrow a$ について
 $$ m\circ f = m\circ g \quad\Rightarrow\quad f=g $$
 が成り立つことである。この性質を$m$は **左簡約可能(left cancelable)** であるという。
 
@@ -175,6 +175,8 @@ $$
 c \ar@<2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & a \ar[r]^{m} & b
 }
 $$
+
+ある射がモノ射である事を $a\xhookrightarrow{} b$ という矢印で書くこともある。
 {{% /definition %}}
 
 モノ射の双対をエピ射という。
@@ -189,6 +191,8 @@ $$
 a \ar[r]^{e} & b \ar@<2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & c
 }
 $$
+
+ある射がエピ射である事を $a\twoheadrightarrow b$ という矢印で書くこともある。
 {{% /definition %}}
 
 以下のように、モノ射・エピ射は単射・全射の概念を抽象化したものと考える事が出来る。ただ一般の圏においては、単射・全射そのものではない。
@@ -410,6 +414,8 @@ $FG\simeq\mathrm{id}\_{\mathcal{D}}$ はこれまでの議論より明らか。�
 
 ## 代表的な圏の構成
 
+### 関手圏
+
 {{% definition title="関手圏" %}}
 圏 $\mathcal{C},\mathcal{D}$ について、関手 $\mathcal{C}\rightarrow \mathcal{D}$ を対象とし、それらの間の自然変換を射とする圏を **関手圏(functor category)** といい、 $\[\mathcal{C},\mathcal{D}\]$ や $\mathcal{D}^{\mathcal{C}}$ と書く。
 {{% /definition %}}
@@ -459,3 +465,30 @@ $$ \cdot: M\times X \rightarrow X$$
 
 もしくは $I$ を添字集合とする集合族 $\\{X_i\\}\_{i\in I}$ を対象とし、関数の族 $\\{X_i\rightarrow Y_i\\}_{i\in i}$ を射とする圏とみなすこともできる。
 {{% /example %}}
+
+### スライス圏・部分対象
+
+{{% definition title="スライス圏" %}}
+圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、
+$x\rightarrow a$ の形の射を対象とし、以下ような可換図式を $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を $a$ 上の $\mathcal{C}$ の **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
+$$\xymatrix{
+x \ar[rd] & & y \ar[ld] \ar[ll]_f \\\\
+                    &a&
+}$$
+
+{{% /definition %}}
+
+離散集合 $I$ に対して $\mathbf{Set}/I\simeq\mathbf{Bn}(I)$ である。
+これは、関数 $f:X\rightarrow I$ と集合族 $\\{f^{-1}(i)\\}\_{i\in I}$ が一対一に対応することからわかる。
+
+{{% definition title="部分対象" %}}
+
+圏 $\mathcal{C}$ の対象 $a\in\mathcal{C}$ について、モノ射 $x\xhookrightarrow{} a$ を $\mathcal{C}/a$ における同型関係で割った同値類を $a$ の **部分対象(subobject)** という。
+
+{{% /definition %}}
+
+### 積圏
+
+{{% definition title="積圏" %}}
+圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ という。射の合成は要素毎に行う。
+{{% /definition %}}
