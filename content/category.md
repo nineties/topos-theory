@@ -594,3 +594,16 @@ F(a) \ar[r]\_{F(f)} & F(b)
     \draw (e) to (a);
   \end{tikzpicture}
 </script>
+
+{{% definition title="錐の圏" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
+$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全て $a\in\mathcal{J}$ について
+$\phi_a = \psi_a\circ p$ 成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+
+$$\xymatrix{
+x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]\_{\psi\_a} \\\\
+F(a) & \\\\
+}$$
+
+この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
+{{% /definition %}}
