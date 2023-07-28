@@ -287,6 +287,12 @@ $$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\i
 {{% /example %}}
 これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
 
+{{% definition title="定数関手" %}}
+関手 $\mathcal{J}\rightarrow\mathcal{C}$ であって、$\mathcal{J}$ の全ての対象をある対象 $a\in\mathcal{C}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{J}\rightarrow\mathcal{C}$ と書くこともある。
+
+任意の射 $f:a\rightarrow b$ は定数関手 $a, b:\mathcal{J}\rightarrow\mathcal{C}$ の間の自然変換である。
+{{% /definition %}}
+
 {{% definition title="共変Hom関手" %}}
 圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
 $\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
@@ -498,3 +504,93 @@ x \ar[rd] & & y \ar[ld] \ar[ll]_f \\\\
 驚くべき事実であるが、数学的な対象の多くがその内部構造(集合論に基づく古典的な考え方)ではなく,その対象が属する数学世界における他の対象との関係性(圏の中での対象や射を用いた考え方)を通して定義できることがよくある。後者は所謂、 **普遍性(universal property)** と呼ばれる性質を用いている。
 
 ただし、ある圏において同型な対象は、それらが満足する圏論的な性質の観点からは区別することができない。実際、普遍性を用いた定義は、絶対的に一意に対象を決定するのではなく、与えられた圏内で **同型を除いて(up to isomorphism)** 一意に対象を決定するものとなる。
+
+### 始対象・終対象
+
+普遍性による定義の最も単純なものが、始対象・終対象である。
+
+{{% definition title="始対象" %}}
+圏 $\mathcal{C}$ の **始対象(initial object)** とは、任意の対象 $x\in\mathcal{c}$ に対して射 $0\rightarrow x$ が唯一つ存在するような対象 $0\in\mathcal{C}$ の事である。
+
+始対象の双対概念を **終対象(terminal object)** という。すなわち、圏 $\mathcal{C}$ の任意の対象 $x\in\mathcal{c}$ に対して射 $x\rightarrow 1$ が唯一つ存在するような対象 $1\in\mathcal{C}$ の事である。
+{{% /definition %}}
+
+{{% proposition %}}
+始対象・終対象は同型を除いて一意に定まる。
+{{% /proposition %}}
+
+{{% details 証明 %}}
+$0,0'\in\mathcal{C}$ が共に始対象 であるとすると、射 $f:0\rightarrow 0', g:0'\rightarrow 0$ が存在し、
+これらを合成すると $g\circ f:0\rightarrow 0$ が得られるが $0$ が始対象であることより $0\rightarrow 0$ は唯一つであるので $g\circ f=1_0$。同様にして $f\circ g=1_{0'}$ であるので$f:0\rightarrow 0'$ は同型射。よって $0\simeq 0'$。 終対象についても同様。(証明終)
+$$\xymatrix{
+0 \ar[r]\_f \ar@/^1pc/[rr]^{1_0} & 0' \ar[r]\_g & 0
+}$$
+
+{{% /details %}}
+
+### 極限
+
+{{% definition title="図式としての関手" %}}
+
+圏 $\mathcal{J}$ から $\mathcal{C}$ の関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。
+
+{{% /definition %}}
+
+例えば $\mathcal{J}$ が対象が3つの
+$$\xymatrix{
+\bullet \ar[r] & \bullet & \bullet \ar[l]
+}$$
+のような圏 であるとすると、関手 $F\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
+$$\xymatrix{
+a \ar[r] & c & b \ar[l]
+}$$
+
+{{% definition title="対角関手" %}}
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $a\in\mathcal{C}$ を定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ に、射を定数関手の間の自然変換に移す対応は関手
+$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
+となる。これを **対角関手(diagonal functor)** という。
+{{% /definition %}}
+
+例えば、 $\mathcal{J}$ が2点集合の場合、定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ は組 $(a,a)$ と同一視できるから、 $\Delta(a) \simeq (a,a)$ となる。
+
+{{% definition title="錐" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。
+
+同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
+{{% /definition %}}
+
+錐の$\mathcal{J}$ の射 $f:a\rightarrow b$ に対応する部分は左下の図式のようになっており、
+上側は全て $x$ であるから書き直せば右下の三角形の図式となる。
+
+$$\xymatrix{
+x \ar[r]^{=} \ar[d]\_{\phi_a} & x \ar[d]^{\phi_b} \\\\
+F(a) \ar[r]\_{F(f)} & F(b)
+}
+\qquad
+\xymatrix{
+x \ar[d]\_{\phi_a} \ar[rd]^{\phi_b} & \\\\
+F(a) \ar[r]\_{F(f)} & F(b)
+}$$
+
+これを全て集めると、以下のような感じで頂点に $x$ があり、側面に現れる三角図式が全て可換であるようなものが錐である。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(a)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(b)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to (a);
+    \draw [-latex, thick] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+  \end{tikzpicture}
+</script>
