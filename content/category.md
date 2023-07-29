@@ -476,9 +476,9 @@ $$ \cdot: M\times X \rightarrow X$$
 
 {{% definition title="スライス圏" %}}
 圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、
-$x\rightarrow a$ の形の射を対象とし、以下ような可換図式を $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を $a$ 上の $\mathcal{C}$ の **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
+$x\rightarrow a$ の形の射を対象とし、以下の図式を可換にする $f:x\rightarrow y$ を $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を $a$ 上の $\mathcal{C}$ の **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
 $$\xymatrix{
-x \ar[rd] & & y \ar[ld] \ar[ll]_f \\\\
+x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
                     &a&
 }$$
 
@@ -540,13 +540,13 @@ $$\xymatrix{
 $$\xymatrix{
 \bullet \ar[r] & \bullet & \bullet \ar[l]
 }$$
-のような圏 であるとすると、関手 $F\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
+のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
 $$\xymatrix{
 a \ar[r] & c & b \ar[l]
 }$$
 
 {{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $a\in\mathcal{C}$ を定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ に、射を定数関手の間の自然変換に移す対応は関手
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $a\in\mathcal{C}$ を定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:a\rightarrow b$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
 $$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
 となる。これを **対角関手(diagonal functor)** という。
 {{% /definition %}}
@@ -599,10 +599,10 @@ F(a) \ar[r]\_{F(f)} & F(b)
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
 $\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全て $a\in\mathcal{J}$ について
-$\phi_a = \psi_a\circ p$ 成立するような射 $p:y\rightarrow x$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+$\phi_a = \psi_a\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
-x \ar@{<-}[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
+x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
 F(a) & \\\\
 }$$
 
@@ -614,13 +614,11 @@ F(a) & \\\\
 <script type="text/tikz">
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (y) at (1, 2.5) node at (y) [above] {$y$};
     \coordinate (a) at (-1, -1) node at (a) [below] {$F(a)$};
     \coordinate (b) at (1, -1) node at (b) [below] {$F(b)$};
     \coordinate (c) at (1.5, 0);
     \coordinate (d) at (0, 1);
     \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex] (y) to (x);
     \draw [-latex, thick] (x) to (a);
     \draw [-latex, thick] (x) to (b);
     \draw [-latex] (x) to (c);
@@ -634,12 +632,14 @@ F(a) & \\\\
 
     \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
 
+    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
     \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
     \coordinate (a_) at (3, -1) node at (a_) [below] {$F(a)$};
     \coordinate (b_) at (5, -1) node at (b_) [below] {$F(b)$};
     \coordinate (c_) at (5.5, 0);
     \coordinate (d_) at (4, 1);
     \coordinate (e_) at (2.7, 0.2);
+    \draw [-latex] (x_) to (y_);
     \draw [-latex, thick] (y_) to (a_);
     \draw [-latex, thick] (y_) to (b_);
     \draw [-latex] (y_) to (c_);
@@ -661,11 +661,64 @@ $F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象を **余極
 
 極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
 
+{{% definition title="極限の保存" %}}
+関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ と $G: \mathcal{C}\rightarrow\mathcal{D}$ について
+$$ \varprojlim G\circ F \simeq G(\varprojlim F) $$
+である時 $G$ は極限 $\varprojlim F$ を **保存する(preserves)** という。
+余極限についても同様。
+{{% /definition %}}
+
+$\varprojlim F$ と書いた時に、極限となる錐全体を指す場合もあれば、錐の頂点の対象を指す場合もある。上の式は後者であって、$F$への極限錐の頂点が $GF$ への極限錐の頂点を移るという式であり、極限錐全体については何も言っていない。しかし、
+
+
 ### コンマ圏
 
 錐の圏はコンマ圏という概念の特別な場合として説明することもできる。
 
 {{% definition title="コンマ圏" %}}
 圏 $\mathcal{A},\mathcal{B},\mathcal{C}$ と関手 $F:\mathcal{A}\rightarrow\mathcal{C}, G:\mathcal{B}\rightarrow\mathcal{C}$ について
-$$\xymatrix{\mathcal{A} \ar[r]^F & \mathcal{C} & \mathcal{B} \ar[l]_G}$$
+$$\xymatrix{\mathcal{A} \ar[r]^F & \mathcal{C} & \mathcal{B} \ar[l]\_G}$$
+
+$a\in\mathcal{A},b\in\mathcal{B}$ と$\mathcal{C}$ の射 $f:F(a)\rightarrow G(b)$ の三つ組 $(a,b,f)$ を対象とし、以下の図式を可換にする射の組 $(p,q)$ を射 $(a,b,f)\rightarrow(a',b',f')$ とする圏を **コンマ圏(comma category)** といい $F\downarrow G$ と書く。
+
+$$\xymatrix{
+F(a) \ar[d]\_{f} \ar[r]^{p}  & F(a') \ar[d]^{f'} \\\\
+G(b)             \ar[r]\_{q} & G(b')
+}$$
+
 {{% /definition %}}
+
+以前説明したスライス圏もコンマ圏の特別な場合である。
+
+{{% proposition %}}
+$$\mathrm{id}\_{\mathcal{C}}\downarrow a \simeq \mathcal{C}/a $$
+ただし、左辺の $a$ は定数関手 $a:1\rightarrow\mathcal{C}$。
+$$ \xymatrix{\mathcal{C}\ar[r]^{\mathrm{id}\_{\mathcal{C}}} & \mathcal{C} & 1 \ar[l]\_{a} } $$
+{{% /proposition %}}
+
+錐の圏は以下のようになる。
+
+{{% proposition %}}
+$$ \text{$F$ への錐の圏} \simeq \Delta\downarrow F$$
+$$ \text{$F$ からの錐の圏} \simeq F\downarrow\Delta$$
+
+$$\xymatrix{\mathcal{C}\ar[r]^{\Delta} & \mathcal{C}^{\mathcal{J}} & 1 \ar[l]\_{F}}$$
+{{% /proposition %}}
+
+$F$ への錐の件の方を具体的に書いてみると、まず $\Delta\downarrow F$ の対象は三つ組
+$(\Delta(x), F, \phi)$ である。ここで $phi$ は関手圏 $\mathcal{C}^{\mathcal{J}}$ の射、すなわち自然変換 $\phi:\Delta(x)\rightarrow F$ であって$F$ への錐の定義と一致する。
+$\Delta\downarrow F$ の射は以下が可換図式となるような自然変換 $\Delta(p)$ である。
+$$\xymatrix{
+\Delta(x) \ar[d]\_{\phi} \ar[r]^{\Delta(p)} & \Delta{y} \ar[d]^{\psi} \\\\
+F \ar[r]\_{=}                               & F
+}$$
+
+これをcomponent-wiseに書き直してみると、全てに $a\in\mathcal{C}$ について以下を可換とする射 $p$ が錐の間の射となる。以上にようにして、$\Delta\downarrow F$ が錐の圏と一致する事が分かる。
+
+$$\xymatrix{
+x \ar[d]\_{\phi_a} \ar[r]^{p} & y \ar[d]^{\psi_a} \\\\
+F(a) \ar[r]\_{=}                               & F(a)
+}$$
+
+### 極限の例
+
