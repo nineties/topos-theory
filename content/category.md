@@ -574,6 +574,7 @@ F(a) \ar[r]\_{F(f)} & F(b)
 
 これを全て集めると、以下のような感じで頂点に $x$ があり、側面に現れる三角図式が全て可換であるようなものが錐である。
 
+
 <script type="text/tikz">
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
@@ -601,7 +602,7 @@ $\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、�
 $\phi_a = \psi_a\circ p$ 成立するような射 $p:y\rightarrow x$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
-x \ar@{<-}[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]\_{\psi\_a} \\\\
+x \ar@{<-}[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
 F(a) & \\\\
 }$$
 
@@ -651,3 +652,20 @@ F(a) & \\\\
     \draw (e_) to (a_);
   \end{tikzpicture}
 </script>
+
+{{% definition title="極限" %}}
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象を **極限(limit)** もしくは **射影的極限(projective limit)** といい、 $\varprojlim F$ と書く。
+
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象を **余極限(colimit)** もしくは **帰納的極限(inductive limit)** といい、 $\varinjlim F$ と書く。
+{{% /definition %}}
+
+極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
+
+### コンマ圏
+
+錐の圏はコンマ圏という概念の特別な場合として説明することもできる。
+
+{{% definition title="コンマ圏" %}}
+圏 $\mathcal{A},\mathcal{B},\mathcal{C}$ と関手 $F:\mathcal{A}\rightarrow\mathcal{C}, G:\mathcal{B}\rightarrow\mathcal{C}$ について
+$$\xymatrix{\mathcal{A} \ar[r]^F & \mathcal{C} & \mathcal{B} \ar[l]_G}$$
+{{% /definition %}}
