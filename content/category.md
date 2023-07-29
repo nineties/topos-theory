@@ -598,12 +598,56 @@ F(a) \ar[r]\_{F(f)} & F(b)
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
 $\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全て $a\in\mathcal{J}$ について
-$\phi_a = \psi_a\circ p$ 成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+$\phi_a = \psi_a\circ p$ 成立するような射 $p:y\rightarrow x$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
-x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]\_{\psi\_a} \\\\
+x \ar@{<-}[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]\_{\psi\_a} \\\\
 F(a) & \\\\
 }$$
 
 この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
 {{% /definition %}}
+
+この圏のイメージは以下のようになる。左の $x$ から $F$ への錐の頂点に $p:y\rightarrow x$ を接続する事で $y$ から $F$ への錐を得ることができるという状況である。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (y) at (1, 2.5) node at (y) [above] {$y$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(a)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(b)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex] (y) to (x);
+    \draw [-latex, thick] (x) to (a);
+    \draw [-latex, thick] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+
+    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
+
+    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
+    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(a)$};
+    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(b)$};
+    \coordinate (c_) at (5.5, 0);
+    \coordinate (d_) at (4, 1);
+    \coordinate (e_) at (2.7, 0.2);
+    \draw [-latex, thick] (y_) to (a_);
+    \draw [-latex, thick] (y_) to (b_);
+    \draw [-latex] (y_) to (c_);
+    \draw [-latex] (y_) to (d_);
+    \draw [-latex] (y_) to (e_);
+    \draw [-latex, thick] (a_) to node [below] {\small $F(f)$} (b_);
+    \draw (b_) to (c_);
+    \draw (c_) to (d_);
+    \draw (d_) to (e_);
+    \draw (e_) to (a_);
+  \end{tikzpicture}
+</script>
