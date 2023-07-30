@@ -550,7 +550,7 @@ a \ar[r] & c & b \ar[l]
 }$$
 
 {{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $a\in\mathcal{C}$ を定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:a\rightarrow b$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
 $$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
 となる。これを **対角関手(diagonal functor)** という。
 {{% /definition %}}
@@ -563,17 +563,17 @@ $$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
 同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
 {{% /definition %}}
 
-錐の$\mathcal{J}$ の射 $f:a\rightarrow b$ に対応する部分は左下の図式のようになっており、
+錐の$\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する部分は左下の図式のようになっており、
 上側は全て $x$ であるから書き直せば右下の三角形の図式となる。
 
 $$\xymatrix{
 x \ar[r]^{=} \ar[d]\_{\phi_a} & x \ar[d]^{\phi_b} \\\\
-F(a) \ar[r]\_{F(f)} & F(b)
+F(i) \ar[r]\_{F(f)} & F(j)
 }
 \qquad
 \xymatrix{
 x \ar[d]\_{\phi_a} \ar[rd]^{\phi_b} & \\\\
-F(a) \ar[r]\_{F(f)} & F(b)
+F(i) \ar[r]\_{F(f)} & F(j)
 }$$
 
 これを全て集めると、以下のような感じで頂点に $x$ があり、側面に現れる三角図式が全て可換であるようなものが錐である。
@@ -582,8 +582,8 @@ F(a) \ar[r]\_{F(f)} & F(b)
 <script type="text/tikz">
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(a)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(b)$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
     \coordinate (c) at (1.5, 0);
     \coordinate (d) at (0, 1);
     \coordinate (e) at (-1.3, 0.2);
@@ -602,12 +602,12 @@ F(a) \ar[r]\_{F(f)} & F(b)
 
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
-$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $a\in\mathcal{J}$ について
-$\phi_a = \psi_a\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
+$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
 x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
-F(a) & \\\\
+F(i) & \\\\
 }$$
 
 この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
@@ -618,8 +618,8 @@ F(a) & \\\\
 <script type="text/tikz">
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(a)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(b)$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
     \coordinate (c) at (1.5, 0);
     \coordinate (d) at (0, 1);
     \coordinate (e) at (-1.3, 0.2);
@@ -638,8 +638,8 @@ F(a) & \\\\
 
     \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
     \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
-    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(a)$};
-    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(b)$};
+    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(i)$};
+    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(j)$};
     \coordinate (c_) at (5.5, 0);
     \coordinate (d_) at (4, 1);
     \coordinate (e_) at (2.7, 0.2);
@@ -658,9 +658,9 @@ F(a) & \\\\
 </script>
 
 {{% definition title="極限" %}}
-$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
 
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\phi$ を **標準入射(canonical inclusion)** という。
 {{% /definition %}}
 
 極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
@@ -672,6 +672,11 @@ $F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjli
 $$ \varprojlim G\circ F \simeq G(\varprojlim F) $$
 である。余極限についても同様。
 {{% /definition %}}
+
+- $\mathcal{J}$ として空圏(対象も射も空集合の圏)を取ると、極限は **終対象(terminal object)**　余極限は **始対象(initial object)** と一致。
+- $\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。
+- $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)**、余極限を **押し出し(pushout)** という。
+- $\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。
 
 ### コンマ圏
 
@@ -715,17 +720,21 @@ $$\xymatrix{
 F \ar[r]\_{=}                               & F
 }$$
 
-これをcomponent-wiseに書き直してみると、全てに $a\in\mathcal{C}$ について以下を可換とする射 $p$ が錐の間の射となる。以上にようにして、$\Delta\downarrow F$ が錐の圏と一致する事が分かる。
+これをcomponent-wiseに書き直してみると、全ての $i\in\mathcal{C}$ について以下を可換とする射 $p$ が錐の間の射となる。以上にようにして、$\Delta\downarrow F$ が錐の圏と一致する事が分かる。
 
 $$\xymatrix{
 x \ar[d]\_{\phi_a} \ar[r]^{p} & y \ar[d]^{\psi_a} \\\\
-F(a) \ar[r]\_{=}                               & F(a)
+F(i) \ar[r]\_{=}                               & F(i)
 }$$
 
-### 極限の例
+### 極限の存在定理
 
-- $\mathcal{J}$ として空圏(対象も射も空集合の圏)を取ると、極限は **終対象(terminal object)**　余極限は **始対象(initial object)** と一致。
-- $\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。
-- $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)**、余極限を **押し出し(pushout)** という。
-- $\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。
-
+{{% theorem title="極限の存在定理" %}}
+$\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
+$$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
+$$ \begin{align*}
+s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
+t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
+\end{align*}$$
+のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
+{{% /theorem %}}
