@@ -22,8 +22,8 @@ toc: true
 (小さな) **圏(category)** $\mathcal{C}$ は
 
 - **対象(object)** の 集合 $\mathrm{Ob}(\mathcal{C})$
-- 各 $a, b\in\mathrm{Ob}(\mathcal{C})$ に対して **射(arrow)** の集合 $\mathcal{C}(a,b)$
-- 各 $a,b,c\in\mathrm{Ob}(\mathcal{C})$ に対して射の **合成(composition)**
+- 各 $a, b\in\mathrm{Ob}(\mathcal{C})$ に対する **射(arrow)** の集合 $\mathcal{C}(a,b)$
+- 各 $a,b,c\in\mathrm{Ob}(\mathcal{C})$ に対する射の **合成(composition)**
 $$ \mathcal{C}(a,b)\times\mathcal{C}(b,c)\ni(f,g)\mapsto g\circ f\in\mathcal{C}(a,c)$$
 
 からなり、以下の2条件を満たすものである。
@@ -38,7 +38,7 @@ $f \in\mathcal{C}(a,b)$ の代わりに、$f \in\mathrm{Hom}\_{\mathcal{C}}(a,b)
 
 {{% /definition %}}
 
-対象や射の集まりとして集合より大きな **類,クラス(class)** を用いる事でより大きな圏を考える事もできる。また、圏の定義は一階述語理論的な公理化も可能である。
+対象や射の集まりとして集合より大きな **類(class)** を用いる事でより大きな圏を考える事もできる。また、圏の定義は一階述語理論的な公理化も可能である。
 
 {{% definition title="圏の一階述語論理的公理化" %}}
 
@@ -69,17 +69,19 @@ $$
 {{< refn def.category >}}を満たす圏 $\mathcal{C}$ は
 
 - $\mathrm{Obj}(a)$ を $a\in\mathrm{Ob}(\mathcal{C})$
-- $\mathrm{Arr}(f)$ を $f\in\coprod_{a,b\in\mathrm{Ob}(\mathcal{C})}\mathcal{C}(a,b)$
+- $\mathrm{Arr}(f)$ を $\displaystyle f\in\coprod_{a,b\in\mathrm{Ob}(\mathcal{C})}\mathcal{C}(a,b)$
 - $\mathrm{Dom}(f)$ を $\mathrm{dom}(f)$、$\mathrm{Cod}(f)$ を $\mathrm{cod}(f)$、$\mathrm{Id}(a)$ を $1_a$、$\circ$ を $\circ$
 
 と解釈することでこの公理系を満たす。
 
-圏論では等式の代わりに **可換図式(commutative diagram)** を用いる事が多い。例えば $g\circ f=h$ であるということを「以下の図式が可換である」などと表現する。図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の捕り方によらず一致するということ。
+圏論では等式の代わりに **可換図式(commutative diagram)** を用いる事が多い。
+図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の捕り方によらず一致するということ。
+例えば $g\circ f=h$ であるということを「以下の図式が可換である」などと表現する。
 
 $$
 \xymatrix {
-a \ar[d]^f \ar[rd]^h &      \\\\
-b \ar[r]^g & c
+a \ar[d]_f \ar[rd]^h &      \\\\
+b \ar[r]_g & c
 }
 $$
 
@@ -87,12 +89,13 @@ $$
 任意の対象 $a$ に対して、恒等射 $1_a$ は一意に定まる。
 {{% /proposition %}}
 {{% details 証明 %}}
-$1_a,1'_a: a\rightarrow a$ が共に恒等射であるとすると、以下の図式が可換となるから $1_a=1'_a$ (証明終)
+$1_a,1'_a: a\rightarrow a$ が共に恒等射であるとすると、以下の図式が可換となるから $1_a=1'_a$
 $$
 \xymatrix {
 a \ar[r]^{1_a} \ar@/^2pc/[rr]^{1_a} \ar@/_2pc/[rr]\_{1'\_a} & a \ar[r]^{1'_a} & a 
 }
 $$
+(証明終)
 {{% /details %}}
 
 このような図式を辿る事による証明方法をdiagram chasingという。
@@ -111,7 +114,7 @@ $$ g\circ_{\mathcal{C}^\mathrm{op}}f = f\circ_{\mathcal{C}} g $$
 つまり、双対圏は元の圏の射の向きを全て逆にしたもの。
 
 {{% theorem title="双対原理" %}}
-ある命題が圏 $\mathcal{C}$ で真であるとき、射の向きを全て逆に合成の順序を入れ替えて得られる **双対命題(dual statement)** は圏 $\mathcal{C}^{\mathrm{op}}$ でも真である。
+ある命題が圏 $\mathcal{C}$ で真であるとき、射の向きを全て逆にし合成の順序を入れ替えて得られる **双対命題(dual statement)** は圏 $\mathcal{C}^{\mathrm{op}}$ でも真である。
 {{% /theorem %}}
 
 $\mathcal{C}^{\mathrm{op}}$ の双対は $\mathcal{C}$ だから結局
@@ -127,13 +130,13 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 
 - $\mathbf{Set}$: **集合**と**写像**
 - $\mathbf{Top}$: **位相空間**と**連続写像**
-- $\mathbf{Gr}$: *群* と **群の準同型写像**
-- $\mathbf{Rng}$: *環* と **間の準同型写像**
+- $\mathbf{Gr}$: **群** と **群の準同型写像**
+- $\mathbf{Rng}$: **環** と **環の準同型写像**
 - $\mathbf{Vect}\_{K}$: 体 $K$ 上の **ベクトル空間** と **線型写像**
 
 などである。実際、任意の一階の理論(一階述語理論で記述された理論) $\mathbb{T}$ に対して、(集合論ベースの)モデルを対象とし、その間の準同型写像を射とする圏 $\mathbb{T}\mathrm{-mod}(\mathbf{Set})$ を考える事ができる。
 
-また、数学的対象「1つ」を圏と見なす事もできる。例えば
+また、数学的対象1つを圏と見なす事もできる。例えば
 
 - 集合: 要素を対象とし、射は恒等射のみとしたもの。**離散圏(discrete category)** という。
 - 前順序集合: 要素を対象とし、$a \leq b$ を射 $a\rightarrow b$ とみなしたもの。任意の対象 $a,b$ について射 $a\rightarrow b$ が高々一つしかない圏。
@@ -220,7 +223,7 @@ $$
 
 すると、$f\circ e = g\circ e$ である。しかし $e$ が全射でないことより$x\not\in e(A)$ すなわち $f(x)\neq g(x)$ となる$x\in B$が少なくも一つ存在するから $f\neq g$ である。これは矛盾であるので $e$ は全射である。
 
-逆に $e:A\rightarrow B$ を全射とし、集合 $C$ と写像 $f,g:B\rightarrow C$ が $f\circ e = g\circ e$ をみたするとする。任意の $x\in B$ についてある $y\in A$ が存在して $x=e(y)$ と書けるので $f(x)=g(x)$ である。よって $e$ はエピ射。(証明終)
+逆に $e:A\rightarrow B$ を全射とし、集合 $C$ と写像 $f,g:B\rightarrow C$ が $f\circ e = g\circ e$ をみたするとする。任意の $x\in B$ についてある $y\in A$ が存在して $x=e(y)$ と書けるので $f(x)=g(x)$ である。よって $f=g$ であるから $e$ はエピ射。(証明終)
 {{% /details %}}
 
 モノ射とエピ射は圏論の世界では対称的な定義だが、具体的な集合と関数では一見そのように見えないというところが面白い。また、これらの命題から直ちに以下が言える。
@@ -246,20 +249,20 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 写像 $F:\mathrm{Ob}(\mathcal{C})\rightarrow\mathrm{Ob}(\mathcal{D})$ と任意の対象 $a,b\in\mathcal{C}$ に対する写像 $F:\mathcal{C}(a,b)\rightarrow \mathcal{D}(F(a), F(b))$ であり
 
 - 任意の対象 $a\in\mathcal{C}$ について $F(1\_a)=1\_{F(a)}$
-- 任意の$f:a\rightarrow b, g:b\rightarrow f$ について $F(g\circ f)=F(g)\circ F(f)$
+- 任意の$f:a\rightarrow b, g:b\rightarrow c$ について $F(g\circ f)=F(g)\circ F(f)$
 
 を満たすものである。
 {{% /definition %}}
 
 恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $\mathrm{id}_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
-また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。
+また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。
 
 {{% definition title="反変関手" %}}
 $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{D}$ を、$\mathcal{C}$ から $\mathcal{D}$ への **反変関手(contravariant functor)** という。
 {{% /definition %}}
 
 {{% definition title="小さい圏の圏" %}}
-小さい圏を対象、関手を射とした圏は(小さくない)圏となる。これを $\mathbf{Cat}$ と書く。
+小さい圏を対象、関手を射とした圏は(大きな)圏となる。これを $\mathbf{Cat}$ と書く。
 {{% /definition %}}
 
 {{% definition title="前層" %}}
@@ -269,7 +272,7 @@ $$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
 {{% /definition %}}
 
 {{% definition title="自然変換" %}}
-関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
 
 $$\xymatrix{
 F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
@@ -288,9 +291,9 @@ $$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\i
 これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
 
 {{% definition title="定数関手" %}}
-関手 $\mathcal{J}\rightarrow\mathcal{C}$ であって、$\mathcal{J}$ の全ての対象をある対象 $a\in\mathcal{C}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{J}\rightarrow\mathcal{C}$ と書くこともある。
+関手 $\mathcal{C}\rightarrow\mathcal{D}$ であって、$\mathcal{C}$ の全ての対象をある対象 $a\in\mathcal{D}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{C}\rightarrow\mathcal{D}$ と書くこともある。
 
-任意の射 $f:a\rightarrow b$ は定数関手 $a, b:\mathcal{J}\rightarrow\mathcal{C}$ の間の自然変換である。
+任意の射 $f:a\rightarrow b$ は定数関手 $a, b:\mathcal{C}\rightarrow\mathcal{D}$ の間の自然変換である。
 {{% /definition %}}
 
 {{% definition title="共変Hom関手" %}}
@@ -310,7 +313,7 @@ b \ar[rr]^f &             & c
 $$
 {{% /definition %}}
 
-{{% details 証明 %}}
+{{% details 関手であることの証明 %}}
 任意の $a,b\in\mathcal{C}$, $f:a\rightarrow b$ について
 $$ \mathcal{C}(a,-)(1_b): f\longmapsto 1_b\circ f = f$$
 であるから $ \mathcal{C}(a,-)(1_b) = 1_{\mathcal{C}(a,b)} $
@@ -367,7 +370,8 @@ $$ G\circ F = \mathrm{id}\_{\mathcal{C}},\ F\circ G=\mathrm{id}\_{\mathcal{D}}$$
 を満たすものが存在する事である。
 {{% /definition %}}
 
-これは、本質的全射の所で述べたのと同じ理由で条件が強すぎて、同型な対象 $a\simeq b$ を同じものと見なした時に本質的に等しくなる圏の関係性としては使えない。そこで、圏同値という概念が重要となる。
+これは、本質的全射の所で述べたのと同じ理由で条件が強すぎて、同型な対象 $a\simeq b$ は同じものと見なした上で圏が本質的に一致する条件を考えたい。
+そこで、圏同値という概念が重要となる。
 
 {{% definition title="圏の同値" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同値(equivalent)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で自然同型
@@ -384,7 +388,7 @@ $$ \text{関手 $F$ が圏同値} \Leftrightarrow \text{関手 $F$ が充満忠�
 ($\Rightarrow$)
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: G\circ F\rightarrow\mathrm{id}\_{\mathcal{C}}, \psi: F\circ G\rightarrow\mathrm{id}\_{\mathcal{D}}$ が存在するとする。
 
-任意の$b\in\mathcal{D}$ に対して $FG(b)\simeq b$ であるか $a=G(b)$ とおけば $F(a)\simeq b$。従って $F$ は本質的全射。
+任意の$b\in\mathcal{D}$ に対して $a=G(b)$ とおけば $F(a)=FG(b)\simeq\mathrm{id}\_{\mathcal{D}}(b) = b$。従って $F$ は本質的全射。
 
 任意の$f,g\in\mathcal{C}(a,b)$ について $F(f)=F(g)$ であるとすると $GF(f)=GF(g)$ であるから、$\phi_b\circ GF(f)\circ\phi_a^{-1} = f$ であることより $f = g$。従って$F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は単射であるから $F$ は忠実。
 
@@ -398,9 +402,9 @@ GF(b) \ar[r]\_{\phi_b} & b \\\\
 ($\Leftarrow$)
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であるとする。
 
-本質的全射であることより、任意の $b\in\mathcal{D}$ に対してある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となる。選択公理を用いてそのような $a$ を各 $b$ について選ぶ事によって、対象間の写像 $G:\mathrm{Ob}(\mathcal{D})\rightarrow\mathrm{Ob}(\mathcal{C})$ を作る事が出来る。
+本質的全射であることより、任意の $b\in\mathcal{D}$ に対してある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となる。選択公理を用いてそのような $a$ を各 $b$ について選ぶ事によって、対象間の写像 $G:\mathrm{Ob}(\mathcal{D})\rightarrow\mathrm{Ob}(\mathcal{C})$ を作る事が出来る。すなわち、任意の $b\in\mathcal{D}$ について $FG(b)\simeq b$ である。
 
-ここで、任意の $x,y\in\mathcal{D}$ に対して $F$ が充満忠実であることと、 $G$ の定義より $FG(x)\simeq x, FG(y)\simeq y$ であるから全単射
+これと、$F$ が充満忠実であることとより、任意の$x,y\in\mathcal{D}$ について全単射
 
 $$\mathcal{C}(G(x), G(y)) \simeq \mathcal{D}(FG(x), FG(y)) \simeq \mathcal{D}(x, y)$$
 
@@ -521,18 +525,18 @@ x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
 
 {{% details 証明 %}}
 $0,0'\in\mathcal{C}$ が共に始対象 であるとすると、射 $f:0\rightarrow 0', g:0'\rightarrow 0$ が存在し、
-これらを合成すると $g\circ f:0\rightarrow 0$ が得られるが $0$ が始対象であることより $0\rightarrow 0$ は唯一つであるので $g\circ f=1_0$。同様にして $f\circ g=1_{0'}$ であるので$f:0\rightarrow 0'$ は同型射。よって $0\simeq 0'$。 終対象についても同様。(証明終)
+これらを合成すると $g\circ f:0\rightarrow 0$ が得られるが $0$ が始対象であることより $0\rightarrow 0$ は唯一つであるので $g\circ f=1_0$。同様にして $f\circ g=1_{0'}$ であるので$f:0\rightarrow 0'$ は同型射。よって $0\simeq 0'$。 終対象についても同様。
 $$\xymatrix{
 0 \ar[r]\_f \ar@/^1pc/[rr]^{1_0} & 0' \ar[r]\_g & 0
 }$$
-
+(証明終)
 {{% /details %}}
 
 ### 極限
 
 {{% definition title="図式としての関手" %}}
 
-圏 $\mathcal{J}$ から $\mathcal{C}$ の関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。
+圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。
 
 {{% /definition %}}
 
@@ -554,7 +558,7 @@ $$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
 例えば、 $\mathcal{J}$ が2点集合の場合、定数関手 $a:\mathcal{J}\rightarrow\mathcal{C}$ は組 $(a,a)$ と同一視できるから、 $\Delta(a) \simeq (a,a)$ となる。
 
 {{% definition title="錐" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
 
 同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
 {{% /definition %}}
@@ -598,7 +602,7 @@ F(a) \ar[r]\_{F(f)} & F(b)
 
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
-$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全て $a\in\mathcal{J}$ について
+$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $a\in\mathcal{J}$ について
 $\phi_a = \psi_a\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
@@ -609,7 +613,7 @@ F(a) & \\\\
 この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
 {{% /definition %}}
 
-この圏のイメージは以下のようになる。左の $x$ から $F$ への錐の頂点に $p:y\rightarrow x$ を接続する事で $y$ から $F$ への錐を得ることができるという状況である。
+この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
 
 <script type="text/tikz">
   \begin{tikzpicture}
@@ -654,22 +658,20 @@ F(a) & \\\\
 </script>
 
 {{% definition title="極限" %}}
-$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象を **極限(limit)** もしくは **射影的極限(projective limit)** といい、 $\varprojlim F$ と書く。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。
 
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象を **余極限(colimit)** もしくは **帰納的極限(inductive limit)** といい、 $\varinjlim F$ と書く。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。
 {{% /definition %}}
 
 極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
 
+上の定義のように極限とは条件を満たすとなる"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
+
 {{% definition title="極限の保存" %}}
-関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ と $G: \mathcal{C}\rightarrow\mathcal{D}$ について
+関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ と $G: \mathcal{C}\rightarrow\mathcal{D}$ について極限 $(\varprojlim F,\\{\phi_x\\})$ を $G$ で移した $(G(\varprojlim F),\\{G(\phi_x)\\})$ が極限となるとき、$G$ は $F$ の極限を **保存する(preserves limit of $F$)** という。また、この時
 $$ \varprojlim G\circ F \simeq G(\varprojlim F) $$
-である時 $G$ は極限 $\varprojlim F$ を **保存する(preserves)** という。
-余極限についても同様。
+である。余極限についても同様。
 {{% /definition %}}
-
-$\varprojlim F$ と書いた時に、極限となる錐全体を指す場合もあれば、錐の頂点の対象を指す場合もある。上の式は後者であって、$F$への極限錐の頂点が $GF$ への極限錐の頂点を移るという式であり、極限錐全体については何も言っていない。しかし、
-
 
 ### コンマ圏
 
@@ -706,7 +708,7 @@ $$\xymatrix{\mathcal{C}\ar[r]^{\Delta} & \mathcal{C}^{\mathcal{J}} & 1 \ar[l]\_{
 {{% /proposition %}}
 
 $F$ への錐の件の方を具体的に書いてみると、まず $\Delta\downarrow F$ の対象は三つ組
-$(\Delta(x), F, \phi)$ である。ここで $phi$ は関手圏 $\mathcal{C}^{\mathcal{J}}$ の射、すなわち自然変換 $\phi:\Delta(x)\rightarrow F$ であって$F$ への錐の定義と一致する。
+$(\Delta(x), F, \phi)$ である。ここで $\phi$ は関手圏 $\mathcal{C}^{\mathcal{J}}$ の射、すなわち自然変換 $\phi:\Delta(x)\rightarrow F$ であって$F$ への錐の定義と一致する。
 $\Delta\downarrow F$ の射は以下が可換図式となるような自然変換 $\Delta(p)$ である。
 $$\xymatrix{
 \Delta(x) \ar[d]\_{\phi} \ar[r]^{\Delta(p)} & \Delta{y} \ar[d]^{\psi} \\\\
