@@ -661,6 +661,9 @@ F(i) & \\\\
 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
 
 $F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\phi$ を **標準入射(canonical inclusion)** という。
+
+
+$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim_{i\in\mathcal{J}}F(i)$ とも書く。
 {{% /definition %}}
 
 極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
@@ -737,4 +740,31 @@ s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
 t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
 \end{align*}$$
 のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
+{{% /theorem %}}
+
+{{% details 証明の概要 %}}
+$x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
+$$\xymatrix{
+x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
+}$$
+
+$\phi=(\phi_i)\_{i\in\mathcal{J}}$ とおくと、これは全ての $\mathcal{J}$ の射 $f:i\rightarrow j$ に対して、$j\in\mathcal{J}, F(f)\circ \phi_i = \phi_j$ であること、すなわち以下の図式が可換であることと同値。
+$$\xymatrix{
+x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
+F(i) \ar[r]_{F(f)} & F(j)
+}$$
+すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。
+{{% /details %}}
+
+双対をとれば、余極限をコイコライザと余積によって表現する定理も同様に得られる。
+
+### 関手圏の極限
+
+{{% theorem title="関手圏の極限は各点毎に計算可能" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
+$a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim F(-)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
+
+$$ \left(\varprojlim_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim_{i\in\mathcal{J}} F(i)(a) $$
+
+である。
 {{% /theorem %}}
