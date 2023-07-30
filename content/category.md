@@ -766,5 +766,5 @@ $a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal
 
 $$ \left(\varprojlim_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim_{i\in\mathcal{J}} F(i)(a) $$
 
-である。
+である。余極限についても同様。
 {{% /theorem %}}
