@@ -685,9 +685,7 @@ $$ \prod\_{i\in\mathcal{J}}F(i)\qquad\coprod\_{i\in\mathcal{J}}F(i) $$
 $\mathcal{J}$ が2点集合の極限は、 $A\times B, A+B$。
 3点以上の場合も同様に $A\times B\times C$ などと書く。
 
-$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。図式が $A\rightarrow C\leftarrow B$ であるときの引き戻しを$ A\times\_{C} B $ と書く。
-
-同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $A\leftarrow C\rightarrow B$ であるときの押し出しを $ A+\_{C} B $ と書く。
+$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。図式が $A\rightarrow C\leftarrow B$ であるときの引き戻しを$ A\times\_{C} B $ と書く。同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $A\leftarrow C\rightarrow B$ であるときの押し出しを $ A+\_{C} B $ と書く。
 
 $\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
 
