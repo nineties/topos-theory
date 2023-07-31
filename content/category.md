@@ -676,10 +676,20 @@ $$ \varprojlim G\circ F \simeq G(\varprojlim F) $$
 である。余極限についても同様。
 {{% /definition %}}
 
-- $\mathcal{J}$ として空圏(対象も射も空集合の圏)を取ると、極限は **終対象(terminal object)**　余極限は **始対象(initial object)** と一致。
-- $\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。
-- $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)**、余極限を **押し出し(pushout)** という。
-- $\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。
+### 極限の例
+$\mathcal{J}$ として空圏(対象も射も空集合の圏)を取ると、極限は **終対象(terminal object)**　余極限は **始対象(initial object)** と一致。
+
+$\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。それぞれ以下のように書く。
+$$ \prod\_{i\in\mathcal{J}}F(i)\qquad\coprod\_{i\in\mathcal{J}}F(i) $$
+
+$\mathcal{J}$ が2点集合の極限は、 $A\times B, A+B$。
+3点以上の場合も同様に $A\times B\times C$ などと書く。
+
+$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。図式が $A\rightarrow C\leftarrow B$ であるときの引き戻しを$ A\times\_{C} B $ と書く。
+
+同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $A\leftarrow C\rightarrow B$ であるときの押し出しを $ A+\_{C} B $ と書く。
+
+$\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
 
 ### コンマ圏
 
@@ -813,5 +823,26 @@ $$ \xymatrix{
 H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu] \ar@{.>}[uuu]
 }$$
 
-この射の族 $\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim_{i\in\mathcal{J}}F(i)$ である。(証明終)
+この射の族 $\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim\_{i\in\mathcal{J}}F(i)$ である。(証明終)
 {{% /details %}}
+
+## 随伴
+**随伴(adjunction)** は2つの関手の間の関係であるが、
+
+> "Adjoint functors arise everywhere”
+> (S. Mac Lane, Categories for the working mathematician)
+
+とマクレーンが言っているように、数学の様々な場所で普遍的に現れる重要な概念である。
+
+{{% definition title="随伴" %}}
+圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ の対であり、以下の2つの関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ の間の自然同型
+
+$$ \phi: \mathcal{D}(F(-), -)\longrightarrow\mathcal{C}(-,G(-)) $$
+
+が存在するものをいう。言い換えれば、 任意の $a\in\mathcal{C},b\in\mathcal{D}$ に対して全単射
+$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
+が存在し、これが $a,b$ について自然となるものをいう。
+
+この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。
+{{% /definition %}}
