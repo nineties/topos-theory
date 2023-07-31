@@ -254,7 +254,7 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 を満たすものである。
 {{% /definition %}}
 
-恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $\mathrm{id}_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
+恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
 また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。
 
 {{% definition title="反変関手" %}}
@@ -286,7 +286,7 @@ $\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural iso
 ベクトル空間をその双対ベクトル空間に写す反変関手
 $$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
 
-について $\mathrm{id}\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
+について $1\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
 {{% /example %}}
 これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
 
@@ -366,7 +366,7 @@ $$
 
 {{% definition title="圏の同型" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同型(isomorphic)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で
-$$ G\circ F = \mathrm{id}\_{\mathcal{C}},\ F\circ G=\mathrm{id}\_{\mathcal{D}}$$
+$$ G\circ F = 1\_{\mathcal{C}},\ F\circ G=1\_{\mathcal{D}}$$
 を満たすものが存在する事である。
 {{% /definition %}}
 
@@ -375,7 +375,7 @@ $$ G\circ F = \mathrm{id}\_{\mathcal{C}},\ F\circ G=\mathrm{id}\_{\mathcal{D}}$$
 
 {{% definition title="圏の同値" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同値(equivalent)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で自然同型
-$$ G\circ F \simeq \mathrm{id}\_{\mathcal{C}},\ F\circ G \simeq\mathrm{id}\_{\mathcal{D}}$$
+$$ G\circ F \simeq 1\_{\mathcal{C}},\ F\circ G \simeq 1\_{\mathcal{D}}$$
 を満たすものが存在する事である。$F,G$ を **圏同値(equivalence of categories)** という。
 {{% /definition %}}
 
@@ -386,9 +386,9 @@ $$ \text{関手 $F$ が圏同値} \Leftrightarrow \text{関手 $F$ が充満忠�
 
 {{% details 証明 %}}
 ($\Rightarrow$)
-$F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: G\circ F\rightarrow\mathrm{id}\_{\mathcal{C}}, \psi: F\circ G\rightarrow\mathrm{id}\_{\mathcal{D}}$ が存在するとする。
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: G\circ F\rightarrow 1\_{\mathcal{C}}, \psi: F\circ G\rightarrow 1\_{\mathcal{D}}$ が存在するとする。
 
-任意の$b\in\mathcal{D}$ に対して $a=G(b)$ とおけば $F(a)=FG(b)\simeq\mathrm{id}\_{\mathcal{D}}(b) = b$。従って $F$ は本質的全射。
+任意の$b\in\mathcal{D}$ に対して $a=G(b)$ とおけば $F(a)=FG(b)\simeq 1\_{\mathcal{D}}(b) = b$。従って $F$ は本質的全射。
 
 任意の$f,g\in\mathcal{C}(a,b)$ について $F(f)=F(g)$ であるとすると $GF(f)=GF(g)$ であるから、$\phi_b\circ GF(f)\circ\phi_a^{-1} = f$ であることより $f = g$。従って$F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は単射であるから $F$ は忠実。
 
@@ -397,7 +397,7 @@ GF(a) \ar[d]\_{GF(f)} \ar@{<-}[r]^{\phi^{-1}_a} & a \ar[d]^{f} \\\\
 GF(b) \ar[r]\_{\phi_b} & b \\\\
 }$$
 
-また、任意の $g:F(a)\rightarrow F(b)$ についてこれを $G$ で移した $G(g):GF(a)\rightarrow GF(b)$ を $GF\simeq\mathrm{id}\_{\mathcal{C}}$ によって射 $a\rightarrow b$ と見なしたものを $f$ とする。すなわち$ f = \phi\_{b}\circ G(g)\circ \phi^{-1}\_{a} $とおく。これを変形して $G(g) = \phi_b^{-1}\circ f\circ\phi_a = GF(f)$ となるが、 $G$ は単射なので $g=F(f)$ となる。よって $F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は全射であるから $F$ は充満である。(証明終)
+また、任意の $g:F(a)\rightarrow F(b)$ についてこれを $G$ で移した $G(g):GF(a)\rightarrow GF(b)$ を $GF\simeq 1\_{\mathcal{C}}$ によって射 $a\rightarrow b$ と見なしたものを $f$ とする。すなわち$ f = \phi\_{b}\circ G(g)\circ \phi^{-1}\_{a} $とおく。これを変形して $G(g) = \phi_b^{-1}\circ f\circ\phi_a = GF(f)$ となるが、 $G$ は単射なので $g=F(f)$ となる。よって $F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は全射であるから $F$ は充満である。(証明終)
 
 ($\Leftarrow$)
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であるとする。
@@ -419,7 +419,7 @@ G(y)               & & FG(y) \ar[r]\_{\phi_y}                & y
 }
 $$
 
-$FG\simeq\mathrm{id}\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq\mathrm{id}\_{\mathcal{C}}$ となる。(証明終)
+$FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。(証明終)
 {{% /details %}}
 
 ## 代表的な圏の構成
@@ -709,9 +709,9 @@ G(b)             \ar[r]\_{q} & G(b')
 以前説明したスライス圏もコンマ圏の特別な場合である。
 
 {{% proposition %}}
-$$\mathrm{id}\_{\mathcal{C}}\downarrow a \simeq \mathcal{C}/a $$
+$$1\_{\mathcal{C}}\downarrow a \simeq \mathcal{C}/a $$
 ただし、左辺の $a$ は定数関手 $a:1\rightarrow\mathcal{C}$。
-$$ \xymatrix{\mathcal{C}\ar[r]^{\mathrm{id}\_{\mathcal{C}}} & \mathcal{C} & 1 \ar[l]\_{a} } $$
+$$ \xymatrix{\mathcal{C}\ar[r]^{1\_{\mathcal{C}}} & \mathcal{C} & 1 \ar[l]\_{a} } $$
 {{% /proposition %}}
 
 錐の圏は以下のようになる。
@@ -832,6 +832,18 @@ H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@
 
 とマクレーンが言っているように、数学の様々な場所で普遍的に現れる重要な概念である。
 
+{{% definition title="双関手としてのHom関手" %}}
+圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
+$$ \mathcal{C}(a,b)\ni h\longmapsto g\circ h\circ f\in\mathcal{C}(a',b') $$
+を対応させる関係は関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ となる。
+
+$$\xymatrix{
+a \ar[d]\_{h}^{}=\"x\" & a' \ar[l]\_{f} \\\\
+b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
+\ar@{|->} \"x\";\"y\"
+}$$
+{{% /definition %}}
+
 {{% definition title="随伴" %}}
 圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ の対であり、以下の2つの関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ の間の自然同型
@@ -844,3 +856,22 @@ $$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
 
 この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。
 {{% /definition %}}
+
+{{% definition title="単位射・余単位射" %}}
+随伴 $F\dashv G$ が存在する時、以下の全単射において左辺の単位元 $1\_{F(a)}$ に対応する右辺の射 $\eta_a: a\rightarrow GF(a)$ の族が定める自然変換
+$\eta: 1\_{\mathcal{C}}\rightarrow GF$ をこの随伴の **単位射(unit)** という。
+$$ \mathcal{D}(F(a), F(a))\simeq \mathcal{C}(a,GF(a)) $$
+
+同様に、以下の全単射において右辺の単位元 $1\_{G(b)}$ に対応する左辺の射 $\epsilon_b: FG(b)\rightarrow b$ の族が定める自然変換 $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ を **余単位射(counit)** という。
+$$ \mathcal{D}(FG(b), b)\simeq\mathcal{C}(G(b),G(b)) $$
+{{% /definition %}}
+
+{{% proposition %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangular identities)** が可換となることと同値。
+
+$$\xymatrix{
+F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \ar[rd]\_{1_G} & GFG \ar[d]^{G \epsilon} \\\\
+                                          & F                       &                                            & G
+}$$
+
+{{% /proposition %}}
