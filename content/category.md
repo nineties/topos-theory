@@ -844,7 +844,7 @@ b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
 }$$
 {{% /definition %}}
 
-{{% definition title="随伴" %}}
+{{% definition title="随伴" label="def.adjunction" %}}
 圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ の対であり、以下の2つの関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ の間の自然同型
 
@@ -854,10 +854,39 @@ $$ \phi: \mathcal{D}(F(-), -)\longrightarrow\mathcal{C}(-,G(-)) $$
 $$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
 が存在し、これが $a,b$ について自然となるものをいう。
 
-この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。
+この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。以下のような図式で表現することもある。
+
+$$\xymatrix{
+\mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
+\ar@{}|{\perp} \"x\";\"y\"
+}$$
 {{% /definition %}}
 
-{{% definition title="単位射・余単位射" %}}
+$$ \phi\_{a,b}: \mathcal{D}(F(a), b)\simeq \mathcal{C}(a,G(b)) $$
+
+が $a,b$ について自然であるというのは、任意の $f:a'\rightarrow a, g:b\rightarrow b'$ について
+
+$$ \xymatrix{
+\mathcal{D}(F(a), b)   \ar[r]^{\phi\_{a,b}} \ar[d]\_{\mathcal{D}(F(f), g)} & \mathcal{C}(a, G(b)) \ar[d]^{\mathcal{C}(f, G(g))} \\\\
+\mathcal{D}(F(a'), b') \ar[r]^{\phi\_{a',b'}} & \mathcal{C}(a', G(b'))
+} $$
+
+が成り立つことであるので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
+$$ \phi\_{a',b'}(g\circ h\circ F(f)) = G(g)\circ \phi\_{a,b}(h)\circ f $$
+が成り立つということである。ただ、これだと煩雑すぎるので $\phi(h),\phi^{-1}(h)$ を $\bar{h}$ という風に書くと(もちろん $\bar{\bar{h}}=h$である)、
+
+$$ \overline{g\circ h\circ F(f)} = G(g)\circ\bar{h}\circ f $$
+
+と分かりやすくなる。もしくは、任意の $h: a\rightarrow G(b)$ について
+
+$$ \overline{G(g)\circ h\circ f} = g\circ\bar{h}\circ F(f) $$
+
+であると書いても同じことである。以後この記法を用いる。
+また、対象を明示して以下のような書き方をする場合もある。
+
+$$ \overline{F(a') \xrightarrow{F(f)} F(a) \xrightarrow{h} b \xrightarrow{g} b'} = a' \xrightarrow{f} a \xrightarrow{\bar{h}} G(b) \xrightarrow{G(g)} G(b') $$
+
+{{% definition title="単位射・余単位射" label="def.unit" %}}
 随伴 $F\dashv G$ が存在する時、以下の全単射において左辺の単位元 $1\_{F(a)}$ に対応する右辺の射 $\eta_a: a\rightarrow GF(a)$ の族が定める自然変換
 $\eta: 1\_{\mathcal{C}}\rightarrow GF$ をこの随伴の **単位射(unit)** という。
 $$ \mathcal{D}(F(a), F(a))\simeq \mathcal{C}(a,GF(a)) $$
@@ -866,8 +895,14 @@ $$ \mathcal{D}(F(a), F(a))\simeq \mathcal{C}(a,GF(a)) $$
 $$ \mathcal{D}(FG(b), b)\simeq\mathcal{C}(G(b),G(b)) $$
 {{% /definition %}}
 
-{{% proposition %}}
-関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangular identities)** が可換となることと同値。
+つまり、具体的に書けば
+$$ \eta_a = \overline{1\_{F(a)}},\quad \epsilon_b = \overline{1\_{G(b)}} $$
+である。
+
+### 三角等式
+
+{{% proposition label="prop.triangle" %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
 
 $$\xymatrix{
 F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \ar[rd]\_{1_G} & GFG \ar[d]^{G \epsilon} \\\\
@@ -875,3 +910,76 @@ F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \a
 }$$
 
 {{% /proposition %}}
+{{% details 証明 %}}
+({{< refn def.adjunction >}}, {{< refn def.unit >}} $\Rightarrow$ {{< ref prop.triangle >}}の三角等式)
+$F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{C}$ の間に随伴関係があるとする。また、 $\eta,\epsilon $ を単位射、余単位射とする。
+
+任意の $a\in\mathcal{C}$ について
+
+$$\begin{align*}
+\overline{F(a) \xrightarrow{F(\eta_a)} FGF(a) \xrightarrow{\epsilon\_{F(a)}} F(a)} &= a\xrightarrow{\eta_a} GF(a) \xrightarrow{\overline{\epsilon\_{F(a)}}} GF(a) \\\\
+ &= a\xrightarrow{\eta_a} GF(a) \xrightarrow{1\_{GF(a)}} GF(a) \\\\
+ &= a\xrightarrow{\eta_a} GF(a) \\\\
+ &= \overline{F(a)\xrightarrow{1\_{F(a)}}F(a)}
+\end{align*}$$
+
+であるので $\epsilon\_{F(a)}\circ F(\eta_a) = 1\_{F(a)}$ すなわち $\epsilon F\circ F\eta = 1_F$ である。
+
+同様に任意の $b\in\mathcal{D}$ について
+$$\begin{align*}
+\overline{G(b)\xrightarrow{\eta\_{G(b)}} GFG(b)\xrightarrow{G(\epsilon_b)} G(b)} &= FG(b)\xrightarrow{\overline{\eta\_{G(b)}}} FG(b)\xrightarrow{\epsilon_b} b \\\\
+&= FG(b)\xrightarrow{1\_{FG(b)}} FG(b)\xrightarrow{\epsilon_b} b \\\\
+&= FG(b)\xrightarrow{\epsilon_b} b \\\\
+&= \overline{G(b)\xrightarrow{1\_{G(b)}}G(b)}
+\end{align*}$$
+
+であるので $G\epsilon\circ\eta G=1\_{G}$である。
+
+({{< ref prop.triangle >}}の三角等式 $\Rightarrow$ {{< refn def.adjunction >}}, {{< refn def.unit >}})
+
+$\epsilon F\circ F\eta = 1_F,\quad G\epsilon\circ\eta G=1\_{G}$であるとする。
+すなわち、以下が成立
+
+$$ F(a) \xrightarrow{F(\eta_a)} FGF(a) \xrightarrow{\epsilon\_{F(a)}} F(a) = F(a)\xrightarrow{1\_{F(a)}}F(a) \qquad (a\in\mathcal{C})\qquad\cdots(A)$$
+$$ G(a)\xrightarrow{\eta\_{G(a)}} GFG(a)\xrightarrow{G(\epsilon_a)} G(a) = G(a)\xrightarrow{1\_{G(a)}}G(a)\qquad (a\in\mathcal{D})\qquad\cdots(B)$$
+
+また、$\eta, \epsilon$ は自然変換であるから、以下が成立。
+
+$$ a\xrightarrow{f}b \xrightarrow{\eta_b}GF(b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{GF(f)} GF(b)\qquad (f:a\rightarrow b \in\mathcal{C})\qquad\cdots(C)$$
+$$ FG(a)\xrightarrow{\epsilon_a}a\xrightarrow{f}b = FG(a)\xrightarrow{FG(f)}FG(b)\xrightarrow{\epsilon_b}b \qquad(f:a\rightarrow b \in\mathcal{D})\qquad\cdots(D)$$
+
+ここで写像 $\phi:\mathcal{D}(F(a),b)\leftrightarrow \mathcal{D}(a, G(b)):\psi$ を以下のように置く
+
+$$ \phi(F(a)\xrightarrow{h}b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{G(h)}G(b) $$
+$$ \psi(a\xrightarrow{h}G(b)) = F(a)\xrightarrow{F(h)}FG(b)\xrightarrow{\epsilon_b}b $$
+
+すると
+$$\begin{align\*}
+\psi\circ\phi(F(a)\xrightarrow{h}b) &= F(a)\xrightarrow{F(\eta_a)}FGF(a)\xrightarrow{FG(h)}FG(b)\xrightarrow{\epsilon_b}b \\\\
+&= F(a)\xrightarrow{F(\eta_a)}FGF(a)\xrightarrow{\epsilon\_{F(a)}}F(a)\xrightarrow{h} b \qquad(\because D)\\\\
+&= F(a)\xrightarrow{1\_{F(a)}} F(a)\xrightarrow{h} b \qquad(\because A)\\\\
+&= F(a)\xrightarrow{h} b
+\end{align\*}$$
+同様に
+$$\begin{align\*}
+\phi\circ\psi(a\xrightarrow{h}G(b)) &= a\xrightarrow{\eta_a}GF(a)\xrightarrow{GF(h)}GFG(b)\xrightarrow{G(\epsilon_b)} G(b) \\\\
+&= a\xrightarrow{h}G(b)\xrightarrow{\eta\_{G(b)}}GFG(b)\xrightarrow{G(\epsilon_b)} G(b) \qquad(\because C)\\\\
+&= a\xrightarrow{h}G(b)\xrightarrow{1\_{G(b)}} G(b) \\\\
+&= a\xrightarrow{h}G(b)
+\end{align\*}$$
+であるから $\phi,\psi$ は全単射 $\mathcal{D}(F(a),b)\leftrightarrows\mathcal{D}(a, G(b))$ である。以後$\phi(h),\psi(h)$ を $\bar{h}$ と書く。
+
+任意の $f:a'\rightarrow a, g:b\rightarrow b',h: F(a)\rightarrow b$ について
+
+$$\begin{align\*}
+\overline{F(a') \xrightarrow{F(f)} F(a) \xrightarrow{h} b \xrightarrow{g} b'}
+&= a'\xrightarrow{\eta\_{a'}}GF(a') \xrightarrow{GF(f)} GF(a) \xrightarrow{G(h)} G(b) \xrightarrow{G(g)} G(b') \\\\
+&= a'\xrightarrow{f}a\xrightarrow{\eta_a}GF(a)\xrightarrow{G(h)} G(b) \xrightarrow{G(g)} G(b') \qquad(\because C)\\\\
+&= a'\xrightarrow{f}a\xrightarrow{G(h)\circ \eta_a}G(b)\xrightarrow{G(g)}G(b')\\\\
+&= a'\xrightarrow{f}a\xrightarrow{\bar{h}}G(b)\xrightarrow{G(g)}G(b')
+\end{align\*}$$
+
+であるから、この全単射は $a,b$ について自然である。また $\phi,\psi$ の定義より
+$$\eta_a = \overline{1\_{F(a)}}, \epsilon_b = \overline{1\_{G(b)}}$$
+である。(証明終)
+{{% /details %}}
