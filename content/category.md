@@ -983,3 +983,37 @@ $$\begin{align\*}
 $$\eta_a = \overline{1\_{F(a)}}, \epsilon_b = \overline{1\_{G(b)}}$$
 である。(証明終)
 {{% /details %}}
+
+今の証明より以下が分かる。
+{{% proposition %}}
+随伴 $F\dashv G$ の単位射が $\eta$ 、余単位射が $\epsilon$ であるときの全単射
+$ \phi: \mathcal{D}(F(a), b)\rightarrow\mathcal{C}(a,G(b)) $
+は
+$$ \phi(f) = G(f)\circ\eta_a,\quad \phi^{-1}(f) = \epsilon_b \circ F(f)$$
+で与えられる。
+{{% /proposition %}}
+
+### 随伴の性質
+
+{{% proposition %}}
+ある関手の左随伴が存在するならば、それは自然同型を除いて一意に定まる。
+右随伴についても同様。
+{{% /proposition %}}
+
+### 随伴の例
+
+{{% example title="自由関手と忘却関手" %}}
+$\mathcal{C}$ を構造を持った集合と準同型からなる圏とし、
+その対象をその台集合に、準同型を写像に移す対応は関手$U:\mathcal{C}\rightarrow\mathbf{Set}$ となる。これを **忘却関手(forgetful functor)** という。
+
+忘却関手の左随伴 $F:\mathbf{Set}\rightarrow\mathcal{C}$ を **自由関手(free functor)** という。また $a\in\mathbf{Set}$ について $F(a)$ を **自由対象(free object)** という。
+{{% /example %}}
+
+例えばモノイドとモノイド準同型の圏 $\mathbf{Mon}$ で計算してみる。
+$\mathbf{Mon}$ の対象は集合 $M$ と結合律を満たす二項演算 $\cdot:M\times M\rightarrow M$ と単位元 $e\in M$ の三つ組 $(M,\cdot, e)$ である。忘却関手はこれから構造を忘れるということをするので
+$$ U((M,\cdot, e)) = M $$
+$$ U((M,\cdot,e)\xrightarrow{f}(M',\bullet,e')) = M\xrightarrow{f} M'$$
+という関手である。
+
+自由関手を 
+$$ F(M) = (N,\star,u) $$ 
