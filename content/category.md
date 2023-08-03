@@ -38,7 +38,9 @@ $f \in\mathcal{C}(a,b)$ の代わりに、$f \in\mathrm{Hom}\_{\mathcal{C}}(a,b)
 
 {{% /definition %}}
 
-対象や射の集まりとして集合より大きな **類(class)** を用いる事でより大きな圏を考える事もできる。また、圏の定義は一階述語理論的な公理化も可能である。
+対象や射の集まりとして集合より大きな **類(class)** を用いる事でより大きな圏を考える事もできる。また、射の集合 $\mathcal{C}(a,b)$ が集合であるような圏は **局所小(locally small)** であるという。
+
+また、圏の定義は一階述語理論的な公理化も可能である。
 
 {{% definition title="圏の一階述語論理的公理化" %}}
 
@@ -100,6 +102,7 @@ $$
 
 このような図式を辿る事による証明方法をdiagram chasingという。
 
+
 ### 双対原理
 
 {{% definition title="双対圏" %}}
@@ -129,6 +132,7 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 数学対象と対象とし、その間の写像を射とする圏は様々な存在する。例えば
 
 - $\mathbf{Set}$: **集合**と**写像**
+    - $\mathbf{Set}$ は大きな圏であるが、局所小である。
 - $\mathbf{Top}$: **位相空間**と**連続写像**
 - $\mathbf{Gr}$: **群** と **群の準同型写像**
 - $\mathbf{Rng}$: **環** と **環の準同型写像**
@@ -240,6 +244,13 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 
 ただし、この逆は成立しない。例えば、順序集合を$\leq$を射とする圏とみなしたとき、全ての射はモノかつエピだが同型射とは限らない。
 
+### 積圏
+
+{{% definition title="積圏" %}}
+圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ という。射の合成は要素毎に行う。
+{{% /definition %}}
+
+
 ### 関手・自然変換
 
 圏から圏への準同型写像(構造を保つ写像)を関手という。
@@ -340,6 +351,19 @@ $$
 {{% /definition %}}
 
 証明は共変Hom関手と同様なので省略。
+
+Hom関手は以下のように、積圏からの関手 (**双関手(bifunctor)**) として一般化する事もできる。
+{{% definition title="双関手としてのHom関手" %}}
+圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
+$$ \mathcal{C}(a,b)\ni h\longmapsto g\circ h\circ f\in\mathcal{C}(a',b') $$
+を対応させる関係は関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ となる。
+
+$$\xymatrix{
+a \ar[d]\_{h}^{}=\"x\" & a' \ar[l]\_{f} \\\\
+b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
+\ar@{|->} \"x\";\"y\"
+}$$
+{{% /definition %}}
 
 {{% definition title="表現可能関手" %}}
 ある $a\in\mathcal{C}$ に対して $\mathcal{C}(a, -): \mathcal{C}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
@@ -497,11 +521,36 @@ x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
 
 {{% /definition %}}
 
-### 積圏
+## 米田の補題
+圏 $\mathcal{C}$ をより良い性質を持った前層の圏に埋め込むという操作は非常に便利である。この操作を米田埋め込みという。
 
-{{% definition title="積圏" %}}
-圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ という。射の合成は要素毎に行う。
+{{% definition title="米田埋め込み" %}}
+圏 $\mathcal{C}$ について、関手 $y:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
+$$ y(a) = \mathcal{C}(-, a) $$
+$$ y(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
+を **米田埋め込み(Yoneda embedding)** という。
 {{% /definition %}}
+
+{{% definition title="米田の補題" %}}
+局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)\simeq F(a) $$
+が成り立つ。
+{{% /definition %}}
+
+米田の補題の同型が $a$ について自然であるというのは、任意の $f:a'\rightarrow a$ について以下が可換である事であり、
+
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(f), F)} & F(a) \ar[d]^{F(f)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a'), F) \ar[r]^(.6){\simeq} & F(a')
+}$$
+
+$F$ について自然であるというのは、任意の $\phi:F\rightarrow G$ について以下が可換となる事である。
+
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), \phi)} & F(a) \ar[d]^{\phi_a} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), G) \ar[r]^(.6){\simeq} & G(a)
+}$$
+
 
 ## 普遍性
 
@@ -831,18 +880,6 @@ H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@
 > (S. Mac Lane, Categories for the working mathematician)
 
 とマクレーンが言っているように、数学の様々な場所で普遍的に現れる重要な概念である。
-
-{{% definition title="双関手としてのHom関手" %}}
-圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
-$$ \mathcal{C}(a,b)\ni h\longmapsto g\circ h\circ f\in\mathcal{C}(a',b') $$
-を対応させる関係は関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ となる。
-
-$$\xymatrix{
-a \ar[d]\_{h}^{}=\"x\" & a' \ar[l]\_{f} \\\\
-b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
-\ar@{|->} \"x\";\"y\"
-}$$
-{{% /definition %}}
 
 {{% definition title="随伴" label="def.adjunction" %}}
 圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
