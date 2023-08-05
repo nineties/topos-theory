@@ -537,20 +537,64 @@ $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)\simeq F(a) $$
 が成り立つ。
 {{% /definition %}}
 
-米田の補題の同型が $a$ について自然であるというのは、任意の $f:a'\rightarrow a$ について以下が可換である事であり、
+米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
 
 $$\xymatrix{
 \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(f), F)} & F(a) \ar[d]^{F(f)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a'), F) \ar[r]^(.6){\simeq} & F(a')
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(b), F) \ar[r]^(.6){\simeq} & F(b)
 }$$
 
-$F$ について自然であるというのは、任意の $\phi:F\rightarrow G$ について以下が可換となる事である。
+$F$ について自然であるというのは、任意の $\rho:F\rightarrow G$ について以下が可換となる事である。
 
 $$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), \phi)} & F(a) \ar[d]^{\phi_a} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
 \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), G) \ar[r]^(.6){\simeq} & G(a)
 }$$
 
+{{% details 証明 %}}
+$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
+
+$$\xymatrix{
+\mathcal{C}(x, a) \ar[r]^{\alpha_x}  \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
+\mathcal{C}(y, a) \ar[r]\_{\alpha_y} & F(y)
+}$$
+
+すなわち、任意の $h:x\rightarrow a$ に対して
+$$ \alpha_y(h\circ f) = F(f)(\alpha_x(h)) $$
+である。ここで
+
+$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)$$
+
+とおくと
+
+$$\psi\_{a,F}\circ\phi\_{a,F}(\alpha)(h) = F(h)(\alpha_a(1_a)) = \alpha_x(1_a\circ h) = \alpha_x(h)$$
+$$\phi\_{a,F}\circ\psi\_{a,F}(x) = F(1_a)(x) = 1\_{F(a)}(x) = x$$
+
+であるので $\phi\_{a,F},\psi\_{a,F}$ は同型写像。
+
+続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F)$ について
+
+$$
+F(f)(\phi\_{a,F}(\alpha)) = F(f)(\alpha_a(1_a)) = \alpha_b(1_a\circ f) = \alpha_b(f)
+$$
+$$
+\phi\_{b,F}(\alpha\circ y(f)) = \phi\_{b,F}(\alpha\circ \mathcal{C}(-, f)) = (\alpha_b\circ\mathcal{C}(b, f))(1_b) = \alpha_b(f\circ 1_b) = \alpha_b(f)
+$$
+
+より、
+$F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ y(f)) $ であるから、
+$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F)$ について
+
+$$
+\rho_a(\phi\_{a,F}(\alpha)) = \rho_a(\alpha_a(1_a)) = \rho_a\circ\alpha_a(1_a)
+$$
+$$
+\phi\_{a,G}(\rho\circ\alpha) = \rho_a\circ\alpha_a(1_a)
+$$
+
+より$\rho_a(\phi\_{a,F}(\alpha)) =\phi\_{a,G}(\rho\circ\alpha)$ であるから $F$ についても自然。 (証明終)
+{{% /details %}}
 
 ## 普遍性
 
