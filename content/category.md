@@ -522,7 +522,7 @@ x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
 {{% /definition %}}
 
 ## 米田の補題
-圏 $\mathcal{C}$ をより良い性質を持った前層の圏に埋め込むという操作は非常に便利である。この操作を米田埋め込みという。
+圏 $\mathcal{C}$ をより良い性質を持った前層の圏に埋め込む操作を米田埋め込みという。
 
 {{% definition title="米田埋め込み" %}}
 圏 $\mathcal{C}$ について、関手 $y:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
