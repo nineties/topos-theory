@@ -365,14 +365,6 @@ b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
 }$$
 {{% /definition %}}
 
-{{% definition title="表現可能関手" %}}
-ある $a\in\mathcal{C}$ に対して $\mathcal{C}(a, -): \mathcal{C}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
-
-同様に $\mathcal{C}(-,a)$ と自然同型である関手を余表現可能関手(co-representable functor)という。
-{{% /definition %}}
-
-表現可能という言葉の意味については、後述する米田の補題の所で説明する。
-
 {{% definition title="充満・忠実・本質的全射" %}}
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ について
 
@@ -607,6 +599,44 @@ $$
 $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),y(b))\simeq y(b)(a)=\mathcal{C}(a,b) $$
 が存在する。 (証明終)
 {{% /details %}}
+
+### 表現可能関手
+
+{{% definition title="表現可能関手" %}}
+ある $a\in\mathcal{C}$ に対して $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
+
+同様に $\mathcal{C}(a, -)$ と自然同型である関手を余表現可能関手(co-representable functor)という。
+{{% /definition %}}
+
+{{% proposition %}}
+関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることは、ある $c_0\in\mathcal{C}$ と $x_0\in F(c)$ が存在して、任意の $c\in\mathcal{C}$ と $x\in F(c)$ に対して、 $x=F(f)(x_0)$ となる $f:c\rightarrow c_0$ が一意に存在することと同値。この $c_0$ を $F$ を **表示する対象(representing object)** といい、 $x_0$ を **普遍要素(universal element)** という。
+{{% /proposition %}}
+
+{{% details 証明 %}}
+$F$ が表現可能であるとする。すなわちある $c_0\in\mathcal{C}$ が存在して関手 $\mathcal{C}(-,c_0):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $F$ の間に自然同型 $\phi:\mathcal{C}(-, c_0)\rightarrow F$ が存在する。ここで、米田の補題より自然な同型
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(c_0),F)\simeq F(c_0) $$
+が存在するのでこれで $\phi$ を $F(c_0)$ に移した元を $x_0 = \phi\_{c_0}(1\_{c_0})$ とし、この $c_0,x_0$ が条件を満たす事を示す。
+
+任意の $c\in\mathcal{C}, x\in F(c)$ について、 $\phi_c$ は全単射であるから $f=\phi_c^{-1}(x): c\rightarrow c_0$ が存在する。ここで、米田の補題の証明で使用した等式を用いると
+$$ F(f)(x_0) = F(f)(\phi\_{c_0}(1\_{c_0})) = \phi\_{c}(1\_{c_0}\circ f) = \phi\_{c}(f) = x$$
+となる。また $f$ の一意性も $\phi$ が全単射であることから分かる。
+
+逆に $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象 $c_0\in\mathcal{C}$ と普遍要素 $x_0\in F(c_0)$ が存在するとし、$\phi_c: \mathcal{C}(c, c_0) \rightarrow F(c)$ を $\phi_c(f) = F(f)(x_0)$ により定める。$F$ を表現する対象、普遍要素の定義より $\phi_c$ は全単射である。この $\\{\phi_c\\}$ が自然変換 $\phi:\mathcal{C}(-, c_0)\rightarrow F$ であることを示せば良いが、任意の $f:y\rightarrow x$ と $h:x\rightarrow c_0$ について
+
+$$ F(f)(phi_x(h)) = F(f)(F(h)(x_0)) = F(h\circ h)(x_0)= \phi_y(h\circ f)$$
+
+であるので以下が可換となることよりわかる。
+
+$$\xymatrix{
+\mathcal{C}(x, c_0) \ar[r]^{\phi_x} \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
+\mathcal{C}(y, c_0) \ar[r]\_{\phi_y}                   & F(y)
+}$$
+
+(証明終)
+
+{{% /details %}}
+
+この命題より $F$ が表現可能であるならば、$(c_0, x_0)$ が $F$ の像を計算するのに必要な情報を全て持っているという事がわかる。
 
 ## 普遍性
 
