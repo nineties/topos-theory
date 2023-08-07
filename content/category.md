@@ -605,7 +605,7 @@ $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),y(b))\simeq y(b)(a)=\mathcal{C}
 {{% definition title="表現可能関手" %}}
 ある $a\in\mathcal{C}$ に対して $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と自然同型である関手を **表現可能関手(representable functor)** という。
 
-同様に $\mathcal{C}(a, -)$ と自然同型である関手を余表現可能関手(co-representable functor)という。
+同様に $\mathcal{C}(a, -)$ と自然同型である関手を余表現可能関手(co-representable functor)という。(余表現可能関手も表現可能と呼ぶ事がある)
 {{% /definition %}}
 
 {{% proposition %}}
@@ -636,7 +636,7 @@ $$\xymatrix{
 
 {{% /details %}}
 
-この命題より $F$ が表現可能であるならば、$(c_0, x_0)$ が $F$ の像を計算するのに必要な情報を全て持っているという事がわかる。
+この命題より $F$ が表現可能であるならば、$F$ の情報が $x_0\in F(c_0)$ に凝縮されていることがわかる。
 
 ## 普遍性
 
@@ -1115,8 +1115,6 @@ $ \phi: \mathcal{D}(F(a), b)\rightarrow\mathcal{C}(a,G(b)) $
 $$ \phi(f) = G(f)\circ\eta_a,\quad \phi^{-1}(f) = \epsilon_b \circ F(f)$$
 で与えられる。
 {{% /proposition %}}
-
-### 随伴の性質
 
 {{% proposition %}}
 ある関手の左随伴が存在するならば、それは自然同型を除いて一意に定まる。
