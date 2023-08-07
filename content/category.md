@@ -376,6 +376,20 @@ b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
 本質的全射が全射と異なるのは $F(a)\simeq b$ と $F(a)=b$ の違い。
 圏論では、同型な対象はその圏論的な性質によっては区別する事ができず、実質的に1つの対象と見なすことが自然である。よって、対象の厳密な一致ではなく同型 $\simeq$ を用いて定められた性質の方がより本質的な性質となる。
 
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実充満であるならば、以下の命題より $\mathcal{D}$ の中で $\mathcal{C}$ の対象について調べる事ができる。
+
+{{% proposition label="prop.embedding" %}}
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実充満であるならば、任意の $a,b\in\mathcal{C}$ について
+$$ a\simeq b \Leftrightarrow F(a)\simeq F(b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$\Rightarrow$ は明らか。
+$F(a)\simeq F(b)$ であるとすると、同型射 $f: F(a)\rightarrow F(b), g:F(b)\rightarrow F(a) が存在する。
+$f,g$ は充満だから $f=F(f'), g=F(g')$ となる $f':a\rightarrow b, g':b\rightarrow a$ が存在し
+$$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\circ f')=F(1_a)$$
+である。そして $F$ は忠実であるから $g'\circ f'=1_a$ である。同様にして $f'\circ g'=1_b$ であるから $f',g'$ は同型射。従って $a\simeq b$ である。 (証明終)
+{{% /details %}}
+
 ### 圏同値
 
 圏 $\mathcal{C}$ と $\mathcal{D}$ が本質的に同じとはどういう事かを考える。素朴には、まず圏の同型という関係性がある。
@@ -593,12 +607,15 @@ $$
 {{% proposition %}}
 米田埋め込みは忠実充満
 {{% /proposition %}}
-
 {{% details 証明 %}}
 米田の補題より、任意の $a,b\in\mathcal{C}$ について自然な全単射
 $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),y(b))\simeq y(b)(a)=\mathcal{C}(a,b) $$
 が存在する。 (証明終)
 {{% /details %}}
+
+従って {{< ref prop.embedding >}} より
+$$y(a)\simeq y(b)\Leftrightarrow a\simeq b$$
+である。
 
 ### 表現可能関手
 
@@ -1117,9 +1134,26 @@ $$ \phi(f) = G(f)\circ\eta_a,\quad \phi^{-1}(f) = \epsilon_b \circ F(f)$$
 {{% /proposition %}}
 
 {{% proposition %}}
-ある関手の左随伴が存在するならば、それは自然同型を除いて一意に定まる。
-右随伴についても同様。
+ある関手の右随伴が存在するならば、それは自然同型を除いて一意に定まる。
+左随伴についても同様。
 {{% /proposition %}}
+{{% details 証明 %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G,G':\mathcal{D}\rightarrow\mathcal{C}$ の間に
+随伴 $F\dashv G$ と $F\dashv G'$ の関係があるとする。すなわち任意の $a\in\mathcal{C},b\in\mathcal{D}$ について自然な同型
+$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
+$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G'(b)) $$
+が存在するので、自然な同型
+$$ \mathcal{C}(a,G(b))\simeq \mathcal{C}(a,G'(b)) $$
+が得られる。これが $a$ について自然であるので
+$$ \mathcal{C}(-,G(b))\simeq \mathcal{C}(-,G'(b)) $$
+であるから、米田埋め込みが忠実充満であることより
+$$ G(b)\simeq G'(b) $$
+となる。これが $b$ について自然であることから
+$$ G\simeq G' $$
+となる。従って、$F$ の右随伴は同型を除いて一意である。
+
+左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。(証明終)
+{{% /details %}}
 
 ### 随伴の例
 
