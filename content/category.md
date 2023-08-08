@@ -812,7 +812,7 @@ F(i) & \\\\
 {{% definition title="極限" %}}
 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
 
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\phi$ を **標準入射(canonical inclusion)** という。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
 
 
 $\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim_{i\in\mathcal{J}}F(i)$ とも書く。
@@ -1149,7 +1149,7 @@ $$ \mathcal{C}(-,G(b))\simeq \mathcal{C}(-,G'(b)) $$
 であるから、米田埋め込みが忠実充満であることより
 $$ G(b)\simeq G'(b) $$
 となる。これが $b$ について自然であることから
-$$ G\simeq G' $$
+$$ G\simeq G' $
 となる。従って、$F$ の右随伴は同型を除いて一意である。
 
 左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。(証明終)
@@ -1170,5 +1170,33 @@ $$ U((M,\cdot, e)) = M $$
 $$ U((M,\cdot,e)\xrightarrow{f}(M',\bullet,e')) = M\xrightarrow{f} M'$$
 という関手である。
 
-自由関手を 
-$$ F(M) = (N,\star,u) $$ 
+ここで関手 $F:\mathbf{Set}\rightarrow\mathbf{Mon}$ を 集合 $X$ を $X$ の要素の有限列とその連接のなすモナドにうつ関手
+$$ F(X) = (X^{\ast},\cdot,\varepsilon) $$ 
+$$ F(f: X\rightarrow Y): X^{\ast}\ni x_1\cdot x_2\cdots x_n \longmapsto f(x_1)\cdot f(x_2)\cdots f(x_n) \in Y^{\ast} $$
+とする。$\varepsilon$ は空列である。
+
+集合 $X$ の要素を長さ1の $F(X)$ の列と思えば、
+準同型 $f: F(X)\rightarrow M$ から写像 $\bar{f}: X\rightarrow U(M)$ を作る事ができるし、逆に $\bar{f}: X\rightarrow U(M)$ が得られれば、それを有限列の各要素に適用することでモノイドの準同型 $f: F(X)\rightarrow M$ を得ることができるので、以下の上下の射に全単射が存在する。
+
+$$\begin{array}{rcccl}
+F(X)\ni & x_1\cdot x_2\cdots x_n  & \longmapsto & f(x_1)\bullet f(x_2)\bullet\cdots\bullet f(x_n) & \in M \\\\ \hline
+X \ni   & x & \longmapsto & f(x) & \in U(M)
+\end{array}
+$$
+
+$X,M$ に関する自然性も簡単に示す事ができて $F\dashv U$ である事が分かる。
+
+{{% example title="極限と対角関手" %}}
+$F:J\rightarrow\mathcal{C}$ の極限が全て存在する時
+$$ \Delta \dashv \varprojlim $$
+である。同様に余極限が全て存在する時
+$$ \varinjlim \dashv \Delta $$
+である。
+{{% /example %}}
+
+
+$$\begin{array}{rcccl}
+\Delta(a) & \rightarrow & F \\\\ \hline
+a & \rightarrow & \varprojlim F
+\end{array}
+$$
