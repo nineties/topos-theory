@@ -136,6 +136,7 @@ $$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の�
 - $\mathbf{Top}$: **位相空間**と**連続写像**
 - $\mathbf{Gr}$: **群** と **群の準同型写像**
 - $\mathbf{Rng}$: **環** と **環の準同型写像**
+- $\mathbf{Mod}_R$: **R加群** と **加群の準同型写像**
 - $\mathbf{Vect}\_{K}$: 体 $K$ 上の **ベクトル空間** と **線型写像**
 
 などである。実際、任意の一階の理論(一階述語理論で記述された理論) $\mathbb{T}$ に対して、(集合論ベースの)モデルを対象とし、その間の準同型写像を射とする圏 $\mathbb{T}\mathrm{-mod}(\mathbf{Set})$ を考える事ができる。
@@ -1194,9 +1195,13 @@ $$ \varinjlim \dashv \Delta $$
 である。
 {{% /example %}}
 
+$ \Delta \dashv \varprojlim $に関する射の対応は以下のようになっている。$a$ から $F$ への錐と、任意の錐に対して一意に存在する射 $a\rightarrow\varprojlim F$ が対応している。
 
 $$\begin{array}{rcccl}
 \Delta(a) & \rightarrow & F \\\\ \hline
 a & \rightarrow & \varprojlim F
 \end{array}
 $$
+
+また、この時の単位射 $a\rightarrow\varprojlim\Delta(a)$ は恒等射 $1_a$ であり、余単位射 $\Delta(\varprojlim F)\rightarrow F$ は極限錐である。
+
