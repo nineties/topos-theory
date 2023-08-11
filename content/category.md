@@ -1205,3 +1205,21 @@ $$
 
 また、この時の単位射 $a\rightarrow\varprojlim\Delta(a)$ は恒等射 $1_a$ であり、余単位射 $\Delta(\varprojlim F)\rightarrow F$ は極限錐である。
 
+### 指数対象
+
+{{% definition title="指数対象" %}}
+圏 $\mathcal{C}$ の対象 $a\in\mathcal{C}$ に対して、関手 $a\times -:\mathcal{C}\rightarrow\mathcal{C}$ の右随伴関手を **指数関手(exponential functor)** といい $(-)^a:\mathcal{C}\rightarrow\mathcal{C}$ という。また、指数関手による $x\in\mathcal{C}$ の像 $x^a$ を **指数対象(exponential object)** という。
+
+すなわち、$x,y\in\mathcal{C}$ についての自然な全単射が存在するようなものである。
+$$\mathcal{C}(x\times a, y) \simeq \mathcal{C}(x, y^a)$$
+
+また、この余単位射 $\mathrm{ev}:y^a\times a \rightarrow y$ を **評価射(evaluation map)** という。
+{{% /definition %}}
+
+指数対象 $b^a$ は関数 $a\rightarrow b$ の集合のようなものであり、評価射 $b^a\times a\rightarrow b$ は関数に値を代入する写像をイメージすれば良い。実際、圏 $\mathbf{Set}$ においては $b^a\simeq \mathbf{Set}(a,b)$ である。
+
+{{% definition title="カルテシアン閉圏" %}}
+任意の有限個の対象に対する積と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** という。
+{{% /definition %}}
+
+例えば $\mathbf{Set}$ や $\mathbf{Cat}$ はカルテシアン閉圏である。
