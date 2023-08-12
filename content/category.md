@@ -284,7 +284,7 @@ $$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
 {{% /definition %}}
 
 {{% definition title="自然変換" %}}
-関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
 
 $$\xymatrix{
 F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
@@ -829,6 +829,12 @@ $$ \varprojlim G\circ F \simeq G(\varprojlim F) $$
 である。余極限についても同様。
 {{% /definition %}}
 
+{{% definition title="完備性" %}}
+圏 $\mathcal{C}$ が任意の小さな圏 $J$ について、任意のその形の図式の極限を持つならば $\mathcal{C}$ は **完備(complete)** であるという。余極限を持つならば **余完備(cocomplete)** であるという。
+
+また、任意の有限の圏(対象の集合、射の集合が共に有限集合)$J$ について、極限を持つならば **有限完備(finite complete)**、余極限を持つならば **有限余完備(finite cocomplete)** という。
+{{% /definition %}}
+
 ### 極限の例
 $\mathcal{J}$ として空圏(対象も射も空集合の圏)を取ると、極限は **終対象(terminal object)**　余極限は **始対象(initial object)** と一致。
 
@@ -1238,20 +1244,267 @@ $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q) $$
 は集合、つまり $\mathbf{Set}$ の対象であることに注意。
 
 {{% details 指数対象であることの証明 %}}
-任意の $p,q,r\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ について自然な同型
+任意の $p,q,r\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ について、 $q,r$ に関して自然な同型
 $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
 が存在することを示せば良い。
 
-自然変換 $\alpha: r\rightarrow q^p$ 、すなわち関数の族
+すなわち、自然変換 $\alpha: r\rightarrow q^p$ 、すなわち関数の族
 $\\{ \alpha_c: r(c) \rightarrow \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q)\\}\_{c\in\mathcal{C}}$
-と、自然変換 $\beta: r\times p\rightarrow q$ 、すなわち関数の族 $\\{\beta_c: r(c)\times p(c)\rightarrow q(c)\\}\_{c\in\mathcal{C}}$ の対応を与えれば良い。
+と、自然変換 $\beta: r\times p\rightarrow q$ 、すなわち関数の族 $\\{\beta_c: r(c)\times p(c)\rightarrow q(c)\\}\_{c\in\mathcal{C}}$ の対応を考える。
 
-$x\in r(c), y\in p(c)$ に対して
-$$\phi(\alpha)\_c(x, y) = \alpha_c(x)(c)(1_c, y) $$
-$x\in r(c), d\in\mathcal{C}, f\in \mathcal{Y}(c)(d)\simeq\mathbf{Set}(d, c), y\in p(d)$ に対して
-$$\psi(\beta)\_c(x)\_d(f, z) = \beta_d(r(f)(x), z)$$
+ここで、$x\in r(c), y\in p(c)$ に対して
+$$\phi(\alpha)\_c: (x, y) \longmapsto \alpha_c(x)\_c(1_c, y) $$
+$x\in r(c), d\in\mathcal{C}, f\in \mathcal{Y}(c)(d)\simeq\mathbf{Set}(d, c), z\in p(d)$ に対して
+$$\psi(\beta)\_c: x\longmapsto \\{(f, z) \longmapsto \beta_d(r(f)(x), z)\\}\_{d\in\mathcal{D}}$$
 
 とおくと
 
+$$ \psi\circ\phi(\alpha)\_c: x\longmapsto \\{(f, z) \longmapsto \alpha_d(r(f)(x))\_d(1_d, z)\\}\_{d\in\mathcal{D}}$$
 
+であり、$\alpha$ は自然変換であるから以下が可換となるので
+
+$$\xymatrix{
+r(c) \ar[d]\_{r(f)} \ar[r]^-{\alpha_c} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q) \ar[d]^{-\circ(\mathcal{Y}(f)\times 1_p)} \\\\
+r(d)                \ar[r]^-{\alpha_d} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(d)\times p, q)
+}$$
+
+すなわち、
+$$ \alpha_d(r(f)(x))\_d(1_d, z) = \alpha_c(x)\_d\circ(\mathcal{Y}(f)\times 1_p)(1_d, z) = \alpha_c(x)\_d(f,z)$$
+となるから、 $\psi\circ\phi(\alpha) = \alpha$ である。
+同様にして
+
+$$ \phi\circ\psi(\beta)\_c: (x,y) \longmapsto \beta_c(r(1_c)(x), y) = \beta_c(x,y) $$
+
+であるから $\phi\circ\psi(\beta) = \beta$ である。従って、以下は同型。
+$$ \phi: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\xrightarrow{\simeq}\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
+
+続いて、この同型の自然性を示す。 任意の $\sigma: r'\rightarrow r, \rho: q\rightarrow q'$ に対して、以下の可換性を示せば良い。
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p) \ar[r]^{\phi} \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma, \rho^p)} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q) \ar[d]^{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma\times p, \rho)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r',{q'}^p) \ar[r]^{\phi} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r'\times p, q')
+}$$
+
+任意の $\alpha: r\rightarrow q^p$ に対して、図式の右上を辿ったものの $c$-componentは
+
+$$(\rho\circ \phi(\alpha)\circ(\sigma\times 1_p))\_c: (x,y)\longmapsto \rho_c(\phi(\alpha)\_c(\sigma_c(x), y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c,y))$$
+
+である。左下を辿ったもののは
+
+$$\phi(\rho^p\circ\alpha\circ\sigma)\_c: (x,y)\longmapsto (\rho^p\circ\alpha\circ\sigma)\_c(x)(1_c, y)=((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y)$$
+
+であり、
+$$\rho^p(f) = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, \rho)(f)=\rho \circ f\circ(\mathcal{Y}(-)\times 1_p) $$
+であるから
+
+$$((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y) = \rho\_c(\alpha_c(\sigma_c(x))(\mathcal{Y}(1_c),y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c, y))$$
+
+となる。以上より上記の図式は可換となる。(証明終)
 {{% /details %}}
+
+## 初等トポス
+
+### ハイティング代数・ブール代数
+
+ブール代数を一般化した概念としてハイティング代数が定義される。
+ハイティング代数は直観主義論理の意味論として用いられる。
+以後、ハイティング代数を圏論的に述べる為にいくつか確認する。
+
+まず、対象 $a,b$ の間に射が高々一つしかな圏 $\mathcal{C}$ を **半順序集合(partially ordered set)** という。
+射$a\rightarrow b$ を $a\leq b$ と書くと、半順序集合の公理
+
+- 反射則: 任意の $a\in\mathcal{C}$ について $a\leq a$
+- 推移則: $a\leq b$ かつ $b\leq c$ ならば $a\leq c$
+- 反対称則: $a\leq b$ かつ $b\leq a$ ならば $a = a$
+
+を満たす事が分かる。半順序集合であって、任意の有限積と有限余積を持つ圏を **束(lattice)** という。
+$a,b$ の積・余積をそれぞれ $a\wedge b, a\vee b$ と書く。束であり、始対象と終対象を持つものを **有界束(bounded lattice)** という。始対象を $\bot$、終対象を $\top$ と書く。
+
+束について、以下の性質が成り立つ。
+{{% proposition %}}
+圏 $\mathcal{C}$ が束であるならば、任意の $a,b,c\in\mathcal{C}$ について以下が成り立つ。
+- **交換則(commutativity)** : $a\wedge b = b \wedge a$, $a\vee b = b\vee a$
+- **結合則(associativity)** : $a\wedge(b\wedge c) = (a\wedge b)\wedge c$, $a\vee(b\vee c) = (a\vee b)\vee c$
+- **吸収則(absorption law)** : $a\wedge(a\vee b) = a\vee(a\wedge b) = a$
+{{% /proposition %}}
+{{% details 証明 %}}
+交換則・吸収則は有限積・余積を持つ圏について一般に成り立つ性質であるので、吸収則と冪等則について示す。
+
+$a\leq a$ と $a\leq a\vee b$ より $a\leq a\wedge(a\vee b)$ である。これと $a\wedge(a\vee b)\leq a$ より $a\wedge(a\vee b)=a$。もう一方も同様。(証明終)
+{{% /details %}}
+
+{{% definition title="ハイティング代数" %}}
+圏 $\mathcal{H}$ が有界束でありかつカルテシアン閉圏である時、これを **ハイティング代数(Heyting algebra)** という。
+
+指数対象 $b^a$ を $a\Rightarrow b$ と書く。
+また、$a\Rightarrow\bot$ を $a$ の **擬似補(pseudo complement)** といい $\neg a$ と書く。
+{{% /definition %}}
+
+ハイティング代数の指数対象とは、$b,c$ について自然な同型
+$ \mathcal{H}(c\wedge a, b) \simeq \mathcal{H}(c, a\Rightarrow b) $
+が存在するものであるが、両辺とも射は1つしかないので
+$c\wedge a \leq b$ と $c\leq (a\Rightarrow b)$ が同値となるような対象の事である。
+
+冒頭でも述べたように、ハイティング代数は直観論理の意味論として用いられる。その場合は
+$\wedge, \vee$ を「かつ」「または」、$\Rightarrow$ を「ならば」、$\neg$ を「でない」
+と解釈する。
+
+
+{{% proposition %}}
+ハイティング代数 $\mathcal{H}$ は分配束である。すなわち任意の$a,b,c\in\mathcal{H}$ について
+$$a\wedge(b\vee c) = (a\wedge b)\vee(a\wedge c)$$
+$$a\vee(b\wedge c) = (a\vee b)\wedge(a\vee c)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$a\wedge b \leq a$ かつ $a\wedge b \leq b\vee c$ より $a\wedge b \leq a\wedge(b\vee c)$ である。
+同様にして $a\wedge c \leq a\wedge(b\vee c)$ でもある。よって
+$$(a\wedge b)\vee(a\wedge c)\leq a\wedge(b\vee c) $$
+である。
+
+また$a\wedge b\leq (a\wedge b)\vee(a\wedge c)$ より $b\leq (a\Rightarrow (a\wedge b)\vee(a\wedge c))$ である。
+同様に $c\leq (a\Rightarrow (a\wedge b)\vee(a\wedge c))$ であるので
+$$ b\vee c\leq (a\Rightarrow(a\wedge b)\vee(a\wedge c))$$
+である。従って
+$$ a\wedge(b\vee c)\leq (a\wedge b)\vee(a\wedge c)$$
+である。以上より
+$$a\wedge(b\vee c) = (a\wedge b)\vee(a\wedge c)$$
+である。また、これを用いてもう一方も示される。
+
+$$ \begin{align\*}
+  (a\vee b)\wedge(a\vee c) &= ((a\vee b)\wedge a)\vee((a\vee b)\wedge c) \\\\
+                           &= a\vee((a\vee b)\wedge c) \\\\
+                           &= a\vee((a\wedge c)\vee(b\wedge c)) \\\\
+                           &= (a\vee(a\wedge c))\vee(b\wedge c) \\\\
+                           &= a\vee(b\wedge c)
+\end{align\*}$$
+
+(証明終)
+{{% /details %}}
+
+{{% proposition title="ド・モルガンの法則" %}}
+ハイティング代数では以下の **ド・モルガンの法則(De Morgan's law)** が成り立つ。
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+
+ただし、以下は **成り立つとは限らない** 。
+$$\neg a\vee \neg b = \neg(a \wedge b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+まず、任意の $a\in\mathcal{H}$ について $a\wedge\neg a=\bot$ である事を示す。
+$(a\Rightarrow\bot)\leq(a\Rightarrow \bot)$ より$a\wedge(a\Rightarrow \bot)\leq \bot$ すなわち $a\wedge\neg a\leq\bot$ である。一方 $\bot$ は始対象であるから $\bot\leq a\wedge \neg a$ である。従って $a\wedge \neg a=\bot$ である。
+
+これを用いて
+$$(a\vee b)\wedge (\neg a\wedge \neg b) = (a\wedge \neg a \wedge \neg b)\vee (b\wedge \neg a \wedge \neg b)=(\bot\wedge b)\vee(\bot\wedge b) = \bot\vee\bot = \bot$$
+より$ \neg a\wedge \neg b \leq (a\vee b\Rightarrow\bot)$ すなわち $\neg a\wedge\neg b\leq\neg(a\vee b)$ である。
+
+また、 $a\leq a\vee b$ より
+$$ a\wedge\neg(a\vee b) \leq (a\vee b)\wedge\neg(a\vee b) = \bot$$
+であるので $\neg(a\vee b)\leq (a\Rightarrow\bot)$ すなわち $\neg(a\vee b)\leq \neg a$ である。同様にして $\neg (a\vee b)\leq \neg b$ であるので $\neg(a\vee b)\leq \neg a\wedge\neg b$ である。
+
+従って
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+である。(証明終)
+{{% /details %}}
+
+{{% example %}}
+位相空間 $X$ の開集合系 $\mathcal{O}(X)$ を包含関係によって半順序集合と見なしたものはハイティング代数となる。
+{{% /example %}}
+
+開集合系の公理から有界束である事がすぐ分かる。そして開集合 $U,V$ に対して
+$U\cap W\subseteq V$ を満たす全ての開集合 $W$ の合併が指数対象 $V^U$ となる。そのような合併の存在は開集合の公理から保証される。
+
+また、開集合 $U$ の擬似補は $U\cap W\subseteq\emptyset$ すなわち $U$ と交わらない全ての開集合 $W$ の和集合となる。
+
+ハイティング代数のうち、 排中律を満たすものをブール代数という。
+
+{{% definition title="ブール代数" %}}
+ハイティング代数であり、任意の対象 $a$ について
+$$a \vee \neg a = \top $$
+が成り立つものを **ブール代数(Boolean algebra)** という。
+{{% /definition %}}
+
+{{% proposition %}}
+ブール代数において **二重否定除去則(law of double negation elimination)** が成り立つ。
+$$ \neg\neg a=a $$
+{{% /proposition %}}
+{{% details 証明 %}}
+\begin{align\*}
+&\neg\neg a= \neg\neg a\wedge(\neg a\vee a)=(\neg\neg a\wedge \neg a)\vee (\neg\neg a\wedge a) \\\\
+&=\neg\neg a\wedge a= (\neg\neg a\wedge a)\vee(\neg a\wedge a) = (\neg\neg a\vee \neg a)\wedge a= a
+\end{align\*}
+(証明終)
+{{% /details %}}
+
+{{% proposition %}}
+ブール代数において、ド・モルガンの法則が成り立つ。
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+$$\neg a\vee \neg b = \neg(a \wedge b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+1つ目はハイティング代数である事から成立。2つ目は二重否定除去則を使って
+$$ \neg a\vee\neg b = \neg\neg(\neg a\vee\neg b) = \neg(\neg\neg a\wedge\neg\neg b) = \neg(a\wedge b)$$
+(証明終)
+{{% /details %}}
+
+{{% proposition %}}
+$\mathcal{B}$ がブール代数であるならば、任意の $a,b\in\mathcal{B}$ について
+$$ (a\Rightarrow b) = \neg a\vee b $$
+{{% /proposition %}}
+{{% details 証明 %}}
+$a\wedge c\leq b$ であるならば、
+$$ c\leq \neg a\vee c = (\neg a\vee a)\wedge (\neg a\vee c) = \neg a\vee(a\wedge c) \leq \neg a\vee b$$
+であり、 $c\leq\neg a\vee b$ であるならば
+$$ a\wedge c \leq a\wedge (\neg a\vee b) = (a\wedge \neg a)\vee(a\wedge b) = a\wedge b \leq b$$
+であるので、 $\neg a\vee b$ は指数対象 $b^a$ である。指数対象は同型を除いて一意であるので
+$$ (a\Rightarrow b) \simeq \neg a\vee b$$
+であるが、半順序集合において同型な対象は一致するので
+$$ (a\Rightarrow b) = \neg a\vee b$$
+である。(証明終)
+{{% /details %}}
+
+### 初等トポス
+
+集合論において、集合 $U$ の部分集合 $X$ は特性関数 $\chi$ によって表現する事ができる。
+$$ X = \\{x\in U\mid\chi(x)\\}$$
+初等トポスとはカルテシアン閉圏のうち、このような特性関数が常に存在する圏の事である。
+$\chi(x)$ とは $x\in X$ の事であるので、初等トポスとは集合への元の帰属関係 $\in$ を表現する事が出来る圏だと行っても良い。
+
+**引き戻し(pullback)** を用いるとこれを圏論的に記述する事ができる。引き戻しとは $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ の形の時の図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ に対する極限を言うのだった。
+$\mathbf{Set}$ においてこの事を見ていく。まず、 $\mathbf{Set}$ における図式 $A\xrightarrow{f} C\xleftarrow{g} B$ に対する引き戻し $A\times_C B$ は
+$$ A\times_C B = \\{(a, b)\mid f(a)=g(b)\\\}$$
+で与えられる。
+
+$$\xymatrix{
+A\times_C B \ar[r] \ar[d] & A \ar[d]^{f} \\\\
+B \ar[r]^{g}              & C
+}$$
+
+そこで、一方を定数関数 $\mathrm{true}: 1\rightarrow \\{\mathrm{true}, \mathrm{false}\\}$ とすれば、もう一方を特性関数とした場合の集合を構成する事ができる。すなわち、以下において $Y$ が引き戻しならば
+
+$$\xymatrix{
+Y \ar[r] \ar[d] & 1 \ar[d]^{\mathrm{true}} \\\\
+X \ar[r]^-{p}              & \\{\mathrm{true}, \mathrm{false}\\}
+}$$
+
+$$ Y = \\{x\in X\mid p(x)=\mathrm{true} \\} $$
+
+となる。これを一般の場合に拡張すると以下の定義を得る。
+
+{{% definition title="部分対象分類子" %}}
+有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、モノ射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $i: x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_i:u\rightarrow\Omega$ がただ一つ存在するようなものである。
+
+$$\xymatrix{
+x \ar@{.>}[r] \ar[d]^{i} & 1 \ar[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi_i} & \Omega
+} $$
+
+$\chi_i$ を $i$ の **分類射(classifying arrow)** という。
+{{% /definition %}}
+
+{{% proposition %}}
+圏 $\mathcal{C}$ が有限完備かつ局所小である時、 $\mathcal{C}$ が任意の部分対象分類子を持つことと、前層
+
+$$\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\ni a \longmapsto \\{u\xhookrightarrow{} a\\}/{\sim} \in\mathbf{Set}$$
+
+が表現可能である事は同値。また、この関手を表現する対象が部分対象分類子であり、任意の $a\in\mathcal{C}$ に対して自然な同型
+$$\mathrm{Sub}(a)\simeq\mathcal{C}(a, \Omega)$$
+が存在する。
+{{% /proposition %}}
