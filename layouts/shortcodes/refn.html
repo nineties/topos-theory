@@ -3,9 +3,7 @@
     {{- if $map }}
         {{- $slice := index $map ($.Get 0) }}
         {{- if $slice }}
-            <a href="{{ index $slice 3 }}">
-                {{ index $slice 1 }}
-            </a>
+<a href="{{ index $slice 3 }}"> {{ index $slice 1 }} </a>
         {{- end }}
     {{- end }}
 {{- end }}
