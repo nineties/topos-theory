@@ -532,34 +532,34 @@ x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
 圏 $\mathcal{C}$ をより良い性質を持った前層の圏に埋め込む操作を米田埋め込みという。
 
 {{% definition title="米田埋め込み" %}}
-圏 $\mathcal{C}$ について、関手 $y:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
-$$ y(a) = \mathcal{C}(-, a) $$
-$$ y(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
+圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
+$$ \mathcal{Y}(a) = \mathcal{C}(-, a) $$
+$$ \mathcal{Y}(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
 を **米田埋め込み(Yoneda embedding)** という。
 {{% /definition %}}
 
 {{% definition title="米田の補題" %}}
 局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)\simeq F(a) $$
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
 が成り立つ。
 {{% /definition %}}
 
 米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
 
 $$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(f), F)} & F(a) \ar[d]^{F(f)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(b), F) \ar[r]^(.6){\simeq} & F(b)
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(f), F)} & F(a) \ar[d]^{F(f)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b), F) \ar[r]^(.6){\simeq} & F(b)
 }$$
 
 $F$ について自然であるというのは、任意の $\rho:F\rightarrow G$ について以下が可換となる事である。
 
 $$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), G) \ar[r]^(.6){\simeq} & G(a)
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), G) \ar[r]^(.6){\simeq} & G(a)
 }$$
 
 {{% details 証明 %}}
-$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
+$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
 
 $$\xymatrix{
 \mathcal{C}(x, a) \ar[r]^{\alpha_x}  \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
@@ -570,8 +570,8 @@ $$\xymatrix{
 $$ \alpha_y(h\circ f) = F(f)(\alpha_x(h)) $$
 である。ここで
 
-$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
-$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),F)$$
+$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
 
 とおくと
 
@@ -580,18 +580,18 @@ $$\phi\_{a,F}\circ\psi\_{a,F}(x) = F(1_a)(x) = 1\_{F(a)}(x) = x$$
 
 であるので $\phi\_{a,F},\psi\_{a,F}$ は同型写像。
 
-続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F)$ について
+続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
 
 $$
 F(f)(\phi\_{a,F}(\alpha)) = F(f)(\alpha_a(1_a)) = \alpha_b(1_a\circ f) = \alpha_b(f)
 $$
 $$
-\phi\_{b,F}(\alpha\circ y(f)) = \phi\_{b,F}(\alpha\circ \mathcal{C}(-, f)) = (\alpha_b\circ\mathcal{C}(b, f))(1_b) = \alpha_b(f\circ 1_b) = \alpha_b(f)
+\phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) = \phi\_{b,F}(\alpha\circ \mathcal{C}(-, f)) = (\alpha_b\circ\mathcal{C}(b, f))(1_b) = \alpha_b(f\circ 1_b) = \alpha_b(f)
 $$
 
 より、
-$F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ y(f)) $ であるから、
-$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a), F)$ について
+$F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) $ であるから、
+$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
 
 $$
 \rho_a(\phi\_{a,F}(\alpha)) = \rho_a(\alpha_a(1_a)) = \rho_a\circ\alpha_a(1_a)
@@ -610,12 +610,12 @@ $$
 {{% /proposition %}}
 {{% details 証明 %}}
 米田の補題より、任意の $a,b\in\mathcal{C}$ について自然な全単射
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(a),y(b))\simeq y(b)(a)=\mathcal{C}(a,b) $$
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq \mathcal{Y}(b)(a)=\mathcal{C}(a,b) $$
 が存在する。 (証明終)
 {{% /details %}}
 
 従って {{< ref prop.embedding >}} より
-$$y(a)\simeq y(b)\Leftrightarrow a\simeq b$$
+$$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
 である。
 
 ### 表現可能関手
@@ -632,7 +632,7 @@ $$y(a)\simeq y(b)\Leftrightarrow a\simeq b$$
 
 {{% details 証明 %}}
 $F$ が表現可能であるとする。すなわちある $c_0\in\mathcal{C}$ が存在して関手 $\mathcal{C}(-,c_0):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $F$ の間に自然同型 $\phi:\mathcal{C}(-, c_0)\rightarrow F$ が存在する。ここで、米田の補題より自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(y(c_0),F)\simeq F(c_0) $$
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c_0),F)\simeq F(c_0) $$
 が存在するのでこれで $\phi$ を $F(c_0)$ に移した元を $x_0 = \phi\_{c_0}(1\_{c_0})$ とし、この $c_0,x_0$ が条件を満たす事を示す。
 
 任意の $c\in\mathcal{C}, x\in F(c)$ について、 $\phi_c$ は全単射であるから $f=\phi_c^{-1}(x): c\rightarrow c_0$ が存在する。ここで、米田の補題の証明で使用した等式を用いると
@@ -921,7 +921,7 @@ F(i) \ar[r]_{F(f)} & F(j)
 
 ### 関手圏の極限
 
-{{% theorem title="関手圏の極限は各点毎に計算可能" %}}
+{{% theorem title="関手圏の極限は各点毎に計算可能" label="th.limits-of-functor-categories" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
 $a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
 
@@ -1205,7 +1205,7 @@ $$
 
 また、この時の単位射 $a\rightarrow\varprojlim\Delta(a)$ は恒等射 $1_a$ であり、余単位射 $\Delta(\varprojlim F)\rightarrow F$ は極限錐である。
 
-### 指数対象
+### 指数対象・カルテシアン閉圏
 
 {{% definition title="指数対象" %}}
 圏 $\mathcal{C}$ の対象 $a\in\mathcal{C}$ に対して、関手 $a\times -:\mathcal{C}\rightarrow\mathcal{C}$ の右随伴関手を **指数関手(exponential functor)** といい $(-)^a:\mathcal{C}\rightarrow\mathcal{C}$ という。また、指数関手による $x\in\mathcal{C}$ の像 $x^a$ を **指数対象(exponential object)** という。
@@ -1219,7 +1219,39 @@ $$\mathcal{C}(x\times a, y) \simeq \mathcal{C}(x, y^a)$$
 指数対象 $b^a$ は関数 $a\rightarrow b$ の集合のようなものであり、評価射 $b^a\times a\rightarrow b$ は関数に値を代入する写像をイメージすれば良い。実際、圏 $\mathbf{Set}$ においては $b^a\simeq \mathbf{Set}(a,b)$ である。
 
 {{% definition title="カルテシアン閉圏" %}}
-任意の有限個の対象に対する積と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** という。
+任意の有限個の対象に対する積(有限積)と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** という。
 {{% /definition %}}
 
+カルテシアン閉圏は集合のような対象と、それらの間の写像のようなものが一つの圏の中に同居しているものである。
 例えば $\mathbf{Set}$ や $\mathbf{Cat}$ はカルテシアン閉圏である。
+
+前層の圏については以下の定義がある。
+{{% theorem title="前層の圏はカルテシアン閉圏" %}}
+任意の前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ はカルテシアン閉圏である。
+{{% /theorem %}}
+{{< refn th.limits-of-functor-categories >}} より $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の極限は点毎に計算できるので、 $\mathbf{Set}$ が任意の有限積を持つ事から、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ も任意の有限積を持つ事が分かる。
+
+そして、任意の $p,q\in \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に対して
+$$ q^p := \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q) $$
+とおくと、これが指数対象となる。任意の $c\in\mathcal{C}^{\mathrm{op}}$ について
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q) $$
+は集合、つまり $\mathbf{Set}$ の対象であることに注意。
+
+{{% details 指数対象であることの証明 %}}
+任意の $p,q,r\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ について自然な同型
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
+が存在することを示せば良い。
+
+自然変換 $\alpha: r\rightarrow q^p$ 、すなわち関数の族
+$\\{ \alpha_c: r(c) \rightarrow \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q)\\}\_{c\in\mathcal{C}}$
+と、自然変換 $\beta: r\times p\rightarrow q$ 、すなわち関数の族 $\\{\beta_c: r(c)\times p(c)\rightarrow q(c)\\}\_{c\in\mathcal{C}}$ の対応を与えれば良い。
+
+$x\in r(c), y\in p(c)$ に対して
+$$\phi(\alpha)\_c(x, y) = \alpha_c(x)(c)(1_c, y) $$
+$x\in r(c), d\in\mathcal{C}, f\in \mathcal{Y}(c)(d)\simeq\mathbf{Set}(d, c), y\in p(d)$ に対して
+$$\psi(\beta)\_c(x)\_d(f, z) = \beta_d(r(f)(x), z)$$
+
+とおくと
+
+
+{{% /details %}}
