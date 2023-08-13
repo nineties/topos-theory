@@ -522,7 +522,7 @@ x \ar[rd] \ar[rr]^f & & y \ar[ld] \\\\
 離散集合 $I$ に対して $\mathbf{Set}/I\simeq\mathbf{Bn}(I)$ である。
 これは、関数 $f:X\rightarrow I$ と集合族 $\\{f^{-1}(i)\\}\_{i\in I}$ が一対一に対応することからわかる。
 
-{{% definition title="部分対象" %}}
+{{% definition title="部分対象" label="def.subobject" %}}
 
 圏 $\mathcal{C}$ の対象 $a\in\mathcal{C}$ について、モノ射 $x\xhookrightarrow{} a$ を $\mathcal{C}/a$ における同型関係で割った同値類を $a$ の **部分対象(subobject)** という。
 
@@ -627,7 +627,7 @@ $$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
 {{% /definition %}}
 
 {{% proposition %}}
-関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることは、ある $c_0\in\mathcal{C}$ と $x_0\in F(c)$ が存在して、任意の $c\in\mathcal{C}$ と $x\in F(c)$ に対して、 $x=F(f)(x_0)$ となる $f:c\rightarrow c_0$ が一意に存在することと同値。この $c_0$ を $F$ を **表示する対象(representing object)** といい、 $x_0$ を **普遍要素(universal element)** という。
+関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることは、ある $c_0\in\mathcal{C}$ と $x_0\in F(c)$ が存在して、任意の $c\in\mathcal{C}$ と $x\in F(c)$ に対して、 $x=F(f)(x_0)$ となる $f:c\rightarrow c_0$ が一意に存在することと同値。この $c_0$ を $F$ を **表現する対象(representing object)** といい、 $x_0$ を **普遍要素(universal element)** という。
 {{% /proposition %}}
 
 {{% details 証明 %}}
@@ -847,6 +847,74 @@ $\mathcal{J}$ が2点集合の極限は、 $A\times B, A+B$。
 $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。図式が $A\rightarrow C\leftarrow B$ であるときの引き戻しを$ A\times\_{C} B $ と書く。同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $A\leftarrow C\rightarrow B$ であるときの押し出しを $ A+\_{C} B $ と書く。
 
 $\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
+
+
+### 引き戻しの性質
+
+引き戻し(pullback)はトポスの構成において使用されるので、その性質を確認しておく。
+まず、引き戻しの定義を極限ではなく具体的に書き下してみる。
+
+{{% definition title="引き戻し" %}}
+図式 $a\xrightarrow{f} c\xleftarrow{g} b$ に対する **引き戻し(pullback)** とは、以下の図式が可換となるような任意の 対象 $x$ と射 $\alpha: x\rightarrow a, \beta: x\rightarrow b$ に対して
+$$\xymatrix{
+x \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
+& & b \ar[d]^{g} \\\\
+& a \ar[r]^{f} & c
+}$$
+以下の図式が可換となるような $u$ が唯一つ存在するような対象 $p$ と射 $\bar{f},\bar{g}$ の事である。
+$$\xymatrix{
+x \ar[rd]^{u} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
+& p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
+& a \ar[r]^{f} & c
+}$$
+$\bar{f}$ を $g$ に沿った $f$ の引き戻しとも言う。 $\bar{g}$ についても同様。
+{{% /definition %}}
+
+{{% proposition label="prop.pullback-preserves-monomorphism" %}}
+引き戻しはモノ射を保存する。
+すなわち、以下が引き戻しの図式の時 $g$ がモノ射ならば $\bar{g}$ もモノ射。
+$$\xymatrix{
+p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
+a \ar[r]^{f} & c
+}$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$g$ がモノ射であるとする。並行射 $\alpha,\beta: x\rightarrow p$ について $\bar{g}\circ \alpha = \bar{g}\circ\beta$
+であるとすると $f\circ\bar{g}\circ\alpha=f\circ\bar{g}\circ\beta$ であるから図式の可換性より
+$g\circ\bar{f}\circ\alpha=g\circ\bar{f}\circ\beta$。よって $g$ はモノ射であるから $\bar{f}\circ\alpha=\bar{f}\circ\beta$である。従って、以下の可換図式を得るので引き戻しの普遍性より $\alpha=\beta$である。よって $\bar{g}$ はモノ射。
+
+$$\xymatrix{
+x \ar@<2pt>[rd]^{\alpha} \ar@<-2pt>[rd]\_{\beta} \ar@/^1pc/[rrd]^{\bar{f}\circ\alpha = \bar{f}\circ\beta} \ar@/^-1pc/[rdd]\_{\bar{g}\circ\alpha=\bar{g}\circ\beta} & & \\\\
+& p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
+& a \ar[r]^{f} & c
+}$$
+(証明終)
+{{% /details %}}
+
+{{% proposition label="prop.pasting-law-of-pullbacks" %}}
+以下の可換図式において、右の四角が引き戻しであるならば、左の四角が引き戻しであることと、外側の四角が引き戻しであることは同値。
+$$\xymatrix{
+\cdot \ar[r] \ar[d] & \cdot \ar[r] \ar[d] & \cdot \ar[d] \\\\
+\cdot \ar[r]        & \cdot \ar[r]        & \cdot
+}$$
+{{% /proposition %}}
+{{% details 証明 %}}
+右の四角が引き戻しであるとし、以下の可換図式を考える。
+
+$$\xymatrix{
+x \ar@/^-1pc/[rdd]\_-{f} \ar@/^2pc/[rrrd]^-{g} \ar@/^1pc/[rrd]^-{v} \ar[rd]^-{u} &&& \\\\
+&\cdot \ar[r] \ar[d] & \cdot \ar[r] \ar[d] & \cdot \ar[d] \\\\
+&\cdot \ar[r]        & \cdot \ar[r]        & \cdot
+}$$
+まず、左の四角が引き戻しであるとして、外側の四角について考える。
+図式の外側が可換となるような、$f,g$に対して右の四角に注目することと $v$の存在が一意であることがわかる。
+すると $f,v$ について左に四角に注目することで、 $u$ の一意性もわかる。従って 外側の四角も引き戻しの図式である。
+
+外側の四角が引き戻しであるとする。$f,v$ に対して $v$ の方に右の四角の上辺を合成すれば $g$ となり、これに外側の四角が引き戻しであることを使用すれば $u$ が一意であることがわかる。従って左側の四角も引き戻しの図式である。
+(証明終)
+{{% /details %}}
+
+
 
 ### コンマ圏
 
@@ -1460,7 +1528,7 @@ $$ (a\Rightarrow b) = \neg a\vee b$$
 である。(証明終)
 {{% /details %}}
 
-### 初等トポス
+### 部分対象分類子
 
 集合論において、集合 $U$ の部分集合 $X$ は特性関数 $\chi$ によって表現する事ができる。
 $$ X = \\{x\in U\mid\chi(x)\\}$$
@@ -1492,19 +1560,48 @@ $$ Y = \\{x\in X\mid p(x)=\mathrm{true} \\} $$
 有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、モノ射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $i: x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_i:u\rightarrow\Omega$ がただ一つ存在するようなものである。
 
 $$\xymatrix{
-x \ar@{.>}[r] \ar[d]^{i} & 1 \ar[d]^{\mathrm{true}} \\\\
-u \ar[r]^{\chi_i} & \Omega
+x \ar@{.>}[r] \ar[d]\_{i} & 1 \ar[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi_x} & \Omega
 } $$
 
-$\chi_i$ を $i$ の **分類射(classifying arrow)** という。
+$\chi_i$ を $i:x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
 {{% /definition %}}
 
-{{% proposition %}}
-圏 $\mathcal{C}$ が有限完備かつ局所小である時、 $\mathcal{C}$ が任意の部分対象分類子を持つことと、前層
+部分対象分類子という呼び方は以下の命題が関係する。$\mathcal{C}$ の各対象をその {{< ref def.subobject >}} に移す関手 $\mathrm{Sub}$ を考えると、この関手を表現する対象が部分対象分類子となる。
 
-$$\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\ni a \longmapsto \\{u\xhookrightarrow{} a\\}/{\sim} \in\mathbf{Set}$$
+{{% proposition %}}
+圏 $\mathcal{C}$ が有限完備かつ局所小である時、 $\mathcal{C}$ が部分対象分類子を持つことと、前層
+
+$$\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\ni a \longmapsto \\{u\xhookrightarrow{} a\\}/{\simeq} \in\mathbf{Set}$$
 
 が表現可能である事は同値。また、この関手を表現する対象が部分対象分類子であり、任意の $a\in\mathcal{C}$ に対して自然な同型
 $$\mathrm{Sub}(a)\simeq\mathcal{C}(a, \Omega)$$
 が存在する。
 {{% /proposition %}}
+
+任意の $f:b\rightarrow a$ と部分対象 $x\xhookrightarrow{i}a \in \mathrm{Sub}(a)$ について、$\mathrm{C}$ は有限完備だから$f$ に沿った $i$ の引き戻し $\bar{i}$ が存在する。この時 {{< ref prop.pullback-preserves-monomorphism >}} より $\bar{i}$ もモノ射である。
+
+$$\xymatrix{
+y \ar[d]\_{\bar{i}} \ar[r]^{\bar{f}} & x \ar[d]^{i} \\\\
+b \ar[r]^{f} & a
+}$$
+
+この対応を
+$$\mathrm{Sub}(f): \mathrm{Sub}(a)\ni\\{x\xhookrightarrow{i} a\\}/{\simeq}\longmapsto\\{y\xhookrightarrow{\bar{i}} b\\}/{\simeq}\in\mathrm{Sub}(b)$$
+とすると $\mathrm{Sub}$ は関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。$\mathrm{Sub}$ が射の合成を保存することについて {{< ref prop.pasting-law-of-pullbacks >}} からわかるので、あとは同値類の代表元の選び方によらずwell-definedである事を示せば良いが、スライス圏 $\mathcal{C}/a$ における同型 $(x\xrightarrow{i}a)\simeq(x'\xrightarrow{i'})$ とは同型射 $f: x\rightarrow x'$ が存在する事であるので、対応する引き戻しも同型となることは明らか。
+
+続いて、この関手を $\Omega$ が表現する事を示す。
+{{% details 証明 %}}
+$\mathcal{C}$ が有限完備かつ局所小であるとする。$\mathcal{C}$ が部分対象分類子 $\mathrm{true}1\rightarrow\Omega$ を持つとする。
+{{% /details %}}
+
+### 初等トポス
+
+以上で、初等トポスが定義出来る。
+
+{{% definition title="初等トポス" %}}
+カルテシアン閉圏であり、任意の部分対象分類子が存在する圏を **初等トポス(elementary topos)** という。
+{{% /definition %}}
+
+初等トポスは一階述語論理による公理を与えることが出来る。
+
