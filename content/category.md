@@ -1557,15 +1557,47 @@ $$ Y = \\{x\in X\mid p(x)=\mathrm{true} \\} $$
 となる。これを一般の場合に拡張すると以下の定義を得る。
 
 {{% definition title="部分対象分類子" %}}
-有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、モノ射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $i: x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_i:u\rightarrow\Omega$ がただ一つ存在するようなものである。
+有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、モノ射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_x:u\rightarrow\Omega$ がただ一つ存在するようなものである。
 
 $$\xymatrix{
-x \ar@{.>}[r] \ar[d]\_{i} & 1 \ar[d]^{\mathrm{true}} \\\\
+x \ar@{.>}[r] \ar@{^{(}->}[d] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
 u \ar[r]^{\chi_x} & \Omega
 } $$
 
-$\chi_i$ を $i:x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
+$\chi_x$ を $x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
 {{% /definition %}}
+
+モノ射 $x\xhookrightarrow{}u$ を $\mathcal{C}/u$ における同値関係で割ったものを $u$ の部分対象というのだった。({{< ref def.subobject >}})
+以下の命題より、$\chi_x$ は部分対象に一意に定まるものであることがわかる。
+
+{{% proposition %}}
+$\mathcal{C}/u$ において同型なモノ射に対応する分類射は一致する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$\mathcal{C}$ を部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ を持つ圏であるとする。
+モノ射 $i: x\xhookrightarrow{}u$ と $j: y\xhookrightarrow {}$ が同型であるとする。すなわち同型射 $\alpha:x\rightarrow y$ が存在して $i = j\circ\alpha$ であるとする。
+$$\xymatrix{
+x \ar@{^{(}->}[rd]^-{i} \ar[rr]^{\alpha} && y \ar@{^{(}->}[ld]^-{j} \\\\
+ & u &
+}$$
+また、 $i,j$ に対応する分類射をそれぞれ $\chi_i,\chi_j$ とする。
+
+まず、 $u\xhookleftarrow{j}y\rightarrow 1$ が $u\xrightarrow{\chi_j}\Omega\xleftarrow{\mathrm{true}}1$ に対する引き戻しであるので、任意の $f: z\rightarrow u$ に対して、以下が可換となるような $u:z\rightarrow y$ が一意に存在する。
+$$\xymatrix{
+z \ar[rd]^u \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
+& y \ar@{^{(}->}[d]^{j} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+& u \ar[r]^{\chi_j} & \Omega
+}$$
+$i=j\circ\alpha$ を用いて書き直すと以下の図式が可換であるが、 $u$ が一意である事と $\alpha$ が同型射であることより、この図式が可換となるような $\alpha^{-1}\circ u$ も一意に定まる。従って、この図式の四角形の部分は引き戻しの図式であるので、 $\chi_j$ は $i$ に対応する分類射である。従って分類射が一意に定まることから $\chi_i = \chi_j$
+
+$$\xymatrix{
+z \ar[rd]^{\alpha^{-1}\circ u} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
+& x \ar@{^{(}->}[d]^{i} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+& u \ar[r]^{\chi_j} & \Omega
+}$$
+(証明終)
+{{% /details %}}
+
 
 部分対象分類子という呼び方は以下の命題が関係する。$\mathcal{C}$ の各対象をその {{< ref def.subobject >}} に移す関手 $\mathrm{Sub}$ を考えると、この関手を表現する対象が部分対象分類子となる。
 
@@ -1592,7 +1624,11 @@ $$\mathrm{Sub}(f): \mathrm{Sub}(a)\ni\\{x\xhookrightarrow{i} a\\}/{\simeq}\longm
 
 続いて、この関手を $\Omega$ が表現する事を示す。
 {{% details 証明 %}}
-$\mathcal{C}$ が有限完備かつ局所小であるとする。$\mathcal{C}$ が部分対象分類子 $\mathrm{true}1\rightarrow\Omega$ を持つとする。
+$\mathcal{C}$ が有限完備かつ局所小であるとする。$\mathcal{C}$ が部分対象分類子 $\mathrm{true}1\rightarrow\Omega$ を持つとし、任意の $a\in\mathcal{C}$ について自然な同型
+$$ \mathrm{Sub}(a) \simeq \mathcal{C}(a, \Omega) $$
+が存在する事を示す。
+
+
 {{% /details %}}
 
 ### 初等トポス
