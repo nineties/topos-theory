@@ -627,7 +627,7 @@ $$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
 {{% /definition %}}
 
 {{% proposition %}}
-関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることは、ある $c_0\in\mathcal{C}$ と $x_0\in F(c)$ が存在して、任意の $c\in\mathcal{C}$ と $x\in F(c)$ に対して、 $x=F(f)(x_0)$ となる $f:c\rightarrow c_0$ が一意に存在することと同値。この $c_0$ を $F$ を **表現する対象(representing object)** といい、 $x_0$ を **普遍要素(universal element)** という。
+関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることは、ある $c_0\in\mathcal{C}$ と $x_0\in F(c_0)$ が存在して、任意の $c\in\mathcal{C}$ と $x\in F(c)$ に対して、 $x=F(f)(x_0)$ となる $f:c\rightarrow c_0$ が一意に存在することと同値。この $c_0$ を $F$ を **表現する対象(representing object)** といい、 $x_0$ を **普遍要素(universal element)** という。
 {{% /proposition %}}
 
 {{% details 証明 %}}
