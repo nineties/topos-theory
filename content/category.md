@@ -1557,7 +1557,7 @@ $$ Y = \\{x\in X\mid p(x)=\mathrm{true} \\} $$
 となる。これを一般の場合に拡張すると以下の定義を得る。
 
 {{% definition title="部分対象分類子" %}}
-有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、モノ射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_x:u\rightarrow\Omega$ がただ一つ存在するようなものである。
+有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_x:u\rightarrow\Omega$ がただ一つ存在するようなものである。
 
 $$\xymatrix{
 x \ar@{.>}[r] \ar@{^{(}->}[d] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
@@ -1568,7 +1568,7 @@ $\chi_x$ を $x\xhookrightarrow{} u$ の **分類射(classifying arrow)** とい
 {{% /definition %}}
 
 モノ射 $x\xhookrightarrow{}u$ を $\mathcal{C}/u$ における同値関係で割ったものを $u$ の部分対象というのだった。({{< ref def.subobject >}})
-以下の命題より、$\chi_x$ は部分対象に一意に定まるものであることがわかる。
+以下の命題より、 **部分対象と分類射は一対一に対応する** ということが分かる。
 
 {{% proposition %}}
 $\mathcal{C}/u$ において同型なモノ射に対応する分類射は一致する。
@@ -1598,18 +1598,18 @@ z \ar[rd]^{\alpha^{-1}\circ u} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\
 (証明終)
 {{% /details %}}
 
-
-部分対象分類子という呼び方は以下の命題が関係する。$\mathcal{C}$ の各対象をその {{< ref def.subobject >}} に移す関手 $\mathrm{Sub}$ を考えると、この関手を表現する対象が部分対象分類子となる。
+さらに、この一対一対応は自然である。また、$\mathcal{C}$ の各対象をその部分対象に移す関手 $\mathrm{Sub}$ を考えると、この関手を表現する対象が部分対象分類子となることも分かる。
 
 {{% proposition %}}
 圏 $\mathcal{C}$ が有限完備かつ局所小である時、 $\mathcal{C}$ が部分対象分類子を持つことと、前層
 
 $$\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\ni a \longmapsto \\{u\xhookrightarrow{} a\\}/{\simeq} \in\mathbf{Set}$$
 
-が表現可能である事は同値。また、この関手を表現する対象が部分対象分類子であり、任意の $a\in\mathcal{C}$ に対して自然な同型
-$$\mathrm{Sub}(a)\simeq\mathcal{C}(a, \Omega)$$
-が存在する。
+が表現可能である事は同値。また、部分対象分類子 $\mathrm{true}:1\rightarrow \Omega$ について、 $\Omega$ はこの関手を表現する対象であり、$\mathrm{true}$ は普遍要素である。
 {{% /proposition %}}
+
+{{% details 証明 %}}
+($\mathrm{Sub}$が関手であることの証明)
 
 任意の $f:b\rightarrow a$ と部分対象 $x\xhookrightarrow{i}a \in \mathrm{Sub}(a)$ について、$\mathrm{C}$ は有限完備だから$f$ に沿った $i$ の引き戻し $\bar{i}$ が存在する。この時 {{< ref prop.pullback-preserves-monomorphism >}} より $\bar{i}$ もモノ射である。
 
@@ -1618,18 +1618,96 @@ y \ar[d]\_{\bar{i}} \ar[r]^{\bar{f}} & x \ar[d]^{i} \\\\
 b \ar[r]^{f} & a
 }$$
 
-この対応を
+この対応を用いて
 $$\mathrm{Sub}(f): \mathrm{Sub}(a)\ni\\{x\xhookrightarrow{i} a\\}/{\simeq}\longmapsto\\{y\xhookrightarrow{\bar{i}} b\\}/{\simeq}\in\mathrm{Sub}(b)$$
-とすると $\mathrm{Sub}$ は関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。$\mathrm{Sub}$ が射の合成を保存することについて {{< ref prop.pasting-law-of-pullbacks >}} からわかるので、あとは同値類の代表元の選び方によらずwell-definedである事を示せば良いが、スライス圏 $\mathcal{C}/a$ における同型 $(x\xrightarrow{i}a)\simeq(x'\xrightarrow{i'})$ とは同型射 $f: x\rightarrow x'$ が存在する事であるので、対応する引き戻しも同型となることは明らか。
+とすると $\mathrm{Sub}$ は関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。$\mathrm{Sub}$ が射の合成を保存することについて {{< ref prop.pasting-law-of-pullbacks >}} からわかるので、あとは同値類の代表元の選び方によらずwell-definedである事を示せば良いが、スライス圏 $\mathcal{C}/a$ における同型 $(x\xrightarrow{i}a)\simeq(x'\xrightarrow{i'}a)$ が存在する時、 $x\simeq x'$ でもあるので、対応する引き戻しも同型となることは明らか。
 
-続いて、この関手を $\Omega$ が表現する事を示す。
-{{% details 証明 %}}
+(部分対象分類子を持つ $\Rightarrow$ $\mathrm{Sub}$が表現可能)
+
 $\mathcal{C}$ が有限完備かつ局所小であるとする。$\mathcal{C}$ が部分対象分類子 $\mathrm{true}1\rightarrow\Omega$ を持つとし、任意の $a\in\mathcal{C}$ について自然な同型
-$$ \mathrm{Sub}(a) \simeq \mathcal{C}(a, \Omega) $$
-が存在する事を示す。
+$$ \phi: \mathrm{Sub}(a) \xrightarrow{\simeq} \mathcal{C}(a, \Omega) $$
+が存在する事を示す。$\phi$ が全単射であることは既に示したので、自然性のみを示せば良い。すなわち任意の $f:b\rightarrow a$ に対して以下が可換であることを示せば良いが、
+
+$$\xymatrix{
+\mathrm{Sub}(a) \ar[d]\_{\mathrm{Sub}(f)} \ar[r]^{\phi_a} & \mathcal{C}(a, \Omega) \ar[d]^{\mathcal{C}(f, \Omega)} \\\\
+\mathrm{Sub}(b)                           \ar[r]^{\phi_b} & \mathcal{C}(b, \Omega)
+}$$
+
+以下の図式を考えると、
+
+$$\xymatrix{
+y \ar@{^{(}->}[d]\_{m'\in\mathrm{Sub}(f)([m])} \ar[r] & x \ar@{^{(}->}[d]^{m\in\mathrm{Sub}(a)} \ar[rr] && 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+b \ar[r]^{f} \ar@/^-1pc/[rrr]\_{\phi_b([m'])} & a \ar[rr]^{\phi_a([m])}            && \Omega \\\\
+}$$
+
+下側の$b$から$\Omega$ までの2つの経路はいずれも $m'$ に対する分類射であるから、分類射の一意性より任意のモノ射 $m:x\xhookrightarrow{} a$ に対して
+
+$$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_a)([m])=(\mathcal{C}(f,\Omega)\circ\phi_a)([m])$$
+
+である。ただし $[m]$ は$m$ を含む同値類。
+
+($\mathrm{Sub}$が表現可能 $\Rightarrow$ 部分対象分類子を持つ)
+
+$\mathrm{Sub}$ がある $\Omega\in\mathcal{C}$ によって表現されるとする。すなわち、$a\in\mathcal{C}$ について自然な同型
+$$ \phi_a: \mathrm{Sub}(a) \xrightarrow{\simeq} \mathrm{C}(a, \Omega) $$
+が存在するとする。ここで同型 $ \phi\_{\Omega}: \mathrm{Sub}(\Omega) \xrightarrow{\simeq} \mathrm{C}(\Omega, \Omega) $ において右の $1\_\Omega$ に対応する部分対象の代表元を $\mathrm{true}: t\xhookrightarrow{}\Omega$ とする。
+この時点では $\mathrm{true}$ のドメイン $t$ が終対象であるかは分からないので注意。
+
+あとは、任意のモノ射 $m: x\xhookrightarrow{} u$ に対して以下の図式が引き戻しとなるような $\chi: u\rightarrow\Omega$ が唯一つであることと、 $t$ が終対象であることを示せば良い。
+
+$$\xymatrix{
+x \ar[d]\_{m} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi} & \Omega \\\\
+}$$
+
+まず、$m$ が $\mathrm{true}$ の $\chi$ に沿った引き戻しであることより
+$$ [m] = \mathrm{Sub}(\chi)([\mathrm{true}]) $$
+である。また、以下が可換であるから
+
+$$\xymatrix{
+\mathrm{Sub}(\Omega) \ar[d]\_{\mathrm{Sub}(\chi)} \ar[r]^{\phi\_\Omega} & \mathcal{C}(\Omega, \Omega) \ar[d]^{-\circ\chi} \\\\
+\mathrm{Sub}(u) \ar[r]^{\phi\_x} & \mathrm{C}(u, \Omega)
+}$$
+
+$$\phi_u(\mathrm{Sub}(\chi)([\mathrm{true}])) = \phi\_{\Omega}([\mathrm{true}])\circ \chi$$
+
+である。これらと、 $\phi\_{\Omega}([\mathrm{true}])=1\_\Omega$ より
+$$\chi = \phi_u([m]) $$
+である。従って、 $\chi$ は $m$ に対して一意に定まる。
+
+また、任意の $f:x\rightarrow t$ に対して以下の図式は引き戻しの図式となるので
+$$\xymatrix{
+x \ar[d]\_{1_x} \ar[r]^{f} & t \ar[d]^{\mathrm{true}} \\\\
+x \ar[r]^{\mathrm{true}\circ f} & \Omega \\\\
+}$$
+
+$\mathrm{true}\circ f = \phi_x([1_x])$ である。この右辺が $f$ に依らないことと、$\mathrm{true}$ がモノであることから$f:x\rightarrow t$ の他には射 $x\rightarrow t$ が存在しない事が分かる。よって射 $x\rightarrow t$ は存在するならば唯一つである。あとは任意の $x\in\mathcal{C}$ について、$x$ から $t$ への射が存在する事を示せば良い。
+
+任意の $x\in\mathcal{C}$ について $1_x:x\rightarrow x$ はモノだから $[1_x]\in \mathrm{Sub}(x)$ なので、$\phi_x([1_x]):x \rightarrow \Omega$ という射が存在。よって、$\mathrm{C}$ は有限完備であるので、$x\xrightarrow{\phi_x([1_x])}\Omega\xleftarrow{\mathrm{true}} t$ に対する引き戻しが存在するが、上で示したことから下図のように左側面が $1_x$ となる図式で引き戻しとなるものが存在。よって、この上辺の射 $x\rightarrow t$ は必ず存在。以上より、任意の $x\in\mathcal{C}$ に対して射 $x\rightarrow t$ が唯一つ存在するので $t$ は終対象。
+
+$$\xymatrix{
+x \ar[d]\_{1_x} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
+x \ar[r]^{\phi_x([1_x])} & \Omega
+}$$
 
 
+(部分対象分類子が普遍要素であること)
+
+任意の $x\in\mathcal{C}$ と $[m]\in\mathrm{Sub}(x)$ に対して、ある $f: x\rightarrow\Omega$ が存在して
+$$[m] = \mathrm{Sub}(f)([\mathrm{true}])$$
+となる事を示せば良いが、$f$ として$m$ の分類射を取ればこれが成立する事が分かる。
+
+(証明終)
 {{% /details %}}
+
+### 前層の圏の部分対象分類子
+
+前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の部分対象分類子について考える。
+関手圏の極限は点毎に計算可能、つまり引き戻しについてもそうである。部分対象分類子とは
+ある関手 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と 自然変換 $\mathrm{true}:1\rightarrow\Omega$
+
+であって、任意の $c\in\mathcal{C}$ 、関手 $F,G:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ とモノ射
+
 
 ### 初等トポス
 
