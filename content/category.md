@@ -1600,12 +1600,15 @@ z \ar[rd]^{\alpha^{-1}\circ u} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\
 
 さらに、この一対一対応は自然である。また、$\mathcal{C}$ の各対象をその部分対象に移す関手 $\mathrm{Sub}$ を考えると、この関手を表現する対象が部分対象分類子となることも分かる。
 
-{{% proposition %}}
+{{% proposition label="prop.representability-of-sub" %}}
 圏 $\mathcal{C}$ が有限完備かつ局所小である時、 $\mathcal{C}$ が部分対象分類子を持つことと、前層
 
 $$\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\ni a \longmapsto \\{u\xhookrightarrow{} a\\}/{\simeq} \in\mathbf{Set}$$
 
-が表現可能である事は同値。また、部分対象分類子 $\mathrm{true}:1\rightarrow \Omega$ について、 $\Omega$ はこの関手を表現する対象であり、$\mathrm{true}$ は普遍要素である。
+が表現可能である事は同値。また、部分対象分類子 $\mathrm{true}:1\rightarrow \Omega$ について、 $\Omega$ はこの関手を表現する対象である。 すなわち、$a\in\mathcal{C}$ について自然な同型
+$$ \mathrm{Sub}(a)\simeq\mathcal{C}(a,\Omega) $$
+が存在する。また$\mathrm{true}$ は普遍要素の代表元である。
+
 {{% /proposition %}}
 
 {{% details 証明 %}}
@@ -1702,11 +1705,15 @@ $$[m] = \mathrm{Sub}(f)([\mathrm{true}])$$
 
 ### 前層の圏の部分対象分類子
 
-前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の部分対象分類子について考える。
-関手圏の極限は点毎に計算可能、つまり引き戻しについてもそうである。部分対象分類子とは
-ある関手 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と 自然変換 $\mathrm{true}:1\rightarrow\Omega$
+前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の部分対象分類子 $\Omega: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ について考える。米田の補題より、任意の $c\in\mathcal{C}$ について
 
-であって、任意の $c\in\mathcal{C}$ 、関手 $F,G:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ とモノ射
+$$ \Omega(c) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) $$
+
+であり、{{< ref prop.representability-of-sub >}} より
+
+$$ \Omega(c) \simeq \mathrm{Sub}(\mathcal{Y}(c)) $$
+
+である。
 
 
 ### 初等トポス
