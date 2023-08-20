@@ -214,16 +214,11 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 
 ただし、この逆は成立しない。例えば、順序集合を$\leq$を射とする圏とみなしたとき、全ての射はモノかつエピだが同型射とは限らない。
 
-### 積圏
+## 関手
 
-{{% definition title="積圏" %}}
-圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ という。射の合成は要素毎に行う。
-{{% /definition %}}
+例えばベクトル空間の間に、その構造を保つ写像として線型写像が定義されるように、圏の間にも構造を保つ写像を定める事ができる。これを関手という。関手を用いると、異なる圏の間の関係性を述べる事ができるようになる。
 
-
-### 関手・自然変換・前層
-
-圏から圏への準同型写像(構造を保つ写像)を関手という。
+### 関手の定義
 
 {{% definition title="関手" %}}
 圏 $\mathcal{C}$ から圏 $\mathcal{D}$ への **関手(functor)** $F$ とは
@@ -235,50 +230,30 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 を満たすものである。
 {{% /definition %}}
 
-恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
-また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。
+恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1\_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
+また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。すると、以下のような圏を構成できる事が分かる。
+
+{{% definition title="小圏のなす圏" %}}
+小圏を対象、関手を射とすると(大きな)圏となる。これを $\mathbf{Cat}$ と書く。
+{{% /definition %}}
+
+射の向きが逆になるような対応を反変関手という。後ほど登場するが、反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事を **前層(presheaf)** といい、特に重要である。
 
 {{% definition title="反変関手" %}}
 $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{D}$ を、$\mathcal{C}$ から $\mathcal{D}$ への **反変関手(contravariant functor)** という。
 {{% /definition %}}
 
-{{% definition title="小さい圏の圏" %}}
-小さい圏を対象、関手を射とした圏は(大きな)圏となる。これを $\mathbf{Cat}$ と書く。
-{{% /definition %}}
-
-{{% definition title="前層" %}}
-圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手
-$$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
-を $\mathcal{C}$ 上の **前層(presheaf)** という。
-{{% /definition %}}
-
-{{% definition title="自然変換" %}}
-関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
-
-$$\xymatrix{
-F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
-F(b) \ar[r]^{\phi_b} & G(b)
-}$$
-
-$\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
-{{% /definition %}}
-
-{{% example %}}
-ベクトル空間をその双対ベクトル空間に写す反変関手
-$$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
-
-について $1\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
-{{% /example %}}
-これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
+全てを一つの対象に潰す関手を定数関手という。
 
 {{% definition title="定数関手" %}}
 関手 $\mathcal{C}\rightarrow\mathcal{D}$ であって、$\mathcal{C}$ の全ての対象をある対象 $a\in\mathcal{D}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{C}\rightarrow\mathcal{D}$ と書くこともある。
-
-任意の射 $f:a\rightarrow b$ は定数関手 $a, b:\mathcal{C}\rightarrow\mathcal{D}$ の間の自然変換である。
 {{% /definition %}}
 
+局所小圏 $\mathcal{C}$ では任意の $a,b\in\mathcal{C}$ について $\mathcal{C}(a, b)$ は集合になる。
+すなわち $\mathbf{Set}$ の対象になるので、例えば$a$ を固定すれば $b\longmapsto \mathcal{C}(a, b)$ という $\mathcal{C}$ から $\mathbf{Set}$ への対象の対応を得ることができる。$b$ を固定した場合も同様で、これらは **Hom関手(hom-functor)** と呼ばれ。
+
 {{% definition title="共変Hom関手" %}}
-圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
 $\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
 - $\mathcal{C}(a,-)(b) = \mathcal{C}(a,b)$
 - $f:b\rightarrow c$ に対して
@@ -322,6 +297,70 @@ $$
 
 証明は共変Hom関手と同様なので省略。
 
+### 関手の性質
+
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ によって $\mathcal{C}$ を $\mathcal{D}$ に移して $\mathcal{D}$ の中で $\mathcal{C}$ について調べるということはよく行われる。その為には、以下のような性質を持つ関手が重要となる。
+
+{{% definition title="忠実・充満・本質的全射" %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ について
+
+- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について単射の時 $F$ は **忠実(faithful)** であるという。
+- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について全射の時 $F$ は **充満(full)** であるという。
+- 任意の$b\in\mathcal{D}$ についてある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となるとき $F$ は **本質的全射(essentially surjective)**  であるという。
+{{% /definition %}}
+
+本質的全射が全射と異なるのは $F(a)\simeq b$ と $F(a)=b$ の違い。
+圏論では、同型な対象はその圏論的な性質によっては区別する事ができず、実質的に1つの対象と見なすことが自然である。よって、対象の厳密な一致ではなく同型 $\simeq$ を用いて定められた性質の方がより本質的な性質となる。
+
+{{% proposition %}}
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実であるならば、$F(f)$ がモノならば $f$ もモノ。同様に $F(f)$ がエピならば $f$ もエピ。
+{{% /proposition %}}
+{{% details 証明 %}}
+$F(m): F(a)\rightarrow F(b)$ がモノであるとする。ここで、射 $f,g:c\rightarrow a$ について
+$ m\circ f = m\circ g $ であるとすると、全体を $F$ で移して $ F(m)\circ F(f) = F(m)\circ F(g) $である。よって $F(m)$ がモノであるから $F(f)=F(g)$ であるので $F$ が忠実であることから $f=g$。従って $ m$ はモノである。エピについても同様。 $\square$
+{{% /details %}}
+
+{{% proposition label="prop.embedding" %}}
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実充満であるならば、任意の $a,b\in\mathcal{C}$ について
+$$ a\simeq b \Leftrightarrow F(a)\simeq F(b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$\Rightarrow$ は明らか。
+$F(a)\simeq F(b)$ であるとすると、同型射 $f: F(a)\rightarrow F(b), g:F(b)\rightarrow F(a)$ が存在する。
+$F,G$ は充満だから $f=F(f'), g=F(g')$ となる $f':a\rightarrow b, g':b\rightarrow a$ が存在し
+$$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\circ f')=F(1_a)$$
+である。そして $F$ は忠実であるから $g'\circ f'=1_a$ である。同様にして $f'\circ g'=1_b$ であるから $f',g'$ は同型射。従って $a\simeq b$ である。 $\square$
+{{% /details %}}
+
+
+
+
+{{% definition title="前層" %}}
+圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手
+$$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
+を $\mathcal{C}$ 上の **前層(presheaf)** という。
+{{% /definition %}}
+
+{{% definition title="自然変換" %}}
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
+
+$$\xymatrix{
+F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
+F(b) \ar[r]^{\phi_b} & G(b)
+}$$
+
+$\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
+{{% /definition %}}
+
+{{% example %}}
+ベクトル空間をその双対ベクトル空間に写す反変関手
+$$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
+
+について $1\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
+{{% /example %}}
+これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
+
+
 Hom関手は以下のように、積圏からの関手 (**双関手(bifunctor)**) として一般化する事もできる。
 {{% definition title="双関手としてのHom関手" %}}
 圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
@@ -334,31 +373,6 @@ b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
 \ar@{|->} \"x\";\"y\"
 }$$
 {{% /definition %}}
-
-{{% definition title="充満・忠実・本質的全射" %}}
-関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ について
-
-- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について全射の時 $F$ は **充満(full)** であるという。
-- $F: \mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ が全ての$a,b\in\mathcal{C}$ について単射の時 $F$ は **忠実(faithful)** であるという。
-- 任意の$b\in\mathcal{D}$ についてある $a\in\mathcal{C}$ が存在して $F(a)\simeq b$ となるとき $F$ は **本質的全射(essentially surjective)**  であるという。
-{{% /definition %}}
-
-本質的全射が全射と異なるのは $F(a)\simeq b$ と $F(a)=b$ の違い。
-圏論では、同型な対象はその圏論的な性質によっては区別する事ができず、実質的に1つの対象と見なすことが自然である。よって、対象の厳密な一致ではなく同型 $\simeq$ を用いて定められた性質の方がより本質的な性質となる。
-
-$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実充満であるならば、以下の命題より $\mathcal{D}$ の中で $\mathcal{C}$ の対象について調べる事ができる。
-
-{{% proposition label="prop.embedding" %}}
-$F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実充満であるならば、任意の $a,b\in\mathcal{C}$ について
-$$ a\simeq b \Leftrightarrow F(a)\simeq F(b)$$
-{{% /proposition %}}
-{{% details 証明 %}}
-$\Rightarrow$ は明らか。
-$F(a)\simeq F(b)$ であるとすると、同型射 $f: F(a)\rightarrow F(b), g:F(b)\rightarrow F(a) が存在する。
-$f,g$ は充満だから $f=F(f'), g=F(g')$ となる $f':a\rightarrow b, g':b\rightarrow a$ が存在し
-$$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\circ f')=F(1_a)$$
-である。そして $F$ は忠実であるから $g'\circ f'=1_a$ である。同様にして $f'\circ g'=1_b$ であるから $f',g'$ は同型射。従って $a\simeq b$ である。 $\square$
-{{% /details %}}
 
 ### 圏同値
 
@@ -421,6 +435,13 @@ $$
 
 $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。$\square$
 {{% /details %}}
+
+### 積圏
+
+{{% definition title="積圏" %}}
+圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ という。射の合成は要素毎に行う。
+{{% /definition %}}
+
 
 ## 代表的な圏の構成
 
