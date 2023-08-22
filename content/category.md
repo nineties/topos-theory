@@ -230,7 +230,7 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 を満たすものである。
 {{% /definition %}}
 
-恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1\_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ と書く。
+恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1\_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ や $\mathrm{Id}\_{\mathcal{C}$ と書く。
 また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。すると、以下のような圏を構成できる事が分かる。
 
 {{% definition title="小圏のなす圏" %}}
@@ -332,17 +332,18 @@ $$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\cir
 である。そして $F$ は忠実であるから $g'\circ f'=1_a$ である。同様にして $f'\circ g'=1_b$ であるから $f',g'$ は同型射。従って $a\simeq b$ である。 $\square$
 {{% /details %}}
 
+## 自然変換
 
+圏論は元々 **自然同型** という概念を記述する為に誕生したと言う背景がある。
+例えば、有限次元ベクトル空間 $V$ とその双対空間 $V^\ast$、さらにその双対空間 $V^{\ast\ast}$ について考えると、これらは全てベクトル空間として同型である。
+$$ V\simeq V^\ast \simeq V^{\ast\ast} $$
+しかし $x\in V$ と $f\in V^\ast$ の間に $V$ に寄らない標準的な一対一対応関係を定めるのは難しいが、$x\in V$ と $\phi\in V^{\ast\ast}$ の間にはそう言ったものを定める事が出来るという違いがある。
+そのような意味で同型 $V\simeq V^\ast$ と $V\simeq V^{\ast\ast}$ は質が違い、後者は自然同型であると言われる。このような概念を抽象的に記述する為に **自然変換** を定義する。
 
-
-{{% definition title="前層" %}}
-圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手
-$$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
-を $\mathcal{C}$ 上の **前層(presheaf)** という。
-{{% /definition %}}
+### 自然変換の定義
 
 {{% definition title="自然変換" %}}
-関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{C}$ の各対象 $a$ に、$\mathcal{D}$の射 $\phi_a: F(a)\rightarrow G(a)$ を対応させる関数であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
+関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{D}$の射の族 $\\{\phi_a: F(a)\rightarrow G(a)\\}\_{a\in\mathcal{C}}$ であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
 
 $$\xymatrix{
 F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[d]^{G(f)} \\\\
@@ -352,31 +353,47 @@ F(b) \ar[r]^{\phi_b} & G(b)
 $\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
 {{% /definition %}}
 
-{{% example %}}
-ベクトル空間をその双対ベクトル空間に写す反変関手
-$$ \*:\mathbf{Vect}\_K^{\mathrm{op}}\ni V\longmapsto V^\*=\mathbf{Vect}_K(V,K)\in\mathbf{Vect}\_K $$
-
-について $1\_{\mathbf{Vect}\_K}\rightarrow **$ は自然変換である。
-{{% /example %}}
-これは自然同型ではないので注意。一般に無限次元のベクトル空間 $V$ については $V\not\simeq V^{**}$
-
-
-Hom関手は以下のように、積圏からの関手 (**双関手(bifunctor)**) として一般化する事もできる。
-{{% definition title="双関手としてのHom関手" %}}
-圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
-$$ \mathcal{C}(a,b)\ni h\longmapsto g\circ h\circ f\in\mathcal{C}(a',b') $$
-を対応させる関係は関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ となる。
+関手 $F,G,H:\mathcal{C}\rightarrow\mathcal{D}$ の間に自然変換 $\phi:F\rightarrow G, \psi: G\rightarrow H$ が存在する時、下図の横の射をそれぞれ合成した射の族 $\\{\psi_a\circ\phi_a\\}$ は 自然変換 $F\rightarrow H$ となる。これを自然変換の合成といい $\psi\circ \phi$ と書く。
 
 $$\xymatrix{
-a \ar[d]\_{h}^{}=\"x\" & a' \ar[l]\_{f} \\\\
-b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
-\ar@{|->} \"x\";\"y\"
+F(a) \ar[r]^{\phi_a} \ar[d]\_{F(f)} & G(a) \ar[r]^{\psi_a} \ar[d]^{G(f)} & H(a) \ar[d]^{H(f)} \\\\
+F(b) \ar[r]^{\phi_b}                & G(b) \ar[r]^{\psi_b}               & H(b)
 }$$
+
+そうすると、関手を対象とし自然変換を射とする圏を定める事が出来る。
+
+### 関手圏
+
+{{% definition title="関手圏" %}}
+圏 $\mathcal{C},\mathcal{D}$ について、関手 $\mathcal{C}\rightarrow \mathcal{D}$ を対象とし、それらの間の自然変換を射とする圏を **関手圏(functor category)** といい、 $\[\mathcal{C},\mathcal{D}\]$ や $\mathcal{D}^{\mathcal{C}}$ と書く。
 {{% /definition %}}
 
-### 圏同値
+{{% example title="$\mathcal{C}^\mathbf{1}$" %}}
+$\mathbf{0}$ を空圏、$\mathbf{1}$ を対象が一つで恒等射のみの圏をすると、任意の圏 $\mathcal{C}$ について
+$$ \mathcal{C}^\mathbf{0}\simeq\mathbf{1},\quad\mathcal{C}^\mathbf{1}\simeq\mathcal{C}$$
+{{% /example %}}
 
-圏 $\mathcal{C}$ と $\mathcal{D}$ が本質的に同じとはどういう事かを考える。素朴には、まず圏の同型という関係性がある。
+{{% example title="射圏" %}}
+対象が2つで、恒等射と対象の間に射が一本あるような圏 $\mathbf{2}$ から圏 $\mathcal{C}$ への関手のなす圏 $\mathcal{C}^\mathbf{2}$ を **射圏(arrow category)** といい$\mathcal{C}^{\rightarrow}$ と書く。
+
+関手 $\mathbf{2}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の射と一対一対応する。
+
+$$\xymatrix{
+0 \ar[d]^{}=\"x\" & a \ar[d]_{}=\"y\"^f \\\\
+1              & b
+\ar@{~>} \"x\";\"y\"
+}$$
+
+従って、射圏とは射が対象で、可換な四角形が射となるような圏の事である。
+$$\xymatrix{
+a \ar[d]^f \ar[r]^p & c \ar[d]^g \\\\
+b          \ar[r]_q & d          \\\\
+}$$
+{{% /example %}}
+
+### 同型・圏同値
+
+2つの圏 $\mathcal{C},\mathcal{D}$ が何らかの意味で同じであるという事を表す方法として、 **同型**、**圏同値** という異なる関係性がある。これらの違いをしっかり理解したいので、合わせてここで紹介する。
 
 {{% definition title="圏の同型" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同型(isomorphic)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で
@@ -392,6 +409,16 @@ $$ G\circ F = 1\_{\mathcal{C}},\ F\circ G=1\_{\mathcal{D}}$$
 $$ G\circ F \simeq 1\_{\mathcal{C}},\ F\circ G \simeq 1\_{\mathcal{D}}$$
 を満たすものが存在する事である。$F,G$ を **圏同値(equivalence of categories)** という。
 {{% /definition %}}
+
+例えば、$\mathcal{C}$ を対象が1つで、恒等射のみの圏、$\mathcal{D}$ を対象が2つであり、その2つの間に同型射がある圏とする。これらはそもそも対象の数、射の数が異なり同型ではないが、同値になる。
+
+$$\xymatrix{
+\mathcal{C} & & \mathcal{D} \\\\
+\bullet     & & a \ar@/^1pc/[d]^{f} \\\\
+            & & b \ar@/^1pc/[u]^{f^{-1}}
+}$$
+
+もう少し実践的な例をあげると、実数値の数ベクトル空間 $\mathbb{R}^n\ (n=0,1,\ldots)$ を対象とし線形写像を射とする圏 $\mathcal{C}$と、有限次元の実数係数ベクトル空間と線形写像の圏 $\mathcal{D}$ は同型ではないが同値となる。
 
 {{% proposition %}}
 選択公理を仮定すると、
@@ -436,6 +463,28 @@ $$
 $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。$\square$
 {{% /details %}}
 
+
+
+{{% definition title="前層" %}}
+圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手
+$$ F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
+を $\mathcal{C}$ 上の **前層(presheaf)** という。
+{{% /definition %}}
+
+
+Hom関手は以下のように、積圏からの関手 (**双関手(bifunctor)**) として一般化する事もできる。
+{{% definition title="双関手としてのHom関手" %}}
+圏 $\mathcal{C},\mathcal{C}$ について任意の $a,b\in\mathcal{C}$ に$\mathcal{C}(a,b)$ を対応させ、射 $f:a'\rightarrow a, g:b\rightarrow b'$ に対して写像
+$$ \mathcal{C}(a,b)\ni h\longmapsto g\circ h\circ f\in\mathcal{C}(a',b') $$
+を対応させる関係は関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ となる。
+
+$$\xymatrix{
+a \ar[d]\_{h}^{}=\"x\" & a' \ar[l]\_{f} \\\\
+b \ar[r]\_{g}          & b' \ar[u]\_{g\circ h\circ f}^{}=\"y\"
+\ar@{|->} \"x\";\"y\"
+}$$
+{{% /definition %}}
+
 ### 積圏
 
 {{% definition title="積圏" %}}
@@ -444,58 +493,6 @@ $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これよ�
 
 
 ## 代表的な圏の構成
-
-### 関手圏
-
-{{% definition title="関手圏" %}}
-圏 $\mathcal{C},\mathcal{D}$ について、関手 $\mathcal{C}\rightarrow \mathcal{D}$ を対象とし、それらの間の自然変換を射とする圏を **関手圏(functor category)** といい、 $\[\mathcal{C},\mathcal{D}\]$ や $\mathcal{D}^{\mathcal{C}}$ と書く。
-{{% /definition %}}
-
-{{% example title="射圏" %}}
-対象が2つで、恒等射と対象の間に射が一本あるような圏 $\mathbf{2}$ から圏 $\mathcal{C}$ への関手のなす圏 $\[\mathbf{2},\mathcal{C}\]$ を **射圏(arrow category)** といい$\mathcal{C}^{\rightarrow}$ と書く。
-
-関手 $\mathbf{2}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の射と一対一対応する。
-
-$$\xymatrix{
-0 \ar[d]^{}=\"x\" & a \ar[d]_{}=\"y\"^f \\\\
-1              & b
-\ar@{~>} \"x\";\"y\"
-}$$
-
-従って、射圏とは射が対象で、可換な四角形が射となるような圏の事である。
-$$\xymatrix{
-a \ar[d]^f \ar[r]^p & c \ar[d]^g \\\\
-b          \ar[r]_q & d          \\\\
-}$$
-{{% /example %}}
-
-{{% example title="$M$-作用をもつ集合の圏" %}}
-モノイド $M$ (を圏と見なしたもの)から$\mathbf{Set}$ への関手の圏
-$\[M,\mathbf{Set}\]$ を$M$-$\mathbf{Set}$ と書く。
-
-関手 $F:M\rightarrow\mathbf{Set}$ とはどんなものか考えると、
-$M$ は対象が1つの圏であるから、$\mathbf{Set}$ の1つの対象と対応するのでこの集合を $X$ とする。$M$ の各射(これはモノイドの元)事に、対応する関数 $X\rightarrow X$ が存在する。つまり、写像(もしくは演算)
-$$ \cdot: M\times X \rightarrow X$$
-が存在する。そして $F$ が関手であることから、$M$の単位元を $e$ とすると $F(e)=1_x$ である。これは
-
-- $M$ の単位元 $e$ と任意の $x\in X$ に対して $e\cdot x=x$
-
-と同値。そして、任意の $a,b\in M$ に対して $F(ab)=F(a)\circ F(b)$ であるというのは
-
-- 任意の $a,b\in M, x\in X$ に対して $a\cdot(b\cdot x)=(ab)\cdot x$
-
-と同値。これはつまり $M$ が $X$ への **モノイド作用(monoid act)**  になっている事を表す。
-
-すなわち $M$-$\mathbf{Set}$ とは $M$-作用を持つ集合が対象であり、それらの間の準同型写像が射である圏となる。 
-{{% /example %}}
-
-{{% example title="バンドルの圏" %}}
-離散圏 $I$ から $\mathbf{Set}$ への関手の圏 $\[I,\mathbf{Set}\]$ を **$I$の上のバンドルの圏 (categories of bundles over $I$)** といい $\mathbf{Bn}(I)$ と書く。
-
-一般に、集合 $I,X$ と関数 $p:I\rightarrow X$ の三つ組 $(I,p,X)$ をバンドルといい、$\mathbf{Bn}(I)$ はこのバンドルを対象とする圏である。
-
-もしくは $I$ を添字集合とする集合族 $\\{X_i\\}\_{i\in I}$ を対象とし、関数の族 $\\{X_i\rightarrow Y_i\\}_{i\in i}$ を射とする圏とみなすこともできる。
-{{% /example %}}
 
 ### スライス圏・部分対象
 
