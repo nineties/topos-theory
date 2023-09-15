@@ -221,11 +221,11 @@ x \ar[r]\_f & y \ar[r]^{1_y} & y
 
 そして、この部分対象関手を表現する対象及び普遍要素が部分対象分類子である。
 
-{{% proposition label="prop.representability-of-sub" %}}
+{{% theorem label="prop.representability-of-sub" %}}
 圏 $\mathcal{C}$ が有限完備かつ局所小である時、部分対象関手 $\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることと、部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ が存在することは同値。
 
 また、$\mathrm{Sub}$ を表現する対象が $\Omega$ であり、普遍要素が $[\mathrm{true}:1 \rightarrow\Omega]\in\mathrm{Sub}(\Omega)$ である。
-{{% /proposition %}}
+{{% /theorem %}}
 
 {{% details 証明 %}}
 ($\mathrm{Sub}$が表現可能 $\Rightarrow$ 部分対象分類子を持つ)
@@ -315,23 +315,14 @@ $$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_
 | 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$                                 | $[\mathrm{true}: 1\rightarrow\Omega]$ |
 
 そして、(驚くべき事ではあるが)初等トポスには任意の有限余極限も存在する。
-この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、例えば余積 $a+b$ に関して自然な同型
+この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、{{< ref prop.ccc-is-distributive >}}より分配圏となるので、例えば
+
 $$ \Omega^{a+b}\simeq \Omega^a \times \Omega^b$$
-が存在する({{< ref prop.ccc-is-distributive >}})。
 
-### 層
+といった同型が存在する。この右辺はカルテシアン閉圏では任意の$a,b$ に対して必ず存在するので、逆に
 
-前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の部分対象分類子 $\Omega: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ について考える。米田の補題より、任意の $c\in\mathcal{C}$ について
+$$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 
-$$ \Omega(c) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) $$
-
-であり、{{< ref prop.representability-of-sub >}} より
-
-$$ \Omega(c) \simeq \mathrm{Sub}(\mathcal{Y}(c)) $$
-
-である。この $\Omega(c)$ を $c$ の上の層という。
-
-{{% definition title="層" %}}
-{{% /definition %}}
-
+を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
+より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 

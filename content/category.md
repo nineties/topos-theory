@@ -927,11 +927,11 @@ $\varinjlim F$ は共変関手 $\mathcal{C}^{\mathcal{J}}(F, \Delta(-)): \mathca
 
 また、以下の命題により表現可能関手による定義と具体的な射を用いた定義は同値となる事がわかる。
 
-{{% proposition label="prop.representable-to-diagram" %}}
+{{% theorem label="prop.representable-to-diagram" %}}
 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素である事は次と同値。
 
 任意の対象 $a\in\mathcal{C}$ と元 $x\in F(a)$ に対して、射 $f:a\rightarrow\alpha$ が一意に存在して $x = F(f)(\xi)$ である。
-{{% /proposition %}}
+{{% /theorem %}}
 {{% details 証明 %}}
 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素であるとする。
 すなわち任意の $a$ に対して自然な同型
@@ -1267,9 +1267,9 @@ $$\mathcal{C}(x, a^0) \simeq \mathcal{C}(x\times 0, a) \simeq \mathcal{C}(0, a)$
 カルテシアン閉圏は集合のような対象と、それらの間の写像のようなものが一つの圏の中に同居しているものである。例えば $\mathbf{Set}$ や $\mathbf{Cat}$ はカルテシアン閉圏である。
 また、論理学における **含意(implication)** $P\Rightarrow Q$ も指数対象で表す事ができ、カルテシアン閉圏が主要な舞台となる。
 
-{{% proposition label="prop.ccc-is-distributive" %}}
+{{% theorem label="prop.ccc-is-distributive" %}}
 任意の有限余積を持つカルテシアン閉圏は分配圏である。
-{{% /proposition %}}
+{{% /theorem %}}
 {{% details 証明 %}}
 任意の $x\in\mathcal{C}$ について自然な同型
 $$\begin{align\*}
@@ -1349,7 +1349,7 @@ $$ \eta_a = \overline{1\_{F(a)}},\quad \epsilon_b = \overline{1\_{G(b)}} $$
 
 ### 三角等式
 
-{{% proposition label="prop.triangle" %}}
+{{% theorem label="prop.triangle" %}}
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
 
 $$\xymatrix{
@@ -1357,7 +1357,7 @@ F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \a
                                           & F                       &                                            & G
 }$$
 
-{{% /proposition %}}
+{{% /theorem %}}
 {{% details 証明 %}}
 ({{< refn def.adjunction >}}, {{< refn def.unit >}} $\Rightarrow$ {{< ref prop.triangle >}}の三角等式)
 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{C}$ の間に随伴関係があるとする。また、 $\eta,\epsilon $ を単位射、余単位射とする。
