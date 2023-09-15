@@ -978,11 +978,11 @@ $$ \mathcal{Y}(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\
 
 反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
 
-{{% definition title="米田の補題" %}}
+{{% theorem title="米田の補題" %}}
 局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
 $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
 が成り立つ。
-{{% /definition %}}
+{{% /theorem %}}
 
 米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
 
@@ -1267,7 +1267,7 @@ $$\mathcal{C}(x, a^0) \simeq \mathcal{C}(x\times 0, a) \simeq \mathcal{C}(0, a)$
 カルテシアン閉圏は集合のような対象と、それらの間の写像のようなものが一つの圏の中に同居しているものである。例えば $\mathbf{Set}$ や $\mathbf{Cat}$ はカルテシアン閉圏である。
 また、論理学における **含意(implication)** $P\Rightarrow Q$ も指数対象で表す事ができ、カルテシアン閉圏が主要な舞台となる。
 
-{{% proposition %}}
+{{% proposition label="prop.ccc-is-distributive" %}}
 任意の有限余積を持つカルテシアン閉圏は分配圏である。
 {{% /proposition %}}
 {{% details 証明 %}}
