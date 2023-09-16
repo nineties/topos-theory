@@ -333,7 +333,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 
 ### ハイティング代数の定義
 
-すでに述べたが、対象 $a,b$ の間に射が高々一つしかな圏 $\mathcal{C}$ を **半順序集合(partially ordered set)** という。射$a\rightarrow b$ を $a\leq b$ と書くと、半順序集合の公理
+すでに述べたが、対象 $a,b$ の間に射が高々一つしかない圏 $\mathcal{C}$ を **半順序集合(partially ordered set, poset)** という。射$a\rightarrow b$ を $a\leq b$ と書くと、半順序集合の公理
 
 - 反射則: 任意の $a\in\mathcal{C}$ について $a\leq a$
 - 推移則: $a\leq b$ かつ $b\leq c$ ならば $a\leq c$
@@ -348,11 +348,12 @@ $a,b$ の積・余積をそれぞれ $a\wedge b, a\vee b$ と書く。束であ�
 - **交換則(commutativity)** : $a\wedge b = b \wedge a$, $a\vee b = b\vee a$
 - **結合則(associativity)** : $a\wedge(b\wedge c) = (a\wedge b)\wedge c$, $a\vee(b\vee c) = (a\vee b)\vee c$
 - **吸収則(absorption law)** : $a\wedge(a\vee b) = a\vee(a\wedge b) = a$
+- **冪等則(idempotent law)** : $a\wedge a = a\vee a = a$
 {{% /proposition %}}
 {{% details 証明 %}}
-交換則・吸収則は有限積・余積を持つ圏について一般に成り立つ性質であるので、吸収則と冪等則について示す。
+交換則・吸収則は有限積・余積について一般に成り立つ性質であるので、吸収則と冪等則について示す。
 
-$a\leq a$ と $a\leq a\vee b$ より $a\leq a\wedge(a\vee b)$ である。これと $a\wedge(a\vee b)\leq a$ より $a\wedge(a\vee b)=a$。もう一方も同様。(証明終)
+$a\leq a$ と $a\leq a\vee b$ より $a\leq a\wedge(a\vee b)$ である。これと $a\wedge(a\vee b)\leq a$ より $a\wedge(a\vee b)=a$。もう一方も同様。そして $\bot$ が始対象であるから $a\vee\bot = a$ であるので $a\wedge a = a\wedge(a\vee\bot) = a$。もう一方も同様。$\square$
 {{% /details %}}
 
 {{% definition title="ハイティング代数" %}}
