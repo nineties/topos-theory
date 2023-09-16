@@ -326,3 +326,161 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
 より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 
+## ハイティング代数
+
+トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
+具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。以後、ハイティング代数を圏論的に定義した後に、トポスがハイティング代数である事を示す。
+
+### ハイティング代数の定義
+
+すでに述べたが、対象 $a,b$ の間に射が高々一つしかな圏 $\mathcal{C}$ を **半順序集合(partially ordered set)** という。射$a\rightarrow b$ を $a\leq b$ と書くと、半順序集合の公理
+
+- 反射則: 任意の $a\in\mathcal{C}$ について $a\leq a$
+- 推移則: $a\leq b$ かつ $b\leq c$ ならば $a\leq c$
+- 反対称則: $a\leq b$ かつ $b\leq a$ ならば $a = a$
+
+を満たす事が分かる。半順序集合であって、任意の有限積と有限余積を持つ圏を **束(lattice)** という。
+$a,b$ の積・余積をそれぞれ $a\wedge b, a\vee b$ と書く。束であり、始対象と終対象を持つものを **有界束(bounded lattice)** という。始対象を $\bot$、終対象を $\top$ と書く。
+
+束について、以下の性質が成り立つ。
+{{% proposition %}}
+圏 $\mathcal{C}$ が束であるならば、任意の $a,b,c\in\mathcal{C}$ について以下が成り立つ。
+- **交換則(commutativity)** : $a\wedge b = b \wedge a$, $a\vee b = b\vee a$
+- **結合則(associativity)** : $a\wedge(b\wedge c) = (a\wedge b)\wedge c$, $a\vee(b\vee c) = (a\vee b)\vee c$
+- **吸収則(absorption law)** : $a\wedge(a\vee b) = a\vee(a\wedge b) = a$
+{{% /proposition %}}
+{{% details 証明 %}}
+交換則・吸収則は有限積・余積を持つ圏について一般に成り立つ性質であるので、吸収則と冪等則について示す。
+
+$a\leq a$ と $a\leq a\vee b$ より $a\leq a\wedge(a\vee b)$ である。これと $a\wedge(a\vee b)\leq a$ より $a\wedge(a\vee b)=a$。もう一方も同様。(証明終)
+{{% /details %}}
+
+{{% definition title="ハイティング代数" %}}
+圏 $\mathcal{H}$ が有界束でありかつカルテシアン閉圏である時、これを **ハイティング代数(Heyting algebra)** という。
+
+指数対象 $b^a$ を $a\Rightarrow b$ と書く。
+また、$a\Rightarrow\bot$ を $a$ の **擬似補(pseudo complement)** といい $\neg a$ と書く。
+{{% /definition %}}
+
+ハイティング代数の指数対象とは、$b,c$ について自然な同型
+$ \mathcal{H}(c\wedge a, b) \simeq \mathcal{H}(c, a\Rightarrow b) $
+が存在するものであるが、両辺とも射は1つしかないので
+$c\wedge a \leq b$ と $c\leq (a\Rightarrow b)$ が同値となるような対象の事である。
+
+冒頭でも述べたように、ハイティング代数は直観論理の意味論として用いられる。その場合は
+$\wedge, \vee$ を「かつ」「または」、$\Rightarrow$ を「ならば」、$\neg$ を「でない」
+と解釈する。
+
+
+{{% proposition %}}
+ハイティング代数 $\mathcal{H}$ は分配束である。すなわち任意の$a,b,c\in\mathcal{H}$ について
+$$a\wedge(b\vee c) = (a\wedge b)\vee(a\wedge c)$$
+$$a\vee(b\wedge c) = (a\vee b)\wedge(a\vee c)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$a\wedge b \leq a$ かつ $a\wedge b \leq b\vee c$ より $a\wedge b \leq a\wedge(b\vee c)$ である。
+同様にして $a\wedge c \leq a\wedge(b\vee c)$ でもある。よって
+$$(a\wedge b)\vee(a\wedge c)\leq a\wedge(b\vee c) $$
+である。
+
+また$a\wedge b\leq (a\wedge b)\vee(a\wedge c)$ より $b\leq (a\Rightarrow (a\wedge b)\vee(a\wedge c))$ である。
+同様に $c\leq (a\Rightarrow (a\wedge b)\vee(a\wedge c))$ であるので
+$$ b\vee c\leq (a\Rightarrow(a\wedge b)\vee(a\wedge c))$$
+である。従って
+$$ a\wedge(b\vee c)\leq (a\wedge b)\vee(a\wedge c)$$
+である。以上より
+$$a\wedge(b\vee c) = (a\wedge b)\vee(a\wedge c)$$
+である。また、これを用いてもう一方も示される。
+
+$$ \begin{align\*}
+  (a\vee b)\wedge(a\vee c) &= ((a\vee b)\wedge a)\vee((a\vee b)\wedge c) \\\\
+                           &= a\vee((a\vee b)\wedge c) \\\\
+                           &= a\vee((a\wedge c)\vee(b\wedge c)) \\\\
+                           &= (a\vee(a\wedge c))\vee(b\wedge c) \\\\
+                           &= a\vee(b\wedge c)
+\end{align\*}$$
+
+(証明終)
+{{% /details %}}
+
+{{% proposition title="ド・モルガンの法則" %}}
+ハイティング代数では以下の **ド・モルガンの法則(De Morgan's law)** が成り立つ。
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+
+ただし、以下は **成り立つとは限らない** 。
+$$\neg a\vee \neg b = \neg(a \wedge b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+まず、任意の $a\in\mathcal{H}$ について $a\wedge\neg a=\bot$ である事を示す。
+$(a\Rightarrow\bot)\leq(a\Rightarrow \bot)$ より$a\wedge(a\Rightarrow \bot)\leq \bot$ すなわち $a\wedge\neg a\leq\bot$ である。一方 $\bot$ は始対象であるから $\bot\leq a\wedge \neg a$ である。従って $a\wedge \neg a=\bot$ である。
+
+これを用いて
+$$(a\vee b)\wedge (\neg a\wedge \neg b) = (a\wedge \neg a \wedge \neg b)\vee (b\wedge \neg a \wedge \neg b)=(\bot\wedge b)\vee(\bot\wedge b) = \bot\vee\bot = \bot$$
+より$ \neg a\wedge \neg b \leq (a\vee b\Rightarrow\bot)$ すなわち $\neg a\wedge\neg b\leq\neg(a\vee b)$ である。
+
+また、 $a\leq a\vee b$ より
+$$ a\wedge\neg(a\vee b) \leq (a\vee b)\wedge\neg(a\vee b) = \bot$$
+であるので $\neg(a\vee b)\leq (a\Rightarrow\bot)$ すなわち $\neg(a\vee b)\leq \neg a$ である。同様にして $\neg (a\vee b)\leq \neg b$ であるので $\neg(a\vee b)\leq \neg a\wedge\neg b$ である。
+
+従って
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+である。(証明終)
+{{% /details %}}
+
+{{% example %}}
+位相空間 $X$ の開集合系 $\mathcal{O}(X)$ を包含関係によって半順序集合と見なしたものはハイティング代数となる。
+{{% /example %}}
+
+開集合系の公理から有界束である事がすぐ分かる。そして開集合 $U,V$ に対して
+$U\cap W\subseteq V$ を満たす全ての開集合 $W$ の合併が指数対象 $V^U$ となる。そのような合併の存在は開集合の公理から保証される。
+
+また、開集合 $U$ の擬似補は $U\cap W\subseteq\emptyset$ すなわち $U$ と交わらない全ての開集合 $W$ の和集合となる。
+
+ハイティング代数のうち、 排中律を満たすものをブール代数という。
+
+{{% definition title="ブール代数" %}}
+ハイティング代数であり、任意の対象 $a$ について
+$$a \vee \neg a = \top $$
+が成り立つものを **ブール代数(Boolean algebra)** という。
+{{% /definition %}}
+
+{{% proposition %}}
+ブール代数において **二重否定除去則(law of double negation elimination)** が成り立つ。
+$$ \neg\neg a=a $$
+{{% /proposition %}}
+{{% details 証明 %}}
+\begin{align\*}
+&\neg\neg a= \neg\neg a\wedge(\neg a\vee a)=(\neg\neg a\wedge \neg a)\vee (\neg\neg a\wedge a) \\\\
+&=\neg\neg a\wedge a= (\neg\neg a\wedge a)\vee(\neg a\wedge a) = (\neg\neg a\vee \neg a)\wedge a= a
+\end{align\*}
+(証明終)
+{{% /details %}}
+
+{{% proposition %}}
+ブール代数において、ド・モルガンの法則が成り立つ。
+$$\neg a\wedge \neg b = \neg(a \vee b)$$
+$$\neg a\vee \neg b = \neg(a \wedge b)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+1つ目はハイティング代数である事から成立。2つ目は二重否定除去則を使って
+$$ \neg a\vee\neg b = \neg\neg(\neg a\vee\neg b) = \neg(\neg\neg a\wedge\neg\neg b) = \neg(a\wedge b)$$
+(証明終)
+{{% /details %}}
+
+{{% proposition %}}
+$\mathcal{B}$ がブール代数であるならば、任意の $a,b\in\mathcal{B}$ について
+$$ (a\Rightarrow b) = \neg a\vee b $$
+{{% /proposition %}}
+{{% details 証明 %}}
+$a\wedge c\leq b$ であるならば、
+$$ c\leq \neg a\vee c = (\neg a\vee a)\wedge (\neg a\vee c) = \neg a\vee(a\wedge c) \leq \neg a\vee b$$
+であり、 $c\leq\neg a\vee b$ であるならば
+$$ a\wedge c \leq a\wedge (\neg a\vee b) = (a\wedge \neg a)\vee(a\wedge b) = a\wedge b \leq b$$
+であるので、 $\neg a\vee b$ は指数対象 $b^a$ である。指数対象は同型を除いて一意であるので
+$$ (a\Rightarrow b) \simeq \neg a\vee b$$
+であるが、半順序集合において同型な対象は一致するので
+$$ (a\Rightarrow b) = \neg a\vee b$$
+である。(証明終)
+{{% /details %}}
+
+
