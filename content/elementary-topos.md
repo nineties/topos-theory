@@ -297,7 +297,7 @@ $$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_
 である。
 {{% /details %}}
 
-### 初等トポスの定義
+### 初等トポス
 
 以上より初等トポスを定義する事ができる。
 
@@ -326,7 +326,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
 より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 
-## トポスと論理
+## ハイティング代数
 
 トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
 具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。以後、ハイティング代数を圏論的に定義した後に、トポスがハイティング代数である事を示す。
@@ -363,10 +363,10 @@ $a\leq a$ と $a\leq a\vee b$ より $a\leq a\wedge(a\vee b)$ である。これ
 また、$a\Rightarrow\bot$ を $a$ の **擬似補(pseudo complement)** といい $\neg a$ と書く。
 {{% /definition %}}
 
-ハイティング代数の指数対象とは、$b,c$ について自然な同型
+指数対象とは、$b,c$ について自然な同型
 $ \mathcal{H}(c\wedge a, b) \simeq \mathcal{H}(c, a\Rightarrow b) $
-が存在するものであるが、両辺とも射は1つしかないので
-$c\wedge a \leq b$ と $c\leq (a\Rightarrow b)$ が同値となるような対象の事である。
+が存在するものであったが、$\mathcal{H}$ においては両辺とも射は1つしかないので
+$c\wedge a \leq b$ と $c\leq (a\Rightarrow b)$ が同値となるような対象のことである。
 
 冒頭でも述べたように、ハイティング代数は直観論理の意味論として用いられる。その場合は
 $\wedge, \vee$ を「かつ」「または」、$\Rightarrow$ を「ならば」、$\neg$ を「でない」
@@ -400,8 +400,7 @@ $$ \begin{align\*}
                            &= (a\vee(a\wedge c))\vee(b\wedge c) \\\\
                            &= a\vee(b\wedge c)
 \end{align\*}$$
-
-(証明終)
+$\square$
 {{% /details %}}
 
 {{% proposition title="ド・モルガンの法則" %}}
@@ -425,7 +424,7 @@ $$ a\wedge\neg(a\vee b) \leq (a\vee b)\wedge\neg(a\vee b) = \bot$$
 
 従って
 $$\neg a\wedge \neg b = \neg(a \vee b)$$
-である。(証明終)
+である。$\square$
 {{% /details %}}
 
 {{% example %}}
@@ -437,7 +436,10 @@ $U\cap W\subseteq V$ を満たす全ての開集合 $W$ の合併が指数対象
 
 また、開集合 $U$ の擬似補は $U\cap W\subseteq\emptyset$ すなわち $U$ と交わらない全ての開集合 $W$ の和集合となる。
 
+### ブール代数
+
 ハイティング代数のうち、 排中律を満たすものをブール代数という。
+古典論理の意味論に用いられものがブール代数である。
 
 {{% definition title="ブール代数" %}}
 ハイティング代数であり、任意の対象 $a$ について
@@ -451,10 +453,10 @@ $$ \neg\neg a=a $$
 {{% /proposition %}}
 {{% details 証明 %}}
 \begin{align\*}
-&\neg\neg a= \neg\neg a\wedge(\neg a\vee a)=(\neg\neg a\wedge \neg a)\vee (\neg\neg a\wedge a) \\\\
-&=\neg\neg a\wedge a= (\neg\neg a\wedge a)\vee(\neg a\wedge a) = (\neg\neg a\vee \neg a)\wedge a= a
+&\neg\neg a= \neg\neg a\wedge(\neg a\vee a)=(\neg\neg a\wedge \neg a)\vee (\neg\neg a\wedge a) =\bot\vee(\neg\neg a\wedge a) \\\\
+&= (\neg a\wedge a)\vee(\neg\neg a\wedge a) = (\neg a\vee \neg\neg a)\wedge a= \top\wedge a = a
 \end{align\*}
-(証明終)
+$\square$
 {{% /details %}}
 
 {{% proposition %}}
@@ -465,7 +467,7 @@ $$\neg a\vee \neg b = \neg(a \wedge b)$$
 {{% details 証明 %}}
 1つ目はハイティング代数である事から成立。2つ目は二重否定除去則を使って
 $$ \neg a\vee\neg b = \neg\neg(\neg a\vee\neg b) = \neg(\neg\neg a\wedge\neg\neg b) = \neg(a\wedge b)$$
-(証明終)
+$\square$
 {{% /details %}}
 
 {{% proposition %}}
@@ -481,7 +483,7 @@ $$ a\wedge c \leq a\wedge (\neg a\vee b) = (a\wedge \neg a)\vee(a\wedge b) = a\w
 $$ (a\Rightarrow b) \simeq \neg a\vee b$$
 であるが、半順序集合において同型な対象は一致するので
 $$ (a\Rightarrow b) = \neg a\vee b$$
-である。(証明終)
+である。$\square$
 {{% /details %}}
 
 
