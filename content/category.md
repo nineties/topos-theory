@@ -61,7 +61,7 @@ $$ h\circ (g\circ f) = (h\circ g)\circ f$$
 - $\mathbf{1}$: 対象が1つで、恒等射しか存在しない圏
 
 圏論では射の等式の代わりに **可換図式(commutative diagram)**  を用いる事が多い。
-図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の捕り方によらず一致するということ。
+図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の選び方によらず一致するということ。
 例えば $g\circ f=h$ であるということを「以下の図式が可換である」などと表現する。
 
 $$
@@ -88,7 +88,7 @@ $$
 
 {{% definition title="同型" %}}
 $f: a\rightarrow b,\ g: b\rightarrow a$ が
-$$ g\circ f=1_a,\ f\circ g=b $$
+$$ g\circ f=1_a,\ f\circ g=1_b $$
 を満たす時、 $f,g$ を **同型射(isomorphism)** という。 $g$ を $f$ の **逆射(inverse morphism)** と呼び $f^{-1}$ と書く。
 
 $$
