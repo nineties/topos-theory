@@ -302,7 +302,7 @@ $$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_
 以上より初等トポスを定義する事ができる。
 
 {{% definition title="初等トポス" %}}
-有限完備かつカルテシアン閉であり、部分対象分類子が存在する圏を **初等トポス(elementary topos)** という。(toposの複数形はtopoiと書く。)
+有限完備かつカルテシアン閉であり、部分対象分類子が存在する圏を **初等トポス(elementary topos)** 、もしくは単に **トポス(topos)** という。(toposの複数形はtopoiと書く。)
 {{% /definition %}}
 
 すなわち、初等トポスとは任意の有限極限、指数対象、部分対象分類子が存在する圏である。そして任意の有限極限は有限積とイコライザから構成されるので、有限積・イコライザ・指数対象・部分対象分類子が存在する圏とも言える。例えば $\mathbf{Set}$ は初等トポスであり、まとめると以下のようになる。
@@ -315,7 +315,7 @@ $$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_
 | 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$                                 | $[\mathrm{true}: 1\rightarrow\Omega]$ |
 
 そして、(驚くべき事ではあるが)初等トポスには任意の有限余極限も存在する。
-この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、{{< ref prop.ccc-is-distributive >}}より分配圏となるので、例えば
+この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、 {{< ref prop.ccc-is-distributive >}} より分配圏となるので、例えば
 
 $$ \Omega^{a+b}\simeq \Omega^a \times \Omega^b$$
 
@@ -329,7 +329,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 ## ハイティング代数
 
 トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
-具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。以後、ハイティング代数を圏論的に定義した後に、トポスがハイティング代数である事を示す。
+具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。トポスとの具体的な関わりについては後の章で説明するが、ここではハイティング代数の基本を紹介する。
 
 ### ハイティング代数
 
@@ -489,4 +489,183 @@ $$ (a\Rightarrow b) = \neg a\vee b$$
 である。$\square$
 {{% /details %}}
 
+## 層
 
+**前層(presheaf)** 及び **層(sheaf)** は元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念であるが、その圏論的一般化は非常に重要である。
+
+### 前層の圏
+
+{{% definition title="前層" %}}
+小圏 $\mathcal{C}$ の上の **前層(presheaf)** とは反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事である。
+
+また、前層を対象とする関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい $\mathrm{PSh}(\mathcal{C})$ と書く。
+{{% /definition %}}
+
+前層の圏はとても良い性質を持つ。
+
+{{% proposition %}}
+前層の圏は双完備である。
+{{% /proposition %}}
+
+これは以下の定理と $\mathbf{Set}$ が双完備であることから示される。
+
+{{% theorem title="関手圏の極限は点別に計算可能" label="th.limits-of-functor-categories" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
+$a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
+
+$$ \left(\varprojlim\_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim_{i\in\mathcal{J}} F(i)(a) $$
+
+である。余極限についても同様。
+{{% /theorem %}}
+{{% details 証明 %}}
+
+全ての $a\in\mathcal{C}$ について $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が存在するとする。
+$\mathcal{J}$ の射 $f: i\rightarrow j$ に対応する自然変換 $F(f):F(i)\rightarrow F(j)$ を $\mathcal{C}$ の射 $u: a\rightarrow b$ についてcomponent-wiseに描くと以下のようになり、これが全ての $f:i\rightarrow j$ と $u:a\rightarrow b$ について可換となる。
+
+$$ \xymatrix{
+F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)}  & F(i)(b) \ar[d]^{F(f)_b} \\\\
+F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)
+}$$
+
+ここで $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が存在するので、下図のような極限錐がそれぞれ存在する。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
+& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                &
+}$$
+
+ここで $\varprojlim\_{i\in\mathcal{J}}F(i)(a)$ の錐の側面に各 $F(i)(u)$ (図の水平の射) を合成したものは $F(-)(b):\mathcal{J}\rightarrow\mathcal{D}$ への錐となるので、下図が可換となる射 $\bar{u}: \varprojlim\_{i\in\mathcal{J}}F(i)(a)\rightarrow\varprojlim\_{i\in\mathcal{J}}F(i)(b)$ が唯一つ存在。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
+& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                &
+}$$
+
+そこで、$\mathcal{C}$ の各対象 $a$ に $\varprojlim\_{i\in\mathcal{J}}F(i)(a)$ を、射 $u:a\rightarrow b$ に $\bar{u}$ を対応させる関係を考えるとこれは関手 $G: \mathcal{C}\rightarrow\mathcal{D}$ となる。これが $\varprojlim\_{i\in\mathcal{J}}F(i)$ である事を示す。
+
+そこで任意の $H:\mathcal{C}\rightarrow\mathcal{D}$ から $F$ への錐を考える。
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
+& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                & \\\\
+H(a) \ar[ru] \ar@/^1pc/[ruu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu]
+}$$
+
+この左側だけに注目すると $\varprojlim_{i\in\mathcal{J}}$ についての普遍性より以下を可換にする射 $H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)$ が一意に存在。右側も同様。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
+& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                & \\\\
+H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu] \ar@{.>}[uuu]
+}$$
+
+この射の族 $\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim\_{i\in\mathcal{J}}F(i)$ である。$\square$
+{{% /details %}}
+
+{{% proposition %}}
+前層の圏はカルテシアン閉圏である。
+
+前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
+$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q) $$
+である。
+{{% /proposition %}}
+{{% details 証明 %}}
+任意の $p,q,r\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ について、 $q,r$ に関して自然な同型
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
+が存在することを示せば良い。
+
+すなわち、自然変換 $\alpha: r\rightarrow q^p$ 、すなわち関数の族
+$\\{ \alpha_c: r(c) \rightarrow \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q)\\}\_{c\in\mathcal{C}}$
+と、自然変換 $\beta: r\times p\rightarrow q$ 、すなわち関数の族 $\\{\beta_c: r(c)\times p(c)\rightarrow q(c)\\}\_{c\in\mathcal{C}}$ の対応を考える。
+
+ここで、$x\in r(c), y\in p(c)$ に対して
+$$\phi(\alpha)\_c: (x, y) \longmapsto \alpha_c(x)\_c(1_c, y) $$
+$x\in r(c), d\in\mathcal{C}, f\in \mathcal{Y}(c)(d)\simeq\mathbf{Set}(d, c), z\in p(d)$ に対して
+$$\psi(\beta)\_c: x\longmapsto \\{(f, z) \longmapsto \beta_d(r(f)(x), z)\\}\_{d\in\mathcal{D}}$$
+
+とおくと
+
+$$ \psi\circ\phi(\alpha)\_c: x\longmapsto \\{(f, z) \longmapsto \alpha_d(r(f)(x))\_d(1_d, z)\\}\_{d\in\mathcal{D}}$$
+
+である。$\alpha$ は自然変換であるから以下が可換となるので
+
+$$\xymatrix{
+r(c) \ar[d]\_{r(f)} \ar[r]^-{\alpha_c} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q) \ar[d]^{-\circ(\mathcal{Y}(f)\times 1_p)} \\\\
+r(d)                \ar[r]^-{\alpha_d} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(d)\times p, q)
+}$$
+
+$$ \alpha_d(r(f)(x))\_d(1_d, z) = \alpha_c(x)\_d\circ(\mathcal{Y}(f)\times 1_p)(1_d, z) = \alpha_c(x)\_d(f,z)$$
+となるから、 $\psi\circ\phi(\alpha) = \alpha$ である。
+同様にして
+
+$$ \phi\circ\psi(\beta)\_c: (x,y) \longmapsto \beta_c(r(1_c)(x), y) = \beta_c(x,y) $$
+
+であるから $\phi\circ\psi(\beta) = \beta$ である。従って、以下は同型。
+$$ \phi: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\xrightarrow{\simeq}\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
+
+続いて、この同型の自然性を示す。 任意の $\sigma: r'\rightarrow r, \rho: q\rightarrow q'$ に対して、以下の可換性を示せば良い。
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p) \ar[r]^{\phi} \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma, \rho^p)} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q) \ar[d]^{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma\times p, \rho)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r',{q'}^p) \ar[r]^{\phi} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r'\times p, q')
+}$$
+
+任意の $\alpha: r\rightarrow q^p$ に対して、図式の右上を辿ったものの $c$-componentは
+
+$$(\rho\circ \phi(\alpha)\circ(\sigma\times 1_p))\_c: (x,y)\longmapsto \rho_c(\phi(\alpha)\_c(\sigma_c(x), y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c,y))$$
+
+である。左下を辿ったものは
+
+$$\phi(\rho^p\circ\alpha\circ\sigma)\_c: (x,y)\longmapsto (\rho^p\circ\alpha\circ\sigma)\_c(x)(1_c, y)=((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y)$$
+
+であり、
+$$\rho^p(f) = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, \rho)(f)=\rho \circ f\circ(\mathcal{Y}(-)\times 1_p) $$
+であるから
+
+$$((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y) = \rho\_c(\alpha_c(\sigma_c(x))(\mathcal{Y}(1_c),y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c, y))$$
+
+となる。以上より上記の図式は可換となる。$\square$
+{{% /details %}}
+
+続いてこれがトポスである事を示すが、その為の前準備として以下を示す。
+
+{{% proposition %}}
+部分対象の集合 $\mathrm{Sub}(a)$ は順序 $\leq$ に対して最大値をもち、その最大値は $[1_a]$ である。
+{{% /proposition %}}
+{{% details 証明 %}}
+まず $1_a: a\rightarrow a$ は(左簡約可能であるから)モノ射なので $[1_a] \in\mathrm{Sub}(a)$ である。そして、任意のモノ射 $m: x\hookrightarrow a$ に対して、以下が可換であるから $[m]\leq[1_a]$ である。 $\square$
+$$\xymatrix{
+              & a &          \\\\
+x \ar[ru]^m \ar[rr]^m & & a \ar[lu]\_{1_a}
+}$$
+{{% /details %}}
+
+{{% proposition %}}
+前層の圏はトポスである。
+
+部分対象分類子 $\Omega$ は
+$$\Omega(-) = \mathrm{Sub}(\mathcal{Y}(-))$$
+であり、射(自然変換) $\mathrm{true}:1 \rightarrow \Omega$ は
+$$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c) = [1\_{\mathcal{Y}(c)}]$$
+である。
+{{% /proposition %}}
+{{% details 証明 %}}
+まず、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象であるので
+$$ 1(c) = \\{\ast\\}$$
+とおく。
+
+$\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
+$$\xymatrix{
+A \ar[r] \ar@{^{(}->}[d]\_{m} & 1 \ar[d]^{\mathrm{true}} \\\\
+U \ar[r]^{\chi} & \Omega
+}$$
+すなわち、引き戻しは点別に計算できるので、各 $c\in\mathcal{C}$ について
+$$\xymatrix{
+A(c) \ar[r] \ar@{^{(}->}[d]\_{m_c} & \\{\ast\\} \ar[d]^{\mathrm{true}\_c} & \\\\
+U(c) \ar[r]^-{\chi_c} & \mathrm{Sub}(\mathcal{Y}(c))    & \text{in $\mathbf{Set}$}
+}$$
+が引き戻しとなるような $\chi_c$ が一意である事を示せば良い。
+
+{{% /details %}}
