@@ -629,7 +629,14 @@ $$((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y) = \rho\_c(\alpha_c(\sigma_c(x))(\
 となる。以上より上記の図式は可換となる。$\square$
 {{% /details %}}
 
-続いてこれがトポスである事を示すが、その為の前準備として以下を示す。
+### 層
+前層の圏はトポスであるのだが、その前準備として **層(sieve)** を導入する。
+
+{{% definition title="層" %}}
+小圏 $\mathcal{C}$ の対象 $c$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $c$ 上の **層(sieve)** という。
+{{% /definition %}}
+
+(TBD)
 
 {{% proposition %}}
 部分対象の集合 $\mathrm{Sub}(a)$ は順序 $\leq$ に対して最大値をもち、その最大値は $[1_a]$ である。
@@ -646,17 +653,21 @@ x \ar[ru]^m \ar[rr]^m & & a \ar[lu]\_{1_a}
 前層の圏はトポスである。
 
 部分対象分類子 $\Omega$ は
-$$\Omega(-) = \mathrm{Sub}(\mathcal{Y}(-))$$
+$$\Omega = \mathrm{Sub}(\mathcal{Y}(-))$$
 であり、射(自然変換) $\mathrm{true}:1 \rightarrow \Omega$ は
 $$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c) = [1\_{\mathcal{Y}(c)}]$$
 である。
 {{% /proposition %}}
 {{% details 証明 %}}
-まず、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象であるので
+まず、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで
 $$ 1(c) = \\{\ast\\}$$
 とおく。
 
-$\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
+部分対象分類子 $\Omega$ が存在するならば、米田の補題より
+$$ \Omega(c) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) $$
+であり、 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) \simeq \mathrm{Sub}(\mathcal{Y}(c))$ であるから、$\Omega=\mathrm{Sub}(\mathcal{Y}(-))$ でなければならない事が分かる。
+
+実際に $\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
 $$\xymatrix{
 A \ar[r] \ar@{^{(}->}[d]\_{m} & 1 \ar[d]^{\mathrm{true}} \\\\
 U \ar[r]^{\chi} & \Omega
@@ -667,5 +678,7 @@ A(c) \ar[r] \ar@{^{(}->}[d]\_{m_c} & \\{\ast\\} \ar[d]^{\mathrm{true}\_c} & \\\\
 U(c) \ar[r]^-{\chi_c} & \mathrm{Sub}(\mathcal{Y}(c))    & \text{in $\mathbf{Set}$}
 }$$
 が引き戻しとなるような $\chi_c$ が一意である事を示せば良い。
+
+$$ \chi_c\circ m_c = [1\_{\mathcal{Y}(c)}] $$
 
 {{% /details %}}
