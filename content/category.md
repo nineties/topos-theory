@@ -283,7 +283,7 @@ $\square$
 {{% /details %}}
 
 {{% definition title="反変Hom関手" %}}
-圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
 $\mathcal{C}(-,a):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は関手となる。
 - $\mathcal{C}(-,a)(b) = \mathcal{C}(b,a)$
 - $f:b\rightarrow c$ に対して
