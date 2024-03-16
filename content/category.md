@@ -135,14 +135,8 @@ $$ g\circ_{\mathcal{C}^\mathrm{op}}f = f\circ_{\mathcal{C}} g $$
 ある命題が圏 $\mathcal{C}$ で真であるとき、射の向きを全て逆にし合成の順序を入れ替えて得られる **双対命題(dual statement)** は圏 $\mathcal{C}^{\mathrm{op}}$ でも真である。
 {{% /theorem %}}
 
-$\mathcal{C}^{\mathrm{op}}$ の双対は $\mathcal{C}$ だから結局
-
-$$ \text{命題 $P$ が圏 $\mathcal{C}$ で真} \Leftrightarrow \text{$P$ の双対命題が $\mathcal{C}^{\mathrm{op}}$ で真} $$
-
-である。単純な原理であるが、圏論の言語での2つの双対命題は、それを「具体的な」圏で解釈したときには、非常に異なる(しかも同値ではない!)命題となる事がある。
+単純な原理であるが、圏論の言語での2つの双対命題は、それを「具体的な」圏で解釈したときには、非常に異なる(しかも同値ではない!)命題となる事がある。
 時折、通常の数学的命題の圏論の言語を用いた抽象的な証明を得ることが可能である。そのような場合は、双対原理を用いることで、元の文脈における双対バージョンの命題を得ることができる。
-
-### モノ射・エピ射
 
 双対な概念の例として、モノ射・エピ射を取り上げる。これらは単射・全射を抽象化したものである。また、トポス理論においては **部分対象(subobject)** を定義する為にモノ射が利用される。
 
@@ -252,54 +246,6 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 {{% definition title="定数関手" %}}
 関手 $\mathcal{C}\rightarrow\mathcal{D}$ であって、$\mathcal{C}$ の全ての対象をある対象 $a\in\mathcal{D}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{C}\rightarrow\mathcal{D}$ と書くこともある。
 {{% /definition %}}
-
-局所小圏 $\mathcal{C}$ では任意の $a,b\in\mathcal{C}$ について $\mathcal{C}(a, b)$ は集合になる。
-すなわち $\mathbf{Set}$ の対象になるので、例えば$a$ を固定すれば $b\longmapsto \mathcal{C}(a, b)$ という $\mathcal{C}$ から $\mathbf{Set}$ への対象の対応を得ることができる。$b$ を固定した場合も同様で、これらは **Hom関手(hom-functor)** と呼ばれ。
-
-{{% definition title="共変Hom関手" %}}
-局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
-$\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
-- $\mathcal{C}(a,-)(b) = \mathcal{C}(a,b)$
-- $f:b\rightarrow c$ に対して
-$$\mathcal{C}(f): \mathcal{C}(a,b) \ni g \mapsto f\circ g \in\mathcal{C}(a,c)$$
-
-$\mathcal{C}(a,-)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(a,-)$ とも書く。これを **共変Hom関手(covariant hom functor)** という。
-
-$$
-\xymatrix{
-            & a \ar[ld]_{\mathcal{C}(a,b)\ni g} \ar[rd]^{f\circ g\in\mathcal{C}(a,c)} &    \\\\
-b \ar[rr]^f &             & c
-}
-$$
-{{% /definition %}}
-
-{{% details 関手であることの証明 %}}
-任意の $a,b\in\mathcal{C}$, $f:a\rightarrow b$ について
-$$ \mathcal{C}(a,-)(1_b): f\longmapsto 1_b\circ f = f$$
-であるから $ \mathcal{C}(a,-)(1_b) = 1_{\mathcal{C}(a,b)} $
-また、任意の $f: b\rightarrow c, g:c\rightarrow d$ と $p:a\rightarrow b$ について
-$$ (\mathcal{C}(a,-)(g)\circ\mathcal{C}(a,-)(f))(p) = g\circ(f\circ p) = (g\circ f)\circ p = \mathcal{C}(a,-)(g\circ f)(p) $$
-$\square$
-{{% /details %}}
-
-{{% definition title="反変Hom関手" %}}
-局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
-$\mathcal{C}(-,a):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は関手となる。
-- $\mathcal{C}(-,a)(b) = \mathcal{C}(b,a)$
-- $f:b\rightarrow c$ に対して
-$$\mathcal{C}(f): \mathcal{C}(c,a) \ni g \mapsto g\circ f \in\mathcal{C}(b,a)$$
-
-$\mathcal{C}(-,a)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(-,a)$ とも書く。これを **反変Hom関手(contravariant hom functor)** という。
-
-$$
-\xymatrix{
-            & a \ar@{<-}[ld]_{\mathcal{C}(b,a)\ni g\circ f} \ar@{<-}[rd]^{g\in\mathcal{C}(c,a)} &    \\\\
-b \ar[rr]^f &             & c
-}
-$$
-{{% /definition %}}
-
-証明は共変Hom関手と同様なので省略。
 
 ### 関手の性質
 
@@ -427,8 +373,7 @@ $$\xymatrix{
 もう少し実践的な例をあげると、実数値の数ベクトル空間 $\mathbb{R}^n\ (n=0,1,\ldots)$ を対象とし線形写像を射とする圏 $\mathcal{C}$と、有限次元の実数係数ベクトル空間と線形写像の圏 $\mathcal{D}$ は同型ではないが同値となる。
 
 {{% proposition %}}
-選択公理を仮定すると、
-$$ \text{関手 $F$ が圏同値} \Leftrightarrow \text{関手 $F$ が充満忠実かつ本質的に全射} $$
+選択公理を仮定すると、関手 $F$ が圏同値であることと $F$ が充満忠実かつ本質的に全射であることは同値
 {{% /proposition %}}
 
 {{% details 証明 %}}
@@ -444,7 +389,7 @@ GF(a) \ar[d]\_{GF(f)} \ar@{<-}[r]^{\phi^{-1}_a} & a \ar[d]^{f} \\\\
 GF(b) \ar[r]\_{\phi_b} & b \\\\
 }$$
 
-また、任意の $g:F(a)\rightarrow F(b)$ についてこれを $G$ で移した $G(g):GF(a)\rightarrow GF(b)$ を $GF\simeq 1\_{\mathcal{C}}$ によって射 $a\rightarrow b$ と見なしたものを $f$ とする。すなわち$ f = \phi\_{b}\circ G(g)\circ \phi^{-1}\_{a} $とおく。これを変形して $G(g) = \phi_b^{-1}\circ f\circ\phi_a = GF(f)$ となるが、 $G$ は単射なので $g=F(f)$ となる。よって $F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は全射であるから $F$ は充満である。$\square$
+また、任意の $g:F(a)\rightarrow F(b)$ に対して $ f = \phi\_{b}\circ G(g)\circ \phi^{-1}\_{a} $とおくと、これを変形して $G(g) = \phi_b^{-1}\circ f\circ\phi_a = GF(f)$ となるが、 $F$ と同様にして $G$ も単射である事が分かるので $g=F(f)$ となる。よって $F:\mathcal{C}(a,b)\rightarrow\mathcal{D}(F(a),F(b))$ は全射であるから $F$ は充満である。$\square$
 
 ($\Leftarrow$)
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であるとする。
@@ -468,6 +413,371 @@ $$
 
 $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。$\square$
 {{% /details %}}
+
+## 普遍性
+
+本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。
+
+普遍性の説明には複数の方法があるが、ここではエミリー・リール(Emily Riehl)による **表現可能関手(representable functor)** を用いた説明を行う。
+
+### Hom関手
+
+局所小圏 $\mathcal{C}$ では任意の $a,b\in\mathcal{C}$ について $\mathcal{C}(a, b)$ は集合になる。
+すなわち $\mathbf{Set}$ の対象になるので、例えば$a$ を固定すれば $b\longmapsto \mathcal{C}(a, b)$ という $\mathcal{C}$ から $\mathbf{Set}$ への対象の対応を得ることができる。$b$ を固定した場合も同様で、これらは **Hom関手(hom-functor)** と呼ばれ。
+
+{{% definition title="共変Hom関手" %}}
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+$\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
+- $\mathcal{C}(a,-)(b) = \mathcal{C}(a,b)$
+- $f:b\rightarrow c$ に対して
+$$\mathcal{C}(f): \mathcal{C}(a,b) \ni g \mapsto f\circ g \in\mathcal{C}(a,c)$$
+
+$\mathcal{C}(a,-)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(a,-)$ とも書く。これを **共変Hom関手(covariant hom functor)** という。
+
+$$
+\xymatrix{
+            & a \ar[ld]_{\mathcal{C}(a,b)\ni g} \ar[rd]^{f\circ g\in\mathcal{C}(a,c)} &    \\\\
+b \ar[rr]^f &             & c
+}
+$$
+{{% /definition %}}
+
+{{% details 関手であることの証明 %}}
+任意の $a,b\in\mathcal{C}$, $f:a\rightarrow b$ について
+$$ \mathcal{C}(a,-)(1_b): f\longmapsto 1_b\circ f = f$$
+であるから $ \mathcal{C}(a,-)(1_b) = 1_{\mathcal{C}(a,b)} $
+また、任意の $f: b\rightarrow c, g:c\rightarrow d$ と $p:a\rightarrow b$ について
+$$ (\mathcal{C}(a,-)(g)\circ\mathcal{C}(a,-)(f))(p) = g\circ(f\circ p) = (g\circ f)\circ p = \mathcal{C}(a,-)(g\circ f)(p) $$
+$\square$
+{{% /details %}}
+
+{{% definition title="反変Hom関手" %}}
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
+$\mathcal{C}(-,a):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は関手となる。
+- $\mathcal{C}(-,a)(b) = \mathcal{C}(b,a)$
+- $f:b\rightarrow c$ に対して
+$$\mathcal{C}(f): \mathcal{C}(c,a) \ni g \mapsto g\circ f \in\mathcal{C}(b,a)$$
+
+$\mathcal{C}(-,a)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(-,a)$ とも書く。これを **反変Hom関手(contravariant hom functor)** という。
+
+$$
+\xymatrix{
+            & a \ar@{<-}[ld]_{\mathcal{C}(b,a)\ni g\circ f} \ar@{<-}[rd]^{g\in\mathcal{C}(c,a)} &    \\\\
+b \ar[rr]^f &             & c
+}
+$$
+{{% /definition %}}
+
+証明は共変Hom関手と同様なので省略。
+
+
+### 米田の補題
+
+表現可能関手の定義にあたって自然変換 $\mathcal{C}(-, a) \rightarrow F$ が考察されるが、この自然変換についての非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が普遍性によって、そして表現可能関手によって定められる為、米田の補題も様々な場面で利用されることになる。
+
+{{% definition title="米田埋め込み" %}}
+局所小圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
+$$ \mathcal{Y}(a) = \mathcal{C}(-, a) $$
+$$ \mathcal{Y}(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
+にて定めたものを **米田埋め込み(Yoneda embedding)** という。
+{{% /definition %}}
+
+反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
+
+{{% theorem title="米田の補題" %}}
+局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
+が成り立つ。
+{{% /theorem %}}
+
+米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
+
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(f), F)} & F(a) \ar[d]^{F(f)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b), F) \ar[r]^(.6){\simeq} & F(b)
+}$$
+
+$F$ について自然であるというのは、任意の $\rho:F\rightarrow G$ について以下が可換となる事である。
+
+$$\xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), G) \ar[r]^(.6){\simeq} & G(a)
+}$$
+
+{{% details 証明 %}}
+$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
+
+$$\xymatrix{
+\mathcal{C}(x, a) \ar[r]^{\alpha_x}  \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
+\mathcal{C}(y, a) \ar[r]\_{\alpha_y} & F(y)
+}$$
+
+すなわち、任意の $h:x\rightarrow a$ に対して
+$$ \alpha_y(h\circ f) = F(f)(\alpha_x(h)) $$
+である。ここで
+
+$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
+
+とおくと
+
+$$\psi\_{a,F}\circ\phi\_{a,F}(\alpha)(h) = F(h)(\alpha_a(1_a)) = \alpha_x(1_a\circ h) = \alpha_x(h)$$
+$$\phi\_{a,F}\circ\psi\_{a,F}(x) = F(1_a)(x) = 1\_{F(a)}(x) = x$$
+
+であるので $\phi\_{a,F},\psi\_{a,F}$ は同型写像。
+
+続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
+
+$$
+F(f)(\phi\_{a,F}(\alpha)) = F(f)(\alpha_a(1_a)) = \alpha_b(1_a\circ f) = \alpha_b(f)
+$$
+$$
+\phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) = \phi\_{b,F}(\alpha\circ \mathcal{C}(-, f)) = (\alpha_b\circ\mathcal{C}(b, f))(1_b) = \alpha_b(f\circ 1_b) = \alpha_b(f)
+$$
+
+より、
+$F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) $ であるから、
+$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
+
+$$
+\rho_a(\phi\_{a,F}(\alpha)) = \rho_a(\alpha_a(1_a)) = \rho_a\circ\alpha_a(1_a)
+$$
+$$
+\phi\_{a,G}(\rho\circ\alpha) = \rho_a\circ\alpha_a(1_a)
+$$
+
+より$\rho_a(\phi\_{a,F}(\alpha)) =\phi\_{a,G}(\rho\circ\alpha)$ であるから $F$ についても自然。 $\square$
+{{% /details %}}
+
+### 米田埋め込みの性質
+
+米田埋め込みが"埋め込み"と呼ばれるのに相応しいのは以下の命題より。
+
+{{% proposition %}}
+米田埋め込みは忠実充満
+{{% /proposition %}}
+{{% details 証明 %}}
+米田の補題より、任意の $a,b\in\mathcal{C}$ について自然な全単射
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq \mathcal{Y}(b)(a)=\mathcal{C}(a,b) $$
+が存在する。 $\square$
+{{% /details %}}
+
+従って {{< ref prop.embedding >}} より
+$$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
+である。 米田埋め込みの双対 $\mathcal{C}(a, -): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}^{\mathcal{C}}$ についても全く同様であり、 **米田の原理(Yoneda Principle)** と呼ばれる以下の命題を得る。
+
+{{% proposition title="米田の原理" %}}
+局所小圏 $\mathcal{C}$ の対象 $a,b$ について
+$$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrightarrow\ \mathcal{C}(a, -)\simeq\mathcal{C}(b, -)$$
+{{% /proposition %}}
+
+表現可能関手を表現する対象が同型を除いて一意であること({{< ref prop.representing-object-is-unique >}})もこれから分かる。
+
+{{% proposition %}}
+米田埋め込みは極限を保つ。すなわち自然同型
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
+が存在する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$x\in\mathcal{C}$ について自然な同型
+$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
+が存在する。最後の同型は米田の原理による。
+ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
+$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
+\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
+$$
+であり、米田の補題よりこれは
+$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
+と同型。したがって
+$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
+であり、以上の同型は全て $x$ について自然であるので
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
+となる。$\square$
+{{% /details %}}
+
+この命題の具体例をいくつか並べてみると以下のような等式を得る。
+
+{{% proposition %}}
+
+$$\begin{align\*}
+\mathcal{C}(x, 1) &\simeq 1 \\\\
+\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
+\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
+\end{align\*}$$
+これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
+$$\begin{align\*}
+\mathcal{C}(0, x) &\simeq 1 \\\\
+\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
+\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
+\end{align\*}$$
+{{% /proposition %}}
+
+また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
+
+{{% proposition %}}
+$$\begin{align\*}
+a \times 1 &\simeq a \\\\
+a \times b &\simeq b \times a \\\\
+a + 0 & \simeq a \\\\
+a + b &\simeq b + a
+\end{align\*}$$
+{{% /proposition %}}
+などである。例えば1つ目は
+$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
+が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
+
+代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
+
+
+### 表現可能関手
+
+{{% definition title="表現可能関手" %}}
+局所小圏 $\mathcal{C}$ から $\mathbf{Set}$ への反変関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が、ある $a\in\mathcal{C}$ について
+$$ F\simeq\mathcal{C}(-, a) $$
+である時、 $F$ を **表現可能関手(representable functor**) といい、 $\mathcal{C}(-, a)$ を $F$ の **表現(representation)** 、$a$ を $F$ を **表現する対象(representing object)** という。
+
+同様に $\mathcal{C}(a, -)$ と自然同型である関手を **余表現可能関手(co-representable functor)** もしくはこれも表現可能関手という。
+{{% /definition %}}
+
+
+添字圏が $\mathcal{J}$ の時の圏 $\mathcal{C}$ における $x$ から $U$ への錐全体の集合を考えてみる。これは$\Delta(x)$ から $U$ への自然変換の集合、すなわち $\mathcal{C}^{\mathcal{J}}$ の射 $\Delta(x)\rightarrow U$ の集合
+$$\mathcal{C}^{\mathcal{J}}(\Delta(x), U)$$
+である。ここで $\varprojlim U$ が存在する場合には、任意の錐 $\Delta(x)\rightarrow U$ は極限錐 $\Delta(\varprojlim U)\rightarrow U$ と唯一の射 $x\rightarrow\varprojlim U$ を合成して得ることができるので、
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1);
+    \coordinate (b) at (1, -1);
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex] (x) to (a);
+    \draw [-latex] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex] (a) to (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+
+    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
+
+    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
+    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$\lim U$};
+    \coordinate (a_) at (3, -1);
+    \coordinate (b_) at (5, -1);
+    \coordinate (c_) at (5.5, 0);
+    \coordinate (d_) at (4, 1);
+    \coordinate (e_) at (2.7, 0.2);
+    \draw [-latex] (x_) to (y_);
+    \draw [-latex] (y_) to (a_);
+    \draw [-latex] (y_) to (b_);
+    \draw [-latex] (y_) to (c_);
+    \draw [-latex] (y_) to (d_);
+    \draw [-latex] (y_) to (e_);
+    \draw [-latex] (a_) to (b_);
+    \draw (b_) to (c_);
+    \draw (c_) to (d_);
+    \draw (d_) to (e_);
+    \draw (e_) to (a_);
+  \end{tikzpicture}
+</script>
+
+
+射 $x\rightarrow\varprojlim U$ と錐 $\Delta(x)\rightarrow U$ は一対一に対応する。すなわち
+
+$$\mathcal{C}(x, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(x), U)$$
+
+という全単射が存在する。さらに、これは全単射であるだけでなく$x$ を $f: y\rightarrow x$ によって $y$ に移す操作について整合的である。すなわち、以下が可換になる。
+
+$$ \xymatrix{
+\mathcal{C}(x, \varprojlim U) \ar[r]^{\simeq} \ar[d]\_{\mathcal{C}(f, \varprojlim U)} & 
+\mathcal{C}^{\mathcal{J}}(\Delta(x), U) \ar[d]^{\mathcal{C}^{\mathcal{J}}(\Delta(f), U)} \\\\
+\mathcal{C}(y, \varprojlim U) \ar[r]^{\simeq} & \mathcal{C}^{\mathcal{J}}(\Delta(y), U)
+}$$
+
+この可換図式の左側は、$\mathcal{C}(x,\varprojlim U)$の一要素を取り出せば以下の三角形の図式に対応しており、これが上の可換図式の右側にある $x,y$ を頂点とする錐とその間の射に一対一対応するという事である。すなわち、以下のシンプルな図式で錐の圏が表現されており、特に $\varprojlim U$ が全ての $U$への錐に共通する情報を含んだ普遍的な対象であるという事が分かる。
+
+$$\xymatrix{
+x \ar[rd] && y \ar[ld] \ar[ll]\_{f} \\\\
+          &\varprojlim U&
+}$$
+
+また、 $x=\varprojlim U$ の時の錐が極限錐であるが、これは同型
+
+$$ \mathcal{C}(\varprojlim U, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(\varprojlim U), U) $$
+
+において、左辺の恒等写像に対応する右辺の射 $\Delta(\varprojlim U)\rightarrow U$ として得る事ができる。
+
+以上の事は、反変関手 $\mathcal{C}(-, \varprojlim U):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $\mathcal{C}^{\mathcal{J}}(\Delta(-), U): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の間に自然同型
+
+$$ \mathcal{C}(-, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(-), U) $$
+
+が存在するということであり、逆にこれによって $\varprojlim U$ を特徴づけることができる。この右辺を反変関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ へと一般化することで表現可能関手の概念が得られる。
+
+{{% definition title="表現可能関手" %}}
+ある $a\in\mathcal{C}$ に対して $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と自然同型である関手 $F$ を **表現可能関手(representable functor)** といい、 $\mathcal{C}(-, a)$ を $F$ の **表現(representation)** 、$a$ を $F$ を **表現する対象(representing object)** という。また、この同型において $1_a\in\mathcal{C}(a, a)$ に対応する要素 $x\in F(a)$ を **普遍要素(universal element)** という。
+
+同様に $\mathcal{C}(a, -)$ と自然同型である関手を **余表現可能関手(co-representable functor)** もしくはこれも表現可能関手という。
+{{% /definition %}}
+
+既に述べたように以下が成り立つ。
+
+{{% proposition label="prop.representation-of-limit" %}}
+$\mathcal{C}$ が局所小圏である時、
+
+$\varprojlim F$ は反変関手 $\mathcal{C}^{\mathcal{J}}(\Delta(-), F):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象である。
+
+$\varinjlim F$ は共変関手 $\mathcal{C}^{\mathcal{J}}(F, \Delta(-)): \mathcal{C}\rightarrow\mathbf{Set}$ を表現する対象である。
+
+いずれも普遍要素は極限錐である。
+{{% /proposition %}}
+
+また、以下の命題により表現可能関手による定義と具体的な射を用いた定義は同値となる事がわかる。
+
+{{% theorem label="prop.representable-to-diagram" %}}
+$F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素である事は次と同値。
+
+任意の対象 $a\in\mathcal{C}$ と元 $x\in F(a)$ に対して、射 $f:a\rightarrow\alpha$ が一意に存在して $x = F(f)(\xi)$ である。
+{{% /theorem %}}
+{{% details 証明 %}}
+$F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素であるとする。
+すなわち任意の $a$ に対して自然な同型
+$$ \mathcal{C}(a, \alpha) \simeq F(a)$$
+が存在するとする。この同型によって $x\in F(a)$ に対応する射を $f:a\rightarrow\alpha$ とすると、以下の図式が可換であるので左上に $1\_{\alpha}$ を取ると、対応する右上の元が $\xi$ であり、左下の元は $f$ すなわち対応する右下の元は $x$ であるから $x=F(f)(\xi)$ となる。また $x$ と $f$ は一対一に定まるので $f$ は唯一に定まる。
+$$\xymatrix{
+1\_{\alpha}\ \in\  \mathcal{C}(\alpha,\alpha)\ar[r]^{\simeq} \ar[d]\_{-\circ f} & F(\alpha) \ \ni\  \xi \ar[d]^{F(f)} \\\\
+f\ \in\  \mathcal{C}(a, \alpha)    \ar[r]^{\simeq} & F(a)\ \ni\  x 
+}$$
+
+逆に任意の対象 $a\in\mathcal{C}$ と元 $x\in F(a)$ に対して、射 $f:a\rightarrow\alpha$ が一意に存在して $x = F(f)(\xi)$ であるとする。このとき $x,f$ が一対一対応するから同型
+$$ \mathcal{C}(a, \alpha) \simeq F(a)$$
+が存在する。これが $a$ について自然である事を示せば良ので、$g: b\rightarrow a$ について以下の図式を考える。
+
+$$\xymatrix{
+f\ \in\ \mathcal{C}(a, \alpha) \ar[d]\_{-\circ g} \ar[r] & F(a)\ \ni\ F(f)(\xi) \ar[d]^{F(g)} \\\\
+f\circ g\ \in\ \mathcal{C}(b, \alpha) \ar[r] & F(b)\ \ni\ F(g)(F(f)(\xi))
+}$$
+
+左上の元 $f$ について考えると、四隅での対象は図中のようになり
+
+$$ F(g)(F(f)(\xi)) = (F(g)\circ F(f))(\xi) = F(f\circ g)(\xi)$$
+
+であるからこれは可換である。以上より、自然同型 $$\mathcal{C}(-,\alpha)\simeq F$$ が存在する。$\square$
+{{% /details %}}
+
+以下の命題より、表現可能な関手によって、特定の性質をもつ対象を定義することができる。
+
+{{% proposition label="prop.representing-object-is-unique" %}}
+関手 $F$ が表現可能であるとき、これを表現する対象は同型を除いて一意に定まる。
+{{% /proposition %}}
+
+この命題の証明は次の節で米田埋め込みという概念の性質を用いて簡単に示せるのでここでは証明を省略する。
+
 
 ## 極限
 
@@ -822,306 +1132,6 @@ F(i) \ar[r]_{F(f)} & F(j)
 {{% proposition %}}
 $\mathbf{Set}$ は双完備である。
 {{% /proposition %}}
-
-## 普遍性
-
-既に述べたように極限は **普遍的構成(universal construction)** と呼ばれる構成方法である。本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。
-
-### 表現可能関手
-
-添字圏が $\mathcal{J}$ の時の圏 $\mathcal{C}$ における $x$ から $U$ への錐全体の集合を考えてみる。これは$\Delta(x)$ から $U$ への自然変換の集合、すなわち $\mathcal{C}^{\mathcal{J}}$ の射 $\Delta(x)\rightarrow U$ の集合
-$$\mathcal{C}^{\mathcal{J}}(\Delta(x), U)$$
-である。ここで $\varprojlim U$ が存在する場合には、任意の錐 $\Delta(x)\rightarrow U$ は極限錐 $\Delta(\varprojlim U)\rightarrow U$ と唯一の射 $x\rightarrow\varprojlim U$ を合成して得ることができるので、
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1);
-    \coordinate (b) at (1, -1);
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex] (x) to (a);
-    \draw [-latex] (x) to (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex] (a) to (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-
-    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
-
-    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
-    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$\lim U$};
-    \coordinate (a_) at (3, -1);
-    \coordinate (b_) at (5, -1);
-    \coordinate (c_) at (5.5, 0);
-    \coordinate (d_) at (4, 1);
-    \coordinate (e_) at (2.7, 0.2);
-    \draw [-latex] (x_) to (y_);
-    \draw [-latex] (y_) to (a_);
-    \draw [-latex] (y_) to (b_);
-    \draw [-latex] (y_) to (c_);
-    \draw [-latex] (y_) to (d_);
-    \draw [-latex] (y_) to (e_);
-    \draw [-latex] (a_) to (b_);
-    \draw (b_) to (c_);
-    \draw (c_) to (d_);
-    \draw (d_) to (e_);
-    \draw (e_) to (a_);
-  \end{tikzpicture}
-</script>
-
-
-射 $x\rightarrow\varprojlim U$ と錐 $\Delta(x)\rightarrow U$ は一対一に対応する。すなわち
-
-$$\mathcal{C}(x, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(x), U)$$
-
-という全単射が存在する。さらに、これは全単射であるだけでなく$x$ を $f: y\rightarrow x$ によって $y$ に移す操作について整合的である。すなわち、以下が可換になる。
-
-$$ \xymatrix{
-\mathcal{C}(x, \varprojlim U) \ar[r]^{\simeq} \ar[d]\_{\mathcal{C}(f, \varprojlim U)} & 
-\mathcal{C}^{\mathcal{J}}(\Delta(x), U) \ar[d]^{\mathcal{C}^{\mathcal{J}}(\Delta(f), U)} \\\\
-\mathcal{C}(y, \varprojlim U) \ar[r]^{\simeq} & \mathcal{C}^{\mathcal{J}}(\Delta(y), U)
-}$$
-
-この可換図式の左側は、$\mathcal{C}(x,\varprojlim U)$の一要素を取り出せば以下の三角形の図式に対応しており、これが上の可換図式の右側にある $x,y$ を頂点とする錐とその間の射に一対一対応するという事である。すなわち、以下のシンプルな図式で錐の圏が表現されており、特に $\varprojlim U$ が全ての $U$への錐に共通する情報を含んだ普遍的な対象であるという事が分かる。
-
-$$\xymatrix{
-x \ar[rd] && y \ar[ld] \ar[ll]\_{f} \\\\
-          &\varprojlim U&
-}$$
-
-また、 $x=\varprojlim U$ の時の錐が極限錐であるが、これは同型
-
-$$ \mathcal{C}(\varprojlim U, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(\varprojlim U), U) $$
-
-において、左辺の恒等写像に対応する右辺の射 $\Delta(\varprojlim U)\rightarrow U$ として得る事ができる。
-
-以上の事は、反変関手 $\mathcal{C}(-, \varprojlim U):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $\mathcal{C}^{\mathcal{J}}(\Delta(-), U): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の間に自然同型
-
-$$ \mathcal{C}(-, \varprojlim U) \simeq \mathcal{C}^{\mathcal{J}}(\Delta(-), U) $$
-
-が存在するということであり、逆にこれによって $\varprojlim U$ を特徴づけることができる。この右辺を反変関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ へと一般化することで表現可能関手の概念が得られる。
-
-{{% definition title="表現可能関手" %}}
-ある $a\in\mathcal{C}$ に対して $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と自然同型である関手 $F$ を **表現可能関手(representable functor)** といい、 $\mathcal{C}(-, a)$ を $F$ の **表現(representation)** 、$a$ を $F$ を **表現する対象(representing object)** という。また、この同型において $1_a\in\mathcal{C}(a, a)$ に対応する要素 $x\in F(a)$ を **普遍要素(universal element)** という。
-
-同様に $\mathcal{C}(a, -)$ と自然同型である関手を **余表現可能関手(co-representable functor)** もしくはこれも表現可能関手という。
-{{% /definition %}}
-
-既に述べたように以下が成り立つ。
-
-{{% proposition label="prop.representation-of-limit" %}}
-$\mathcal{C}$ が局所小圏である時、
-
-$\varprojlim F$ は反変関手 $\mathcal{C}^{\mathcal{J}}(\Delta(-), F):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象である。
-
-$\varinjlim F$ は共変関手 $\mathcal{C}^{\mathcal{J}}(F, \Delta(-)): \mathcal{C}\rightarrow\mathbf{Set}$ を表現する対象である。
-
-いずれも普遍要素は極限錐である。
-{{% /proposition %}}
-
-また、以下の命題により表現可能関手による定義と具体的な射を用いた定義は同値となる事がわかる。
-
-{{% theorem label="prop.representable-to-diagram" %}}
-$F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素である事は次と同値。
-
-任意の対象 $a\in\mathcal{C}$ と元 $x\in F(a)$ に対して、射 $f:a\rightarrow\alpha$ が一意に存在して $x = F(f)(\xi)$ である。
-{{% /theorem %}}
-{{% details 証明 %}}
-$F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であり、 $\alpha\in\mathcal{C}$ が $F$ を表現する対象、 $\xi\in F(\alpha)$ が普遍要素であるとする。
-すなわち任意の $a$ に対して自然な同型
-$$ \mathcal{C}(a, \alpha) \simeq F(a)$$
-が存在するとする。この同型によって $x\in F(a)$ に対応する射を $f:a\rightarrow\alpha$ とすると、以下の図式が可換であるので左上に $1\_{\alpha}$ を取ると、対応する右上の元が $\xi$ であり、左下の元は $f$ すなわち対応する右下の元は $x$ であるから $x=F(f)(\xi)$ となる。また $x$ と $f$ は一対一に定まるので $f$ は唯一に定まる。
-$$\xymatrix{
-1\_{\alpha}\ \in\  \mathcal{C}(\alpha,\alpha)\ar[r]^{\simeq} \ar[d]\_{-\circ f} & F(\alpha) \ \ni\  \xi \ar[d]^{F(f)} \\\\
-f\ \in\  \mathcal{C}(a, \alpha)    \ar[r]^{\simeq} & F(a)\ \ni\  x 
-}$$
-
-逆に任意の対象 $a\in\mathcal{C}$ と元 $x\in F(a)$ に対して、射 $f:a\rightarrow\alpha$ が一意に存在して $x = F(f)(\xi)$ であるとする。このとき $x,f$ が一対一対応するから同型
-$$ \mathcal{C}(a, \alpha) \simeq F(a)$$
-が存在する。これが $a$ について自然である事を示せば良ので、$g: b\rightarrow a$ について以下の図式を考える。
-
-$$\xymatrix{
-f\ \in\ \mathcal{C}(a, \alpha) \ar[d]\_{-\circ g} \ar[r] & F(a)\ \ni\ F(f)(\xi) \ar[d]^{F(g)} \\\\
-f\circ g\ \in\ \mathcal{C}(b, \alpha) \ar[r] & F(b)\ \ni\ F(g)(F(f)(\xi))
-}$$
-
-左上の元 $f$ について考えると、四隅での対象は図中のようになり
-
-$$ F(g)(F(f)(\xi)) = (F(g)\circ F(f))(\xi) = F(f\circ g)(\xi)$$
-
-であるからこれは可換である。以上より、自然同型 $$\mathcal{C}(-,\alpha)\simeq F$$ が存在する。$\square$
-{{% /details %}}
-
-以下の命題より、表現可能な関手によって、特定の性質をもつ対象を定義することができる。
-
-{{% proposition label="prop.representing-object-is-unique" %}}
-関手 $F$ が表現可能であるとき、これを表現する対象は同型を除いて一意に定まる。
-{{% /proposition %}}
-
-この命題の証明は次の節で米田埋め込みという概念の性質を用いて簡単に示せるのでここでは証明を省略する。
-
-### 米田の補題
-表現可能関手の定義にあたって自然変換 $\mathcal{C}(-, a) \rightarrow F$ が考察されるが、この自然変換についての非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が普遍性によって、そして表現可能関手によって定められる為、米田の補題も様々な場面で利用されることになる。
-
-{{% definition title="米田埋め込み" %}}
-局所小圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
-$$ \mathcal{Y}(a) = \mathcal{C}(-, a) $$
-$$ \mathcal{Y}(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
-にて定めたものを **米田埋め込み(Yoneda embedding)** という。
-{{% /definition %}}
-
-反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
-
-{{% theorem title="米田の補題" %}}
-局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
-が成り立つ。
-{{% /theorem %}}
-
-米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
-
-$$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(f), F)} & F(a) \ar[d]^{F(f)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b), F) \ar[r]^(.6){\simeq} & F(b)
-}$$
-
-$F$ について自然であるというのは、任意の $\rho:F\rightarrow G$ について以下が可換となる事である。
-
-$$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), G) \ar[r]^(.6){\simeq} & G(a)
-}$$
-
-{{% details 証明 %}}
-$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
-
-$$\xymatrix{
-\mathcal{C}(x, a) \ar[r]^{\alpha_x}  \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
-\mathcal{C}(y, a) \ar[r]\_{\alpha_y} & F(y)
-}$$
-
-すなわち、任意の $h:x\rightarrow a$ に対して
-$$ \alpha_y(h\circ f) = F(f)(\alpha_x(h)) $$
-である。ここで
-
-$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
-$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
-
-とおくと
-
-$$\psi\_{a,F}\circ\phi\_{a,F}(\alpha)(h) = F(h)(\alpha_a(1_a)) = \alpha_x(1_a\circ h) = \alpha_x(h)$$
-$$\phi\_{a,F}\circ\psi\_{a,F}(x) = F(1_a)(x) = 1\_{F(a)}(x) = x$$
-
-であるので $\phi\_{a,F},\psi\_{a,F}$ は同型写像。
-
-続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
-
-$$
-F(f)(\phi\_{a,F}(\alpha)) = F(f)(\alpha_a(1_a)) = \alpha_b(1_a\circ f) = \alpha_b(f)
-$$
-$$
-\phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) = \phi\_{b,F}(\alpha\circ \mathcal{C}(-, f)) = (\alpha_b\circ\mathcal{C}(b, f))(1_b) = \alpha_b(f\circ 1_b) = \alpha_b(f)
-$$
-
-より、
-$F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) $ であるから、
-$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
-
-$$
-\rho_a(\phi\_{a,F}(\alpha)) = \rho_a(\alpha_a(1_a)) = \rho_a\circ\alpha_a(1_a)
-$$
-$$
-\phi\_{a,G}(\rho\circ\alpha) = \rho_a\circ\alpha_a(1_a)
-$$
-
-より$\rho_a(\phi\_{a,F}(\alpha)) =\phi\_{a,G}(\rho\circ\alpha)$ であるから $F$ についても自然。 $\square$
-{{% /details %}}
-
-### 米田埋め込みの性質
-
-米田埋め込みが"埋め込み"と呼ばれるのに相応しいのは以下の命題より。
-
-{{% proposition %}}
-米田埋め込みは忠実充満
-{{% /proposition %}}
-{{% details 証明 %}}
-米田の補題より、任意の $a,b\in\mathcal{C}$ について自然な全単射
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq \mathcal{Y}(b)(a)=\mathcal{C}(a,b) $$
-が存在する。 $\square$
-{{% /details %}}
-
-従って {{< ref prop.embedding >}} より
-$$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
-である。 米田埋め込みの双対 $\mathcal{C}(a, -): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}^{\mathcal{C}}$ についても全く同様であり、 **米田の原理(Yoneda Principle)** と呼ばれる以下の命題を得る。
-
-{{% proposition title="米田の原理" %}}
-局所小圏 $\mathcal{C}$ の対象 $a,b$ について
-$$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrightarrow\ \mathcal{C}(a, -)\simeq\mathcal{C}(b, -)$$
-{{% /proposition %}}
-
-表現可能関手を表現する対象が同型を除いて一意であること({{< ref prop.representing-object-is-unique >}})もこれから分かる。
-
-{{% proposition %}}
-米田埋め込みは極限を保つ。すなわち自然同型
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
-が存在する。
-{{% /proposition %}}
-{{% details 証明 %}}
-$x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
-が存在する。最後の同型は米田の原理による。
-ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
-$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
-\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
-$$
-であり、米田の補題よりこれは
-$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
-と同型。したがって
-$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
-であり、以上の同型は全て $x$ について自然であるので
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
-となる。$\square$
-{{% /details %}}
-
-この命題の具体例をいくつか並べてみると以下のような等式を得る。
-
-{{% proposition %}}
-
-$$\begin{align\*}
-\mathcal{C}(x, 1) &\simeq 1 \\\\
-\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
-\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
-\end{align\*}$$
-これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
-$$\begin{align\*}
-\mathcal{C}(0, x) &\simeq 1 \\\\
-\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
-\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
-\end{align\*}$$
-{{% /proposition %}}
-
-また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
-
-{{% proposition %}}
-$$\begin{align\*}
-a \times 1 &\simeq a \\\\
-a \times b &\simeq b \times a \\\\
-a + 0 & \simeq a \\\\
-a + b &\simeq b + a
-\end{align\*}$$
-{{% /proposition %}}
-などである。例えば1つ目は
-$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
-が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
-
-代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
 
 ## 指数対象
 
