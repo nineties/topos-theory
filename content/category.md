@@ -21,7 +21,7 @@ toc: true
 ### 圏の定義
 
 {{% definition title="圏" label="def.category" %}}
-**圏(category)** $\mathcal{C}$ とは **対象(object)** の類 $\mathrm{Ob}(\mathcal{C})$ と各対象 $a, b$ ごとに定められた **射(arrow)** の類 $\mathcal{C}(a,b)$ からなる。射 $f\in\mathcal{C}(a, b)$ を $f:a\rightarrow b$ と書いたり、以下のような矢印の図式で表したりする。
+**圏(category)** $\mathcal{C}$ とは **対象(object)** の類 $\mathrm{Ob}(\mathcal{C})$ と各対象 $a, b$ ごとに定められた **射(arrow)** の類 $\mathcal{C}(a,b)$ からなる。 $\mathcal{C}(a,b)$ の事を、**hom類(hom-class)** (集合である場合には **hom集合(hom-set)**) と呼び、$\mathrm{Hom}\_{\mathcal{C}}(a,b)$ と書くこともある。また、射 $f\in\mathcal{C}(a, b)$ を $f:a\rightarrow b$ と書いたり、以下のような矢印の図式で表したりする。
 $$\xymatrix{ a \ar[r]^f & b } $$
 $a$ を $f$ の **ドメイン(domain)** と呼び $\mathrm{dom}(f)=a$ と書く。同様に、 $b$ を **コドメイン(codomain)** と呼び $\mathrm{cod}(f)=b$ と書く。
 
