@@ -628,7 +628,15 @@ $$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrig
 
 ### 普遍性・普遍要素
 
-米田の補題より、 自然同型 $\mathcal{C}(-, a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。
+米田の補題より、 自然同型 $\mathcal{C}(-, a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
+
+{{% definition title="普遍要素" %}}
+表現可能関手 $F: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象が $a$ である時、米田の補題によって自然同型
+$$ \mathcal{C}(-, a)\simeq F$$
+と対応する $u\in F(a)$ を $F$ の **普遍要素(universal element)** という。
+{{% /definition %}}
+
+
 米田の補題から分かるように、同型 $\mathcal{C}(a, a)\simeq F(a)$ において、左の恒等射 $1_a$ に対応する右の要素が $u$ である。
 
 さらに、同じく米田の補題の証明から分かるように、この $u$ が具体的な自然同型
@@ -644,16 +652,155 @@ $$ F(-)(u): \mathcal{C}(x, a) \rightarrow F(x)$$
 $$ v = F(f)(u) $$
 
 となるような $f: x\rightarrow a$ がただ一つ存在する。
-すなわち、あらゆる $(x, v)$ の組を $(a, u)$ を用いて統一的な方法で表す事ができる。このような $(a, u)$ の性質を **普遍性(universal property)** という。
-
-
-{{% definition title="普遍要素" %}}
-表現可能関手 $F: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象が $a$ である時、米田の補題によって自然同型
-$$ \mathcal{C}(-, a)\simeq F$$
-と対応する $u\in F(a)$ を $F$ の **普遍要素(universal element)** という。
-{{% /definition %}}
+すなわち、あらゆる $(x, v)$ の組を $(a, u)$ を用いて統一的な方法で表す事ができる。このような $(a, u)$ の性質を **普遍性(universal property)** という。また、このような $v$ の構成を **普遍的構成(universal construction)** という。
 
 ## 極限
+
+普遍的構成の代表的な例が **極限(limit)** である。極限及びその双対である余極限によって様々な馴染みのある概念を統一的に表現する事ができる。
+
+
+
+
+終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
+
+$$\xymatrix{
+a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
+a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
+\ar@{.}(-5,7);(47,7)
+\ar@{.}(47,7);(47,-5)
+\ar@{.}(47,-5);(-5,-5)
+\ar@{.}(-5,-5);(-5,7)
+\ar@{.}(-5,-13);(47,-13)
+\ar@{.}(47,-13);(47,-25)
+\ar@{.}(47,-25);(-5,-25)
+\ar@{.}(-5,-25);(-5,-13)
+}$$
+
+{{% definition title="図式としての関手" %}}
+
+圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
+{{% /definition %}}
+
+例えば添字圏 $\mathcal{J}$ が対象が3つの
+$$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
+のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
+$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
+
+{{% definition title="対角関手" %}}
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
+$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
+となる。これを **対角関手(diagonal functor)** という。
+{{% /definition %}}
+
+例えば、 $\mathcal{J}$ が先ほどの三対象の圏だとすると $\Delta(x)$ は
+$$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
+という図式に対応する。
+
+{{% definition title="錐" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
+
+同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
+{{% /definition %}}
+
+例えば、$\mathcal{J}$ を先ほどの添字圏として $F:\mathcal{J}\rightarrow\mathcal{C}$ を以下の図式とする。
+$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
+この時、錐 $\phi:\Delta(x)\rightarrow F$ は図式 $\Delta(x)$ と $F$ を縦に繋ぐ射、すなわち以下の左の図式が可換となるような $\phi_a,\phi_b,\phi_c$ の組である。これは右のように書いてみれば、 $x$ を頂点とし $F$ の図式を底とする錐形になるので錐と呼ばれる。
+$$\xymatrix{
+x \ar[r]^{1_x} \ar[d]\_{\phi_a} & x \ar[d]\_{\phi_c} & x \ar[l]\_{1_x} \ar[d]^{\phi_c} && & x \ar[ld]\_{\phi_a} \ar[d]\_{\phi_c} \ar[rd]^{\phi_b} & \\\\
+a \ar[r]       & c & b \ar[l] && a \ar[r] & c & b \ar[l]
+}$$
+
+より一般には、$x$ から $F$ への錐とは、添字圏 $\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する側面の以下のような三角形が全て可換となるような図式のことである。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to node [left] {\small $\phi_i$} (a);
+    \draw [-latex, thick] (x) to node [right] {\small $\phi_j$} (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+  \end{tikzpicture}
+</script>
+
+{{% definition title="錐の圏" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
+$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
+$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+
+$$\xymatrix{
+x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
+F(i) & \\\\
+}$$
+
+この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
+{{% /definition %}}
+
+この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to (a);
+    \draw [-latex, thick] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+
+    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
+
+    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
+    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
+    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(i)$};
+    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(j)$};
+    \coordinate (c_) at (5.5, 0);
+    \coordinate (d_) at (4, 1);
+    \coordinate (e_) at (2.7, 0.2);
+    \draw [-latex] (x_) to (y_);
+    \draw [-latex, thick] (y_) to (a_);
+    \draw [-latex, thick] (y_) to (b_);
+    \draw [-latex] (y_) to (c_);
+    \draw [-latex] (y_) to (d_);
+    \draw [-latex] (y_) to (e_);
+    \draw [-latex, thick] (a_) to node [below] {\small $F(f)$} (b_);
+    \draw (b_) to (c_);
+    \draw (c_) to (d_);
+    \draw (d_) to (e_);
+    \draw (e_) to (a_);
+  \end{tikzpicture}
+</script>
+
+{{% definition title="極限" %}}
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
+
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
+
+$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i)$ とも書く。
+{{% /definition %}}
+
+極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
+
+上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
 
 {{% proposition %}}
 米田埋め込みは極限を保つ。すなわち自然同型
@@ -823,148 +970,6 @@ $$ u((0, x)) = f(x), u((1, x)) = g(x)$$
 
 先ほど、積の例としてあげた $\min\\{a,b\\}$, $a\cap b$, $a\wedge b$ の圏論的双対は $\max\\{a, b\\}$, $a\cup b$, $a\vee b$ であり、これらは直感的にも理解しやすいと思う。しかし、集合の直積と直和の間の双対性は、集合論的な定義においてはなかなか認識し難い関係であり面白い。但し、集合の直和以外の直和概念一般には言えないので注意。例えば環の直和は余積ではなく、積となる。
 
-### 極限の定義
-
-終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
-
-$$\xymatrix{
-a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
-a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
-\ar@{.}(-5,7);(47,7)
-\ar@{.}(47,7);(47,-5)
-\ar@{.}(47,-5);(-5,-5)
-\ar@{.}(-5,-5);(-5,7)
-\ar@{.}(-5,-13);(47,-13)
-\ar@{.}(47,-13);(47,-25)
-\ar@{.}(47,-25);(-5,-25)
-\ar@{.}(-5,-25);(-5,-13)
-}$$
-
-{{% definition title="図式としての関手" %}}
-
-圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
-{{% /definition %}}
-
-例えば添字圏 $\mathcal{J}$ が対象が3つの
-$$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
-のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
-$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
-
-{{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
-$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
-となる。これを **対角関手(diagonal functor)** という。
-{{% /definition %}}
-
-例えば、 $\mathcal{J}$ が先ほどの三対象の圏だとすると $\Delta(x)$ は
-$$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
-という図式に対応する。
-
-{{% definition title="錐" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
-
-同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
-{{% /definition %}}
-
-例えば、$\mathcal{J}$ を先ほどの添字圏として $F:\mathcal{J}\rightarrow\mathcal{C}$ を以下の図式とする。
-$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
-この時、錐 $\phi:\Delta(x)\rightarrow F$ は図式 $\Delta(x)$ と $F$ を縦に繋ぐ射、すなわち以下の左の図式が可換となるような $\phi_a,\phi_b,\phi_c$ の組である。これは右のように書いてみれば、 $x$ を頂点とし $F$ の図式を底とする錐形になるので錐と呼ばれる。
-$$\xymatrix{
-x \ar[r]^{1_x} \ar[d]\_{\phi_a} & x \ar[d]\_{\phi_c} & x \ar[l]\_{1_x} \ar[d]^{\phi_c} && & x \ar[ld]\_{\phi_a} \ar[d]\_{\phi_c} \ar[rd]^{\phi_b} & \\\\
-a \ar[r]       & c & b \ar[l] && a \ar[r] & c & b \ar[l]
-}$$
-
-より一般には、$x$ から $F$ への錐とは、添字圏 $\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する側面の以下のような三角形が全て可換となるような図式のことである。
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex, thick] (x) to node [left] {\small $\phi_i$} (a);
-    \draw [-latex, thick] (x) to node [right] {\small $\phi_j$} (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-  \end{tikzpicture}
-</script>
-
-{{% definition title="錐の圏" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
-$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
-$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
-
-$$\xymatrix{
-x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
-F(i) & \\\\
-}$$
-
-この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
-{{% /definition %}}
-
-この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex, thick] (x) to (a);
-    \draw [-latex, thick] (x) to (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-
-    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
-
-    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
-    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
-    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(i)$};
-    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(j)$};
-    \coordinate (c_) at (5.5, 0);
-    \coordinate (d_) at (4, 1);
-    \coordinate (e_) at (2.7, 0.2);
-    \draw [-latex] (x_) to (y_);
-    \draw [-latex, thick] (y_) to (a_);
-    \draw [-latex, thick] (y_) to (b_);
-    \draw [-latex] (y_) to (c_);
-    \draw [-latex] (y_) to (d_);
-    \draw [-latex] (y_) to (e_);
-    \draw [-latex, thick] (a_) to node [below] {\small $F(f)$} (b_);
-    \draw (b_) to (c_);
-    \draw (c_) to (d_);
-    \draw (d_) to (e_);
-    \draw (e_) to (a_);
-  \end{tikzpicture}
-</script>
-
-{{% definition title="極限" %}}
-$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
-
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
-
-$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i)$ とも書く。
-{{% /definition %}}
-
-極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
-
-上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
 
 ### 極限の例
 
