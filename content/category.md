@@ -638,7 +638,7 @@ $$ \mathcal{C}(-, a)\simeq F$$
 と対応する $u\in F(a)$ を $F$ の **普遍要素(universal element)** という。
 {{% /definition %}}
 
-この $u$ を普遍要素と呼ぶ理由を説明する。自然同型 $\mathcal{C}(-, a)\simeq F$ は同型射($\mathbf{Set}$なので全単射)の集合 $\\{\mathcal{C}(x, a)\rightarrow F(x)\\}\_{x\in\mathcal{C}}$ からなるわけであるので、 $u$ を用いてこの全単射を具体的に構成する事ができる。この **任意の $x$ に対して全単射 $\mathcal{C}(x, a)\ni f\mapsto v\in F(x)$ を $u$ だけを用いて具体的に構成できるという** という性質を $u$ の普遍性という。そして、この構成を **普遍的構成(universal construction)** という。
+この $u$ を普遍要素と呼ぶ理由を説明する。自然同型 $\mathcal{C}(-, a)\simeq F$ は同型射($\mathbf{Set}$なので全単射)の集合 $\\{\mathcal{C}(x, a)\rightarrow F(x)\\}\_{x\in\mathcal{C}}$ からなるわけであるので、 $u$ を用いてこの全単射を具体的に構成する事ができる。この **任意の $x$ に対して全単射 $\mathcal{C}(x, a)\ni f\mapsto v\in F(x)$ を $u$ だけを用いて具体的に構成できるという** という性質を $u$ の **普遍性(universal property)** という。そして、この構成を **普遍的構成(universal construction)** という。
 また、この全単射を得られるということは、**$u$ だけを用いて関手 $F$ の表現 $\mathcal{C}(-, a)$ を得る事ができる** という事でもある。
 
 普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
