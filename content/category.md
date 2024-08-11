@@ -524,7 +524,7 @@ $$\xymatrix{
 
 ### 米田の補題
 
-自然変換 $\mathcal{C}(-, a) \rightarrow F, \mathcal{C}(a, -)\rightarrow F$ についての非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が表現可能性によって定められる為、米田の補題も様々な場面で利用されることになる。
+表現可能関手の定義では自然変換 $\mathcal{C}(-, a)\rightarrow F$ や $\mathcal{C}(a, -)\rightarrow F$ が使われるが、これらに関する非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が表現可能性によって定められる為、米田の補題も様々な場面で利用されることになる。
 
 {{% definition title="米田埋め込み" %}}
 局所小圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
@@ -538,7 +538,7 @@ $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えることで、こ�
 反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
 
 {{% theorem title="米田の補題" %}}
-局所小な圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
+局所小圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
 $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
 が成り立つ。
 {{% /theorem %}}
@@ -626,6 +626,8 @@ $$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrig
 
 表現可能関手を表現する対象が同型を除いて一意であることもこれから分かる。
 
+次の章以降で見ていくように前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ は非常に良い性質を持っているので、一旦議論の舞台を $\mathcal{C}$ から $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に移すことで様々な議論が行いやすくなる。
+
 ### 普遍性・普遍要素
 
 米田の補題より、 自然同型 $\mathcal{C}(-, a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
@@ -636,30 +638,37 @@ $$ \mathcal{C}(-, a)\simeq F$$
 と対応する $u\in F(a)$ を $F$ の **普遍要素(universal element)** という。
 {{% /definition %}}
 
+この $u$ を普遍要素と呼ぶ理由を説明する。自然同型 $\mathcal{C}(-, a)\simeq F$ は同型射($\mathbf{Set}$なので全単射)の集合 $\\{\mathcal{C}(x, a)\rightarrow F(x)\\}\_{x\in\mathcal{C}}$ からなるわけであるので、 $u$ を用いてこの全単射を具体的に構成する事ができる。この **任意の $x$ に対して全単射 $\mathcal{C}(x, a)\ni f\mapsto v\in F(x)$ を $u$ だけを用いて具体的に構成できるという** という性質を $u$ の普遍性という。そして、この構成を **普遍的構成(universal construction)** という。
+また、この全単射を得られるということは、**$u$ だけを用いて関手 $F$ の表現 $\mathcal{C}(-, a)$ を得る事ができる** という事でもある。
 
-米田の補題から分かるように、同型 $\mathcal{C}(a, a)\simeq F(a)$ において、左の恒等射 $1_a$ に対応する右の要素が $u$ である。
+普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
 
-さらに、同じく米田の補題の証明から分かるように、この $u$ が具体的な自然同型
+$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
 
-$$ F(-)(u) \in \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{C}(-, a), F)$$
+によって与えられるので、 $\alpha$ が同型射であるときに、対応する $u=\alpha_a(1_a)$ が普遍要素である。そして、 $\alpha_a$ は $\alpha_a: \mathcal{C}(a, a)\rightarrow F(a)$ という全単射であるので、この左辺の $1_a$ 対応する要素が普遍要素である。そして、
+$$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
+が自然同型 $\mathcal{C}(-, a)\simeq F$ の具体的な構成であることも分かる。
 
-を与える。すなわち、任意の $x\in\mathcal{C}$ に対して、全単射
+{{% proposition title="普遍要素と普遍的構成" %}}
+表現可能関手 $\mathcal{C}(-, a)\simeq F$ について、同型 $\mathcal{C}(a, a)\simeq F(a)$ によって $1_a$ に対応する $u\in F(a)$ が普遍要素であり、この自然同型は $F(-)(u):\mathcal{C}(-, a)\rightarrow F$ によって与えられる。
 
-$$ F(-)(u): \mathcal{C}(x, a) \rightarrow F(x)$$
+すなわち、任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$ がただ一つ存在する。
+{{% /proposition %}}
 
-が存在するという事であり、つまり任意の $v\in F(x)$ に対して
+これは逆も成立し、普遍性の説明でよく登場する定義が得られる。
 
-$$ v = F(f)(u) $$
-
-となるような $f: x\rightarrow a$ がただ一つ存在する。
-すなわち、あらゆる $(x, v)$ の組を $(a, u)$ を用いて統一的な方法で表す事ができる。このような $(a, u)$ の性質を **普遍性(universal property)** という。また、このような $v$ の構成を **普遍的構成(universal construction)** という。
+{{% proposition %}}
+局所小圏 $\mathcal{C}$, 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$, 対象 $a\in\mathcal{C}$, 要素 $u\in F(a)$ について、
+任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
+{{% /proposition %}}
 
 ## 極限
-
 普遍的構成の代表的な例が **極限(limit)** である。極限及びその双対である余極限によって様々な馴染みのある概念を統一的に表現する事ができる。
 
+### 積
 
-
+(TBD)
 
 終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
 
