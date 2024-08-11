@@ -664,9 +664,22 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 {{% /proposition %}}
 
 ## 極限
-普遍的構成の代表的な例が **極限(limit)** である。極限及びその双対である余極限によって様々な馴染みのある概念を統一的に表現する事ができる。
+普遍的構成の代表的な例が **極限(limit)** である。極限及びその双対である余極限によって様々な馴染みのある概念を統一的に表現する事ができる。ここでも表現可能関手を用いた定義からスタートして、その同値な表現として一般的な定義を導く形で説明する。
 
 ### 積
+
+集合論における直積 $A\times B=\\{(a, b)\mid a\in A, b\in B\\}$ を圏論的に抽象化したものが **積(product)** である。
+$\mathbf{Set}$ では集合論的な意味での直積が存在するので、表現可能関手 $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を介して $\mathbf{Set}$ での直積と対応する $\mathcal{C}$ での概念を自然に定義する事ができる。
+
+{{% definition title="積" %}}
+局所小圏 $\mathcal{C}$ の対象 $a,b$ について関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であるならば、それを表現する対象を $a\times b$ と書き、$a,b$ の **積(product)** という。すなわち、積 $a\times b$ とは、自然同型
+$$ \mathcal{C}(-, a\times b)\simeq\mathcal{C}(-, a)\times\mathcal{C}(-, b)$$
+を与えるものである。また、この時の普遍要素を **標準射影(canonical projection)** という。
+{{% /definition %}}
+
+より一般に、対象の族 $a_i\in\mathcal{C}\quad (i\in I)$ に関して、自然同型
+$$ \mathcal{C}(-, p)\simeq\prod\_{i\in I}\mathcal{C}(-, a_i) $$
+を与える $p$ が存在するならば、これを $\\{a_i\\}\_{i\in I}$ の積と呼び、 $\prod\_{i\in I}a_i$ と書く。$I=\\{1,\ldots,n\\}$の時には $a_1\times\cdots\times a_n$ のようにも書く。
 
 (TBD)
 
