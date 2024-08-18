@@ -238,6 +238,9 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 を満たすものである。
 {{% /definition %}}
 
+関手は様々な代数系における **準同型写像(homomorphism)** と同じものである。圏の代数系としての構造を定める恒等射、合成関係を保つ写像となっている。
+
+
 恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1\_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ や $\mathrm{id}\_{\mathcal{C}}$ と書く。
 また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。すると、以下のような圏を構成できる事が分かる。
 
@@ -256,6 +259,26 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 {{% definition title="定数関手" %}}
 関手 $\mathcal{C}\rightarrow\mathcal{D}$ であって、$\mathcal{C}$ の全ての対象をある対象 $a\in\mathcal{D}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{C}\rightarrow\mathcal{D}$ と書くこともある。
 {{% /definition %}}
+
+### 図式としての関手
+
+今後の為に、関手を **図式(diagram)** とみなす考え方に慣れておいた方が良い。
+図式の方が視覚的なイメージを得やすい為、今後登場する抽象的な概念や定理の理解がしやすくなる。
+また、関手という概念の圏論における重要性も理解できる。
+
+{{% definition title="図式としての関手" %}}
+圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
+{{% /definition %}}
+$\mathcal{J}$ という文字を使ったり、添字圏という名前を使ってはいるが、$F$ は至って普通の関手である。任意の関手 $\mathcal{C}\rightarrow\mathcal{D}$ は $\mathcal{D}$ の中の図式と見なすことができる。
+
+例えば添字圏 $\mathcal{J}$ が対象が3つの
+$$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
+のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
+$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
+
+特に重要なのは、関手 $\mathbf{1}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象1つとみなす事ができるという事である。すなわち、関手の特別な場合として対象が含まれる訳であるから、**関手とは"対象"を一般化させた概念である** という事ができる。同様に、後ほど関手と関手の間の準同型である **自然変換(natural transformation)** という概念が出てくるが、これは射を一般化させた概念であると言える。すなわち、 **"対象と射"を一般化させた概念が"関手と自然変換"である** という見方ができる。
+
+準同型としての関手、図式としての関手、対象の一般化としての関手などの見方を状況によって使い分けられるようになると、様々な定理のイメージが掴みやすくなる。
 
 ### 関手の性質
 
@@ -710,16 +733,6 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
 \ar@{.}(47,-25);(-5,-25)
 \ar@{.}(-5,-25);(-5,-13)
 }$$
-
-{{% definition title="図式としての関手" %}}
-
-圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
-{{% /definition %}}
-
-例えば添字圏 $\mathcal{J}$ が対象が3つの
-$$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
-のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
-$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
 
 {{% definition title="対角関手" %}}
 圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
