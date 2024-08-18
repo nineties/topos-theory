@@ -427,13 +427,10 @@ $\mathcal{C}$ を局所小圏とすると、任意の $a,x\in\mathcal{C}$ につ
 すなわち $\mathbf{Set}$ の対象になるので、$x\longmapsto \mathcal{C}(a, x)$ という $\mathcal{C}$ から $\mathbf{Set}$ への対象の対応を得ることができる。このとき、射 $f:x\rightarrow y$ に対応する$\mathbf{Set}$ の射 $\mathcal{C}(a, f): \mathcal{C}(a, x)\rightarrow\mathcal{C}(a, y)$ も定める事ができて、この対応は関手となる。
 
 {{% definition title="共変Hom関手" %}}
-局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
-$\mathcal{C}(a,-):\mathcal{C}\rightarrow\mathbf{Set}$ は関手となる。
-- $\mathcal{C}(a,-)(x) = \mathcal{C}(a,x)$
-- $f:x\rightarrow y$ に対して
-$$\mathcal{C}(f): \mathcal{C}(a,x) \ni g \mapsto f\circ g \in\mathcal{C}(a,y)$$
-
-$\mathcal{C}(a,-)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(a,-)$ とも書く。これを **共変Hom関手(covariant hom functor)** という。
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、 $x\in\mathcal{C}$ を $\mathcal{C}(a, x)$ に移し, $f: x\rightarrow y$ を
+$$\mathcal{C}(a,x) \ni g \mapsto f\circ g \in\mathcal{C}(a,y)$$
+に移す対応 $\mathcal{C}(a, -)$ は関手$\mathcal{C}\rightarrow\mathbf{Set}$となる。
+これを **共変Hom関手(covariant hom functor)** という。
 
 $$
 \xymatrix{
@@ -454,13 +451,10 @@ $\square$
 {{% /details %}}
 
 {{% definition title="反変Hom関手" %}}
-局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して以下で定義される
-$\mathcal{C}(-,a):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は関手となる。
-- $\mathcal{C}(-,a)(x) = \mathcal{C}(x,a)$
-- $f:x\rightarrow y$ に対して
-$$\mathcal{C}(f): \mathcal{C}(y,a) \ni g \mapsto g\circ f \in\mathcal{C}(x,a)$$
-
-$\mathcal{C}(-,a)$ の代わりに $\mathrm{Hom}_{\mathcal{C}}(-,a)$ とも書く。これを **反変Hom関手(contravariant hom functor)** という。
+局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、 $x\in\mathcal{C}$ を $\mathcal{C}(x, a)$ に移し、 $f: x\rightarrow y$ を
+$$\mathcal{C}(y,a) \ni g \mapsto g\circ f \in\mathcal{C}(x,a)$$
+に移す対応 $\mathcal{C}(-, a)$ は関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。
+これを **反変Hom関手(contravariant hom functor)** という。
 
 $$
 \xymatrix{
