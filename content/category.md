@@ -51,14 +51,24 @@ $$ h\circ (g\circ f) = (h\circ g)\circ f$$
 
 小圏には例えば以下のようなものがある。
 
-- **集合** : 射が恒等射のみである小圏。 **離散圏(discrete category)** という。
+- **集合** : 射が恒等射のみである小圏。 **離散圏(discrete category)** ともいう。
 - **モノイド**: 対象が1つしかない小圏。
 - **半順序集合** : $a \leq b$ を射 $a\rightarrow b$ と見なしたもの。任意の対象 $a,b$ について射 $a\rightarrow b$ が高々一つであり、$a\rightarrow b$ と $b\rightarrow a$ が共に存在するならば $a=b$ であるような小圏。半順序集合(partially ordered set)を略して **poset** とも言う。
 
-また、以下のようなものすごく単純な圏も部品として様々な場面で用いられる
+また、以下のような単純な圏も部品として様々な場面で用いられる
 
 - $\mathbf{0}$: 対象の類も射の類も空集合であるような圏。**空圏(empty category)** という。
-- $\mathbf{1}$: 対象が1つで、恒等射しか存在しない圏
+- $\mathbf{1}$: 対象が1つで、恒等射のみの圏
+- $\mathbf{2}$: 対象が2つで、恒等射以外の射が1つの圏
+- $\mathbf{3}$: 対象が3つで、恒等射以外の射が3つ(1つは他2つの合成)の圏
+
+$$
+\xymatrix {
+\mathbf{1} & \mathbf{2}    &          & \mathbf{3} & \\\\
+\bullet    & \bullet\ar[r] & \bullet  & \bullet \ar[r] \ar@/^1pc/[rr] & \bullet \ar[r] & \bullet \\\\
+}
+$$
+
 
 圏論では射の等式の代わりに **可換図式(commutative diagram)**  を用いる事が多い。
 図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の選び方によらず一致するということ。
