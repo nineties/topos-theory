@@ -558,7 +558,8 @@ $$ u((0, x)) = f(x), u((1, x)) = g(x)$$
 
 ### 極限
 
-終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
+終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。
+そして、$u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。
 
 $$\xymatrix{
 a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
@@ -572,6 +573,49 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
 \ar@{.}(47,-25);(-5,-25)
 \ar@{.}(-5,-25);(-5,-13)
 }$$
+
+後ほど定義を行うが、このような対象を **錐(cone)** という。この場合は $a,b$ が底で$x$が頂点であるような錐である。
+以下のように立てて描いてみるとイメージが湧きやすいかもしれない。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (p) at (-0.5, 1.5) node at (p) [above] {$a\times b$};
+    \coordinate (x) at (1.5, 1.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$a$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$b$};
+    \draw [-latex] (x) to node [right] {\small $f$} (a);
+    \draw [-latex] (x) to node [right] {\small $g$} (b);
+    \draw [-latex, thick] (p) to node [left] {\small $\pi_a$} (a);
+    \draw [-latex, thick] (p) to node [left] {\small $\pi_b$} (b);
+    \draw [-latex, dotted] (x) to node [above] {\small $u$} (p);
+  \end{tikzpicture}
+</script>
+
+より一般には、下図のように底面の頂点が複数あり、その間に射があるようなものを錐として考える事で、様々な概念を統一的に議論できるというわけである。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1);
+    \coordinate (b) at (1, -1);
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to (a);
+    \draw [-latex, thick] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+  \end{tikzpicture}
+</script>
+
+
+
 
 {{% definition title="対角関手" %}}
 圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
