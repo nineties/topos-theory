@@ -646,17 +646,7 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
   \end{tikzpicture}
 </script>
 
-このように展開してみると、上面を形が $\mathcal{J}$ で、全ての対象を $x$、全ての射を $1_x$ に移す関手で表せる事がわかるだろう。これを $\Delta(x):\mathcal{J}\rightarrow\mathcal{C}$ という記号で書く事にする。すると、錐とは $\Delta(x)$ から $F$ への自然変換であるとして表す事ができる。
-
-{{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
-$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
-となる。これを **対角関手(diagonal functor)** という。
-{{% /definition %}}
-
-例えば、 $\mathcal{J}$ が先ほどの三対象の圏だとすると $\Delta(x)$ は
-$$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
-という図式に対応する。
+このように展開してみると、上面を形が $\mathcal{J}$ の定数関手 $x$ で表せる事がわかるだろう。これを $\Delta(x):\mathcal{J}\rightarrow\mathcal{C}$ という記号で書く事にする。すると、錐とは上面 $\Delta(x)$ から底面 $F$ への自然変換であるとして表す事ができる。また、この双対版として底面から上面への錐も考える事ができる。
 
 {{% definition title="錐" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
@@ -664,36 +654,13 @@ $$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
 同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
 {{% /definition %}}
 
-例えば、$\mathcal{J}$ を先ほどの添字圏として $F:\mathcal{J}\rightarrow\mathcal{C}$ を以下の図式とする。
-$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
-この時、錐 $\phi:\Delta(x)\rightarrow F$ は図式 $\Delta(x)$ と $F$ を縦に繋ぐ射、すなわち以下の左の図式が可換となるような $\phi_a,\phi_b,\phi_c$ の組である。これは右のように書いてみれば、 $x$ を頂点とし $F$ の図式を底とする錐形になるので錐と呼ばれる。
-$$\xymatrix{
-x \ar[r]^{1_x} \ar[d]\_{\phi_a} & x \ar[d]\_{\phi_c} & x \ar[l]\_{1_x} \ar[d]^{\phi_c} && & x \ar[ld]\_{\phi_a} \ar[d]\_{\phi_c} \ar[rd]^{\phi_b} & \\\\
-a \ar[r]       & c & b \ar[l] && a \ar[r] & c & b \ar[l]
-}$$
+定義が高階になり難しく見えるが、関手を図式と思えば二つの面 $\Delta(x)$ と $F$ を縦に繋いだものが錐なのだと自然に理解できるだろう。ところで、ここで登場した $\Delta$ はそれ自体が関手である。今後使うので定義をしておく。
 
-より一般には、$x$ から $F$ への錐とは、添字圏 $\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する側面の以下のような三角形が全て可換となるような図式のことである。
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex, thick] (x) to node [left] {\small $\phi_i$} (a);
-    \draw [-latex, thick] (x) to node [right] {\small $\phi_j$} (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-  \end{tikzpicture}
-</script>
+{{% definition title="対角関手" %}}
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $x\in\mathcal{C}$ を定数関手 $x:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:x\rightarrow y$ をそれらの間の自然変換(これは $f$ と同一視可能)に移す対応は関手
+$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
+となる。これを **対角関手(diagonal functor)** という。
+{{% /definition %}}
 
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
