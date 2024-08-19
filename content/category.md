@@ -662,20 +662,29 @@ $$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
 となる。これを **対角関手(diagonal functor)** という。
 {{% /definition %}}
 
+そして、錐の頂点の間の射によって、錐から錐への射を定義する事で錐の圏が出来上がる。
+
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
 $\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
-$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+$\phi_i = \psi_i\circ f$ が成立するような射 $f:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 
 $$\xymatrix{
-x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
+x \ar[r]^f \ar[d]\_{\phi\_i} & y \ar[ld]^{\psi\_i} \\\\
 F(i) & \\\\
 }$$
 
 この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
 {{% /definition %}}
 
-この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
+表現を変えると、錐 $\phi:\Delta(x)\rightarrow F$ から $\psi:\Delta(y)\rightarrow F$ とは自然変換 $f:\Delta(x)\rightarrow\Delta(y)$ であって以下が可換となるものである。
+
+$$\xymatrix{
+\Delta(x) \ar[r]^f \ar[d]\_{\phi} & \Delta(y) \ar[ld]^{\psi} \\\\
+F & \\\\
+}$$
+
+この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $f:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
 
 <script type="text/tikz">
   \begin{tikzpicture}
