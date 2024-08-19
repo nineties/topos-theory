@@ -447,6 +447,415 @@ $$
 $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。$\square$
 {{% /details %}}
 
+## 極限
+集合論における直積や直和のような概念は圏論においては **普遍性(universal property)** と呼ばれる性質を用いた **普遍的構成(universal construction)** という方法を用いて定義することができる。 **極限(limit)** は普遍的構成の特別なものであるが、非常に広範な数学的概念に共通する抽象概念である。まずは具体例として終対象・始対象、積・余積を例にあげた後に極限の定義や性質を紹介する。
+
+### 終対象・始対象
+
+{{% definition title="終対象・始対象" %}}
+圏 $\mathcal{C}$ の **終対象(terminal object)** とは、任意の対象 $x\in\mathcal{C}$ に対して射 $x\rightarrow 1$ が唯一つ存在するような対象 $1\in\mathcal{C}$ の事である。
+
+$$\xymatrix{
+x \ar@{.>}[r]^{!} & 1
+}$$
+
+終対象の双対概念を **始対象(initial object)** という。すなわち、任意の対象 $x\in\mathcal{C}$ に対して射 $0\rightarrow x$ が唯一つ存在するような対象 $0\in\mathcal{C}$ の事である。
+
+$$\xymatrix{
+0 \ar@{.>}[r]^{!} & x
+}$$
+
+これら唯一の射を $!$ や $!\_x$ などと書く。
+{{% /definition %}}
+
+例えば、$\mathbf{Set}$ における終対象は一点集合、始対象は空集合である。posetにおける終対象・始対象は、もし存在するならば、最大値・最小値である。
+
+ここで注意したいのは、普遍性による概念の定義はある特定の対象や射を定めるものではないということである。例えば $\mathbf{Set}$ における終対象である一点集合は無数に存在し、その特定の1つを指定することはできない。しかし、以下の命題で示されるように終対象・始対象は同型を除いて一意であり、対象の同型関係は同値関係であるので具体的な対象の選び方によらず、同値類は一意に決定される。このことは、終対象・始対象に限らず一般化されることを後ほど見ていく。
+
+{{% proposition %}}
+始対象・終対象は同型を除いて一意に定まる。
+{{% /proposition %}}
+
+{{% details 証明 %}}
+$0,0'\in\mathcal{C}$ が共に始対象 であるとすると、射 $f:0\rightarrow 0', g:0'\rightarrow 0$ が存在し、
+これらを合成すると $g\circ f:0\rightarrow 0$ が得られるが $0$ が始対象であることより $0\rightarrow 0$ は唯一つであるので $g\circ f=1_0$。同様にして $f\circ g=1_{0'}$ であるので$f:0\rightarrow 0'$ は同型射。よって $0\simeq 0'$。 終対象についても同様。
+$$\xymatrix{
+0 \ar[r]\_f \ar@/^1pc/[rr]^{1_0} & 0' \ar[r]\_g & 0
+}$$
+$\square$
+{{% /details %}}
+
+### 積・余積
+
+集合 $A,B$ の直積 $A\times B$ および直和 $A\oplus B$ を圏論的に一般化した概念が **積(product)** と **余積(coproduct)** である。
+
+{{% definition title="積" %}}
+圏 $\mathcal{C}$ の対象 $a,b$ に対する **積(product)** とは、 $a\times b$ と書かれるある対象 $a\times b\in\mathcal{C}$ および射 $\pi_a: a\times b\rightarrow a, \pi_b: a\times b\rightarrow b$ の組であって、 任意の対象 $x$ と射 $f:x\rightarrow a, g:x\rightarrow b$ に対して、以下の図式が可換となるような射 $u: x\rightarrow a\times b$ が唯一つ存在するものである。
+
+$$\xymatrix{
+            & x \ar[ld]\_{f} \ar[rd]^{g} \ar@{.>}[d]^{\exists! u} &\\\\
+a           & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
+}$$
+この $u$ を $\langle f, g\rangle$ とも書く。また、 $f:a\rightarrow b, g:c\rightarrow d$ に対して $a\times c, b\times d$ が存在するならば $u=\langle f\circ\pi_a, g\circ\pi_c\rangle$が存在するがこれを $f\times g$ と書く。
+$$\xymatrix{
+            & a\times c \ar[ld]\_{f\circ\pi_a} \ar[rd]^{g\circ\pi_c} \ar@{.>}[d]^{f\times g} &\\\\
+b           & b\times d \ar[l]\_{\pi_c} \ar[r]^{\pi_d} & d
+}$$
+{{% /definition %}}
+
+終対象と同様に積も同型を除いて一意となる事も示す事が出来る。これについては後に一般化して証明する。
+
+{{% example %}}
+$\mathbf{Set}$ における積は直積集合(もしくはそれと同型な集合)である。
+{{% /example %}}
+{{% details 証明 %}}
+集合 $A,B$ の直積集合とは
+$$ A\times B = \\{(a,b)\mid a\in A, b\in B\\}$$
+である。ここで $\pi_A,\pi_B$ を
+$$ \pi_A((a,b)) = a, \pi_B((a,b)) = b $$
+で定めると、 $A\times B,\pi_A,\pi_B$、が積の定義を満たす事を示す。$X$ を任意の集合、 $f:X\rightarrow A, g:X\rightarrow B$ を任意の関数とする。すると $u:X\rightarrow A\times B$ として
+$$ u(x) = (f(x), g(x)) $$
+なる関数を取ることができる。これは$\pi_A\circ u = f, \pi_B\circ u=g$ を満たす。
+ここで、他の関数 $v:X\rightarrow A\times B$ が$\pi_A\circ v=f, \pi_B\circ v=g$ を満たすとすると、関数 $v_A: X\rightarrow A, v_B: X\rightarrow B$ が存在して
+$$ v(x) = (v_A(x), v_B(x))$$
+と書けるが、この時 $\pi_A\circ v=f$ より $v_A(x)=f(x)$。これが任意の $x\in X$ について成立するから $v_A=f$。同様にして $v_B=g$。従って $v=u$ であるから、 積の図式の可換性を満たす $u$ は唯一つに定まる。以上より直積集合 $A\times B$ は積であり、積が同型を除いて一意であることから命題は示された。$\square$
+{{% /details %}}
+
+上記の例におけるカッコ書きに相当する言い回しは、省略しても圏論の語彙を用いた議論の範疇に於いては矛盾が生じないので今後は省略することにする。
+直積以外には例えば、posetの要素 $a,b$ の積は、もし存在するならば$\\{a,b\\}$の下限となる。例えば
+
+- 数値と大小関係からなるposet: $\min\\{a,b\\}$
+- 集合と包含関係からなるposet: $a\cap b$
+
+などである。他にも論理式を対象とし、証明を射とする圏を考える事ができるが、この圏においては$a \wedge $b が積となる。このように数学における様々な概念が積として表現される。
+
+積の双対概念が余積である。
+
+{{% definition title="余積" %}}
+圏 $\mathcal{C}$ の対象 $a,b$ に対する **余積(coproduct)** とは、 $a+b$ と書かれるある対象 $a+b\in\mathcal{C}$ および射 $i_a: a\rightarrow a+b, i_b: b\rightarrow a+b$ の組であって、 任意の対象 $x$ と射 $f:a\rightarrow x, g:b\rightarrow x$ に対して、以下の図式が可換となるような射 $u: a+b\rightarrow x$ が唯一つ存在するものである。
+
+$$\xymatrix{
+            & x \ar@{<-}[ld]\_{f} \ar@{<-}[rd]^{g} \ar@{<.}[d]^{\exists! u} &\\\\
+a           & a+b \ar@{<-}[l]\_{i_a} \ar@{<-}[r]^{i_b} & b
+}$$
+この $u$ を $[f, g]$ とも書く。また $f:a\rightarrow b, g:c\rightarrow d$ に対する $f+g: a+c\rightarrow b+d$ も積と同様に定義される。
+{{% /definition %}}
+
+{{% example %}}
+$\mathbf{Set}$ における余積は直和集合である。
+{{% /example %}}
+{{% details 証明 %}}
+集合 $A,B$ の直和集合
+$$ A\oplus B = \\{(0,a)\mid a\in A\\}\cup\\{(1, b)\mid b\in B\\}$$
+に対して
+$$i_A(a) = (0,a), i_B(b)=(1,b)$$
+とすると $A\oplus B, i_A, i_B$ が余積の定義を満たすことを示す。ここで $X$ を任意の集合、 $f: A\rightarrow X, g: B\rightarrow X$ を任意の関数とし、
+$$ u((0, x)) = f(x), u((1, x)) = g(x)$$
+と定めると、これは余積の図式の可換性 $u\circ i_A = f, u\circ i_B = g$ を満たす。$u$ の一意性は直積が積である事の証明と同様にできる。 $\square$
+{{% /details %}}
+
+先ほど、積の例としてあげた $\min\\{a,b\\}$, $a\cap b$, $a\wedge b$ の圏論的双対は $\max\\{a, b\\}$, $a\cup b$, $a\vee b$ であり、これらは直感的にも理解しやすいと思う。しかし、集合の直積と直和の間の双対性は、集合論的な定義においてはなかなか認識し難い関係であり面白い。但し、集合の直和以外の直和概念一般には言えないので注意。例えば環の直和は余積ではなく、積となる。
+
+### 極限
+
+終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
+
+$$\xymatrix{
+a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
+a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
+\ar@{.}(-5,7);(47,7)
+\ar@{.}(47,7);(47,-5)
+\ar@{.}(47,-5);(-5,-5)
+\ar@{.}(-5,-5);(-5,7)
+\ar@{.}(-5,-13);(47,-13)
+\ar@{.}(47,-13);(47,-25)
+\ar@{.}(47,-25);(-5,-25)
+\ar@{.}(-5,-25);(-5,-13)
+}$$
+
+{{% definition title="対角関手" %}}
+圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
+$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
+となる。これを **対角関手(diagonal functor)** という。
+{{% /definition %}}
+
+例えば、 $\mathcal{J}$ が先ほどの三対象の圏だとすると $\Delta(x)$ は
+$$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
+という図式に対応する。
+
+{{% definition title="錐" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
+
+同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
+{{% /definition %}}
+
+例えば、$\mathcal{J}$ を先ほどの添字圏として $F:\mathcal{J}\rightarrow\mathcal{C}$ を以下の図式とする。
+$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
+この時、錐 $\phi:\Delta(x)\rightarrow F$ は図式 $\Delta(x)$ と $F$ を縦に繋ぐ射、すなわち以下の左の図式が可換となるような $\phi_a,\phi_b,\phi_c$ の組である。これは右のように書いてみれば、 $x$ を頂点とし $F$ の図式を底とする錐形になるので錐と呼ばれる。
+$$\xymatrix{
+x \ar[r]^{1_x} \ar[d]\_{\phi_a} & x \ar[d]\_{\phi_c} & x \ar[l]\_{1_x} \ar[d]^{\phi_c} && & x \ar[ld]\_{\phi_a} \ar[d]\_{\phi_c} \ar[rd]^{\phi_b} & \\\\
+a \ar[r]       & c & b \ar[l] && a \ar[r] & c & b \ar[l]
+}$$
+
+より一般には、$x$ から $F$ への錐とは、添字圏 $\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する側面の以下のような三角形が全て可換となるような図式のことである。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to node [left] {\small $\phi_i$} (a);
+    \draw [-latex, thick] (x) to node [right] {\small $\phi_j$} (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+  \end{tikzpicture}
+</script>
+
+{{% definition title="錐の圏" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
+$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
+$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+
+$$\xymatrix{
+x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
+F(i) & \\\\
+}$$
+
+この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
+{{% /definition %}}
+
+この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
+    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
+    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
+    \coordinate (c) at (1.5, 0);
+    \coordinate (d) at (0, 1);
+    \coordinate (e) at (-1.3, 0.2);
+    \draw [-latex, thick] (x) to (a);
+    \draw [-latex, thick] (x) to (b);
+    \draw [-latex] (x) to (c);
+    \draw [-latex] (x) to (d);
+    \draw [-latex] (x) to (e);
+    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+
+    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
+
+    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
+    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
+    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(i)$};
+    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(j)$};
+    \coordinate (c_) at (5.5, 0);
+    \coordinate (d_) at (4, 1);
+    \coordinate (e_) at (2.7, 0.2);
+    \draw [-latex] (x_) to (y_);
+    \draw [-latex, thick] (y_) to (a_);
+    \draw [-latex, thick] (y_) to (b_);
+    \draw [-latex] (y_) to (c_);
+    \draw [-latex] (y_) to (d_);
+    \draw [-latex] (y_) to (e_);
+    \draw [-latex, thick] (a_) to node [below] {\small $F(f)$} (b_);
+    \draw (b_) to (c_);
+    \draw (c_) to (d_);
+    \draw (d_) to (e_);
+    \draw (e_) to (a_);
+  \end{tikzpicture}
+</script>
+
+{{% definition title="極限" %}}
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
+
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
+
+$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i)$ とも書く。
+{{% /definition %}}
+
+極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
+
+上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
+
+----
+
+(TBD)
+
+{{% proposition %}}
+米田埋め込みは極限を保つ。すなわち自然同型
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
+が存在する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$x\in\mathcal{C}$ について自然な同型
+$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
+が存在する。最後の同型は米田の原理による。
+ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
+$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
+\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
+$$
+であり、米田の補題よりこれは
+$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
+と同型。したがって
+$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
+であり、以上の同型は全て $x$ について自然であるので
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
+となる。$\square$
+{{% /details %}}
+
+この命題の具体例をいくつか並べてみると以下のような等式を得る。
+
+{{% proposition %}}
+
+$$\begin{align\*}
+\mathcal{C}(x, 1) &\simeq 1 \\\\
+\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
+\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
+\end{align\*}$$
+これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
+$$\begin{align\*}
+\mathcal{C}(0, x) &\simeq 1 \\\\
+\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
+\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
+\end{align\*}$$
+{{% /proposition %}}
+
+また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
+
+{{% proposition %}}
+$$\begin{align\*}
+a \times 1 &\simeq a \\\\
+a \times b &\simeq b \times a \\\\
+a + 0 & \simeq a \\\\
+a + b &\simeq b + a
+\end{align\*}$$
+{{% /proposition %}}
+などである。例えば1つ目は
+$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
+が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
+
+代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
+
+
+
+
+
+
+### 極限の例
+
+既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が **終対象(terminal object)**　余極限が **始対象(initial object)** である。そして、積・余積は次のように一般化できる。
+
+{{% definition title="積・余積" %}}
+$\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。関手 $\mathcal{J}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象の集合 $\\{a_i\\}\_{i\in\mathcal{J}}$ と同一視できるので、このとき積・余積を次のように書く。
+$$ \prod\_{i\in\mathcal{J}} a_i,\quad\coprod\_{i\in\mathcal{J}} a_i$$
+$\mathcal{J}$ が有限集合の時は **有限積(finite product)**、**有限余積(finite coproduct)** ともいい、 
+$$ a_1\times a_2\times\cdots a_n,\quad a_1+a_2+\cdots+a_n$$
+のようにも書く。
+{{% /definition %}}
+
+{{% definition title="イコライザ・コイコライザ" %}}
+$\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
+
+$$ \xymatrix {
+\mathrm{eq}(f, g) \ar[r] & a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b && a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b \ar[r] & \mathrm{coeq}(f,g)
+}$$
+{{% /definition %}}
+
+{{% definition title="引き戻し・押し出し" %}}
+$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。
+図式が $a\rightarrow c\leftarrow b$ であるときの引き戻しを$ a\times\_{c} b $ と書く。
+
+同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $a\leftarrow c\rightarrow b$ であるときの押し出しを $ a+\_{c} b $ と書く。
+
+$$ \xymatrix {
+a\times\_{c} b \ar[r] \ar[d] & b \ar[d] && a+\_{c} b & b \ar[l]  \\\\
+a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
+}$$
+{{% /definition %}}
+
+引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
+
+### $\mathbf{Set}$ における極限
+
+$\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。
+まず
+
+- 終対象は一点集合、始対象は空集合
+- 積は直積集合、余積は直和集合
+
+である。関数 $f,g: A\rightarrow B$ が与えられた時のイコライザは
+$$\mathrm{eq}(f,g) = \\{x\in A\mid f(x)=g(x)\\}$$
+すなわち、 $f=g$ の解集合である。コイコライザは $f(x)\sim g(x)\ (\forall x\in B)$ となるような最小の同値関係 $\sim$ による $B$ の商集合
+$$\mathrm{coeq}(f,g)= B/{\sim}$$
+である。これは少し分かり辛いので例を挙げる。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
+$$ 0 \sim 2 \sim 4 \cdots,\quad 1\sim 3\sim 5\cdots $$
+であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものが $\mathrm{coeq}(f,g)$ なので
+$$ \mathrm{coeq}(f,g) = \\{[0],[1]\\}$$
+となる。
+
+$A\xrightarrow{f}C\xleftarrow{g}B$ の引き戻しは
+$$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
+である。また $A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
+$$ A+\_C B = (A+B)/{\sim}$$
+である。
+
+### 完備性・極限の存在定理
+
+前節のように $\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
+
+{{% definition title="完備性" %}}
+圏 $\mathcal{C}$ が任意の小さな圏 $J$ について、任意のその形の図式の極限を持つならば $\mathcal{C}$ は **完備(complete)** であるという。余極限を持つならば **余完備(cocomplete)** であるという。また、完備かつ余完備であることを **双完備(bicomplete)** という。
+
+また、任意の有限の圏(対象の集合、射の集合が共に有限集合である圏)$J$ について、極限を持つならば **有限完備(finite complete)**、余極限を持つならば **有限余完備(finite cocomplete)** という。
+{{% /definition %}}
+
+任意の極限を持つことを直接証明するのは難しいが、以下の定理より、積とイコライザもしくは余積とコイコライザを持つ事のみ示せば十分である。
+
+{{% theorem title="極限の存在定理" %}}
+$\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
+$$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
+
+$$ \begin{align*}
+s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
+t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
+\end{align*}$$
+のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
+
+双対をとれば、余極限をコイコライザと余積によって表現する定理も同様に得られる。
+{{% /theorem %}}
+
+{{% details 証明の概要 %}}
+$x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
+$$\xymatrix{
+x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
+}$$
+
+$\phi=(\phi_i)\_{i\in\mathcal{J}}$ とおくと、これは全ての $\mathcal{J}$ の射 $f:i\rightarrow j$ に対して、$j\in\mathcal{J}, F(f)\circ \phi_i = \phi_j$ であること、すなわち以下の図式が可換であることと同値。
+$$\xymatrix{
+x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
+F(i) \ar[r]_{F(f)} & F(j)
+}$$
+すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。したがって、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。
+{{% /details %}}
+
+{{% proposition %}}
+$\mathbf{Set}$ は双完備である。
+{{% /proposition %}}
+
+
 ## 普遍性
 
 本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。
@@ -688,436 +1097,6 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 {{% proposition %}}
 局所小圏 $\mathcal{C}$, 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$, 対象 $a\in\mathcal{C}$, 要素 $u\in F(a)$ について、
 任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
-{{% /proposition %}}
-
-## 極限
-普遍的構成の代表的な例が **極限(limit)** である。極限及びその双対である余極限によって様々な馴染みのある概念を統一的に表現する事ができる。ここでも表現可能関手を用いた定義からスタートして、その同値な表現として一般的な定義を導く形で説明する。
-
-### 積・余積
-
-集合論における直積 $A\times B=\\{(a, b)\mid a\in A, b\in B\\}$ を圏論的に抽象化したものが **積(product)** である。
-$\mathbf{Set}$ では集合論的な意味での直積が存在するので、表現可能関手 $\mathcal{C}(-, a): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を介して $\mathbf{Set}$ での直積と対応する $\mathcal{C}$ での概念を自然に定義する事ができる。
-
-{{% definition title="積" %}}
-局所小圏 $\mathcal{C}$ の対象 $a,b$ について関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であるならば、それを表現する対象を $a\times b$ と書き、$a,b$ の **積(product)** という。すなわち、積 $a\times b$ とは、自然同型
-$$ \mathcal{C}(-, a\times b)\simeq\mathcal{C}(-, a)\times\mathcal{C}(-, b)$$
-を与えるものである。また、この時の普遍要素を **標準射影(canonical projection)** という。
-{{% /definition %}}
-
-積の双対概念が余積である。上記定義において $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば良い。
-
-{{% definition title="余積" %}}
-局所小圏 $\mathcal{C}$ の対象 $a,b$ について関手 $\mathcal{C}(a, -)\times\mathcal{C}(b, -): \mathcal{C}\rightarrow\mathbf{Set}$ が表現可能であるならば、それを表現する対象を $a + b$ と書き、$a,b$ の **余積(coproduct)** という。すなわち、余積 $a + b$ とは、自然同型
-$$ \mathcal{C}(a + b, -)\simeq\mathcal{C}(a, -)\times\mathcal{C}(b, -)$$
-を与えるものである。また、この時の普遍要素を **標準入射(canonical injection)** という。
-{{% /definition %}}
-
-より一般に、対象の族 $a_i\in\mathcal{C}\quad (i\in I)$ に関して、自然同型
-$$ \mathcal{C}(-, p)\simeq\prod\_{i\in I}\mathcal{C}(-, a_i) $$
-を与える $p$ が存在するならば、これを $\\{a_i\\}\_{i\in I}$ の積と呼び、 $\prod\_{i\in I}a_i$ と書く。$I=\\{1,\ldots,n\\}$の時には $a_1\times\cdots\times a_n$ のようにも書く。
-余積についても同様に $\coprod\_{i\in I}a_i$, $a_1+\cdots + a_n$ と書く。
-
-(TBD)
-
-終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。後ほど定義を行うが、このような対象を **錐(cone)** という。そして図式が可換になる $u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。この事から例えば、終対象が同型を除いて一意である事から積が同型を除いて一意である事が直ちに示されるといった統一的な議論が可能となる。
-
-$$\xymatrix{
-a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
-a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
-\ar@{.}(-5,7);(47,7)
-\ar@{.}(47,7);(47,-5)
-\ar@{.}(47,-5);(-5,-5)
-\ar@{.}(-5,-5);(-5,7)
-\ar@{.}(-5,-13);(47,-13)
-\ar@{.}(47,-13);(47,-25)
-\ar@{.}(47,-25);(-5,-25)
-\ar@{.}(-5,-25);(-5,-13)
-}$$
-
-{{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
-$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
-となる。これを **対角関手(diagonal functor)** という。
-{{% /definition %}}
-
-例えば、 $\mathcal{J}$ が先ほどの三対象の圏だとすると $\Delta(x)$ は
-$$\xymatrix{ x \ar[r]^{1_x} & x & x \ar[l]\_{1_x} }$$
-という図式に対応する。
-
-{{% definition title="錐" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
-
-同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
-{{% /definition %}}
-
-例えば、$\mathcal{J}$ を先ほどの添字圏として $F:\mathcal{J}\rightarrow\mathcal{C}$ を以下の図式とする。
-$$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
-この時、錐 $\phi:\Delta(x)\rightarrow F$ は図式 $\Delta(x)$ と $F$ を縦に繋ぐ射、すなわち以下の左の図式が可換となるような $\phi_a,\phi_b,\phi_c$ の組である。これは右のように書いてみれば、 $x$ を頂点とし $F$ の図式を底とする錐形になるので錐と呼ばれる。
-$$\xymatrix{
-x \ar[r]^{1_x} \ar[d]\_{\phi_a} & x \ar[d]\_{\phi_c} & x \ar[l]\_{1_x} \ar[d]^{\phi_c} && & x \ar[ld]\_{\phi_a} \ar[d]\_{\phi_c} \ar[rd]^{\phi_b} & \\\\
-a \ar[r]       & c & b \ar[l] && a \ar[r] & c & b \ar[l]
-}$$
-
-より一般には、$x$ から $F$ への錐とは、添字圏 $\mathcal{J}$ の射 $f:i\rightarrow j$ に対応する側面の以下のような三角形が全て可換となるような図式のことである。
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex, thick] (x) to node [left] {\small $\phi_i$} (a);
-    \draw [-latex, thick] (x) to node [right] {\small $\phi_j$} (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-  \end{tikzpicture}
-</script>
-
-{{% definition title="錐の圏" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、
-$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ について、全ての $i\in\mathcal{J}$ について
-$\phi_i = \psi_i\circ p$ が成立するような射 $p:x\rightarrow y$ を射 $\phi\rightarrow\psi$ とすると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
-
-$$\xymatrix{
-x \ar[r]^p \ar[d]\_{\phi\_a} & y \ar[ld]^{\psi\_a} \\\\
-F(i) & \\\\
-}$$
-
-この双対概念を **$F$ からの錐の圏(category of cones from $F$)** という。
-{{% /definition %}}
-
-この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $p:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況である。
-
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
-    \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
-    \coordinate (b) at (1, -1) node at (b) [below] {$F(j)$};
-    \coordinate (c) at (1.5, 0);
-    \coordinate (d) at (0, 1);
-    \coordinate (e) at (-1.3, 0.2);
-    \draw [-latex, thick] (x) to (a);
-    \draw [-latex, thick] (x) to (b);
-    \draw [-latex] (x) to (c);
-    \draw [-latex] (x) to (d);
-    \draw [-latex] (x) to (e);
-    \draw [-latex, thick] (a) to node [below] {\small $F(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-
-    \coordinate (eq) at (2, 1) node at (eq) [above] {$=$};
-
-    \coordinate (x_) at (4, 2.5) node at (x_) [above] {$x$};
-    \coordinate (y_) at (5, 2.5) node at (y_) [above] {$y$};
-    \coordinate (a_) at (3, -1) node at (a_) [below] {$F(i)$};
-    \coordinate (b_) at (5, -1) node at (b_) [below] {$F(j)$};
-    \coordinate (c_) at (5.5, 0);
-    \coordinate (d_) at (4, 1);
-    \coordinate (e_) at (2.7, 0.2);
-    \draw [-latex] (x_) to (y_);
-    \draw [-latex, thick] (y_) to (a_);
-    \draw [-latex, thick] (y_) to (b_);
-    \draw [-latex] (y_) to (c_);
-    \draw [-latex] (y_) to (d_);
-    \draw [-latex] (y_) to (e_);
-    \draw [-latex, thick] (a_) to node [below] {\small $F(f)$} (b_);
-    \draw (b_) to (c_);
-    \draw (c_) to (d_);
-    \draw (d_) to (e_);
-    \draw (e_) to (a_);
-  \end{tikzpicture}
-</script>
-
-{{% definition title="極限" %}}
-$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
-
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
-
-$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i)$ とも書く。
-{{% /definition %}}
-
-極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
-
-上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
-
-{{% proposition %}}
-米田埋め込みは極限を保つ。すなわち自然同型
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
-が存在する。
-{{% /proposition %}}
-{{% details 証明 %}}
-$x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
-が存在する。最後の同型は米田の原理による。
-ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
-$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
-\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
-$$
-であり、米田の補題よりこれは
-$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
-と同型。したがって
-$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
-であり、以上の同型は全て $x$ について自然であるので
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
-となる。$\square$
-{{% /details %}}
-
-この命題の具体例をいくつか並べてみると以下のような等式を得る。
-
-{{% proposition %}}
-
-$$\begin{align\*}
-\mathcal{C}(x, 1) &\simeq 1 \\\\
-\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
-\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
-\end{align\*}$$
-これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
-$$\begin{align\*}
-\mathcal{C}(0, x) &\simeq 1 \\\\
-\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
-\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
-\end{align\*}$$
-{{% /proposition %}}
-
-また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
-
-{{% proposition %}}
-$$\begin{align\*}
-a \times 1 &\simeq a \\\\
-a \times b &\simeq b \times a \\\\
-a + 0 & \simeq a \\\\
-a + b &\simeq b + a
-\end{align\*}$$
-{{% /proposition %}}
-などである。例えば1つ目は
-$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
-が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
-
-代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
-
-
-
-
-
-集合論における直積や直和のような概念は圏論においては **普遍性(universal property)** と呼ばれる性質を用いた **普遍的構成(universal construction)** という方法を用いて定義することができる。 **極限(limit)** は普遍的構成の特別なものであるが、非常に広範な数学的概念に共通する抽象概念である。まずは具体例として終対象・始対象、積・余積を例にあげた後に極限の定義や性質を紹介する。
-
-### 終対象・始対象
-
-{{% definition title="終対象・始対象" %}}
-圏 $\mathcal{C}$ の **終対象(terminal object)** とは、任意の対象 $x\in\mathcal{C}$ に対して射 $x\rightarrow 1$ が唯一つ存在するような対象 $1\in\mathcal{C}$ の事である。
-
-$$\xymatrix{
-x \ar@{.>}[r]^{!} & 1
-}$$
-
-終対象の双対概念を **始対象(initial object)** という。すなわち、任意の対象 $x\in\mathcal{C}$ に対して射 $0\rightarrow x$ が唯一つ存在するような対象 $0\in\mathcal{C}$ の事である。
-
-$$\xymatrix{
-0 \ar@{.>}[r]^{!} & x
-}$$
-
-これら唯一の射を $!$ や $!\_x$ などと書く。
-{{% /definition %}}
-
-例えば、$\mathbf{Set}$ における終対象は一点集合、始対象は空集合である。posetにおける終対象・始対象は、もし存在するならば、最大値・最小値である。
-
-ここで注意したいのは、普遍性による概念の定義はある特定の対象や射を定めるものではないということである。例えば $\mathbf{Set}$ における終対象である一点集合は無数に存在し、その特定の1つを指定することはできない。しかし、以下の命題で示されるように終対象・始対象は同型を除いて一意であり、対象の同型関係は同値関係であるので具体的な対象の選び方によらず、同値類は一意に決定される。このことは、終対象・始対象に限らず一般化されることを後ほど見ていく。
-
-{{% proposition %}}
-始対象・終対象は同型を除いて一意に定まる。
-{{% /proposition %}}
-
-{{% details 証明 %}}
-$0,0'\in\mathcal{C}$ が共に始対象 であるとすると、射 $f:0\rightarrow 0', g:0'\rightarrow 0$ が存在し、
-これらを合成すると $g\circ f:0\rightarrow 0$ が得られるが $0$ が始対象であることより $0\rightarrow 0$ は唯一つであるので $g\circ f=1_0$。同様にして $f\circ g=1_{0'}$ であるので$f:0\rightarrow 0'$ は同型射。よって $0\simeq 0'$。 終対象についても同様。
-$$\xymatrix{
-0 \ar[r]\_f \ar@/^1pc/[rr]^{1_0} & 0' \ar[r]\_g & 0
-}$$
-$\square$
-{{% /details %}}
-
-### 積・余積
-
-集合 $A,B$ の直積 $A\times B$ および直和 $A\oplus B$ を圏論的に一般化した概念が **積(product)** と **余積(coproduct)** である。
-
-{{% definition title="積" %}}
-圏 $\mathcal{C}$ の対象 $a,b$ に対する **積(product)** とは、 $a\times b$ と書かれるある対象 $a\times b\in\mathcal{C}$ および射 $\pi_a: a\times b\rightarrow a, \pi_b: a\times b\rightarrow b$ の組であって、 任意の対象 $x$ と射 $f:x\rightarrow a, g:x\rightarrow b$ に対して、以下の図式が可換となるような射 $u: x\rightarrow a\times b$ が唯一つ存在するものである。
-
-$$\xymatrix{
-            & x \ar[ld]\_{f} \ar[rd]^{g} \ar@{.>}[d]^{\exists! u} &\\\\
-a           & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
-}$$
-この $u$ を $\langle f, g\rangle$ とも書く。また、 $f:a\rightarrow b, g:c\rightarrow d$ に対して $a\times c, b\times d$ が存在するならば $u=\langle f\circ\pi_a, g\circ\pi_c\rangle$が存在するがこれを $f\times g$ と書く。
-$$\xymatrix{
-            & a\times c \ar[ld]\_{f\circ\pi_a} \ar[rd]^{g\circ\pi_c} \ar@{.>}[d]^{f\times g} &\\\\
-b           & b\times d \ar[l]\_{\pi_c} \ar[r]^{\pi_d} & d
-}$$
-{{% /definition %}}
-
-終対象と同様に積も同型を除いて一意となる事も示す事が出来る。これについては後に一般化して証明する。
-
-{{% example %}}
-$\mathbf{Set}$ における積は直積集合(もしくはそれと同型な集合)である。
-{{% /example %}}
-{{% details 証明 %}}
-集合 $A,B$ の直積集合とは
-$$ A\times B = \\{(a,b)\mid a\in A, b\in B\\}$$
-である。ここで $\pi_A,\pi_B$ を
-$$ \pi_A((a,b)) = a, \pi_B((a,b)) = b $$
-で定めると、 $A\times B,\pi_A,\pi_B$、が積の定義を満たす事を示す。$X$ を任意の集合、 $f:X\rightarrow A, g:X\rightarrow B$ を任意の関数とする。すると $u:X\rightarrow A\times B$ として
-$$ u(x) = (f(x), g(x)) $$
-なる関数を取ることができる。これは$\pi_A\circ u = f, \pi_B\circ u=g$ を満たす。
-ここで、他の関数 $v:X\rightarrow A\times B$ が$\pi_A\circ v=f, \pi_B\circ v=g$ を満たすとすると、関数 $v_A: X\rightarrow A, v_B: X\rightarrow B$ が存在して
-$$ v(x) = (v_A(x), v_B(x))$$
-と書けるが、この時 $\pi_A\circ v=f$ より $v_A(x)=f(x)$。これが任意の $x\in X$ について成立するから $v_A=f$。同様にして $v_B=g$。従って $v=u$ であるから、 積の図式の可換性を満たす $u$ は唯一つに定まる。以上より直積集合 $A\times B$ は積であり、積が同型を除いて一意であることから命題は示された。$\square$
-{{% /details %}}
-
-上記の例におけるカッコ書きに相当する言い回しは、省略しても圏論の語彙を用いた議論の範疇に於いては矛盾が生じないので今後は省略することにする。
-直積以外には例えば、posetの要素 $a,b$ の積は、もし存在するならば$\\{a,b\\}$の下限となる。例えば
-
-- 数値と大小関係からなるposet: $\min\\{a,b\\}$
-- 集合と包含関係からなるposet: $a\cap b$
-
-などである。他にも論理式を対象とし、証明を射とする圏を考える事ができるが、この圏においては$a \wedge $b が積となる。このように数学における様々な概念が積として表現される。
-
-積の双対概念が余積である。
-
-{{% definition title="余積" %}}
-圏 $\mathcal{C}$ の対象 $a,b$ に対する **余積(coproduct)** とは、 $a+b$ と書かれるある対象 $a+b\in\mathcal{C}$ および射 $i_a: a\rightarrow a+b, i_b: b\rightarrow a+b$ の組であって、 任意の対象 $x$ と射 $f:a\rightarrow x, g:b\rightarrow x$ に対して、以下の図式が可換となるような射 $u: a+b\rightarrow x$ が唯一つ存在するものである。
-
-$$\xymatrix{
-            & x \ar@{<-}[ld]\_{f} \ar@{<-}[rd]^{g} \ar@{<.}[d]^{\exists! u} &\\\\
-a           & a+b \ar@{<-}[l]\_{i_a} \ar@{<-}[r]^{i_b} & b
-}$$
-この $u$ を $[f, g]$ とも書く。また $f:a\rightarrow b, g:c\rightarrow d$ に対する $f+g: a+c\rightarrow b+d$ も積と同様に定義される。
-{{% /definition %}}
-
-{{% example %}}
-$\mathbf{Set}$ における余積は直和集合である。
-{{% /example %}}
-{{% details 証明 %}}
-集合 $A,B$ の直和集合
-$$ A\oplus B = \\{(0,a)\mid a\in A\\}\cup\\{(1, b)\mid b\in B\\}$$
-に対して
-$$i_A(a) = (0,a), i_B(b)=(1,b)$$
-とすると $A\oplus B, i_A, i_B$ が余積の定義を満たすことを示す。ここで $X$ を任意の集合、 $f: A\rightarrow X, g: B\rightarrow X$ を任意の関数とし、
-$$ u((0, x)) = f(x), u((1, x)) = g(x)$$
-と定めると、これは余積の図式の可換性 $u\circ i_A = f, u\circ i_B = g$ を満たす。$u$ の一意性は直積が積である事の証明と同様にできる。 $\square$
-{{% /details %}}
-
-先ほど、積の例としてあげた $\min\\{a,b\\}$, $a\cap b$, $a\wedge b$ の圏論的双対は $\max\\{a, b\\}$, $a\cup b$, $a\vee b$ であり、これらは直感的にも理解しやすいと思う。しかし、集合の直積と直和の間の双対性は、集合論的な定義においてはなかなか認識し難い関係であり面白い。但し、集合の直和以外の直和概念一般には言えないので注意。例えば環の直和は余積ではなく、積となる。
-
-
-### 極限の例
-
-既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が **終対象(terminal object)**　余極限が **始対象(initial object)** である。そして、積・余積は次のように一般化できる。
-
-{{% definition title="積・余積" %}}
-$\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。関手 $\mathcal{J}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象の集合 $\\{a_i\\}\_{i\in\mathcal{J}}$ と同一視できるので、このとき積・余積を次のように書く。
-$$ \prod\_{i\in\mathcal{J}} a_i,\quad\coprod\_{i\in\mathcal{J}} a_i$$
-$\mathcal{J}$ が有限集合の時は **有限積(finite product)**、**有限余積(finite coproduct)** ともいい、 
-$$ a_1\times a_2\times\cdots a_n,\quad a_1+a_2+\cdots+a_n$$
-のようにも書く。
-{{% /definition %}}
-
-{{% definition title="イコライザ・コイコライザ" %}}
-$\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
-
-$$ \xymatrix {
-\mathrm{eq}(f, g) \ar[r] & a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b && a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b \ar[r] & \mathrm{coeq}(f,g)
-}$$
-{{% /definition %}}
-
-{{% definition title="引き戻し・押し出し" %}}
-$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。
-図式が $a\rightarrow c\leftarrow b$ であるときの引き戻しを$ a\times\_{c} b $ と書く。
-
-同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $a\leftarrow c\rightarrow b$ であるときの押し出しを $ a+\_{c} b $ と書く。
-
-$$ \xymatrix {
-a\times\_{c} b \ar[r] \ar[d] & b \ar[d] && a+\_{c} b & b \ar[l]  \\\\
-a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
-}$$
-{{% /definition %}}
-
-引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
-
-### $\mathbf{Set}$ における極限
-
-$\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。
-まず
-
-- 終対象は一点集合、始対象は空集合
-- 積は直積集合、余積は直和集合
-
-である。関数 $f,g: A\rightarrow B$ が与えられた時のイコライザは
-$$\mathrm{eq}(f,g) = \\{x\in A\mid f(x)=g(x)\\}$$
-すなわち、 $f=g$ の解集合である。コイコライザは $f(x)\sim g(x)\ (\forall x\in B)$ となるような最小の同値関係 $\sim$ による $B$ の商集合
-$$\mathrm{coeq}(f,g)= B/{\sim}$$
-である。これは少し分かり辛いので例を挙げる。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
-$$ 0 \sim 2 \sim 4 \cdots,\quad 1\sim 3\sim 5\cdots $$
-であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものが $\mathrm{coeq}(f,g)$ なので
-$$ \mathrm{coeq}(f,g) = \\{[0],[1]\\}$$
-となる。
-
-$A\xrightarrow{f}C\xleftarrow{g}B$ の引き戻しは
-$$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
-である。また $A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
-$$ A+\_C B = (A+B)/{\sim}$$
-である。
-
-### 完備性・極限の存在定理
-
-前節のように $\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
-
-{{% definition title="完備性" %}}
-圏 $\mathcal{C}$ が任意の小さな圏 $J$ について、任意のその形の図式の極限を持つならば $\mathcal{C}$ は **完備(complete)** であるという。余極限を持つならば **余完備(cocomplete)** であるという。また、完備かつ余完備であることを **双完備(bicomplete)** という。
-
-また、任意の有限の圏(対象の集合、射の集合が共に有限集合である圏)$J$ について、極限を持つならば **有限完備(finite complete)**、余極限を持つならば **有限余完備(finite cocomplete)** という。
-{{% /definition %}}
-
-任意の極限を持つことを直接証明するのは難しいが、以下の定理より、積とイコライザもしくは余積とコイコライザを持つ事のみ示せば十分である。
-
-{{% theorem title="極限の存在定理" %}}
-$\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
-$$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
-
-$$ \begin{align*}
-s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
-t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
-\end{align*}$$
-のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
-
-双対をとれば、余極限をコイコライザと余積によって表現する定理も同様に得られる。
-{{% /theorem %}}
-
-{{% details 証明の概要 %}}
-$x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
-$$\xymatrix{
-x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
-}$$
-
-$\phi=(\phi_i)\_{i\in\mathcal{J}}$ とおくと、これは全ての $\mathcal{J}$ の射 $f:i\rightarrow j$ に対して、$j\in\mathcal{J}, F(f)\circ \phi_i = \phi_j$ であること、すなわち以下の図式が可換であることと同値。
-$$\xymatrix{
-x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
-F(i) \ar[r]_{F(f)} & F(j)
-}$$
-すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。したがって、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。
-{{% /details %}}
-
-{{% proposition %}}
-$\mathbf{Set}$ は双完備である。
 {{% /proposition %}}
 
 ## 指数対象
