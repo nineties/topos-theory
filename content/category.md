@@ -266,7 +266,7 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 図式の方が視覚的なイメージを得やすい為、今後登場する抽象的な概念や定理の理解がしやすくなる。
 また、関手という概念の圏論における重要性も理解できる。
 
-{{% definition title="図式としての関手" %}}
+{{% definition title="図式としての関手" label="def.functor-as-a-diagram" %}}
 圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
 {{% /definition %}}
 $\mathcal{J}$ という文字を使ったり、添字圏という名前を使ってはいるが、$F$ は至って普通の関手である。任意の関手 $\mathcal{C}\rightarrow\mathcal{D}$ は $\mathcal{D}$ の中の図式と見なすことができる。
@@ -614,8 +614,39 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
   \end{tikzpicture}
 </script>
 
+では錐と錐の圏の定義を進める。 {{< ref def.functor-as-a-diagram >}} で説明したように、錐の底面はその形を表す添字圏  $\mathcal{J}$ からの関手 $F: \mathcal{J}\rightarrow\mathcal{C}$ で表す事ができる。そして、底面の各頂点に対して $x$ から射が生えているというのが一般的な錐の定義であるが、対象と射より関手と自然変換によって物事を説明した方が使い勝手が良い為、ここでは別の定義行おうと思う。その為には、下図の用に頂点 $x$ を底面と同じ形に開いてしまおう。
 
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \coordinate (xa) at (-1, 1.5) node at (xa) [above] {$x$};
+    \coordinate (xb) at (1, 1.5) node at (xb) [above] {$x$};
+    \coordinate (xc) at (1.5, 2.5);
+    \coordinate (xd) at (0, 3.5);
+    \coordinate (xe) at (-1.3, 2.7);
+    \coordinate (a)  at (-1, -1) node at (a) [below] {$F(a)$};
+    \coordinate (b)  at (1, -1) node at (b) [below] {$F(b)$};
+    \coordinate (c)  at (1.5, 0);
+    \coordinate (d)  at (0, 1);
+    \coordinate (e)  at (-1.3, 0.2);
+    \draw [-latex, thick] (xa) to (a);
+    \draw [-latex, thick] (xb) to (b);
+    \draw [-latex] (xc) to (c);
+    \draw [-latex] (xd) to (d);
+    \draw [-latex] (xe) to (e);
+    \draw [-latex, thick] (a) to node [below] {$F(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+    \draw [-latex, thick] (xa) to node [above] {$1_x$} (xb);
+    \draw (xb) to (xc);
+    \draw (xc) to (xd);
+    \draw (xd) to (xe);
+    \draw (xe) to (xa);
+  \end{tikzpicture}
+</script>
 
+このように展開してみると、上面を形が $\mathcal{J}$ で、全ての対象を $x$、全ての射を $1_x$ に移す関手で表せる事がわかるだろう。これを $\Delta(x):\mathcal{J}\rightarrow\mathcal{C}$ という記号で書く事にする。すると、錐とは $\Delta(x)$ から $F$ への自然変換であるとして表す事ができる。
 
 {{% definition title="対角関手" %}}
 圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $i\in\mathcal{C}$ を定数関手 $i:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:i\rightarrow j$ を定数関手の間の自然変換(これは $f$ と同一視可能)に移す対応は関手
