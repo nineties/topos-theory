@@ -10,6 +10,7 @@ toc: true
 **圏論(category theory)** は、1942-45年にSamuel EilenbergとSaunders Mac Laneによって代数的位相幾何学の研究の中で発明された数学の一分野であり、数学的概念を表現し議論するための抽象的な言語を提供する。
 圏論の諸概念は、それらの例を数学のあらゆる分野で見つけることができる。
 圏論に通底する哲学は、集合論を構成する **集合と帰属関係** という原始的な概念を、集合と関数の概念を抽象化した、 **対象と射** という概念に置き換えることである。
+さらに言えば、それらを更に抽象化した **関手と自然変換** という概念が重要となる。
 
 圏論が発明されて以来、そのアプローチは数学者が各々の主題を捉える方法に深いパラダイムシフトをもたらし、以前ではほとんど不可能だった重要な発見への道を開いた。
 圏論の大きな成果の一つがトポス理論であり、これは全面的に圏論の言語で書かれた理論である。
@@ -832,71 +833,9 @@ F(i) \ar[r]_{F(f)} & F(j)
 $\mathbf{Set}$ は双完備である。
 {{% /proposition %}}
 
-----
-
-(TBD)
-
-{{% proposition %}}
-米田埋め込みは極限を保つ。すなわち自然同型
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
-が存在する。
-{{% /proposition %}}
-{{% details 証明 %}}
-$x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
-が存在する。最後の同型は米田の原理による。
-ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
-$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
-\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
-$$
-であり、米田の補題よりこれは
-$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
-と同型。したがって
-$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
-であり、以上の同型は全て $x$ について自然であるので
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
-となる。$\square$
-{{% /details %}}
-
-この命題の具体例をいくつか並べてみると以下のような等式を得る。
-
-{{% proposition %}}
-
-$$\begin{align\*}
-\mathcal{C}(x, 1) &\simeq 1 \\\\
-\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
-\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
-\end{align\*}$$
-これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
-$$\begin{align\*}
-\mathcal{C}(0, x) &\simeq 1 \\\\
-\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
-\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
-\end{align\*}$$
-{{% /proposition %}}
-
-また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
-
-{{% proposition %}}
-$$\begin{align\*}
-a \times 1 &\simeq a \\\\
-a \times b &\simeq b \times a \\\\
-a + 0 & \simeq a \\\\
-a + b &\simeq b + a
-\end{align\*}$$
-{{% /proposition %}}
-などである。例えば1つ目は
-$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
-が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
-
-代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
-
-
-
 ## 普遍性
 
-本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。
+本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。前節で説明した極限も普遍性を用いた構成の一つである。
 
 普遍性の説明には複数の方法があるが、ここではエミリー・リール(Emily Riehl)による **表現可能関手(representable functor)** を用いた説明を行う。
 
@@ -1136,6 +1075,69 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 局所小圏 $\mathcal{C}$, 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$, 対象 $a\in\mathcal{C}$, 要素 $u\in F(a)$ について、
 任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
 {{% /proposition %}}
+
+
+----
+
+(TBD)
+
+{{% proposition %}}
+米田埋め込みは極限を保つ。すなわち自然同型
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
+が存在する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$x\in\mathcal{C}$ について自然な同型
+$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
+が存在する。最後の同型は米田の原理による。
+ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
+$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
+\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
+$$
+であり、米田の補題よりこれは
+$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
+と同型。したがって
+$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
+であり、以上の同型は全て $x$ について自然であるので
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
+となる。$\square$
+{{% /details %}}
+
+この命題の具体例をいくつか並べてみると以下のような等式を得る。
+
+{{% proposition %}}
+
+$$\begin{align\*}
+\mathcal{C}(x, 1) &\simeq 1 \\\\
+\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
+\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
+\end{align\*}$$
+これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
+$$\begin{align\*}
+\mathcal{C}(0, x) &\simeq 1 \\\\
+\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
+\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
+\end{align\*}$$
+{{% /proposition %}}
+
+また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
+
+{{% proposition %}}
+$$\begin{align\*}
+a \times 1 &\simeq a \\\\
+a \times b &\simeq b \times a \\\\
+a + 0 & \simeq a \\\\
+a + b &\simeq b + a
+\end{align\*}$$
+{{% /proposition %}}
+などである。例えば1つ目は
+$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
+が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
+
+代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
+
+
 
 ## 指数対象
 
