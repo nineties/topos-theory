@@ -899,42 +899,6 @@ $$ F\simeq\mathcal{C}(-, a) $$
 
 後に示すように表現可能関手 $F$ を表現する対象は同型を除いて一意であるので、表現可能性を用いて対象 $a$ を定義する事も可能である。
 
-{{% example title="終対象と始対象" %}}
-$\mathcal{C}^{\mathrm{op}}$ の全ての対象を一点集合 $\ast$ に移す定数関手 $\ast:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象がもし存在するならば、それを $\mathcal{C}$ の **終対象(terminal object)** といい $1$ と書く。
-
-同様に、定数関手 $\ast:\mathcal{C}\rightarrow\mathbf{Set}$ を表現する対象を **始対象(initial object)** といい $0$ と書く。
-{{% /example %}}
-
-$\mathcal{C}$ が終対象 $1$ をもつならば、任意の対象 $x\in\mathcal{C}$ に対して
-
-$$ \mathcal{C}(x, 1) \simeq \ast $$
-
-が成り立つ。これは射 $x\rightarrow 1$ がただ一つであるということと同値。
-任意の射 $f:x\rightarrow y$ に対して、以下が可換となる事は明らかだから、これは自然同型。
-
-$$\xymatrix{
-\mathcal{C}(y, 1) \ar[r] \ar[d]\_{\mathcal{C}(f, 1)} & \ast \ar[d]^{1\_{\ast}} \\\\
-\mathcal{C}(x, 1) \ar[r] & \ast
-}$$
-
-始対象も同様であり、終対象・始対象の一般的な定義が得られる。
-
-{{% definition title="終対象と始対象の定義" %}}
-圏 $\mathcal{C}$ の **終対象(terminal object)** とは、任意の対象 $x\in\mathcal{C}$ に対して射 $x\rightarrow 1$ が唯一つ存在するような対象 $1\in\mathcal{C}$ の事である。
-
-$$\xymatrix{
-x \ar@{.>}[r]^{!} & 1
-}$$
-
-終対象の双対概念を **始対象(initial object)** という。すなわち、任意の対象 $x\in\mathcal{C}$ に対して射 $0\rightarrow x$ が唯一つ存在するような対象 $0\in\mathcal{C}$ の事である。
-
-$$\xymatrix{
-0 \ar@{.>}[r]^{!} & x
-}$$
-
-これら唯一の射を $!$ や $!\_x$ などと書く。
-{{% /definition %}}
-
 ### 米田の補題
 
 表現可能関手の定義では自然変換 $\mathcal{C}(-, a)\rightarrow F$ や $\mathcal{C}(a, -)\rightarrow F$ が使われるが、これらに関する非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が表現可能性によって定められる為、米田の補題も様々な場面で利用されることになる。
