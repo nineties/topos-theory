@@ -765,6 +765,72 @@ a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
 
 引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
 
+#### $\mathbf{Set}$ における極限
+
+$\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという良い性質を持っている。
+まず
+
+- 終対象は一点集合、始対象は空集合
+- 積は直積集合、余積は直和集合
+
+である。関数 $f,g: A\rightarrow B$ が与えられた時のイコライザは
+$$\mathrm{eq}(f,g) = \\{x\in A\mid f(x)=g(x)\\}$$
+すなわち、 $f=g$ の解集合である。コイコライザは $f(x)\sim g(x)\ (\forall x\in B)$ となるような最小の同値関係 $\sim$ による $B$ の商集合
+$$\mathrm{coeq}(f,g)= B/{\sim}$$
+である。これは少し分かり辛いので例を挙げる。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
+$$ 0 \sim 2 \sim 4 \cdots,\quad 1\sim 3\sim 5\cdots $$
+であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものが $\mathrm{coeq}(f,g)$ なので
+$$ \mathrm{coeq}(f,g) = \\{[0],[1]\\}$$
+となる。
+
+$A\xrightarrow{f}C\xleftarrow{g}B$ の引き戻しは
+$$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
+である。また $A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
+$$ A+\_C B = (A+B)/{\sim}$$
+である。
+
+### 完備性・極限の存在定理
+
+前節のように $\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
+
+{{% definition title="完備性" %}}
+圏 $\mathcal{C}$ が任意の小さな圏 $J$ について、任意の図式 $\mathcal{J}\rightarrow\mathcal{C}$ の極限を持つならば $\mathcal{C}$ は **完備(complete)** であるという。余極限を持つならば **余完備(cocomplete)** であるという。また、完備かつ余完備であることを **双完備(bicomplete)** という。
+
+また、任意の有限の圏(対象の集合、射の集合が共に有限集合である圏)$J$ について、極限を持つならば **有限完備(finite complete)**、余極限を持つならば **有限余完備(finite cocomplete)** という。
+{{% /definition %}}
+
+任意の極限を持つことを直接証明するのは難しいが、以下の定理より、積とイコライザもしくは余積とコイコライザを持つ事のみ示せば十分である。
+
+{{% theorem title="極限の存在定理" %}}
+$\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
+$$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
+
+$$ \begin{align*}
+s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
+t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
+\end{align*}$$
+のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
+
+双対をとれば、余極限をコイコライザと余積によって表現する定理も同様に得られる。
+{{% /theorem %}}
+
+{{% details 証明の概要 %}}
+$x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
+$$\xymatrix{
+x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
+}$$
+
+$\phi=(\phi_i)\_{i\in\mathcal{J}}$ とおくと、これは全ての $\mathcal{J}$ の射 $f:i\rightarrow j$ に対して、$j\in\mathcal{J}, F(f)\circ \phi_i = \phi_j$ であること、すなわち以下の図式が可換であることと同値。
+$$\xymatrix{
+x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
+F(i) \ar[r]_{F(f)} & F(j)
+}$$
+すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。したがって、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。
+{{% /details %}}
+
+{{% proposition %}}
+$\mathbf{Set}$ は双完備である。
+{{% /proposition %}}
 
 ----
 
@@ -826,77 +892,6 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
 
-
-
-
-
-
-### $\mathbf{Set}$ における極限
-
-$\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。
-まず
-
-- 終対象は一点集合、始対象は空集合
-- 積は直積集合、余積は直和集合
-
-である。関数 $f,g: A\rightarrow B$ が与えられた時のイコライザは
-$$\mathrm{eq}(f,g) = \\{x\in A\mid f(x)=g(x)\\}$$
-すなわち、 $f=g$ の解集合である。コイコライザは $f(x)\sim g(x)\ (\forall x\in B)$ となるような最小の同値関係 $\sim$ による $B$ の商集合
-$$\mathrm{coeq}(f,g)= B/{\sim}$$
-である。これは少し分かり辛いので例を挙げる。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
-$$ 0 \sim 2 \sim 4 \cdots,\quad 1\sim 3\sim 5\cdots $$
-であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものが $\mathrm{coeq}(f,g)$ なので
-$$ \mathrm{coeq}(f,g) = \\{[0],[1]\\}$$
-となる。
-
-$A\xrightarrow{f}C\xleftarrow{g}B$ の引き戻しは
-$$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
-である。また $A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
-$$ A+\_C B = (A+B)/{\sim}$$
-である。
-
-### 完備性・極限の存在定理
-
-前節のように $\mathbf{Set}$ は任意の極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
-
-{{% definition title="完備性" %}}
-圏 $\mathcal{C}$ が任意の小さな圏 $J$ について、任意のその形の図式の極限を持つならば $\mathcal{C}$ は **完備(complete)** であるという。余極限を持つならば **余完備(cocomplete)** であるという。また、完備かつ余完備であることを **双完備(bicomplete)** という。
-
-また、任意の有限の圏(対象の集合、射の集合が共に有限集合である圏)$J$ について、極限を持つならば **有限完備(finite complete)**、余極限を持つならば **有限余完備(finite cocomplete)** という。
-{{% /definition %}}
-
-任意の極限を持つことを直接証明するのは難しいが、以下の定理より、積とイコライザもしくは余積とコイコライザを持つ事のみ示せば十分である。
-
-{{% theorem title="極限の存在定理" %}}
-$\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
-$$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
-
-$$ \begin{align*}
-s &= (F(f)\circ \pi_i)\_{f:i\rightarrow j\in\mathcal{J}} \\\\
-t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
-\end{align*}$$
-のイコライザである。ここで、$\pi_k:\prod\_{i\in\mathcal{J}}F(i)\rightarrow F(k)$ は積の標準射影。
-
-双対をとれば、余極限をコイコライザと余積によって表現する定理も同様に得られる。
-{{% /theorem %}}
-
-{{% details 証明の概要 %}}
-$x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
-$$\xymatrix{
-x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
-}$$
-
-$\phi=(\phi_i)\_{i\in\mathcal{J}}$ とおくと、これは全ての $\mathcal{J}$ の射 $f:i\rightarrow j$ に対して、$j\in\mathcal{J}, F(f)\circ \phi_i = \phi_j$ であること、すなわち以下の図式が可換であることと同値。
-$$\xymatrix{
-x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
-F(i) \ar[r]_{F(f)} & F(j)
-}$$
-すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。したがって、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。
-{{% /details %}}
-
-{{% proposition %}}
-$\mathbf{Set}$ は双完備である。
-{{% /proposition %}}
 
 
 ## 普遍性
