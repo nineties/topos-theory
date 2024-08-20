@@ -731,6 +731,41 @@ $\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in
 
 上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
 
+### 極限の例
+
+既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が **終対象(terminal object)**　余極限が **始対象(initial object)** である。そして、積・余積は次のように一般化できる。
+
+{{% definition title="積・余積" %}}
+$\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。関手 $\mathcal{J}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象の集合 $\\{a_i\\}\_{i\in\mathcal{J}}$ と同一視できるので、このとき積・余積を次のように書く。
+$$ \prod\_{i\in\mathcal{J}} a_i,\quad\coprod\_{i\in\mathcal{J}} a_i$$
+$\mathcal{J}$ が有限集合の時は **有限積(finite product)**、**有限余積(finite coproduct)** ともいい、 
+$$ a_1\times a_2\times\cdots a_n,\quad a_1+a_2+\cdots+a_n$$
+のようにも書く。
+{{% /definition %}}
+
+{{% definition title="イコライザ・コイコライザ" %}}
+$\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
+
+$$ \xymatrix {
+\mathrm{eq}(f, g) \ar[r] & a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b && a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b \ar[r] & \mathrm{coeq}(f,g)
+}$$
+{{% /definition %}}
+
+{{% definition title="引き戻し・押し出し" %}}
+$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。
+図式が $a\rightarrow c\leftarrow b$ であるときの引き戻しを$ a\times\_{c} b $ と書く。
+
+同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $a\leftarrow c\rightarrow b$ であるときの押し出しを $ a+\_{c} b $ と書く。
+
+$$ \xymatrix {
+a\times\_{c} b \ar[r] \ar[d] & b \ar[d] && a+\_{c} b & b \ar[l]  \\\\
+a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
+}$$
+{{% /definition %}}
+
+引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
+
+
 ----
 
 (TBD)
@@ -795,40 +830,6 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 
 
-
-### 極限の例
-
-既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が **終対象(terminal object)**　余極限が **始対象(initial object)** である。そして、積・余積は次のように一般化できる。
-
-{{% definition title="積・余積" %}}
-$\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。関手 $\mathcal{J}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象の集合 $\\{a_i\\}\_{i\in\mathcal{J}}$ と同一視できるので、このとき積・余積を次のように書く。
-$$ \prod\_{i\in\mathcal{J}} a_i,\quad\coprod\_{i\in\mathcal{J}} a_i$$
-$\mathcal{J}$ が有限集合の時は **有限積(finite product)**、**有限余積(finite coproduct)** ともいい、 
-$$ a_1\times a_2\times\cdots a_n,\quad a_1+a_2+\cdots+a_n$$
-のようにも書く。
-{{% /definition %}}
-
-{{% definition title="イコライザ・コイコライザ" %}}
-$\mathcal{J}$ が $\bullet\rightrightarrows\bullet$ という形の時の極限を **イコライザ(equalizer)**、余極限を **コイコライザ(coequalizer)** という。並行射 $f,g$ についてのイコライザを $\mathrm{eq}(f,g)$、コイコライザを $\mathrm{coeq}(f,g)$ と書く。
-
-$$ \xymatrix {
-\mathrm{eq}(f, g) \ar[r] & a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b && a \ar@<+2pt>[r]^{f} \ar@<-2pt>[r]\_{g} & b \ar[r] & \mathrm{coeq}(f,g)
-}$$
-{{% /definition %}}
-
-{{% definition title="引き戻し・押し出し" %}}
-$\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ という形の時の極限を **引き戻し(pullback)** という。
-図式が $a\rightarrow c\leftarrow b$ であるときの引き戻しを$ a\times\_{c} b $ と書く。
-
-同様に、$\bullet\leftarrow\bullet\rightarrow\bullet$ という形の時の余極限を **押し出し(pushout)** といい、図式が $a\leftarrow c\rightarrow b$ であるときの押し出しを $ a+\_{c} b $ と書く。
-
-$$ \xymatrix {
-a\times\_{c} b \ar[r] \ar[d] & b \ar[d] && a+\_{c} b & b \ar[l]  \\\\
-a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
-}$$
-{{% /definition %}}
-
-引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
 
 ### $\mathbf{Set}$ における極限
 
