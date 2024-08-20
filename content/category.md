@@ -734,7 +734,7 @@ $\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in
 
 ### 極限の例
 
-既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が **終対象(terminal object)**　余極限が **始対象(initial object)** である。そして、積・余積は次のように一般化できる。
+既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が終対象、余極限が始対象である。そして、積・余積は次のように一般化できる。
 
 {{% definition title="積・余積" %}}
 $\mathcal{J}$ が離散圏の時の極限を **積(product)** 、余極限を **余積(coproduct)** という。関手 $\mathcal{J}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象の集合 $\\{a_i\\}\_{i\in\mathcal{J}}$ と同一視できるので、このとき積・余積を次のように書く。
