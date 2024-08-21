@@ -578,7 +578,7 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
 後ほど定義を行うが、このような対象を **錐(cone)** という。この場合は $a,b$ が底で$x$が頂点であるような錐である。
 以下のように立てて描いてみるとイメージが湧きやすいかもしれない。
 
-<script type="text/tikz">
+{{% tikz %}}
   \begin{tikzpicture}
     \coordinate (p) at (-0.5, 1.5) node at (p) [above] {$a\times b$};
     \coordinate (x) at (1.5, 1.5) node at (x) [above] {$x$};
@@ -590,11 +590,11 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
     \draw [-latex, thick] (p) to node [left] {\small $\pi_b$} (b);
     \draw [-latex, dotted] (x) to node [above] {\small $u$} (p);
   \end{tikzpicture}
-</script>
+{{% /tikz %}}
 
 より一般には、下図のように底面の頂点が複数あり、その間に射があるようなものを錐として考える事で、様々な概念を統一的に議論できるというわけである。
 
-<script type="text/tikz">
+{{% tikz %}}
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
     \coordinate (a) at (-1, -1);
@@ -613,11 +613,11 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
     \draw (d) to (e);
     \draw (e) to (a);
   \end{tikzpicture}
-</script>
+{{% /tikz %}}
 
 では錐と錐の圏の定義を進める。 {{< ref def.functor-as-a-diagram >}} で説明したように、錐の底面はその形を表す添字圏  $\mathcal{J}$ からの関手 $F: \mathcal{J}\rightarrow\mathcal{C}$ で表す事ができる。そして、底面の各頂点に対して $x$ から射が生えているというのが一般的な錐の定義であるが、対象と射より関手と自然変換によって物事を説明した方が使い勝手が良い為、ここでは別の定義行おうと思う。その為には、下図の用に頂点 $x$ を底面と同じ形に開いてしまおう。
 
-<script type="text/tikz">
+{{% tikz %}}
   \begin{tikzpicture}
     \coordinate (xa) at (-1, 1.5) node at (xa) [above] {$x$};
     \coordinate (xb) at (1, 1.5) node at (xb) [above] {$x$};
@@ -645,7 +645,7 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
     \draw (xd) to (xe);
     \draw (xe) to (xa);
   \end{tikzpicture}
-</script>
+{{% /tikz %}}
 
 このように展開してみると、上面を形が $\mathcal{J}$ の定数関手 $x$ で表せる事がわかるだろう。これを $\Delta(x):\mathcal{J}\rightarrow\mathcal{C}$ という記号で書く事にする。すると、錐とは上面 $\Delta(x)$ から底面 $F$ への自然変換であるとして表す事ができる。また、この双対版として底面から上面への錐も考える事ができる。
 
@@ -678,7 +678,7 @@ F & \\\\
 
 この圏のイメージは以下のようになる。すなわち $x$ から $F$ への錐を $f:x\rightarrow y$ と $y$ から $F$ への錐に分解できるという状況を錐の間に射 $f$ が存在すると定めるのである。
 
-<script type="text/tikz">
+{{% tikz %}}
   \begin{tikzpicture}
     \coordinate (x) at (0, 2.5) node at (x) [above] {$x$};
     \coordinate (a) at (-1, -1) node at (a) [below] {$F(i)$};
@@ -718,7 +718,7 @@ F & \\\\
     \draw (d_) to (e_);
     \draw (e_) to (a_);
   \end{tikzpicture}
-</script>
+{{% /tikz %}}
 
 {{% definition title="極限" %}}
 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
@@ -899,6 +899,23 @@ $$ F\simeq\mathcal{C}(-, a) $$
 
 後に示すように表現可能関手 $F$ を表現する対象は同型を除いて一意であるので、表現可能性を用いて対象 $a$ を定義する事も可能である。
 
+表現可能関手とはどのようなものか具体例を見てみよう。非常に簡単な例として、 $\mathcal{C}$ として自然数の順序集合 $\mathbb{N}$ をとる。これは以下のような圏である。各射は大小関係 $\leq$ である。
+$$
+\xymatrix{
+0 \ar[r] & 1 \ar[r] & \cdots \ar[r] & n-1 \ar[r] & n \ar[r] & n+1 \ar[r] & \cdots
+}
+$$
+すると、表現可能関手 $\mathbb{N}(-, n):\mathbb{N}^{\mathrm{op}}\rightarrow\mathbb{Set}$ は以下の図式となる。
+
+$$
+\xymatrix{
+\mathbb{N}(0, n) \ar@{<-}[r] & \mathbb{N}(1, n) \ar@{<-}[r] & \cdots \ar@{<-}[r] & \mathbb{N}(n-1, n) \ar@{<-}[r] & \mathbb{N}(n, n) \ar@{<-}[r] & \mathbb{N}(n+1, n) \ar@{<-}[r] & \cdots
+}
+$$
+
+
+
+\mathbb{N}(0, n) \ar@{<-}[r] & \mathbb{N}(1, n) \ar@{<-}[r] & \cdots \ar@{<-}[r] &\mathbb{N}(n-1, n) \ar@{<-}[r] & \mathbb{N}(n, n) \ar@{<-}[r] &\mathbb{N}(n+1, n) \ar@{<-}[r] & \cdots
 ### 米田の補題
 
 表現可能関手の定義では自然変換 $\mathcal{C}(-, a)\rightarrow F$ や $\mathcal{C}(a, -)\rightarrow F$ が使われるが、これらに関する非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が表現可能性によって定められる為、米田の補題も様々な場面で利用されることになる。
