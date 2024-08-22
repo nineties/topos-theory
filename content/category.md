@@ -899,23 +899,28 @@ $$ F\simeq\mathcal{C}(-, a) $$
 
 後に示すように表現可能関手 $F$ を表現する対象は同型を除いて一意であるので、表現可能性を用いて対象 $a$ を定義する事も可能である。
 
-表現可能関手とはどのようなものか具体例を見てみよう。非常に簡単な例として、 $\mathcal{C}$ として自然数の順序集合 $\mathbb{N}$ をとる。これは以下のような圏である。各射は大小関係 $\leq$ である。
+表現可能関手とはどのようなものか具体例を見てみよう。非常に簡単な例として、 $\mathcal{C}$ として自然数の集合 $\mathbb{N}$ をとる。これは離散圏であり、恒等射以外存在しないので
+関手 $\mathbb{N}(-, n)$ は $\mathbb{N}(n, n) = \\{1_n\\}$ で、それ以外は空集合となる関手である。すなわち、単集合を $1$、空集合を $0$ とすれば表現可能関手 $\mathbb{N}(-, n)$ は
+$$ 0, 0, \ldots, 0, \overbrace{1}^{n\text{番目}}, 0,\ldots $$
+という集合の列である。自然数 $n$ という情報のみでこれが定まるし、逆に $\mathbf{Set}$ 内で $n$ が表現されているというイメージも得られるだろう。
+また $\mathbb{N}$ の対象が表現されているだけでなく、 $\mathbb{N}$ の射も表現されている。というのは自然変換 $\mathbb{N}(-, n)\rightarrow\mathbb{N}(-, n)$ は空関数 $0\rightarrow 0$ と単一の関数 $1\rightarrow 1$ で図式を
+縦に繋いだ物のみであるからただ一つしか存在しない。そして $m\neq n$ の時、自然変換 $\mathbb{N}(-, m)\rightarrow\mathbb{N}(-, n)$ は存在しない。何故ならば、$1\rightarrow 0$ なる関数は存在しないからである。
+これは $\mathbb{N}(n ,n)$ が単集合、 $\mathbb{N}(m, n)\quad (m\neq n)$ が空集合であるということと対応している。
+
+続いて、同じ $\mathbb{N}$ だが、これを順序集合とした場合を考えよう。これは以下のような圏であり、各射は大小関係 $\leq$ である。
 $$
-\xymatrix{
-0 \ar[r] & 1 \ar[r] & \cdots \ar[r] & n-1 \ar[r] & n \ar[r] & n+1 \ar[r] & \cdots
-}
+0 \rightarrow 1 \rightarrow\cdots\rightarrow n-1\rightarrow n\rightarrow n+1\rightarrow\cdots
 $$
 すると、表現可能関手 $\mathbb{N}(-, n):\mathbb{N}^{\mathrm{op}}\rightarrow\mathbb{Set}$ は以下の図式となる。
 
 $$
-\xymatrix{
-\mathbb{N}(0, n) \ar@{<-}[r] & \mathbb{N}(1, n) \ar@{<-}[r] & \cdots \ar@{<-}[r] & \mathbb{N}(n-1, n) \ar@{<-}[r] & \mathbb{N}(n, n) \ar@{<-}[r] & \mathbb{N}(n+1, n) \ar@{<-}[r] & \cdots
-}
+1\leftarrow 1 \leftarrow\cdots\leftarrow 1\leftarrow\overbrace{1}^{n\text{番目}} \leftarrow 0 \leftarrow \cdots
 $$
 
+すると、先ほどと同様にして $m\leq n$ ならば $\mathbb{N}(-, m)\rightarrow\mathbb{N}(-, n)$ がただ一つ存在し、そうでなければ存在しないという事がわかる。これは $\mathbb{N}(m, n)$ の要素数と一致する。
 
+以上は非常にシンプルな例であるが、$a\in\mathcal{C}$ と表現可能関手 $\mathcal{C}(-, a)$ の対応が、その周囲の射も含め綺麗に対応している事が分かるであろう。誤解を恐れずに言えば $a$ と $\mathcal{C}(-, a)$ は同じものの異なる表現であると言える。続く節で **米田埋め込み(Yoneda embedding)** という概念としてこれを説明する。
 
-\mathbb{N}(0, n) \ar@{<-}[r] & \mathbb{N}(1, n) \ar@{<-}[r] & \cdots \ar@{<-}[r] &\mathbb{N}(n-1, n) \ar@{<-}[r] & \mathbb{N}(n, n) \ar@{<-}[r] &\mathbb{N}(n+1, n) \ar@{<-}[r] & \cdots
 ### 米田の補題
 
 表現可能関手の定義では自然変換 $\mathcal{C}(-, a)\rightarrow F$ や $\mathcal{C}(a, -)\rightarrow F$ が使われるが、これらに関する非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。圏論では様々な概念が表現可能性によって定められる為、米田の補題も様々な場面で利用されることになる。
