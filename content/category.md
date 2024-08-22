@@ -264,13 +264,13 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 ### 図式としての関手
 
 今後の為に、関手を **図式(diagram)** とみなす考え方に慣れておいた方が良い。
-図式の方が視覚的なイメージを得やすい為、今後登場する抽象的な概念や定理の理解がしやすくなる。
-また、関手という概念の圏論における重要性も理解できる。
+図式の方が視覚的なイメージを得やすい為、今後登場する抽象的な(高階な)概念や定理の理解がしやすくなる。
+例えば関数 $\mathbb{N}\rightarrow\mathbb{R}$ について考える、ということと実数列 $a_0,a_1,\ldots$ について考えるという事は同じ事であるが、後者の方がイメージを得やすい場面もあるだろう。これと同じ事である。
 
 {{% definition title="図式としての関手" label="def.functor-as-a-diagram" %}}
 圏 $\mathcal{J}$ から $\mathcal{C}$ への関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ を形が $\mathcal{J}$ である $\mathcal{C}$ における **図式(diagram)** という。このとき、$\mathcal{J}$ を **添字圏(index category)** という。
 {{% /definition %}}
-$\mathcal{J}$ という文字を使ったり、添字圏という名前を使ってはいるが、$F$ は至って普通の関手である。任意の関手 $\mathcal{C}\rightarrow\mathcal{D}$ は $\mathcal{D}$ の中の図式と見なすことができる。
+$\mathcal{J}$ という文字を使ったり、添字圏という名前を使ってはいるが、$F$ は至って普通の関手である。任意の関手 $\mathcal{C}\rightarrow\mathcal{D}$ は $\mathcal{D}$ の中の $\mathcal{C}$ と同じ形の図式なのである。
 
 例えば添字圏 $\mathcal{J}$ が対象が3つの
 $$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
@@ -318,11 +318,7 @@ $$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\cir
 
 ## 自然変換
 
-圏論は元々 **自然同型** という概念を記述する為に誕生したと言う背景がある。
-例えば、有限次元ベクトル空間 $V$ とその双対空間 $V^\ast$、さらにその双対空間 $V^{\ast\ast}$ について考えると、これらは全てベクトル空間として同型である。
-$$ V\simeq V^\ast \simeq V^{\ast\ast} $$
-しかし $x\in V$ と $f\in V^\ast$ の間に $V$ に寄らない標準的な一対一対応関係を定めるのは難しいが、$x\in V$ と $\phi\in V^{\ast\ast}$ の間にはそう言ったものを定める事が出来るという違いがある。
-そのような意味で同型 $V\simeq V^\ast$ と $V\simeq V^{\ast\ast}$ は質が違い、後者は自然同型であると言われる。このような概念を抽象的に記述する為に **自然変換** を定義する。
+関手の間の準同型の事を **自然変換(natural transformation)** という。また {{< ref def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
 
 ### 自然変換・自然同型
 
@@ -336,6 +332,40 @@ F(b) \ar[r]^{\phi_b} & G(b)
 
 $\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\simeq G$ と書く。
 {{% /definition %}}
+
+複雑な定義に見えるが、関手を図式と思えばなんて事はなく、つまり $\mathcal{D}$ の中の形が $\mathcal{C}$ の図式の対応する点を射で繋ぎ、全体が可換であるような物を自然変換というのである。
+対象と対象を繋ぐのが射、図式と図式を繋ぐのが自然変換、というわけで対象と射を一般化したものが図式と自然変換というわけである。
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (xa) at (-1, 1.5) node at (xa) [above] {$F(a)$};
+    \coordinate (xb) at (1, 1.5) node at (xb) [above] {$F(b)$};
+    \coordinate (xc) at (1.5, 2.5);
+    \coordinate (xd) at (0, 3.5);
+    \coordinate (xe) at (-1.3, 2.7);
+    \coordinate (a)  at (-1, -1) node at (a) [below] {$G(a)$};
+    \coordinate (b)  at (1, -1) node at (b) [below] {$G(b)$};
+    \coordinate (c)  at (1.5, 0);
+    \coordinate (d)  at (0, 1);
+    \coordinate (e)  at (-1.3, 0.2);
+    \draw [-latex, thick] (xa) to node [above] {$F(f)$} (xb);
+    \draw [-latex, thick] (xa) to node [right] {$\phi_a$} (a);
+    \draw [-latex, thick] (xb) to node [left] {$\phi_b$} (b);
+    \draw [-latex] (xc) to (c);
+    \draw [-latex] (xd) to (d);
+    \draw [-latex] (xe) to (e);
+    \draw [-latex, thick] (a) to node [below] {$G(f)$} (b);
+    \draw (b) to (c);
+    \draw (c) to (d);
+    \draw (d) to (e);
+    \draw (e) to (a);
+    \draw (xb) to (xc);
+    \draw (xc) to (xd);
+    \draw (xd) to (xe);
+    \draw (xe) to (xa);
+  \end{tikzpicture}
+{{% /tikz %}}
+
 
 関手 $F,G,H:\mathcal{C}\rightarrow\mathcal{D}$ の間に自然変換 $\phi:F\rightarrow G, \psi: G\rightarrow H$ が存在する時、下図の横の射をそれぞれ合成した射の族 $\\{\psi_a\circ\phi_a\\}$ は 自然変換 $F\rightarrow H$ となる。これを自然変換の合成といい $\psi\circ \phi$ と書く。
 
