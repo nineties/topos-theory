@@ -264,7 +264,7 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 ### 図式としての関手
 
 今後の為に、関手を **図式(diagram)** とみなす考え方に慣れておいた方が良い。
-図式の方が視覚的なイメージを得やすい為、今後登場する抽象的な(高階な)概念や定理の理解がしやすくなる。
+図式の方が視覚的なイメージを得やすい為、今後登場する抽象的・高階な概念や定理の理解がしやすくなる。
 例えば関数 $\mathbb{N}\rightarrow\mathbb{R}$ について考える、ということと実数列 $a_0,a_1,\ldots$ について考えるという事は同じ事であるが、後者の方がイメージを得やすい場面もあるだろう。これと同じ事である。
 
 {{% definition title="図式としての関手" label="def.functor-as-a-diagram" %}}
@@ -590,7 +590,7 @@ $$ u((0, x)) = f(x), u((1, x)) = g(x)$$
 ### 極限
 
 終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。
-そして、$u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ が錐の圏の終対象であることとして表現する事が出来る。
+そして、$u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ がその圏の終対象であることとして表現する事が出来る。
 
 $$\xymatrix{
 a \ar[d]^{1_a} & x \ar[l]\_{f} \ar[r]^{g} \ar@{.>}[d]^{\exists! u} & b \ar[d]^{1_b}\\\\
