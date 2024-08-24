@@ -1066,7 +1066,7 @@ $$\xymatrix{
 F(0) \ar@{<-}[r]    & \cdots \ar@{<-}[r] & F(a-1) \ar@{<-}[r]  & F(a) \ar@{<-}[r]    & F(a+1) \ar@{<-}[r] & \cdots
 }$$
 すると、先ほどと同様にして $\alpha\_{a+1}$ より右側は全て空関数となり、 $\alpha_a$ は $F(a)$ の要素数だけ存在する。そして、 $\alpha_0,\ldots,\alpha\_{a-1}$ は図式の可換性から $\alpha_a$ が定まれば自動的に決まる。
-従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\simeq F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から **$F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する** というイメージが持てるのではないかと思う。
+従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\simeq F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から $F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を**生成する** ことが分かる。
 
 一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a)$ となるわけである。
 
@@ -1166,16 +1166,16 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 ### 普遍性・普遍要素
 
-米田の補題より、 自然同型 $\mathcal{C}(-, a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
+米田の補題より、 自然同型 $\mathcal{Y}(a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
 
 {{% definition title="普遍要素" %}}
 表現可能関手 $F: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する対象が $a$ である時、米田の補題によって自然同型
-$$ \mathcal{C}(-, a)\simeq F$$
+$$ \mathcal{Y}(a)\simeq F$$
 と対応する $u\in F(a)$ を $F$ の **普遍要素(universal element)** という。
 {{% /definition %}}
 
-この $u$ を普遍要素と呼ぶ理由を説明する。自然同型 $\mathcal{C}(-, a)\simeq F$ は同型射($\mathbf{Set}$なので全単射)の集合 $\\{\mathcal{C}(x, a)\rightarrow F(x)\\}\_{x\in\mathcal{C}}$ からなるわけであるので、 $u$ を用いてこの全単射を具体的に構成する事ができる。この **任意の $x$ に対して全単射 $\mathcal{C}(x, a)\ni f\mapsto v\in F(x)$ を $u$ だけを用いて具体的に構成できるという** という性質を $u$ の **普遍性(universal property)** という。そして、この構成を **普遍的構成(universal construction)** という。
-また、この全単射を得られるということは、**$u$ だけを用いて関手 $F$ の表現 $\mathcal{C}(-, a)$ を得る事ができる** という事でもある。
+この $u$ を普遍要素と呼ぶ理由を説明する。米田の補題の所で説明したように、 $u$ のみから自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する事が可能である訳だが、特にこれが自然同型 $\mathcal{Y}(a)\simeq F$ の時には $F$ そのものを生成することが出来る。ということは、 $a\in\mathcal{C}$ と $u\in F(a)$ のみから、任意の $x\in\mathcal{C}$ について $F(x)$ の任意の要素を具体的に構成することができる。この性質を $u$ の **普遍性(universal property)** といい、この構成を **普遍的構成(universal construction)** という。
+
 
 普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
 
@@ -1199,13 +1199,19 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
 {{% /proposition %}}
 
+普遍的構成の具体例を見てみよう。例として関手 $F = \mathcal{C}(-, a)\times\mathcal{C}(-, b)$ を考えよう。これが表現可能関手となるのは
+ある対象 $p\in\mathcal{C}$ と、 $F(p)=\mathcal{C}(p, a)\times\mathcal{C}(p, b)$ の要素、すなわち射 $\pi_a:p\rightarrow a$ と $\pi_b: p\rightarrow b$ があって、
+任意の $x\in\mathcal{C}$ と、$F(x)$ の要素、すなわち射 $f:x\rightarrow a$ と $g:x\rightarrow b$ に対して、
+$$ (f, g) = F(\xi)(\pi_a, \pi_b)=(\mathcal{C}(\xi, a)\times\mathcal{C}(\xi, b))(\pi_a,\pi_b) = (\pi_a\circ\xi, \pi_b\circ\xi) $$
+となるような $\xi: x\rightarrow p$ がただ一つ存在することである。となって、積の定義が得られる。
 
-----
+$$\xymatrix{
+            & x \ar[ld]\_{f} \ar[rd]^{g} \ar@{.>}[d]^{\exists! \xi} &\\\\
+a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
+}$$
 
-(TBD)
-
-
-
+まとめると、関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b)$ が表現可能の時、これを表現する対象が $a\times b$ で、普遍要素が標準射影 $\pi_a:a\times b\rightarrow a, \pi_b:a\times b\rightarrow b$ である。
+同様にして、関手 $\varprojlim(\mathcal{Y}\circ F)$ を表現する対象が $\varprojlim F$ で、普遍要素が極限錐 $\phi:\Delta(\varprojlim F)\rightarrow F$ である。
 
 ## 指数対象
 
