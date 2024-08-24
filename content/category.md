@@ -1105,7 +1105,7 @@ $$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrig
 
 また、以下が成り立つ。
 
-{{% proposition %}}
+{{% proposition label="prop.yoneda-preserves-limits" %}}
 米田埋め込みは極限を保つ。すなわち自然同型
 $$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
 が存在する。
@@ -1131,7 +1131,7 @@ $$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
 
 この命題の具体例をいくつか並べてみると以下のような等式を得る。
 
-{{% proposition %}}
+{{% proposition label="prop.yoneda-preserves-limits-examples" %}}
 
 $$\begin{align\*}
 \mathcal{C}(x, 1) &\simeq 1 \\\\
@@ -1194,7 +1194,7 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 
 これは逆も成立し、普遍性の説明でよく登場する定義が得られる。
 
-{{% proposition %}}
+{{% proposition label="prop.universal-construction" %}}
 局所小圏 $\mathcal{C}$, 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$, 対象 $a\in\mathcal{C}$, 要素 $u\in F(a)$ について、
 任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
 {{% /proposition %}}
@@ -1215,8 +1215,8 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 
 ## 指数対象
 
-極限とは異なる普遍性をもつ対象に **指数対象(exponential object)** がある。
-$\mathbf{Set}$ における指数対象は $\mathbf{Set}(a, b)$ すなわち、関数 $a\rightarrow b$ の集合である。このように、射の集合(Hom集合) $\mathcal{C}(a, b)$ のような性質をもつ $\mathcal{C}$ の対象を指数対象と言う。その性質と言うのは、"引数" $a$ を与えると $b$ を得ることができると言う事である。
+極限とは異なる普遍性をもつ対象に **指数対象(exponential object)** がある。指数対象は "関数" のような性質を持つ対象のことで、"引数" を与えて "結果" を得る事が出来る。
+すなわち $f$ と $a$ から $f(a)$ を得るような操作を圏論的に一般化したものである。
 
 ### 指数対象の定義
 
@@ -1226,7 +1226,7 @@ $$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\m
 が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\epsilon:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 
-これを{{< ref prop.representable-to-diagram >}}を用いて具体的な図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
+これを{{< ref prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
 $$ f = \mathcal{C}(u\times a, b)(\epsilon) = (-\circ (u\times 1_a))(\epsilon) = \epsilon \circ (u\times 1_a) $$
 となるような $u: x\rightarrow b^a$ が一意に存在する、と言う事が指数対象の持つ普遍性となる。
 
@@ -1256,21 +1256,15 @@ $\square$
 $$ (a^b)^c \simeq a^{b\times c} $$
 {{% /proposition %}}
 {{% details 証明 %}}
-仮定より $x\in\mathcal{C}$ について自然な同型
-$$ \mathcal{C}(x, a^b)\simeq\mathcal{C}(x\times b, a)$$
-$$ \mathcal{C}(x, (a^b)^c)\simeq\mathcal{C}(x\times c, a^b)$$
-$$ \mathcal{C}(x, a^{b\times c})\simeq\mathcal{C}(x\times b\times c, a)$$
-が存在。第1式の $x$ が $x\times c$ の場合を考えると $(x\times c)\times b\simeq x\times b\times c$ だから
-$$ \mathcal{C}(x\times c, a^b)\simeq\mathcal{C}(x\times b\times c, a)$$
-である。したがって、第2,3式の右辺が $x$ について自然同型なので、自然同型
-$$ \mathcal{C}(x, (a^b)^c) \simeq \mathcal{C}(x, a^{b\times c})$$
-が存在する。よって米田の原理より $(a^b)^c\simeq a^{b\times c}$ である。 $\square$
+$$ \mathcal{C}(x,(a^b)^c)\simeq\mathcal{C}(x\times c, a^b)\simeq\mathcal{C}((x\times c)\times b, a)\simeq\mathcal{C}(x\times (b\times c), a)\simeq\mathcal{C}(x, a^{b\times c}) $$
+と米田の原理より。 $\square$
 {{% /details %}}
 
 {{% proposition %}}
 $$ (a\times b)^c \simeq a^c\times b^c$$
 {{% /proposition %}}
 {{% details 証明 %}}
+{{< ref prop.yoneda-preserves-limits-examples >}} を用いて
 $$\begin{align\*}
 \mathcal{C}(x, (a\times b)^c) &\simeq \mathcal{C}(x\times c, a\times b) \\\\
                               &\simeq \mathcal{C}(x\times c, a)\times\mathcal{C}(x\times c, b) \\\\
@@ -1285,7 +1279,7 @@ $$ 1^a\simeq 1$$
 {{% /proposition %}}
 {{% details 証明 %}}
 $$\mathcal{C}(x, 1^a)\simeq\mathcal{C}(x\times a, 1)\simeq\mathcal{C}(x, 1)$$
-と米田の原理より。2つ目の同型は $1$ が終対象であることより $|\mathcal{C}(x\times a, 1)|=|\mathcal{C}(x, 1)|=1$ である事、そして射が1つしかない事より $x$ に関する自然性条件も成り立つ事から分かる。$\square$
+と米田の原理より。2つ目の同型は $1$ が終対象であることより。 $\square$
 {{% /details %}}
 
 余積 $0$ や $a+b$ に関する指数法則は一般に成立しないが、**分配圏** においてはこれらも成立する。
