@@ -18,7 +18,8 @@ $\chi(x)$ が真であるとはつまり "$x\in X$"であるという事であ�
 $\mathbf{Set}$ においてはこれは包含写像 $X\hookrightarrow{} U$ によって表現できる。包含写像は単射であるが、 $\mathbf{Set}$ における単射はモノ射であるので、一般化する場合にもモノ射を用いる。ただし、モノ射の中には包含写像以外の物も含まれるのでこれを分類するという操作が必要となる。
 
 {{% definition title="モノ射の順序関係" %}}
-$a\in\mathcal{C}$ をコドメインとするモノ射 $m:x \hookrightarrow a, n:y \hookrightarrow a$ について、以下が可換となるような射 $f:x\rightarrow y$ が存在するときに $m\leq n$ であるとすると、 $a$をコドメインとするモノ射全体は関係 $\leq$ によって 前順序(preorder) をなす。(前順序"集合"とは限らないので注意)
+$a\in\mathcal{C}$ をコドメインとするモノ射 $m:x \hookrightarrow a, n:y \hookrightarrow a$ について、以下が可換となるような射 $f:x\rightarrow y$ が存在するときに $m\leq n$ であると定める。
+$a$をコドメインとするモノ射全体は関係 $\leq$ によって 前順序(preorder) をなす。(前順序"集合"とは限らないので注意)
 $$\xymatrix{
     & a &       \\\\
 x \ar@{^{(}->}[ru]^m \ar[rr]^f & & y \ar@{^{(}->}[lu]\_n
@@ -33,7 +34,7 @@ $n$ がモノである事よりこの図式が成立するような $f:x\rightar
 が成り立つ二項関係の事であるが、上で定義した $\leq$ がこれを満たすことは簡単に分かるので証明は省略する。
 
 {{% definition title="部分対象" %}}
-コドメインが $a\in\mathcal{C}$ であるモノ射 $m, n: x\hookrightarrow a$ の同値関係 $m\sim n$ を
+コドメインが $a\in\mathcal{C}$ であるモノ射 $m: x\hookrightarrow a, n: y\hookrightarrow a$ の同値関係 $m\sim n$ を
 $$ m\leq n\text{かつ} n\leq m$$
 によって定める。このとき、コドメインが $a$ であるモノ射全体を同値関係 $\sim$ で割った同値類を $a$ の **部分対象(subobject)** という。以下, 代表元が $m$ の同値類を $[m]$ と書く。
 
@@ -41,7 +42,7 @@ $$ m\leq n\text{かつ} n\leq m$$
 {{% /definition %}}
 
 {{% proposition %}}
-$a$ の部分対象 $m: x\hookrightarrow a, n:\hookrightarrow a$ が同値である事と、以下を可換にする同型射 $f:x\rightarrow y$ が存在することは同値。
+$a$ の部分対象 $m: x\hookrightarrow a, n:y\hookrightarrow a$ が同値である事と、以下を可換にする同型射 $f:x\rightarrow y$ が存在することは同値。
 
 
 $$\xymatrix{
@@ -59,10 +60,10 @@ $$ m\circ 1_x = m\circ g\circ f$$
 
 $\mathbf{Set}$ における対象 $a$ の部分対象全体と $a$の部分集合全体は一対一に対応する。すなわち、部分対象 $[m]$ に対応する部分集合とは関数 $m$ の像であり、部分対象の順序 $\leq$ は部分集合の包含関係 $\subseteq$ と対応する。
 
-### 部分対象分類子
+### 引き戻し
 $$ X = \\{x\in U\mid\chi(x)\\}$$
 
-を圏論的に定式化する為には **引き戻し(pullback)** を用いる事ができる。引き戻しとは $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ の形の時の図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ に対する極限を言うのだった。これを、図式を具体的に書き下して書き直すと以下の定義となる。
+を圏論的に定式化する為には **引き戻し(pullback)** を用いる事ができる。引き戻しとは $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ の形の時の図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ に対する極限を言うのだった。これを、具体的に書き下すと以下の定義となる。
 
 {{% definition title="引き戻し" %}}
 図式 $a\xrightarrow{f} c\xleftarrow{g} b$ に対する **引き戻し(pullback)** とは、以下の図式が可換となるような任意の 対象 $x$ と射 $\alpha: x\rightarrow a, \beta: x\rightarrow b$ に対して
@@ -89,62 +90,7 @@ A\times_C B \ar[r] \ar[d] & A \ar[d]^{f} \\\\
 B \ar[r]^{g}              & C
 }$$
 
-そこで、一方を定数関数 $\mathrm{true}: 1\rightarrow \\{\mathrm{true}, \mathrm{false}\\}$ 、もう一方を特性関数とすれば求める構成ができる。すなわち、以下において $Y$ が引き戻しならば($X\times 1\simeq X$ であるから)
-
-$$\xymatrix{
-Y \ar[r] \ar[d] & 1 \ar[d]^{\mathrm{true}} \\\\
-X \ar[r]^-{\chi}              & \\{\mathrm{true}, \mathrm{false}\\}
-}$$
-
-$$ Y = \\{x\in X\mid \chi(x)=\mathrm{true} \\} $$
-
-となる。これを一般の場合に拡張すると以下の定義を得る。
-
-{{% definition title="部分対象分類子" %}}
-有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_x:u\rightarrow\Omega$ がただ一つ存在するようなものである。
-
-$$\xymatrix{
-x \ar@{.>}[r] \ar@{^{(}->}[d] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
-u \ar[r]^{\chi_x} & \Omega
-} $$
-
-$\chi_x$ を $x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
-{{% /definition %}}
-
-{{% proposition label="prop.subobject-classifying-arrow" %}}
-部分対象と分類射は一対一に対応する。
-{{% /proposition %}}
-{{% details 証明 %}}
-$\mathcal{C}$ を部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ を持つ圏であるとする。
-モノ射 $i: x\xhookrightarrow{}u$ と $j: y\xhookrightarrow {}$ が同値であるとする。すなわち同型射 $\alpha:x\rightarrow y$ が存在して $i = j\circ\alpha$ であるとする。
-$$\xymatrix{
-x \ar@{^{(}->}[rd]^-{i} \ar[rr]^{\alpha} && y \ar@{^{(}->}[ld]^-{j} \\\\
- & u &
-}$$
-また、 $i,j$ に対応する分類射をそれぞれ $\chi_i,\chi_j$ とする。
-
-まず、 $u\xhookleftarrow{j}y\rightarrow 1$ が $u\xrightarrow{\chi_j}\Omega\xleftarrow{\mathrm{true}}1$ に対する引き戻しであるので、任意の $f: z\rightarrow u$ に対して、以下が可換となるような $v:z\rightarrow y$ が一意に存在する。
-$$\xymatrix{
-z \ar[rd]^v \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
-& y \ar@{^{(}->}[d]^{j} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
-& u \ar[r]^{\chi_j} & \Omega
-}$$
-$i=j\circ\alpha$ を用いて書き直すと以下の図式が可換であるが、$i$ がモノ射である事より、この図式が可換となるような$z$から$x$への射は $\alpha^{-1}\circ v$ 唯一つである。従って、この図式の四角形の部分は引き戻しの図式であるので、 $\chi_j$ は $i$ に対応する分類射である。従って分類射が一意に定まることから $\chi_i = \chi_j$ $\square$
-
-$$\xymatrix{
-z \ar[rd]^{\alpha^{-1}\circ v} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
-& x \ar@{^{(}->}[d]^{i} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
-& u \ar[r]^{\chi_j} & \Omega
-}$$
-{{% /details %}}
-
-### 部分対象関手
-
-$x\in\mathcal{C}$ の部分対象の集まりを$\mathrm{Sub}(x)$ と表すと、{{< ref prop.subobject-classifying-arrow >}} より同型
-
-$$ \mathcal{C}(x, \Omega) \simeq \mathrm{Sub}(x) $$
-
-が存在する。これより、$\mathrm{Sub}$ が表現可能関手であって、 $\Omega$ がそれを表現する対象である事が示唆される。本節ではこれを証明する。その為に、まず引き戻しの性質を確認する。
+引き戻しの性質をいくつか確認しておく。
 
 {{% proposition label="prop.pullback-preserves-monomorphism" %}}
 引き戻しはモノ射を保存する。
@@ -190,12 +136,81 @@ $\square$
 {{% /details %}}
 
 {{% proposition %}}
-$f: x\rightarrow y$ に対して $1_x^\*f = f$
+$f: x\rightarrow y$ に対して $1_y^\*f = f$
 $$\xymatrix{
-y \ar[d]\_f \ar[r] & y \ar[d]^f \\\\
-x \ar[r]^{1_x} & y
+x \ar[d]\_f \ar[r] & x \ar[d]^f \\\\
+y \ar[r]^{1_y} & y
 }$$
 {{% /proposition %}}
+これの証明は簡単なので省略する。
+
+### 部分対象分類子
+
+引き戻しの図式の一方を定数関数 $\mathrm{true}: 1\rightarrow \\{\mathrm{true}, \mathrm{false}\\}$ 、もう一方を特性関数とすれば冒頭で説明した部分集合の構成が出来る。すなわち、以下において $Y$ が引き戻しならば($X\times 1\simeq X$ であるから)
+
+$$\xymatrix{
+Y \ar[r] \ar[d] & 1 \ar[d]^{\mathrm{true}} \\\\
+X \ar[r]^-{\chi}              & \\{\mathrm{true}, \mathrm{false}\\}
+}$$
+
+$$ Y = \\{x\in X\mid \chi(x)=\mathrm{true} \\} $$
+
+となる。これを一般の場合に拡張すると以下の定義を得る。
+
+{{% definition title="部分対象分類子" %}}
+有限完備な圏 $\mathcal{C}$ の **部分対象分類子(subobject classifier)** とは、射 $\mathrm{true}:1 \xhookrightarrow{}\Omega$ であって、任意のモノ射 $x\xhookrightarrow{} u$ に対して、以下の図式が引き戻しの図式となるような射 $\chi_x:u\rightarrow\Omega$ がただ一つ存在するようなものである。
+
+$$\xymatrix{
+x \ar@{.>}[r] \ar@{^{(}->}[d] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi_x} & \Omega
+} $$
+
+$\chi_x$ を $x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
+{{% /definition %}}
+
+{{% proposition label="prop.subobject-classifying-arrow" %}}
+$u$ の部分対象と分類射 $u\rightarrow\Omega$ は一対一に対応する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$\mathcal{C}$ を部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ を持つ圏であるとする。
+$u$ の部分対象 $[m:x\xhookrightarrow{}u]$ に、その代表元 $m:x\xhookrightarrow{}u$ を用いて分類射 $\chi_x$ を対応させる対応 $\phi$ が全単射である事を示す。
+まず、この対応が代表元の選び方に依らずwell-definedである事を示す。
+
+モノ射 $m: x\xhookrightarrow{}u$ と $n: y\xhookrightarrow {}u$ が同値であるとする。すなわち同型射 $\alpha:x\rightarrow y$ が存在して $m = n\circ\alpha$ であるとする。
+$$\xymatrix{
+x \ar@{^{(}->}[rd]^-{m} \ar[rr]^{\alpha} && y \ar@{^{(}->}[ld]^-{n} \\\\
+ & u &
+}$$
+
+部分対象分類子の定義より、 $m,n$ それぞれに対応する分類射 $\chi_m,\chi_n$ が存在するのでこれらが同一である事を示せば良い。
+まず、 $u\xhookleftarrow{n}y\rightarrow 1$ が $u\xrightarrow{\chi_n}\Omega\xleftarrow{\mathrm{true}}1$ に対する引き戻しであるので、任意の $f: z\rightarrow u$ に対して、以下が可換となるような $v:z\rightarrow y$ が一意に存在する。
+$$\xymatrix{
+z \ar[rd]^v \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
+& y \ar@{^{(}->}[d]^{n} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+& u \ar[r]^{\chi_n} & \Omega
+}$$
+これを $m=n\circ\alpha$ を用いて書き直すと以下の可換図式を得る。
+
+$$\xymatrix{
+z \ar[rd]^{\alpha^{-1}\circ v} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\\
+& x \ar@{^{(}->}[d]^{m} \ar@{.>}[r] & 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
+& u \ar[r]^{\chi_n} & \Omega
+}$$
+すると $m$ がモノであることにより、この図式が可換となる $z$ から $x$ への射は $\alpha^{-1}\circ v$ ただ一つとなるので、 $u\xhookleftarrow{m}x\rightarrow 1$ は $u\xrightarrow{\chi_n}\Omega\xleftarrow{\mathrm{true}}1$の引き戻しとなっている。すなわち $\chi_n$ は $m$ の分類射になっていて、分類射の一意性から $\chi_m = \chi_n$。
+
+続いて $\phi:[m:x\xhookrightarrow{}u]\mapsto\chi_x$ が全単射である事を示す。まず、$\mathcal{C}$ は有限完備であるから任意の射 $\chi:u\rightarrow \Omega$ に対して引き戻し $\chi^\*\mathrm{true}$ が存在する。
+$\mathrm{true}:1\rightarrow\Omega$ はモノであるので、 $\chi^\*\mathrm{true}$ もモノであるから、これを代表元とする部分対象が存在する。よって $\phi$ は全射。
+また、 $\phi([m:x\xhookrightarrow{}u])=\phi([n:y\xhookrightarrow{}u]) = \chi$ であるとすると、引き戻しは同型を除いて一意であることから、同型射 $\alpha:x\rightarrow y$ が存在して $m=n\circ \alpha$ となること。すなわち $m\sim n$ であることが示される。よって $[m:x\xhookrightarrow{}u]=[n:y\xhookrightarrow{}u]$ であるから $\phi$ は単射。 $\square$
+{{% /details %}}
+
+### 部分対象関手
+
+$x\in\mathcal{C}$ の部分対象の集まりを$\mathrm{Sub}(x)$ と表すと、{{< ref prop.subobject-classifying-arrow >}} より同型
+
+$$ \mathcal{C}(x, \Omega) \simeq \mathrm{Sub}(x) $$
+
+が存在する。これより、$\mathrm{Sub}$ が表現可能関手であって、 $\Omega$ がそれを表現する対象である事が示唆される。本節ではこれを証明する。その為に、まず引き戻しの性質を確認する。
+
 これの証明は簡単なので省略。以上命題から、部分対象から部分対象への写像を考える事ができ、かつそれの合成や合成に関する単位元の存在が分かり、以下の部分対象関手が定義される。
 
 {{% definition title="部分対象関手" %}}
