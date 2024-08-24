@@ -14,6 +14,6 @@
     line-height: 40px;
     margin: 0px;
     padding: 0 10px;
-    background: #fff;
+    background: var(--body-background);
     font-weight: bold;
 }

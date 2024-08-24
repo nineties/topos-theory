@@ -5,10 +5,14 @@ title = "Topos Theory"
 theme = "hugo-book"
 publishDir = "docs"
 defaultContentLanguage = "ja"
+enableGitInfo = true
 
 [params]
+BookTheme = 'light'
 customCSS = ["static/custom.css"]
 BookSection = '*'
+BookRepo = 'https://github.com/nineties/topos-theory'
+BookEditPath = 'blob/main'
 
 [markup]
   [markup.goldmark]
