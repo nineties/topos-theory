@@ -1,5 +1,5 @@
 ---
-title: 圏論的準備
+title: 圏論
 weight: 3
 section: 2
 toc: true
