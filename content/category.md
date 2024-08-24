@@ -985,7 +985,7 @@ b          && \cdots \ar[r] & \mathcal{C}(x, b) \ar[r] & \mathcal{C}(y, b) \ar[r
 
 {{% theorem title="米田の補題" %}}
 局所小圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) $$
+$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) \qquad (\alpha\mapsto\alpha_a(1_a))$$
 が成り立つ。
 {{% /theorem %}}
 
@@ -1047,6 +1047,33 @@ $$
 
 より$\rho_a(\phi\_{a,F}(\alpha)) =\phi\_{a,G}(\rho\circ\alpha)$ であるから $F$ についても自然。 $\square$
 {{% /details %}}
+
+米田の補題のイメージを掴むため、具体例を考えてみよう。まず、既に説明した $\mathcal{C}$ が自然数の集合 $\mathbb{N}$ である場合を考えると、
+自然変換 $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ は、以下の縦の射の族である。ここで$0$ は空集合、 $1$ は単集合である。
+
+$$\xymatrix{
+0 \ar[d] & \cdots & 0 \ar[d] & 1 \ar[d] & 0 \ar[d] & \cdots \\\\
+F(0)     & \cdots & F(a-1)   & F(a)     & F(a+1) & \cdots
+}$$
+
+この自然変換がいくつあるかというと、　$0\rightarrow F(x)$ は空関数しかあり得ないので一意に定まり、 $1\rightarrow F(a)$ は $F(a)$ の要素数だけ存在する。
+従って $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\simeq F(a)$  である。
+
+$\mathbb{N}$ が順序集合の場合も考えよう。この場合の自然変換は以下の図式の縦の射の族となる。
+
+$$\xymatrix{
+1 \ar[d]^{\alpha_0} \ar@{<-}[r] & \cdots \ar@{<-}[r] & 1 \ar[d]^{\alpha\_{a-1}}\ar@{<-}[r] & 1 \ar[d]^{\alpha\_a}\ar@{<-}[r] & 0 \ar[d]^{\alpha\_{a+1}}\ar@{<-}[r] & \cdots \\\\
+F(0) \ar@{<-}[r]    & \cdots \ar@{<-}[r] & F(a-1) \ar@{<-}[r]  & F(a) \ar@{<-}[r]    & F(a+1) \ar@{<-}[r] & \cdots
+}$$
+すると、先ほどと同様にして $\alpha\_{a+1}$ より右側は全て空関数となり、 $\alpha_a$ は $F(a)$ の要素数だけ存在する。そして、 $\alpha_0,\ldots,\alpha\_{a-1}$ は図式の可換性から $\alpha_a$ が定まれば自動的に決まる。
+従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\simeq F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から **$F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する** というイメージが持てるのではないかと思う。
+
+一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a)$ となるわけである。
+
+$$\xymatrix{
+\mathcal{C}(a, a) \ar[r]\ar[d]^{\alpha_a} & \mathcal{C}(x, a)\ar[d]^{\alpha_x} \\\\
+F(a) \ar[r] & F(x)
+}$$
 
 ### 米田埋め込みの性質
 
