@@ -1090,16 +1090,79 @@ $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq
 
 従って {{< ref prop.embedding >}} より
 $$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
-である。 米田埋め込みの双対 $\mathcal{C}(a, -): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}^{\mathcal{C}}$ についても全く同様であり、 **米田の原理(Yoneda Principle)** と呼ばれる以下の命題を得る。
+である。 米田埋め込みの双対 $\mathcal{C}(a, -): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}^{\mathcal{C}}$ についても全く同様であり、 **米田の原理(Yoneda principle)** と呼ばれる以下の命題を得る。
 
 {{% proposition title="米田の原理" %}}
 局所小圏 $\mathcal{C}$ の対象 $a,b$ について
 $$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrightarrow\ \mathcal{C}(a, -)\simeq\mathcal{C}(b, -)$$
 {{% /proposition %}}
 
-表現可能関手を表現する対象が同型を除いて一意であることもこれから分かる。
+この定理から直ちに以下が示される。
 
-次の章以降で見ていくように前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ は非常に良い性質を持っているので、一旦議論の舞台を $\mathcal{C}$ から $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に移すことで様々な議論が行いやすくなる。
+{{% proposition %}}
+表現可能関手を表現する対象は同型を除いて一意である。
+{{% /proposition %}}
+
+また、以下が成り立つ。
+
+{{% proposition %}}
+米田埋め込みは極限を保つ。すなわち自然同型
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
+が存在する。
+{{% /proposition %}}
+{{% details 証明 %}}
+$x\in\mathcal{C}$ について自然な同型
+$$\mathcal{Y}(\varprojlim F)(x) = \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
+が存在する。最後の同型は米田の原理による。
+ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
+$$\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
+\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
+$$
+であり、米田の補題よりこれは
+$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
+と同型。したがって
+$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
+であり、以上の同型は全て $x$ について自然であるので
+$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
+となる。$\square$
+{{% /details %}}
+余極限は一般には保たれないので注意。
+
+この命題の具体例をいくつか並べてみると以下のような等式を得る。
+
+{{% proposition %}}
+
+$$\begin{align\*}
+\mathcal{C}(x, 1) &\simeq 1 \\\\
+\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
+\mathcal{C}\left(x, \prod\_{i\in\mathcal{J}} a_i\right) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
+\end{align\*}$$
+これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
+$$\begin{align\*}
+\mathcal{C}(0, x) &\simeq 1 \\\\
+\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
+\mathcal{C}\left(\coprod\_{i\in\mathcal{J}} a_i, x\right) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
+\end{align\*}$$
+{{% /proposition %}}
+
+また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
+
+{{% proposition %}}
+$$\begin{align\*}
+a \times 1 &\simeq a \\\\
+a \times b &\simeq b \times a \\\\
+a + 0 & \simeq a \\\\
+a + b &\simeq b + a
+\end{align\*}$$
+{{% /proposition %}}
+などである。例えば1つ目は
+$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
+が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
+
+代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
+
+以上のように $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ は非常に良い性質を持っているので、米田埋め込みによって一旦議論の舞台を $\mathcal{C}$ から $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に移すことで様々な議論が行いやすくなるわけである。
 
 ### 普遍性・普遍要素
 
@@ -1141,61 +1204,6 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 
 (TBD)
 
-{{% proposition %}}
-米田埋め込みは極限を保つ。すなわち自然同型
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
-が存在する。
-{{% /proposition %}}
-{{% details 証明 %}}
-$x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x)\simeq \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\simeq \left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
-が存在する。最後の同型は米田の原理による。
-ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
-$$\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
-\left(\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}\right)^\mathcal{J}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
-$$
-であり、米田の補題よりこれは
-$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
-と同型。したがって
-$$ \mathcal{Y}(\varprojlim F)(x) \simeq \varprojlim(\mathcal{Y}\circ F)(x)$$
-であり、以上の同型は全て $x$ について自然であるので
-$$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim(\mathcal{Y}\circ F)$$
-となる。$\square$
-{{% /details %}}
-
-この命題の具体例をいくつか並べてみると以下のような等式を得る。
-
-{{% proposition %}}
-
-$$\begin{align\*}
-\mathcal{C}(x, 1) &\simeq 1 \\\\
-\mathcal{C}(x, a\times b) &\simeq \mathcal{C}(x, a)\times\mathcal{C}(x, b) \\\\
-\mathcal{C}(x, \prod\_{i\in\mathcal{J}} a_i) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(x, a_i)
-\end{align\*}$$
-これらの $\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えれば以下も成立する。
-$$\begin{align\*}
-\mathcal{C}(0, x) &\simeq 1 \\\\
-\mathcal{C}(a+b, x) &\simeq \mathcal{C}(a, x)\times\mathcal{C}(b, x) \\\\
-\mathcal{C}(\coprod\_{i\in\mathcal{J}} a_i, x) &\simeq \prod\_{i\in\mathcal{J}}\mathcal{C}(a_i, x)
-\end{align\*}$$
-{{% /proposition %}}
-
-また、これと米田の原理を組み合わせれば様々な圏における極限・余極限の性質の証明が簡単にできる。例えば
-
-{{% proposition %}}
-$$\begin{align\*}
-a \times 1 &\simeq a \\\\
-a \times b &\simeq b \times a \\\\
-a + 0 & \simeq a \\\\
-a + b &\simeq b + a
-\end{align\*}$$
-{{% /proposition %}}
-などである。例えば1つ目は
-$$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x, a)\times\mathcal{C}(x, 1)\simeq\mathcal{C}(x, a)\times 1\simeq\mathcal{C}(x, a)\simeq\mathcal{Y}(a)(x)$$
-が $x$ に関して自然な同型であることを集合論的に簡単に示すことができ、これから $\mathcal{Y}(a\times 1)\simeq\mathcal{Y}(a)$ を得るので、米田の原理より $a\times 1\simeq a$ が導かれる。
-
-代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
 
 
 
