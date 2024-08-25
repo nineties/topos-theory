@@ -318,7 +318,7 @@ $$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\cir
 
 ## 自然変換
 
-関手の間の準同型の事を **自然変換(natural transformation)** という。また {{< ref def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
+関手の間の準同型の事を **自然変換(natural transformation)** という。また {{< refer def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
 
 ### 自然変換・自然同型
 
@@ -645,7 +645,7 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
   \end{tikzpicture}
 {{% /tikz %}}
 
-では錐と錐の圏の定義を進める。 {{< ref def.functor-as-a-diagram >}} で説明したように、錐の底面はその形を表す添字圏  $\mathcal{J}$ からの関手 $F: \mathcal{J}\rightarrow\mathcal{C}$ で表す事ができる。そして、底面の各頂点に対して $x$ から射が生えているというのが一般的な錐の定義であるが、対象と射より関手と自然変換によって物事を説明した方が使い勝手が良い為、ここでは別の定義行おうと思う。その為には、下図の用に頂点 $x$ を底面と同じ形に開いてしまおう。
+では錐と錐の圏の定義を進める。 {{< refer def.functor-as-a-diagram >}} で説明したように、錐の底面はその形を表す添字圏  $\mathcal{J}$ からの関手 $F: \mathcal{J}\rightarrow\mathcal{C}$ で表す事ができる。そして、底面の各頂点に対して $x$ から射が生えているというのが一般的な錐の定義であるが、対象と射より関手と自然変換によって物事を説明した方が使い勝手が良い為、ここでは別の定義行おうと思う。その為には、下図の用に頂点 $x$ を底面と同じ形に開いてしまおう。
 
 {{% tikz %}}
   \begin{tikzpicture}
@@ -1088,7 +1088,7 @@ $$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq
 が存在する。 $\square$
 {{% /details %}}
 
-従って {{< ref prop.embedding >}} より
+従って {{< refer prop.embedding >}} より
 $$\mathcal{Y}(a)\simeq \mathcal{Y}(b)\Leftrightarrow a\simeq b$$
 である。 米田埋め込みの双対 $\mathcal{C}(a, -): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}^{\mathcal{C}}$ についても全く同様であり、 **米田の原理(Yoneda principle)** と呼ばれる以下の命題を得る。
 
@@ -1226,7 +1226,7 @@ $$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\m
 が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\epsilon:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 
-これを{{< ref prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
+これを{{< refer prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
 $$ f = \mathcal{C}(u\times a, b)(\epsilon) = (-\circ (u\times 1_a))(\epsilon) = \epsilon \circ (u\times 1_a) $$
 となるような $u: x\rightarrow b^a$ が一意に存在する、と言う事が指数対象の持つ普遍性となる。
 
@@ -1264,7 +1264,7 @@ $$ \mathcal{C}(x,(a^b)^c)\simeq\mathcal{C}(x\times c, a^b)\simeq\mathcal{C}((x\t
 $$ (a\times b)^c \simeq a^c\times b^c$$
 {{% /proposition %}}
 {{% details 証明 %}}
-{{< ref prop.yoneda-preserves-limits-examples >}} を用いて
+{{< refer prop.yoneda-preserves-limits-examples >}} を用いて
 $$\begin{align\*}
 \mathcal{C}(x, (a\times b)^c) &\simeq \mathcal{C}(x\times c, a\times b) \\\\
                               &\simeq \mathcal{C}(x\times c, a)\times\mathcal{C}(x\times c, b) \\\\
@@ -1443,7 +1443,7 @@ F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \a
 
 {{% /theorem %}}
 {{% details 証明 %}}
-({{< refn def.adjunction >}}, {{< refn def.unit >}} $\Rightarrow$ {{< ref prop.triangle >}}の三角等式)
+({{< refn def.adjunction >}}, {{< refn def.unit >}} $\Rightarrow$ {{< refer prop.triangle >}}の三角等式)
 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{C}$ の間に随伴関係があるとする。また、 $\eta,\epsilon $ を単位射、余単位射とする。
 
 任意の $a\in\mathcal{C}$ について
@@ -1467,7 +1467,7 @@ $$\begin{align*}
 
 であるので $G\epsilon\circ\eta G=1\_{G}$である。
 
-({{< ref prop.triangle >}}の三角等式 $\Rightarrow$ {{< refn def.adjunction >}}, {{< refn def.unit >}})
+({{< refer prop.triangle >}}の三角等式 $\Rightarrow$ {{< refn def.adjunction >}}, {{< refn def.unit >}})
 
 $\epsilon F\circ F\eta = 1_F,\quad G\epsilon\circ\eta G=1\_{G}$であるとする。
 すなわち、以下が成立

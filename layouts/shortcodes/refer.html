@@ -1,4 +1,4 @@
-{{- range .Site.Pages }}
+{{- range .Site.AllPages }}
     {{- $map := .Scratch.Get "references" }}
     {{- if $map }}
         {{- $slice := index $map ($.Get 0) }}

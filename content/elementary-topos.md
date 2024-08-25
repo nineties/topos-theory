@@ -40,6 +40,7 @@ $$ m\leq n\text{かつ} n\leq m$$
 
 対象 $a$ の部分対象全体は $\leq$ によって 半順序(partially ordered) となる。任意の対象 $a\in\mathcal{C}$ の部分対象全体の類が集合となる圏は **冪化可能(well-powered)** であるという。
 {{% /definition %}}
+誤解の恐れがない場合は、モノ射 $m:x\hookrightarrow a$ や $x$ を $a$ の部分対象ということもある。
 
 {{% proposition %}}
 $a$ の部分対象 $m: x\hookrightarrow a, n:y\hookrightarrow a$ が同値である事と、以下を可換にする同型射 $f:x\rightarrow y$ が存在することは同値。
@@ -58,7 +59,7 @@ $$ m\circ 1_x = m\circ g\circ f$$
 逆に、$m=n\circ f$を満たす $f$ が同型射であるとすると両辺に $f^{-1}$ を右から合成して $m\circ f^{-1}=n$ が成立する。 よって $m\leq n$ かつ $n\leq m$ であるので $m\sim n$ である。 $\square$
 {{% /details %}}
 
-$\mathbf{Set}$ における対象 $a$ の部分対象全体と $a$の部分集合全体は一対一に対応する。すなわち、部分対象 $[m]$ に対応する部分集合とは関数 $m$ の像であり、部分対象の順序 $\leq$ は部分集合の包含関係 $\subseteq$ と対応する。
+$\mathbf{Set}$ における対象 $a$ の部分対象全体と $a$の部分集合全体は一対一に対応する。すなわち、部分対象 $m$ に対応する部分集合とは関数 $m$ の像であり、部分対象の順序 $\leq$ は部分集合の包含関係 $\subseteq$ と対応する。
 
 ### 引き戻し
 $$ X = \\{x\in U\mid\chi(x)\\}$$
@@ -168,13 +169,15 @@ u \ar[r]^{\chi_x} & \Omega
 $\chi_x$ を $x\xhookrightarrow{} u$ の **分類射(classifying arrow)** という。
 {{% /definition %}}
 
+構成 $X=\\{x\in U\mid \chi(x)=\mathrm{true} \\}$ において集合 $X$ と特性関数 $\chi$ は一対一に対応する。これを一般化した定理が部分対象分類子を持つ圏についても成立する。
+
 {{% proposition label="prop.subobject-classifying-arrow" %}}
 $u$ の部分対象と分類射 $u\rightarrow\Omega$ は一対一に対応する。
 {{% /proposition %}}
 {{% details 証明 %}}
 $\mathcal{C}$ を部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ を持つ圏であるとする。
-$u$ の部分対象 $[m:x\xhookrightarrow{}u]$ に、その代表元 $m:x\xhookrightarrow{}u$ を用いて分類射 $\chi_x$ を対応させる対応 $\phi$ が全単射である事を示す。
-まず、この対応が代表元の選び方に依らずwell-definedである事を示す。
+$u$ の部分対象 $m:x\xhookrightarrow{}u$ に分類射 $\chi_x$ を対応させる対応 $\phi$ が全単射である事を示す。
+まず、この対応が$m$の選び方に依らずwell-definedである事を示す。
 
 モノ射 $m: x\xhookrightarrow{}u$ と $n: y\xhookrightarrow {}u$ が同値であるとする。すなわち同型射 $\alpha:x\rightarrow y$ が存在して $m = n\circ\alpha$ であるとする。
 $$\xymatrix{
@@ -205,16 +208,16 @@ $\mathrm{true}:1\rightarrow\Omega$ はモノであるので、 $\chi^\*\mathrm{t
 
 ### 部分対象関手
 
-$x\in\mathcal{C}$ の部分対象の集まりを$\mathrm{Sub}(x)$ と表すと、{{< ref prop.subobject-classifying-arrow >}} より同型
+$x\in\mathcal{C}$ の部分対象の集まりを$\mathrm{Sub}(x)$ と表すと、{{< refer prop.subobject-classifying-arrow >}} より同型
 
 $$ \mathcal{C}(x, \Omega) \simeq \mathrm{Sub}(x) $$
 
-が存在する。これより、$\mathrm{Sub}$ が表現可能関手であって、 $\Omega$ がそれを表現する対象である事が示唆される。本節ではこれを証明する。その為に、まず引き戻しの性質を確認する。
-
-これの証明は簡単なので省略。以上命題から、部分対象から部分対象への写像を考える事ができ、かつそれの合成や合成に関する単位元の存在が分かり、以下の部分対象関手が定義される。
+が存在する。これより、$\mathrm{Sub}$ が表現可能関手であって、 $\Omega$ がそれを表現する対象である事が示唆される。
+そして、普遍要素 $u\in\mathrm{Sub}(\Omega)$ の存在も示唆されるが、実はこれが $\mathrm{true}:1\rightarrow\Omega$ であって、分類射 $\chi$ の構成は普遍的構成となっている。
+本説ではこのことを示していく。
 
 {{% definition title="部分対象関手" %}}
-冪化可能な圏 $\mathcal{C}$ において、 $\mathrm{Sub}(x)$ を $x\in\mathcal{C}$ の部分対象の集合とし、任意の $f: x\rightarrow y$ に対して $\mathrm{Sub}(f): \mathrm{Sub}(y)\rightarrow\mathrm{Sub}(x)$ を$\mathrm{Sub}(y)$ の部分対象(の代表元)の $f$ に沿った引き戻し(を代表元とする部分対象)に写す写像とすれば、$\mathrm{Sub}$ は反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。これを **部分対象関手(subobject classifier)** という。
+冪化可能な圏 $\mathcal{C}$ において、 $\mathrm{Sub}(x)$ を $x\in\mathcal{C}$ の部分対象の集合とし、任意の $f: x\rightarrow y$ に対して $\mathrm{Sub}(f): \mathrm{Sub}(y)\rightarrow\mathrm{Sub}(x)$ を$\mathrm{Sub}(y)$ の部分対象の $f$ に沿った引き戻しに写す写像とすれば、$\mathrm{Sub}$ は反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。これを **部分対象関手(subobject classifier)** という。
 
 $$\xymatrix{
 \bullet \ar@{^{(}->}[d]^{}=\"p\" \ar[r] & \bullet \ar@{^{(}->}[d]\_{}=\"q\" \\\\
@@ -222,19 +225,7 @@ x \ar[r]\_f & y
 \ar@{|->}\_{\mathrm{Sub}(f)} \"q\"; \"p\"
 }$$
 {{% /definition %}}
-{{% details 証明 %}}
-$\mathrm{Sub}$ が関手であることを示す。既に示した命題より、あとは $\mathrm{Sub}(f)$ の定義が、部分対象の代表元の選び方によらないことだけを示せば十分である。
-
-以下の図式において、左の四角が引き戻しであるとする。また $m\simeq n$ であるとする。この時 $k$ は同型射であり、右の四角も引き戻しである。したがって、外側の四角も引き戻しであるので、$f^\*m$ は $n$ の $f$ に沿った引き戻しでもある。したがって $\mathrm{Sub}(f)$ は部分対象の代表元の選び方によらない。$\square$
-
-$$\xymatrix{
-\bullet \ar@{^{(}->}[d]\_{f^\*m} \ar[r]^g & \bullet \ar@{^{(}->}[d]^{m} \ar[r]^k & \bullet \ar@{^{(}->}[d]^n \\\\
-x \ar[r]\_f & y \ar[r]^{1_y} & y
-}$$
-
-{{% /details %}}
-
-そして、この部分対象関手を表現する対象及び普遍要素が部分対象分類子である。
+これが関手となることは、既に示した引き戻しの性質から容易に分かる。そして、この部分対象関手を表現する対象及び普遍要素が部分対象分類子である。
 
 {{% theorem label="prop.representability-of-sub" %}}
 圏 $\mathcal{C}$ が有限完備かつ局所小である時、部分対象関手 $\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることと、部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ が存在することは同値。
@@ -244,6 +235,27 @@ x \ar[r]\_f & y \ar[r]^{1_y} & y
 
 {{% details 証明 %}}
 ($\mathrm{Sub}$が表現可能 $\Rightarrow$ 部分対象分類子を持つ)
+
+$\mathrm{Sub}$ がある $\Omega\in\mathcal{C}$ によって表現されるとする。すなわち、$a\in\mathcal{C}$ について自然な同型
+$$\phi_a: \mathcal{C}(a, \Omega) \xrightarrow{\simeq}\mathrm{Sub}(a)$$
+が存在したとする。また普遍要素を$[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ とする。この時点では $t$ が終対象か否かは分からないので注意。
+すると、 {{< refer prop.universal-construction >}} を用いると
+
+
+
+
+まず $t$ が終対象であることを示す。
+
+
+$\mathrm{C}$ が部分対象分類子を持つ事を示す為には、 $\mathrm{true}$ が適当な$1\rightarrow\Omega$ となるような
+任意のモノ射 $m:x\hookrightarrow u$ に対して、以下の図式が引き戻しとなるような $\chi:u\rightarrow\Omega$ がただ一つ存在する事を示せば良い。
+
+$$\xymatrix{
+x \ar[d]\_{m} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi} & \Omega \\\\
+}$$
+
+
 
 $\mathrm{Sub}$ がある $\Omega\in\mathcal{C}$ によって表現されるとする。すなわち、$a\in\mathcal{C}$ について自然な同型
 $$ \phi_a: \mathrm{Sub}(a) \xrightarrow{\simeq} \mathrm{C}(a, \Omega) $$
@@ -330,7 +342,7 @@ $$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_
 | 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$                                 | $[\mathrm{true}: 1\rightarrow\Omega]$ |
 
 そして、(驚くべき事ではあるが)初等トポスには任意の有限余極限も存在する。
-この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、 {{< ref prop.ccc-is-distributive >}} より分配圏となるので、例えば
+この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、 {{< refer prop.ccc-is-distributive >}} より分配圏となるので、例えば
 
 $$ \Omega^{a+b}\simeq \Omega^a \times \Omega^b$$
 
