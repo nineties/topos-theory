@@ -1186,7 +1186,7 @@ $$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\math
 $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 が自然同型 $\mathcal{C}(-, a)\simeq F$ の具体的な構成であることも分かる。
 
-{{% proposition title="普遍要素と普遍的構成" %}}
+{{% proposition title="普遍要素" %}}
 表現可能関手 $\mathcal{C}(-, a)\simeq F$ について、同型 $\mathcal{C}(a, a)\simeq F(a)$ によって $1_a$ に対応する $u\in F(a)$ が普遍要素であり、この自然同型は $F(-)(u):\mathcal{C}(-, a)\rightarrow F$ によって与えられる。
 
 すなわち、任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$ がただ一つ存在する。
@@ -1194,7 +1194,7 @@ $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
 
 これは逆も成立し、普遍性の説明でよく登場する定義が得られる。
 
-{{% proposition label="prop.universal-construction" %}}
+{{% proposition label="prop.universal-construction" label="普遍構成" %}}
 局所小圏 $\mathcal{C}$, 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$, 対象 $a\in\mathcal{C}$, 要素 $u\in F(a)$ について、
 任意の $x\in\mathcal{C}$ と $v\in F(x)$ に対して、 $v=F(f)(u)$ となるような $f: x\rightarrow a$がただ一つ存在するならば、 $F$ は表現可能関手であり、 $a$ がそれを表現する対象であり、 $u$ が普遍要素である。
 {{% /proposition %}}

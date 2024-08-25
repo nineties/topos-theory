@@ -234,94 +234,52 @@ x \ar[r]\_f & y
 {{% /theorem %}}
 
 {{% details 証明 %}}
-($\mathrm{Sub}$が表現可能 $\Rightarrow$ 部分対象分類子を持つ)
+$\mathrm{Sub}$ が表現可能関手である事と、 $\mathrm{Sub}$に関して普遍的構成が存在することは同値であるから、部分対象分類子が存在する条件と普遍的構成が存在する条件が一致する事を示せば良い。
 
-$\mathrm{Sub}$ がある $\Omega\in\mathcal{C}$ によって表現されるとする。すなわち、$a\in\mathcal{C}$ について自然な同型
-$$\phi_a: \mathcal{C}(a, \Omega) \xrightarrow{\simeq}\mathrm{Sub}(a)$$
-が存在したとする。また普遍要素を$[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ とする。この時点では $t$ が終対象か否かは分からないので注意。
-すると、 {{< refer prop.universal-construction >}} を用いると
-
-
-
-
-まず $t$ が終対象であることを示す。
-
-
-$\mathrm{C}$ が部分対象分類子を持つ事を示す為には、 $\mathrm{true}$ が適当な$1\rightarrow\Omega$ となるような
-任意のモノ射 $m:x\hookrightarrow u$ に対して、以下の図式が引き戻しとなるような $\chi:u\rightarrow\Omega$ がただ一つ存在する事を示せば良い。
-
-$$\xymatrix{
-x \ar[d]\_{m} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
-u \ar[r]^{\chi} & \Omega \\\\
-}$$
-
-
-
-$\mathrm{Sub}$ がある $\Omega\in\mathcal{C}$ によって表現されるとする。すなわち、$a\in\mathcal{C}$ について自然な同型
-$$ \phi_a: \mathrm{Sub}(a) \xrightarrow{\simeq} \mathrm{C}(a, \Omega) $$
-が存在するとする。ここで同型 $ \phi\_{\Omega}: \mathrm{Sub}(\Omega) \xrightarrow{\simeq} \mathrm{C}(\Omega, \Omega) $ において右の $1\_\Omega$ に対応する部分対象の代表元を $\mathrm{true}: t\xhookrightarrow{}\Omega$ とする。(この時点では $\mathrm{true}$ のドメイン $t$ が終対象であるかは分からないので注意。)
-
-あとは、任意のモノ射 $m: x\xhookrightarrow{} u$ に対して以下の図式が引き戻しとなるような $\chi: u\rightarrow\Omega$ が唯一つであることと、 $t$ が終対象であることを示せば良い。
-
-$$\xymatrix{
-x \ar[d]\_{m} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
-u \ar[r]^{\chi} & \Omega \\\\
-}$$
-
-$m$ が $\mathrm{true}$ の $\chi$ に沿った引き戻しであるとすると
+$\mathrm{Sub}$ の普遍的構成とは {{< refn prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ が存在して、
+任意の対象 $u\in\mathcal{C}$ と任意の要素 $[m:x\hookrightarrow u]$ について
 $$ [m] = \mathrm{Sub}(\chi)([\mathrm{true}]) $$
-である。また、以下が可換であるから
+となるような $\chi:u\rightarrow\Omega$ が唯一つ存在するという事である。
+
+すなわち、$\mathrm{Sub}(\chi)$ とは $\chi$ に沿った引き戻しの事であったから、任意のモノ射 $m:x\xhookrightarrow{}u$ に対して、以下の図式が引き戻しとなるような $\chi$ が唯一つ存在する事が
+普遍的構成が存在する事、そして $\mathrm{Sub}$ が表現可能関手である事と同値である。
 
 $$\xymatrix{
-\mathrm{Sub}(\Omega) \ar[d]\_{\mathrm{Sub}(\chi)} \ar[r]^{\phi\_\Omega} & \mathcal{C}(\Omega, \Omega) \ar[d]^{-\circ\chi} \\\\
-\mathrm{Sub}(u) \ar[r]^{\phi\_u} & \mathrm{C}(u, \Omega)
+x \ar@{^{(}->}[d]\_{m} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
+u \ar[r]^{\chi} & \Omega \\\\
 }$$
 
-$$\phi_u(\mathrm{Sub}(\chi)([\mathrm{true}])) = \phi\_{\Omega}([\mathrm{true}])\circ \chi$$
-
-である。これらと、 $\phi\_{\Omega}([\mathrm{true}])=1\_\Omega$ より
-$$\chi = \phi_u([m]) $$
-である。したがって $m$ が $\mathrm{true}$ の $\chi$ に沿っての引き戻しとなるような $\chi$ は確かに存在し一意的に定まる。
-
-また、任意の $f:x\rightarrow t$ に対して以下の図式は引き戻しの図式となるので
-$$\xymatrix{
-x \ar[d]\_{1_x} \ar[r]^{f} & t \ar[d]^{\mathrm{true}} \\\\
-x \ar[r]^{\mathrm{true}\circ f} & \Omega \\\\
-}$$
-
-$\mathrm{true}\circ f = \phi_x([1_x])$ である。この右辺が $f$ に依らないことと、$\mathrm{true}$ がモノであることから$f:x\rightarrow t$ の他には射 $x\rightarrow t$ が存在しない事が分かる。よって射 $x\rightarrow t$ は存在するならば唯一つである。あとは任意の $x\in\mathcal{C}$ について、$x$ から $t$ への射が存在する事を示せば良い。
-
-任意の $x\in\mathcal{C}$ について $1_x:x\rightarrow x$ はモノだから $[1_x]\in \mathrm{Sub}(x)$ なので、$\phi_x([1_x]):x \rightarrow \Omega$ という射が存在。よって、$\mathrm{C}$ は有限完備であるので、$x\xrightarrow{\phi_x([1_x])}\Omega\xleftarrow{\mathrm{true}} t$ に対する引き戻しが存在するが、上で示したことから下図のように左側面が $1_x$ となる図式で引き戻しとなるものが存在。よって、この上辺の射 $x\rightarrow t$ は必ず存在。以上より、任意の $x\in\mathcal{C}$ に対して射 $x\rightarrow t$ が唯一つ存在するので $t$ は終対象。
-
+あとは $t$ が終対象である事を示せば、部分対象分類子が存在する条件と一致するので証明が完了する。
+ここで、任意の $x$ に対して$1_x$ がモノである事に注意すると、以下が引き戻しとなるような $\chi$ が一意に存在する。
 $$\xymatrix{
 x \ar[d]\_{1_x} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
-x \ar[r]^{\phi_x([1_x])} & \Omega
+x \ar[r]^{\chi} & \Omega \\\\
 }$$
-
-
-(部分対象分類子を持つ $\Rightarrow$ $\mathrm{Sub}$が表現可能)
-
-$\mathcal{C}$ が有限完備かつ局所小であるとする。$\mathcal{C}$ が部分対象分類子 $\mathrm{true}1\rightarrow\Omega$ を持つとし、任意の $a\in\mathcal{C}$ について自然な同型
-$$ \phi: \mathrm{Sub}(a) \xrightarrow{\simeq} \mathcal{C}(a, \Omega) $$
-が存在する事を示す。$\phi$ が全単射であることは既に示したので、自然性のみを示せば良い。すなわち任意の $f:b\rightarrow a$ に対して以下が可換であることを示せば良いが、
+従って、この $\chi$ を $\mathrm{true}$ に引き戻した射 $x\rightarrow t$ が存在する。よって、$\mathcal{C}(x, t)\neq \emptyset $ である。
+そして、任意の $f:x\rightarrow t$ に対して、以下の可換図式を考えるとこれは引き戻しの図式となっている。
+$$\xymatrix{
+x \ar[d]\_{1_x} \ar[r]^f & t \ar[d]^{\mathrm{true}} \\\\
+x \ar[r]^{\mathrm{true}\circ f} & \Omega \\\\
+}$$
+なぜならば、以下が可換となるような任意の $y$ と $\alpha:y\rightarrow x, \beta: y\rightarrow t$ について
 
 $$\xymatrix{
-\mathrm{Sub}(a) \ar[d]\_{\mathrm{Sub}(f)} \ar[r]^{\phi_a} & \mathcal{C}(a, \Omega) \ar[d]^{\mathcal{C}(f, \Omega)} \\\\
-\mathrm{Sub}(b)                           \ar[r]^{\phi_b} & \mathcal{C}(b, \Omega)
+y \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
+        &                          & t \ar[d]^{\mathrm{true}} \\\\
+        & x \ar[r]^{\mathrm{true}\circ f} & \Omega \\\\
 }$$
-
-以下の図式を考えると、
+$\mathrm{true}\circ f\circ\alpha = \mathrm{true}\circ\beta$ であり $\mathrm{true}$ がモノであるから $f\circ\alpha = \beta$ となるので
+以下も可換となる。またこの時 $y\rightarrow x$ は $\alpha $ に一意に定まるからである。
 
 $$\xymatrix{
-y \ar@{^{(}->}[d]\_{m'\in\mathrm{Sub}(f)([m])} \ar[r] & x \ar@{^{(}->}[d]^{m\in\mathrm{Sub}(a)} \ar[rr] && 1 \ar@{^{(}->}[d]^{\mathrm{true}} \\\\
-b \ar[r]^{f} \ar@/^-1pc/[rrr]\_{\phi_b([m'])} & a \ar[rr]^{\phi_a([m])}            && \Omega \\\\
+y \ar[rd]^{\alpha} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
+        & x\ar[d]\_{1_x} \ar[r]^f & t \ar[d]^{\mathrm{true}} \\\\
+        & x \ar[r]^{\mathrm{true}\circ f} & \Omega \\\\
 }$$
+従って、最初の図式の $\mathrm{true}\circ f$ は $1_x$ に対して一意に定まるものであり $f$ によらない。よって、もし2つの射 $f,g:x\rightarrow t$
+が存在したとすると $\mathrm{true}\circ f=\mathrm{true}\circ g$ であって、 $\mathrm{true}$ はモノであるから $f=g$。
+以上より任意の $x$ に対して射 $x\rightarrow t$ は唯一つしか存在しないので $t$ は終対象である。 $\square$
 
-下側の$b$から$\Omega$ までの2つの経路はいずれも $m'$ に対する分類射であるから、分類射の一意性より任意のモノ射 $m:x\xhookrightarrow{} a$ に対して
-
-$$ \phi_b\circ \mathrm{Sub}(f)([m]) = \phi_a([m])\circ f = ((-\circ f)\circ\phi_a)([m])=(\mathcal{C}(f,\Omega)\circ\phi_a)([m])$$
-
-である。
 {{% /details %}}
 
 ### 初等トポス
