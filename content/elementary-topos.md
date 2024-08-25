@@ -237,7 +237,7 @@ x \ar[r]\_f & y
 $\mathrm{Sub}$ が表現可能関手である事と、 $\mathrm{Sub}$に関して普遍的構成が存在することは同値であるから、部分対象分類子が存在する条件と普遍的構成が存在する条件が一致する事を示せば良い。
 
 $\mathrm{Sub}$ の普遍的構成とは {{< refn prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ が存在して、
-任意の対象 $u\in\mathcal{C}$ と任意の要素 $[m:x\hookrightarrow u]$ について
+任意の対象 $u\in\mathcal{C}$ と任意の要素 $[m:x\hookrightarrow u] \in \mathrm{Sub}(u)$ について
 $$ [m] = \mathrm{Sub}(\chi)([\mathrm{true}]) $$
 となるような $\chi:u\rightarrow\Omega$ が唯一つ存在するという事である。
 
@@ -255,7 +255,7 @@ $$\xymatrix{
 x \ar[d]\_{1_x} \ar[r] & t \ar[d]^{\mathrm{true}} \\\\
 x \ar[r]^{\chi} & \Omega \\\\
 }$$
-従って、この $\chi$ を $\mathrm{true}$ に引き戻した射 $x\rightarrow t$ が存在する。よって、$\mathcal{C}(x, t)\neq \emptyset $ である。
+従って、この $\chi$ を $\mathrm{true}$ に沿って引き戻した射 $x\rightarrow t$ が存在する。よって、$\mathcal{C}(x, t)\neq \emptyset $ である。
 そして、任意の $f:x\rightarrow t$ に対して、以下の可換図式を考えるとこれは引き戻しの図式となっている。
 $$\xymatrix{
 x \ar[d]\_{1_x} \ar[r]^f & t \ar[d]^{\mathrm{true}} \\\\
@@ -281,6 +281,11 @@ y \ar[rd]^{\alpha} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
 以上より任意の $x$ に対して射 $x\rightarrow t$ は唯一つしか存在しないので $t$ は終対象である。 $\square$
 
 {{% /details %}}
+
+{{% proposition %}}
+部分対象分類子は同型を除いて一意である。
+{{% /proposition %}}
+これは表現可能関手を表現する対象であるから明らか。
 
 ### 初等トポス
 

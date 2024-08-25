@@ -1,6 +1,4 @@
-{{- $summary := .Get 0 -}}
-
 <details>
-  <summary>{{ $summary }}</summary>
+  <summary>{{ .Get 0 }}</summary>
   <p>{{ .Inner | markdownify }}</p>
 </details>
