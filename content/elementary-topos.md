@@ -217,7 +217,7 @@ $$ \mathcal{C}(x, \Omega) \simeq \mathrm{Sub}(x) $$
 本説ではこのことを示していく。
 
 {{% definition title="部分対象関手" %}}
-冪化可能な圏 $\mathcal{C}$ において、 $\mathrm{Sub}(x)$ を $x\in\mathcal{C}$ の部分対象の集合とし、任意の $f: x\rightarrow y$ に対して $\mathrm{Sub}(f): \mathrm{Sub}(y)\rightarrow\mathrm{Sub}(x)$ を$\mathrm{Sub}(y)$ の部分対象の $f$ に沿った引き戻しに写す写像とすれば、$\mathrm{Sub}$ は反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。これを **部分対象関手(subobject classifier)** という。
+冪化可能な圏 $\mathcal{C}$ において、 $\mathrm{Sub}(x)$ を $x\in\mathcal{C}$ の部分対象の集合とし、任意の $f: x\rightarrow y$ に対して $\mathrm{Sub}(f): \mathrm{Sub}(y)\rightarrow\mathrm{Sub}(x)$ を$\mathrm{Sub}(y)$ の部分対象の $f$ に沿った引き戻しに写す写像とすれば、$\mathrm{Sub}$ は反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。これを **部分対象関手(subobject functor)** という。
 
 $$\xymatrix{
 \bullet \ar@{^{(}->}[d]^{}=\"p\" \ar[r] & \bullet \ar@{^{(}->}[d]\_{}=\"q\" \\\\
