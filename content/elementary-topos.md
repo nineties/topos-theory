@@ -302,10 +302,10 @@ y \ar[rd]^{\alpha} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
 | 有限積         | $\prod\_{i\in\mathcal{J}}A_i$                       | $\pi_i:\prod\_{i\in\mathcal{J}}A_i\rightarrow A_i$ |
 | イコライザ     | $\mathrm{eq}(f,g) = \\{x \in X \mid f(x)=g(x)\\}$   | $i: \mathrm{eq}(f,g)\hookrightarrow X$ |
 | 指数対象       | $Y^X = \\{f: X\rightarrow Y\\}$                     | $\epsilon: X\times Y^X\rightarrow Y$ |
-| 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$                                 | $[\mathrm{true}: 1\rightarrow\Omega]$ |
+| 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$        | $[\mathrm{true}: 1\rightarrow\Omega]$ |
 
-そして、(驚くべき事ではあるが)初等トポスには任意の有限余極限も存在する。
-この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が任意の有限余極限を持つならば、 {{< refer prop.ccc-is-distributive >}} より分配圏となるので、例えば
+そして、(驚くべき事ではあるが)初等トポスは有限余完備でもある。
+この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が有限余完備であるならば、 {{< refer prop.ccc-is-distributive >}} より分配圏となるので、例えば
 
 $$ \Omega^{a+b}\simeq \Omega^a \times \Omega^b$$
 

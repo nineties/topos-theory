@@ -1,0 +1,630 @@
+def.category:
+  class: definition
+  name: 定義2.1
+  title: 圏
+  path: category/index.html
+  id: def.category
+命題2.2:
+  class: proposition
+  name: 命題2.2
+  title: ''
+  path: category/index.html
+  id: 命題2.2
+定義2.3:
+  class: definition
+  name: 定義2.3
+  title: 同型
+  path: category/index.html
+  id: 定義2.3
+命題2.4:
+  class: proposition
+  name: 命題2.4
+  title: ''
+  path: category/index.html
+  id: 命題2.4
+定義2.5:
+  class: definition
+  name: 定義2.5
+  title: 積圏
+  path: category/index.html
+  id: 定義2.5
+定義2.6:
+  class: definition
+  name: 定義2.6
+  title: 双対圏
+  path: category/index.html
+  id: 定義2.6
+定理2.7:
+  class: theorem
+  name: 定理2.7
+  title: 双対原理
+  path: category/index.html
+  id: 定理2.7
+定義2.8:
+  class: definition
+  name: 定義2.8
+  title: モノ射
+  path: category/index.html
+  id: 定義2.8
+定義2.9:
+  class: definition
+  name: 定義2.9
+  title: エピ射
+  path: category/index.html
+  id: 定義2.9
+命題2.10:
+  class: proposition
+  name: 命題2.10
+  title: ''
+  path: category/index.html
+  id: 命題2.10
+命題2.11:
+  class: proposition
+  name: 命題2.11
+  title: ''
+  path: category/index.html
+  id: 命題2.11
+命題2.12:
+  class: proposition
+  name: 命題2.12
+  title: ''
+  path: category/index.html
+  id: 命題2.12
+命題2.13:
+  class: proposition
+  name: 命題2.13
+  title: ''
+  path: category/index.html
+  id: 命題2.13
+定義2.14:
+  class: definition
+  name: 定義2.14
+  title: 関手
+  path: category/index.html
+  id: 定義2.14
+定義2.15:
+  class: definition
+  name: 定義2.15
+  title: 小圏のなす圏
+  path: category/index.html
+  id: 定義2.15
+定義2.16:
+  class: definition
+  name: 定義2.16
+  title: 反変関手
+  path: category/index.html
+  id: 定義2.16
+定義2.17:
+  class: definition
+  name: 定義2.17
+  title: 定数関手
+  path: category/index.html
+  id: 定義2.17
+def.functor-as-a-diagram:
+  class: definition
+  name: 定義2.18
+  title: 図式としての関手
+  path: category/index.html
+  id: def.functor-as-a-diagram
+定義2.19:
+  class: definition
+  name: 定義2.19
+  title: 忠実・充満・本質的全射
+  path: category/index.html
+  id: 定義2.19
+命題2.20:
+  class: proposition
+  name: 命題2.20
+  title: ''
+  path: category/index.html
+  id: 命題2.20
+prop.embedding:
+  class: proposition
+  name: 命題2.21
+  title: ''
+  path: category/index.html
+  id: prop.embedding
+定義2.22:
+  class: definition
+  name: 定義2.22
+  title: 自然変換
+  path: category/index.html
+  id: 定義2.22
+定義2.23:
+  class: definition
+  name: 定義2.23
+  title: 関手圏
+  path: category/index.html
+  id: 定義2.23
+例2.24:
+  class: example
+  name: 例2.24
+  title: $\mathcal{C}^\mathbf{0}, \mathcal{C}^\mathbf{1}$
+  path: category/index.html
+  id: 例2.24
+例2.25:
+  class: example
+  name: 例2.25
+  title: 射圏
+  path: category/index.html
+  id: 例2.25
+定義2.26:
+  class: definition
+  name: 定義2.26
+  title: 圏の同型
+  path: category/index.html
+  id: 定義2.26
+定義2.27:
+  class: definition
+  name: 定義2.27
+  title: 圏の同値
+  path: category/index.html
+  id: 定義2.27
+命題2.28:
+  class: proposition
+  name: 命題2.28
+  title: ''
+  path: category/index.html
+  id: 命題2.28
+定義2.29:
+  class: definition
+  name: 定義2.29
+  title: 終対象・始対象
+  path: category/index.html
+  id: 定義2.29
+命題2.30:
+  class: proposition
+  name: 命題2.30
+  title: ''
+  path: category/index.html
+  id: 命題2.30
+定義2.31:
+  class: definition
+  name: 定義2.31
+  title: 積
+  path: category/index.html
+  id: 定義2.31
+例2.32:
+  class: example
+  name: 例2.32
+  title: ''
+  path: category/index.html
+  id: 例2.32
+定義2.33:
+  class: definition
+  name: 定義2.33
+  title: 余積
+  path: category/index.html
+  id: 定義2.33
+例2.34:
+  class: example
+  name: 例2.34
+  title: ''
+  path: category/index.html
+  id: 例2.34
+定義2.35:
+  class: definition
+  name: 定義2.35
+  title: 錐
+  path: category/index.html
+  id: 定義2.35
+定義2.36:
+  class: definition
+  name: 定義2.36
+  title: 対角関手
+  path: category/index.html
+  id: 定義2.36
+定義2.37:
+  class: definition
+  name: 定義2.37
+  title: 錐の圏
+  path: category/index.html
+  id: 定義2.37
+定義2.38:
+  class: definition
+  name: 定義2.38
+  title: 極限
+  path: category/index.html
+  id: 定義2.38
+定義2.39:
+  class: definition
+  name: 定義2.39
+  title: 積・余積
+  path: category/index.html
+  id: 定義2.39
+定義2.40:
+  class: definition
+  name: 定義2.40
+  title: イコライザ・コイコライザ
+  path: category/index.html
+  id: 定義2.40
+定義2.41:
+  class: definition
+  name: 定義2.41
+  title: 引き戻し・押し出し
+  path: category/index.html
+  id: 定義2.41
+定義2.42:
+  class: definition
+  name: 定義2.42
+  title: 完備性
+  path: category/index.html
+  id: 定義2.42
+定理2.43:
+  class: theorem
+  name: 定理2.43
+  title: 極限の存在定理
+  path: category/index.html
+  id: 定理2.43
+命題2.44:
+  class: proposition
+  name: 命題2.44
+  title: ''
+  path: category/index.html
+  id: 命題2.44
+定義2.45:
+  class: definition
+  name: 定義2.45
+  title: 共変Hom関手
+  path: category/index.html
+  id: 定義2.45
+定義2.46:
+  class: definition
+  name: 定義2.46
+  title: 反変Hom関手
+  path: category/index.html
+  id: 定義2.46
+定義2.47:
+  class: definition
+  name: 定義2.47
+  title: 表現可能関手
+  path: category/index.html
+  id: 定義2.47
+定義2.48:
+  class: definition
+  name: 定義2.48
+  title: 米田埋め込み
+  path: category/index.html
+  id: 定義2.48
+定理2.49:
+  class: theorem
+  name: 定理2.49
+  title: 米田の補題
+  path: category/index.html
+  id: 定理2.49
+命題2.50:
+  class: proposition
+  name: 命題2.50
+  title: ''
+  path: category/index.html
+  id: 命題2.50
+命題2.51:
+  class: proposition
+  name: 命題2.51
+  title: 米田の原理
+  path: category/index.html
+  id: 命題2.51
+命題2.52:
+  class: proposition
+  name: 命題2.52
+  title: ''
+  path: category/index.html
+  id: 命題2.52
+prop.yoneda-preserves-limits:
+  class: proposition
+  name: 命題2.53
+  title: ''
+  path: category/index.html
+  id: prop.yoneda-preserves-limits
+prop.yoneda-preserves-limits-examples:
+  class: proposition
+  name: 命題2.54
+  title: ''
+  path: category/index.html
+  id: prop.yoneda-preserves-limits-examples
+命題2.55:
+  class: proposition
+  name: 命題2.55
+  title: ''
+  path: category/index.html
+  id: 命題2.55
+定義2.56:
+  class: definition
+  name: 定義2.56
+  title: 普遍要素
+  path: category/index.html
+  id: 定義2.56
+命題2.57:
+  class: proposition
+  name: 命題2.57
+  title: 普遍要素・普遍的構成
+  path: category/index.html
+  id: 命題2.57
+prop.universal-construction:
+  class: proposition
+  name: 命題2.58
+  title: ''
+  path: category/index.html
+  id: prop.universal-construction
+定義2.59:
+  class: definition
+  name: 定義2.59
+  title: 指数対象
+  path: category/index.html
+  id: 定義2.59
+命題2.60:
+  class: proposition
+  name: 命題2.60
+  title: ''
+  path: category/index.html
+  id: 命題2.60
+命題2.61:
+  class: proposition
+  name: 命題2.61
+  title: ''
+  path: category/index.html
+  id: 命題2.61
+命題2.62:
+  class: proposition
+  name: 命題2.62
+  title: ''
+  path: category/index.html
+  id: 命題2.62
+命題2.63:
+  class: proposition
+  name: 命題2.63
+  title: ''
+  path: category/index.html
+  id: 命題2.63
+定義2.64:
+  class: definition
+  name: 定義2.64
+  title: 分配圏
+  path: category/index.html
+  id: 定義2.64
+命題2.65:
+  class: proposition
+  name: 命題2.65
+  title: ''
+  path: category/index.html
+  id: 命題2.65
+命題2.66:
+  class: proposition
+  name: 命題2.66
+  title: ''
+  path: category/index.html
+  id: 命題2.66
+命題2.67:
+  class: proposition
+  name: 命題2.67
+  title: ''
+  path: category/index.html
+  id: 命題2.67
+定義2.68:
+  class: definition
+  name: 定義2.68
+  title: カルテシアン閉圏
+  path: category/index.html
+  id: 定義2.68
+prop.ccc-is-distributive:
+  class: theorem
+  name: 定理2.69
+  title: ''
+  path: category/index.html
+  id: prop.ccc-is-distributive
+def.adjunction:
+  class: definition
+  name: 定義2.70
+  title: 随伴
+  path: category/index.html
+  id: def.adjunction
+def.unit:
+  class: definition
+  name: 定義2.71
+  title: 単位射・余単位射
+  path: category/index.html
+  id: def.unit
+prop.triangle:
+  class: theorem
+  name: 定理2.72
+  title: ''
+  path: category/index.html
+  id: prop.triangle
+命題2.73:
+  class: proposition
+  name: 命題2.73
+  title: ''
+  path: category/index.html
+  id: 命題2.73
+命題2.74:
+  class: proposition
+  name: 命題2.74
+  title: ''
+  path: category/index.html
+  id: 命題2.74
+例2.75:
+  class: example
+  name: 例2.75
+  title: 極限と対角関手
+  path: category/index.html
+  id: 例2.75
+定義3.1:
+  class: definition
+  name: 定義3.1
+  title: モノ射の順序関係
+  path: elementary-topos/index.html
+  id: 定義3.1
+定義3.2:
+  class: definition
+  name: 定義3.2
+  title: 部分対象
+  path: elementary-topos/index.html
+  id: 定義3.2
+命題3.3:
+  class: proposition
+  name: 命題3.3
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.3
+定義3.4:
+  class: definition
+  name: 定義3.4
+  title: 引き戻し
+  path: elementary-topos/index.html
+  id: 定義3.4
+prop.pullback-preserves-monomorphism:
+  class: proposition
+  name: 命題3.5
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.pullback-preserves-monomorphism
+prop.pasting-law-of-pullbacks:
+  class: proposition
+  name: 命題3.6
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.pasting-law-of-pullbacks
+命題3.7:
+  class: proposition
+  name: 命題3.7
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.7
+定義3.8:
+  class: definition
+  name: 定義3.8
+  title: 部分対象分類子
+  path: elementary-topos/index.html
+  id: 定義3.8
+prop.subobject-classifying-arrow:
+  class: proposition
+  name: 命題3.9
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.subobject-classifying-arrow
+定義3.10:
+  class: definition
+  name: 定義3.10
+  title: 部分対象関手
+  path: elementary-topos/index.html
+  id: 定義3.10
+prop.representability-of-sub:
+  class: theorem
+  name: 定理3.11
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.representability-of-sub
+命題3.12:
+  class: proposition
+  name: 命題3.12
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.12
+定義3.13:
+  class: definition
+  name: 定義3.13
+  title: 初等トポス
+  path: elementary-topos/index.html
+  id: 定義3.13
+命題3.14:
+  class: proposition
+  name: 命題3.14
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.14
+定義3.15:
+  class: definition
+  name: 定義3.15
+  title: ハイティング代数
+  path: elementary-topos/index.html
+  id: 定義3.15
+命題3.16:
+  class: proposition
+  name: 命題3.16
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.16
+命題3.17:
+  class: proposition
+  name: 命題3.17
+  title: ド・モルガンの法則
+  path: elementary-topos/index.html
+  id: 命題3.17
+例3.18:
+  class: example
+  name: 例3.18
+  title: ''
+  path: elementary-topos/index.html
+  id: 例3.18
+定義3.19:
+  class: definition
+  name: 定義3.19
+  title: ブール代数
+  path: elementary-topos/index.html
+  id: 定義3.19
+命題3.20:
+  class: proposition
+  name: 命題3.20
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.20
+命題3.21:
+  class: proposition
+  name: 命題3.21
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.21
+命題3.22:
+  class: proposition
+  name: 命題3.22
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.22
+定義3.23:
+  class: definition
+  name: 定義3.23
+  title: 前層
+  path: elementary-topos/index.html
+  id: 定義3.23
+命題3.24:
+  class: proposition
+  name: 命題3.24
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.24
+th.limits-of-functor-categories:
+  class: theorem
+  name: 定理3.25
+  title: 関手圏の極限は点別に計算可能
+  path: elementary-topos/index.html
+  id: th.limits-of-functor-categories
+命題3.26:
+  class: proposition
+  name: 命題3.26
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.26
+定義3.27:
+  class: definition
+  name: 定義3.27
+  title: 層
+  path: elementary-topos/index.html
+  id: 定義3.27
+命題3.28:
+  class: proposition
+  name: 命題3.28
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.28
+命題3.29:
+  class: proposition
+  name: 命題3.29
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.29
+定義1.1:
+  class: definition
+  name: 定義1.1
+  title: トポス理論的不変量
+  path: overview/index.html
+  id: 定義1.1
