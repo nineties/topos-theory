@@ -526,42 +526,42 @@ prop.representability-of-sub:
   title: 初等トポス
   path: elementary-topos/index.html
   id: 定義3.13
-命題3.14:
-  class: proposition
-  name: 命題3.14
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.14
-定義3.15:
+定義3.14:
   class: definition
-  name: 定義3.15
-  title: ハイティング代数
+  name: 定義3.14
+  title: 前層
   path: elementary-topos/index.html
-  id: 定義3.15
-命題3.16:
+  id: 定義3.14
+命題3.15:
   class: proposition
-  name: 命題3.16
+  name: 命題3.15
   title: ''
   path: elementary-topos/index.html
-  id: 命題3.16
+  id: 命題3.15
+th.limits-of-functor-categories:
+  class: theorem
+  name: 定理3.16
+  title: 関手圏の極限は点別に計算可能
+  path: elementary-topos/index.html
+  id: th.limits-of-functor-categories
 命題3.17:
   class: proposition
   name: 命題3.17
-  title: ド・モルガンの法則
-  path: elementary-topos/index.html
-  id: 命題3.17
-例3.18:
-  class: example
-  name: 例3.18
   title: ''
   path: elementary-topos/index.html
-  id: 例3.18
-定義3.19:
+  id: 命題3.17
+定義3.18:
   class: definition
-  name: 定義3.19
-  title: ブール代数
+  name: 定義3.18
+  title: 層
   path: elementary-topos/index.html
-  id: 定義3.19
+  id: 定義3.18
+命題3.19:
+  class: proposition
+  name: 命題3.19
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.19
 命題3.20:
   class: proposition
   name: 命題3.20
@@ -574,42 +574,42 @@ prop.representability-of-sub:
   title: ''
   path: elementary-topos/index.html
   id: 命題3.21
-命題3.22:
+定義3.22:
+  class: definition
+  name: 定義3.22
+  title: ハイティング代数
+  path: elementary-topos/index.html
+  id: 定義3.22
+命題3.23:
   class: proposition
-  name: 命題3.22
+  name: 命題3.23
   title: ''
   path: elementary-topos/index.html
-  id: 命題3.22
-定義3.23:
-  class: definition
-  name: 定義3.23
-  title: 前層
-  path: elementary-topos/index.html
-  id: 定義3.23
+  id: 命題3.23
 命題3.24:
   class: proposition
   name: 命題3.24
-  title: ''
+  title: ド・モルガンの法則
   path: elementary-topos/index.html
   id: 命題3.24
-th.limits-of-functor-categories:
-  class: theorem
-  name: 定理3.25
-  title: 関手圏の極限は点別に計算可能
-  path: elementary-topos/index.html
-  id: th.limits-of-functor-categories
-命題3.26:
-  class: proposition
-  name: 命題3.26
+例3.25:
+  class: example
+  name: 例3.25
   title: ''
   path: elementary-topos/index.html
-  id: 命題3.26
-定義3.27:
+  id: 例3.25
+定義3.26:
   class: definition
-  name: 定義3.27
-  title: 層
+  name: 定義3.26
+  title: ブール代数
   path: elementary-topos/index.html
-  id: 定義3.27
+  id: 定義3.26
+命題3.27:
+  class: proposition
+  name: 命題3.27
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.27
 命題3.28:
   class: proposition
   name: 命題3.28
