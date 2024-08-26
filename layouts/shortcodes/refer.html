@@ -1,6 +1,4 @@
 {{ $map := index .Site.Data.indices ($.Get 0) }}
 {{- if $map }}
 <a href="{{ .Site.BaseURL }}/{{ $map.path }}#{{ $map.id }}"> {{- if $map.title }} {{ $map.title }} {{- else }} {{ $map.name }} {{- end }} </a>
-{{- else }}
-{{ errorf "%s" ($.Get 0) }}
 {{- end }}
