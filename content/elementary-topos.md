@@ -236,7 +236,7 @@ x \ar[r]\_f & y
 {{% details 証明 %}}
 $\mathrm{Sub}$ が表現可能関手である事と、 $\mathrm{Sub}$に関して普遍的構成が存在することは同値であるから、部分対象分類子が存在する条件と普遍的構成が存在する条件が一致する事を示せば良い。
 
-$\mathrm{Sub}$ の普遍的構成とは {{< refn prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ が存在して、
+$\mathrm{Sub}$ の普遍的構成とは {{< refer prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ が存在して、
 任意の対象 $u\in\mathcal{C}$ と任意の要素 $[m:x\hookrightarrow u] \in \mathrm{Sub}(u)$ について
 $$ [m] = \mathrm{Sub}(\chi)([\mathrm{true}]) $$
 となるような $\chi:u\rightarrow\Omega$ が唯一つ存在するという事である。

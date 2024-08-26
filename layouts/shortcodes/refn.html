@@ -1,9 +1,4 @@
-{{- range .Site.Pages }}
-    {{- $map := .Scratch.Get "references" }}
-    {{- if $map }}
-        {{- $slice := index $map ($.Get 0) }}
-        {{- if $slice }}
-<a href="{{ index $slice 3 }}"> {{ index $slice 1 }} </a>
-        {{- end }}
-    {{- end }}
+{{ $map := index .Site.Data.indices ($.Get 0) }}
+{{- if $map }}
+<a href="{{ .Site.BaseURL }}/{{ $map.path }}#{{ $map.id }}"> {{ $map.name }} </a>
 {{- end }}

@@ -6,11 +6,9 @@
 {{- if (not $label) }}
     {{- $label = $name }}
 {{- end }}
-{{- $url := printf "%s#%s" .Page.Permalink $label }}
 {{- $title := .Get "title" }}
 
-{{- .Page.Scratch.SetInMap "references" $label (slice "algorithm" $name $title $url) }}
-<div id="{{ $label }}" style="padding-top:100px;margin-top:-100px"></div>
+<div class="algorithm" id="{{ $label }}" name="{{ $name }}" title="{{ $title }}" style="padding-top:100px;margin-top:-100px"></div>
 
 <div class="box"
     >

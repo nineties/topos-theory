@@ -1,16 +1,8 @@
-{{- range .Site.Pages }}
-    {{- range (.Scratch.Get "references") }}
-        {{- $name := index . 1 }}
-        {{- $title := index . 2 }}
-        {{- $url := index . 3 }}
-        {{- if $title }}
-            {{- $.Scratch.SetInMap "list" $title (slice $title $name $url) }}
-        {{- end }}
-    {{- end }}
-{{- end }}
-
+{{ $base := .Site.BaseURL }}
 <ul>
-{{- range $.Scratch.GetSortedMapValues "list" }}
-<li><a href="{{ index . 2 }}">{{ index . 0 }}({{ index . 1 }})</a></li>
+{{- range sort .Site.Data.indices "title" }}
+    {{- if .title }}
+        <li><a href="{{ $base }}/{{ .path }}#{{ .id }}">{{ .title }}({{ .name }})</a></li>
+    {{- end }}
 {{- end }}
 </ul>
