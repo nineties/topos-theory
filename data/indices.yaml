@@ -418,36 +418,42 @@ def.adjunction:
   title: 随伴
   path: category/index.html
   id: def.adjunction
-def.unit:
+def.limit-functor:
   class: definition
   name: 定義2.71
+  title: 極限関手
+  path: category/index.html
+  id: def.limit-functor
+命題2.72:
+  class: proposition
+  name: 命題2.72
+  title: 極限と対角関手
+  path: category/index.html
+  id: 命題2.72
+def.unit:
+  class: definition
+  name: 定義2.73
   title: 単位射・余単位射
   path: category/index.html
   id: def.unit
 prop.triangle:
   class: theorem
-  name: 定理2.72
+  name: 定理2.74
   title: ''
   path: category/index.html
   id: prop.triangle
-命題2.73:
+命題2.75:
   class: proposition
-  name: 命題2.73
+  name: 命題2.75
   title: ''
   path: category/index.html
-  id: 命題2.73
-命題2.74:
+  id: 命題2.75
+命題2.76:
   class: proposition
-  name: 命題2.74
+  name: 命題2.76
   title: ''
   path: category/index.html
-  id: 命題2.74
-例2.75:
-  class: example
-  name: 例2.75
-  title: 極限と対角関手
-  path: category/index.html
-  id: 例2.75
+  id: 命題2.76
 定義3.1:
   class: definition
   name: 定義3.1

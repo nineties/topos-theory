@@ -1164,7 +1164,7 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 以上のように $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ は非常に良い性質を持っているので、米田埋め込みによって一旦議論の舞台を $\mathcal{C}$ から $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に移すことで様々な議論が行いやすくなるわけである。
 
-### 普遍性・普遍要素
+### 普遍性・普遍要素・普遍的構成
 
 米田の補題より、 自然同型 $\mathcal{Y}(a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
 
@@ -1367,32 +1367,74 @@ $$\begin{align\*}
 {{% /details %}}
 
 ## 随伴
-**随伴(adjunction)** は2つの関手の間の関係であるが、
+普遍的構成の一種である **随伴(adjunction)** は二つの圏 $\mathcal{C},\mathcal{D}$ を相互に繋ぐ関手
+$$ F: \mathcal{C}\rightleftarrows\mathcal{D}: G$$
+の間の関係であるが、
 
 > "Adjoint functors arise everywhere”
 > (S. Mac Lane, Categories for the working mathematician)
 
-とマクレーンが言っているように、数学の様々な場所で普遍的に現れる重要な概念である。
+とマクレーンが言っているように、数学の様々な場所で普遍的に現れるものである。様々な数学的概念を随伴として表現する事ができる。
 
 ### 随伴の定義
 
 {{% definition title="随伴" label="def.adjunction" %}}
 圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
-関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ の対であり、以下の2つの関手 $\mathcal{C}^{\mathrm{op}}\times\mathcal{D}\rightarrow\mathbf{Set}$ の間の自然同型
-
-$$ \phi: \mathcal{D}(F(-), -)\longrightarrow\mathcal{C}(-,G(-)) $$
-
-が存在するものをいう。言い換えれば、 任意の $a\in\mathcal{C},b\in\mathcal{D}$ に対して全単射
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ の対であり、 $a\in\mathcal{C},b\in\mathcal{D}$ について自然な同型
 $$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
-が存在し、これが $a,b$ について自然となるものをいう。
+が存在するものをいう。
 
 この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。以下のような図式で表現することもある。
+随伴関手、左随伴関手、右随伴関手という用語を使うこともある。
 
 $$\xymatrix{
 \mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
 \ar@{}|{\perp} \"x\";\"y\"
 }$$
 {{% /definition %}}
+
+以下のように図示すると対応が分かりやすい。
+
+$$\begin{array}{rcccl}
+F(a) & \rightarrow & b & \text{in $\mathcal{D}$}\\\\ \hline
+a & \rightarrow & G(b) & \text{in $\mathcal{C}$}
+\end{array}$$
+
+### 随伴の例
+
+任意の関手 $F:\mathcal{J}\rightarrow \mathcal{C}$ について極限が存在する場合、
+$\varprojlim:\mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$
+という関手が存在する。
+
+{{% definition title="極限関手" label="def.limit-functor" %}}
+$\mathcal{J}$ を小圏とし、 $\mathcal{C}$ を任意の関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ について極限が存在する圏であるとする。
+
+ここで $F\in\mathcal{C}^{\mathcal{J}}$ を $\varprojlim F$ に移し、$\mathcal{C}^{\mathcal{J}}$ の射(自然変換) $\phi: F\rightarrow G$ を
+極限錐 $\Delta(\varprojlim F)\rightarrow F$ に $\phi$ を合成してできる $G$ を底とする錐 $\Delta(\varprojlim F)\rightarrow G$ から、
+極限錐 $\Delta(\varprojlim G)\rightarrow G$ への一意な射 $\varprojlim F\rightarrow \varprojlim G$ に移す対応
+$$ \varprojlim : \mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$$
+は関手となる。これを **極限関手(limit functor)** という。 **余極限関手(colimit functor)** $ \varinjlim:\mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$ も同様に定義される。
+{{% /definition %}}
+
+すると対角関手 $\Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}}$ と極限関手 $\varinjlim:\mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$ に関して、
+以下の自然な同型対応がある事が分かる。
+
+$$\begin{array}{rcccl}
+\Delta(x) & \rightarrow & F & \text{in $\mathcal{\mathcal{C}^{\mathcal{J}}}$}\\\\ \hline
+x & \rightarrow & \varprojlim F & \text{in $\mathcal{C}$}
+\end{array}$$
+
+余極限に関しても同様で $\varprojlim,\varinjlim$ と対角関手の間に随伴関係が存在する事が分かる。
+
+{{% proposition title="極限と対角関手" %}}
+小圏 $\mathcal{J}$ について $F:J\rightarrow\mathcal{C}$ の極限が全て存在する時
+$$ \Delta \dashv \varprojlim $$
+である。同様に余極限が全て存在する時
+$$ \varinjlim \dashv \Delta $$
+である。
+{{% /example %}}
+
+(TBD)
 
 $$ \phi\_{a,b}: \mathcal{D}(F(a), b)\simeq \mathcal{C}(a,G(b)) $$
 
@@ -1546,25 +1588,3 @@ $$ G\simeq G' $$
 
 左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。$\square$
 {{% /details %}}
-
-### 随伴の例
-
-{{% example title="極限と対角関手" %}}
-$F:J\rightarrow\mathcal{C}$ の極限が全て存在する時
-$$ \Delta \dashv \varprojlim $$
-である。同様に余極限が全て存在する時
-$$ \varinjlim \dashv \Delta $$
-である。
-{{% /example %}}
-
-$ \Delta \dashv \varprojlim $に関する射の対応は以下のようになっている。$a$ から $F$ への錐と、任意の錐に対して一意に存在する射 $a\rightarrow\varprojlim F$ が対応している。
-
-$$\begin{array}{rcccl}
-\Delta(a) & \rightarrow & F \\\\ \hline
-a & \rightarrow & \varprojlim F
-\end{array}
-$$
-
-また、この時の単位射 $a\rightarrow\varprojlim\Delta(a)$ は恒等射 $1_a$ であり、余単位射 $\Delta(\varprojlim F)\rightarrow F$ は極限錐である。
-
-
