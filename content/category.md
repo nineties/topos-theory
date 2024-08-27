@@ -1345,7 +1345,7 @@ $$\mathcal{C}(x, a^0) \simeq \mathcal{C}(x\times 0, a) \simeq \mathcal{C}(0, a)$
 ### カルテシアン閉圏
 
 {{% definition title="カルテシアン閉圏" %}}
-任意の有限積と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** という。
+任意の有限積と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** もしくは **デカルト閉圏** という。
 {{% /definition %}}
 
 カルテシアン閉圏は集合のような対象と、それらの間の写像のようなものが一つの圏の中に同居しているものである。例えば $\mathbf{Set}$ や $\mathbf{Cat}$ はカルテシアン閉圏である。
