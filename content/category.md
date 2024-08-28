@@ -1400,6 +1400,16 @@ F(a) & \rightarrow & b & \text{in $\mathcal{D}$}\\\\ \hline
 a & \rightarrow & G(b) & \text{in $\mathcal{C}$}
 \end{array}$$
 
+ここで、自然同型 $ \phi\_{a,b}: \mathcal{D}(F(a), b)\simeq \mathcal{C}(a,G(b)) $
+が $a,b$ について自然であるというのは、任意の $f:a'\rightarrow a, g:b\rightarrow b'$ について
+
+$$ \xymatrix{
+\mathcal{D}(F(a), b)   \ar[r]^{\phi\_{a,b}} \ar[d]\_{\mathcal{D}(F(f), g)} & \mathcal{C}(a, G(b)) \ar[d]^{\mathcal{C}(f, G(g))} \\\\
+\mathcal{D}(F(a'), b') \ar[r]^{\phi\_{a',b'}} & \mathcal{C}(a', G(b'))
+} $$
+
+が成り立つことである。
+
 ### 随伴の例
 
 任意の関手 $F:\mathcal{J}\rightarrow \mathcal{C}$ について極限が存在する場合、
@@ -1435,17 +1445,7 @@ $$ \varinjlim \dashv \Delta $$
 {{% /example %}}
 
 (TBD)
-
-$$ \phi\_{a,b}: \mathcal{D}(F(a), b)\simeq \mathcal{C}(a,G(b)) $$
-
-が $a,b$ について自然であるというのは、任意の $f:a'\rightarrow a, g:b\rightarrow b'$ について
-
-$$ \xymatrix{
-\mathcal{D}(F(a), b)   \ar[r]^{\phi\_{a,b}} \ar[d]\_{\mathcal{D}(F(f), g)} & \mathcal{C}(a, G(b)) \ar[d]^{\mathcal{C}(f, G(g))} \\\\
-\mathcal{D}(F(a'), b') \ar[r]^{\phi\_{a',b'}} & \mathcal{C}(a', G(b'))
-} $$
-
-が成り立つことであるので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
+ので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
 $$ \phi\_{a',b'}(g\circ h\circ F(f)) = G(g)\circ \phi\_{a,b}(h)\circ f $$
 が成り立つということである。ただ、これだと煩雑すぎるので $\phi(h),\phi^{-1}(h)$ を $\bar{h}$ という風に書くと(もちろん $\bar{\bar{h}}=h$である)、
 
