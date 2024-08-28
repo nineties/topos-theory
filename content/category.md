@@ -1116,7 +1116,7 @@ $$a\simeq b\ \Leftrightarrow\ \mathcal{C}(-, a)\simeq\mathcal{C}(-, b)\ \Leftrig
 また、以下が成り立つ。
 
 {{% proposition label="prop.yoneda-preserves-limits" %}}
-米田埋め込みは極限を保つ。すなわち自然同型
+米田埋め込みは連続である。すなわち自然同型
 $$ \mathcal{Y}(\varprojlim F) \simeq \varprojlim (\mathcal{Y}\circ F)$$
 が存在する。
 {{% /proposition %}}
