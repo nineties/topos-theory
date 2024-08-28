@@ -820,7 +820,7 @@ $$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
 $$ A+\_C B = (A+B)/{\sim}$$
 である。
 
-### 完備性・極限の存在定理
+### 完備性
 
 前節のように $\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
 
@@ -862,6 +862,16 @@ F(i) \ar[r]_{F(f)} & F(j)
 {{% proposition %}}
 $\mathbf{Set}$ は双完備である。
 {{% /proposition %}}
+
+### 連続性
+
+{{% definition title="連続関手" %}}
+関手 $F: \mathcal{C}\rightarrow\mathcal{D}$ が全ての小さな極限を保つ時、
+小圏 $\mathcal{J}$ について任意の関手 $G:\mathcal{J}\rightarrow\mathcal{C}$ が極限を持つ時、
+$F\circ G: \mathcal{J}\rightarrow\mathcal{D}$ も極限を持ち
+$$F(\varprojlim G) = \varprojlim F\circ G$$
+が成立するならば、$F$ は **連続(continuous)** であるという。
+{{% /definition %}}
 
 ## 普遍性
 
@@ -1226,7 +1236,9 @@ $$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\m
 が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\epsilon:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 
-これを{{< refer prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
+ここで登場した $\mathcal{C}(-\times a, b)$ は $\mathcal{C}(-, b)\circ (-\times a)$ という2つの関手を合成したもので、 関手 $-\times a$ は $x\in\mathcal{C}$ を $x\times a$ に移し、 $f:x\rightarrow y$ を $f\times 1_a$ に移すような関手である。
+
+この定義を {{< refer prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
 $$ f = \mathcal{C}(u\times a, b)(\epsilon) = (-\circ (u\times 1_a))(\epsilon) = \epsilon \circ (u\times 1_a) $$
 となるような $u: x\rightarrow b^a$ が一意に存在する、と言う事が指数対象の持つ普遍性となる。
 
@@ -1436,13 +1448,64 @@ x & \rightarrow & \varprojlim F & \text{in $\mathcal{C}$}
 
 余極限に関しても同様で $\varprojlim,\varinjlim$ と対角関手の間に随伴関係が存在する事が分かる。
 
-{{% proposition title="極限と対角関手" %}}
+{{% proposition title="極限に関する随伴" %}}
 小圏 $\mathcal{J}$ について $F:J\rightarrow\mathcal{C}$ の極限が全て存在する時
 $$ \Delta \dashv \varprojlim $$
 である。同様に余極限が全て存在する時
 $$ \varinjlim \dashv \Delta $$
 である。
 {{% /example %}}
+
+指数対象についても同様の随伴を構成する事ができる。
+
+{{% definition title="指数関手" label="def.exponential-functor" %}}
+任意の $x\in\mathcal{C}$ に対して、指数対象 $x^a$ が存在する時、 $x$ を $x^a$ に移し、 $\mathcal{C}$ の射 $f:x\rightarrow y$を
+指数対象の普遍性より射 $f\circ\epsilon: x^a\times a\rightarrow y$ に一意に対応する射 $u: x^a \rightarrow y^a$ に移す対応は関手
+$$ (-)^a: \mathcal{C}\rightarrow\mathcal{C} $$
+となる。これを **指数関手(exponential functor)** という。
+
+$$\xymatrix{
+x^a\times a \ar[d]\_{u\times 1_a} \ar[rd]^{f\circ\epsilon_x}& \\\\
+y^a\times a \ar[r]^{\epsilon_y} & b
+}$$
+{{% /definition %}}
+
+すると、以下のような $x,y$ について自然な同型が存在して、これは随伴関係である。
+
+$$\begin{array}{rcccl}
+x\times a & \rightarrow & y   & \text{in $\mathcal{C}$} \\\\ \hline
+x         & \rightarrow & y^a & \text{in $\mathcal{C}$}
+\end{array}$$
+
+{{% proposition title="指数対象に関する随伴" %}}
+任意の $x\in\mathcal{C}$ に対して $x\times a$、$x^a$ が存在する時
+$$ (-)\times a \dashv (-)^a $$
+{{% /proposition %}}
+
+### 随伴の性質
+
+{{% proposition %}}
+ある関手の右随伴が存在するならば、それは自然同型を除いて一意に定まる。
+左随伴についても同様。
+{{% /proposition %}}
+{{% details 証明 %}}
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G,G':\mathcal{D}\rightarrow\mathcal{C}$ の間に
+随伴 $F\dashv G$ と $F\dashv G'$ の関係があるとする。すなわち任意の $a\in\mathcal{C},b\in\mathcal{D}$ について自然な同型
+$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
+$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G'(b)) $$
+が存在するので、自然な同型
+$$ \mathcal{C}(a,G(b))\simeq \mathcal{C}(a,G'(b)) $$
+が得られる。これが $a$ について自然であるので
+$$ \mathcal{C}(-,G(b))\simeq \mathcal{C}(-,G'(b)) $$
+であるから、米田の原理より
+$$ G(b)\simeq G'(b) $$
+となる。これが $b$ について自然であることから
+$$ G\simeq G' $$
+となる。従って、$F$ の右随伴は同型を除いて一意である。
+
+左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。$\square$
+{{% /details %}}
+
 
 (TBD)
 ので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
@@ -1567,24 +1630,3 @@ $$ \phi(f) = G(f)\circ\eta_a,\quad \phi^{-1}(f) = \epsilon_b \circ F(f)$$
 で与えられる。
 {{% /proposition %}}
 
-{{% proposition %}}
-ある関手の右随伴が存在するならば、それは自然同型を除いて一意に定まる。
-左随伴についても同様。
-{{% /proposition %}}
-{{% details 証明 %}}
-関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G,G':\mathcal{D}\rightarrow\mathcal{C}$ の間に
-随伴 $F\dashv G$ と $F\dashv G'$ の関係があるとする。すなわち任意の $a\in\mathcal{C},b\in\mathcal{D}$ について自然な同型
-$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G(b)) $$
-$$ \mathcal{D}(F(a), b)\simeq\mathcal{C}(a,G'(b)) $$
-が存在するので、自然な同型
-$$ \mathcal{C}(a,G(b))\simeq \mathcal{C}(a,G'(b)) $$
-が得られる。これが $a$ について自然であるので
-$$ \mathcal{C}(-,G(b))\simeq \mathcal{C}(-,G'(b)) $$
-であるから、米田の原理より
-$$ G(b)\simeq G'(b) $$
-となる。これが $b$ について自然であることから
-$$ G\simeq G' $$
-となる。従って、$F$ の右随伴は同型を除いて一意である。
-
-左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。$\square$
-{{% /details %}}
