@@ -1417,11 +1417,23 @@ a & \rightarrow & G(b) & \text{in $\mathcal{C}$}
 が $a,b$ について自然であるというのは、任意の $f:a'\rightarrow a, g:b\rightarrow b'$ について
 
 $$ \xymatrix{
-\mathcal{D}(F(a), b)   \ar[r]^{\phi\_{a,b}} \ar[d]\_{\mathcal{D}(F(f), g)} & \mathcal{C}(a, G(b)) \ar[d]^{\mathcal{C}(f, G(g))} \\\\
+\mathcal{D}(F(a), b)   \ar[r]^{\phi\_{a,b}} \ar[d]\_{\mathcal{D}(F(f), g)=g\circ - \circ F(f)} & \mathcal{C}(a, G(b)) \ar[d]^{\mathcal{C}(f, G(g))=G(g)\circ - \circ f} \\\\
 \mathcal{D}(F(a'), b') \ar[r]^{\phi\_{a',b'}} & \mathcal{C}(a', G(b'))
 } $$
 
-が成り立つことである。
+が成り立つことである。見にくいので $\phi\_{a,b}(h),\phi^{-1}\_{a,b}(h)$ をいずれも $\overline{h}$ と書けば、任意の $h: F(a)\rightarrow b$ に対して以下の等式が成り立つ。
+もちろん $\overline{\overline{h}}=h$ である。
+
+{{% proposition label="prop.adjunction-equality" %}}
+$$\xymatrix{
+\mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
+\ar@{}|{\perp} \"x\";\"y\"
+}$$
+の時、任意の $\mathcal{D}$ の射$f: a'\rightarrow a$、$\mathcal{C}$ の射 $g:b\rightarrow b'$、$\mathcal{C}$ の射 $h: F(a)\rightarrow b$ に対して以下の等式が成り立つ。
+$$ \overline{g\circ h \circ F(f)} = G(g)\circ\overline{h}\circ f $$
+対象を明示して以下のようにも書く。
+$$ \overline{F(a')\xrightarrow{F(f)} F(a)\xrightarrow{h}b\xrightarrow{g} b'} = a'\xrightarrow{f}a\xrightarrow{\overline{h}} G(b)\xrightarrow{G(g)} G(b') $$
+{{% /proposition %}}
 
 ### 随伴の例
 
@@ -1527,40 +1539,7 @@ $$\mathcal{C}(x, G(\varprojlim A)) \simeq \mathcal{D}(F(x), \varprojlim A) \sime
 
 例えば、 随伴関係 $(-)\times a \dashv (-)^a$ から
 $$ (\varprojlim F)^a \simeq \varprojlim (-)^a \circ F, \quad (\varinjlim F)\times a \simeq \varinjlim ((-)\times a)\circ F$$
-が成り立つので、例えば
-$$ (x\times y)^a \simeq x^a \times y^a$$
-や
-$$ (x + y)\times a \simeq x\times a + y\times a$$
-が成立するといった事が示せる。
-
-(TBD)
-ので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
-$$ \phi\_{a',b'}(g\circ h\circ F(f)) = G(g)\circ \phi\_{a,b}(h)\circ f $$
-が成り立つということである。ただ、これだと煩雑すぎるので $\phi(h),\phi^{-1}(h)$ を $\bar{h}$ という風に書くと(もちろん $\bar{\bar{h}}=h$である)、
-
-$$ \overline{g\circ h\circ F(f)} = G(g)\circ\bar{h}\circ f $$
-
-と分かりやすくなる。もしくは、任意の $h: a\rightarrow G(b)$ について
-
-$$ \overline{G(g)\circ h\circ f} = g\circ\bar{h}\circ F(f) $$
-
-であると書いても同じことである。以後この記法を用いる。
-また、対象を明示して以下のような書き方をする場合もある。
-
-$$ \overline{F(a') \xrightarrow{F(f)} F(a) \xrightarrow{h} b \xrightarrow{g} b'} = a' \xrightarrow{f} a \xrightarrow{\bar{h}} G(b) \xrightarrow{G(g)} G(b') $$
-
-{{% definition title="単位射・余単位射" label="def.unit" %}}
-随伴 $F\dashv G$ が存在する時、以下の全単射において左辺の単位元 $1\_{F(a)}$ に対応する右辺の射 $\eta_a: a\rightarrow GF(a)$ の族が定める自然変換
-$\eta: 1\_{\mathcal{C}}\rightarrow GF$ をこの随伴の **単位射(unit)** という。
-$$ \mathcal{D}(F(a), F(a))\simeq \mathcal{C}(a,GF(a)) $$
-
-同様に、以下の全単射において右辺の単位元 $1\_{G(b)}$ に対応する左辺の射 $\epsilon_b: FG(b)\rightarrow b$ の族が定める自然変換 $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ を **余単位射(counit)** という。
-$$ \mathcal{D}(FG(b), b)\simeq\mathcal{C}(G(b),G(b)) $$
-{{% /definition %}}
-
-つまり、具体的に書けば
-$$ \eta_a = \overline{1\_{F(a)}},\quad \epsilon_b = \overline{1\_{G(b)}} $$
-である。
+が成り立つので $ (x\times y)^a \simeq x^a \times y^a$ や $ (x + y)\times a \simeq x\times a + y\times a$ が成立するといった事が示せる。
 
 ### 三角等式
 
@@ -1572,12 +1551,29 @@ F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \a
                                           & F                       &                                            & G
 }$$
 
+$\eta$ を **単位射(unit)**、 $\epsilon$ を **余単位射(counit)** という。
 {{% /theorem %}}
 {{% details 証明 %}}
-({{< refn def.adjunction >}}, {{< refn def.unit >}} $\Rightarrow$ {{< refer prop.triangle >}}の三角等式)
-$F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{C}$ の間に随伴関係があるとする。また、 $\eta,\epsilon $ を単位射、余単位射とする。
+({{< refn def.adjunction >}} $\Rightarrow$ {{< refer prop.triangle >}}の三角等式)
 
-任意の $a\in\mathcal{C}$ について
+$F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{C}$ の間に随伴関係$F\dashv G$があるとする。
+$\eta, \epsilon$ の各コンポーネントを
+$$ \eta_a = \overline{1\_{F(a)}}, \epsilon_a = \overline{1\_{G(a)}}$$
+にて定めるとこれらは自然変換となる。例えば、任意の $f:a\rightarrow b$ に対して以下の図式を考えると
+$$\xymatrix{
+a \ar[r]^{\eta_a}\ar[d]^f & GF(a) \ar[d]^{GF(f)} \\\\
+b \ar[r]^{\eta_b} & GF(b)
+}$$
+{{< refer prop.adjunction-equality >}}より
+$$ \begin{aligned}
+a\xrightarrow{\eta_a} GF(a)\xrightarrow{GF(f)} GF(b) &= \overline{F(a)\xrightarrow{\overline{\eta_a}} F(a)\xrightarrow{F(f)} F(b)} \\\\
+                                                     &= \overline{F(a)\xrightarrow{1\_{F(a)}} F(a)\xrightarrow{F(f)} F(b)} \\\\
+                                                     &= \overline{F(a)\xrightarrow{F(f)} F(b) \xrightarrow{1\_{F(b)}} F(b)} \\\\
+                                                     &= a\xrightarrow{f} b \xrightarrow{\overline{1\_{F(b)}}} GF(b) \\\\
+                                                     &= a\xrightarrow{f} b \xrightarrow{\eta_b} GF(b)
+\end{aligned}$$
+となり $\eta$ が自然変換である事がわかる。 $\epsilon$ も同様。
+この時、任意の $a\in\mathcal{C}$ について
 
 $$\begin{align*}
 \overline{F(a) \xrightarrow{F(\eta_a)} FGF(a) \xrightarrow{\epsilon\_{F(a)}} F(a)} &= a\xrightarrow{\eta_a} GF(a) \xrightarrow{\overline{\epsilon\_{F(a)}}} GF(a) \\\\
@@ -1587,29 +1583,20 @@ $$\begin{align*}
 \end{align*}$$
 
 であるので $\epsilon\_{F(a)}\circ F(\eta_a) = 1\_{F(a)}$ すなわち $\epsilon F\circ F\eta = 1_F$ である。
+$G\epsilon\circ\eta G=1\_{G}$ も同様。
 
-同様に任意の $b\in\mathcal{D}$ について
-$$\begin{align*}
-\overline{G(b)\xrightarrow{\eta\_{G(b)}} GFG(b)\xrightarrow{G(\epsilon_b)} G(b)} &= FG(b)\xrightarrow{\overline{\eta\_{G(b)}}} FG(b)\xrightarrow{\epsilon_b} b \\\\
-&= FG(b)\xrightarrow{1\_{FG(b)}} FG(b)\xrightarrow{\epsilon_b} b \\\\
-&= FG(b)\xrightarrow{\epsilon_b} b \\\\
-&= \overline{G(b)\xrightarrow{1\_{G(b)}}G(b)}
-\end{align*}$$
-
-であるので $G\epsilon\circ\eta G=1\_{G}$である。
-
-({{< refer prop.triangle >}}の三角等式 $\Rightarrow$ {{< refn def.adjunction >}}, {{< refn def.unit >}})
+({{< refer prop.triangle >}}の三角等式 $\Rightarrow$ {{< refn def.adjunction >}})
 
 $\epsilon F\circ F\eta = 1_F,\quad G\epsilon\circ\eta G=1\_{G}$であるとする。
 すなわち、以下が成立
 
-$$ F(a) \xrightarrow{F(\eta_a)} FGF(a) \xrightarrow{\epsilon\_{F(a)}} F(a) = F(a)\xrightarrow{1\_{F(a)}}F(a) \qquad (a\in\mathcal{C})\qquad\cdots(A)$$
-$$ G(a)\xrightarrow{\eta\_{G(a)}} GFG(a)\xrightarrow{G(\epsilon_a)} G(a) = G(a)\xrightarrow{1\_{G(a)}}G(a)\qquad (a\in\mathcal{D})\qquad\cdots(B)$$
+$$ F(a) \xrightarrow{F(\eta_a)} FGF(a) \xrightarrow{\epsilon\_{F(a)}} F(a) = F(a)\xrightarrow{1\_{F(a)}}F(a) \qquad (\forall a\in\mathcal{C})\qquad\cdots(A)$$
+$$ G(a)\xrightarrow{\eta\_{G(a)}} GFG(a)\xrightarrow{G(\epsilon_a)} G(a) = G(a)\xrightarrow{1\_{G(a)}}G(a)\qquad (\forall a\in\mathcal{D})\qquad\cdots(B)$$
 
 また、$\eta, \epsilon$ は自然変換であるから、以下が成立。
 
-$$ a\xrightarrow{f}b \xrightarrow{\eta_b}GF(b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{GF(f)} GF(b)\qquad (f:a\rightarrow b \in\mathcal{C})\qquad\cdots(C)$$
-$$ FG(a)\xrightarrow{\epsilon_a}a\xrightarrow{f}b = FG(a)\xrightarrow{FG(f)}FG(b)\xrightarrow{\epsilon_b}b \qquad(f:a\rightarrow b \in\mathcal{D})\qquad\cdots(D)$$
+$$ a\xrightarrow{f}b \xrightarrow{\eta_b}GF(b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{GF(f)} GF(b)\qquad (\forall f:a\rightarrow b \in\mathcal{C})\qquad\cdots(C)$$
+$$ FG(a)\xrightarrow{\epsilon_a}a\xrightarrow{f}b = FG(a)\xrightarrow{FG(f)}FG(b)\xrightarrow{\epsilon_b}b \qquad(\forall f:a\rightarrow b \in\mathcal{D})\qquad\cdots(D)$$
 
 ここで写像 $\phi:\mathcal{D}(F(a),b)\leftrightarrow \mathcal{D}(a, G(b)):\psi$ を以下のように置く
 
@@ -1646,13 +1633,3 @@ $$\begin{align\*}
 $$\eta_a = \overline{1\_{F(a)}}, \epsilon_b = \overline{1\_{G(b)}}$$
 である。$\square$
 {{% /details %}}
-
-今の証明より以下が分かる。
-{{% proposition %}}
-随伴 $F\dashv G$ の単位射が $\eta$ 、余単位射が $\epsilon$ であるときの全単射
-$ \phi: \mathcal{D}(F(a), b)\rightarrow\mathcal{C}(a,G(b)) $
-は
-$$ \phi(f) = G(f)\circ\eta_a,\quad \phi^{-1}(f) = \epsilon_b \circ F(f)$$
-で与えられる。
-{{% /proposition %}}
-

@@ -424,34 +424,34 @@ def.adjunction:
   title: 随伴
   path: category/index.html
   id: def.adjunction
+prop.adjunction-equality:
+  class: proposition
+  name: 命題2.72
+  title: ''
+  path: category/index.html
+  id: prop.adjunction-equality
 def.limit-functor:
   class: definition
-  name: 定義2.72
+  name: 定義2.73
   title: 極限関手
   path: category/index.html
   id: def.limit-functor
-命題2.73:
+命題2.74:
   class: proposition
-  name: 命題2.73
+  name: 命題2.74
   title: 極限に関する随伴
   path: category/index.html
-  id: 命題2.73
+  id: 命題2.74
 def.exponential-functor:
   class: definition
-  name: 定義2.74
+  name: 定義2.75
   title: 指数関手
   path: category/index.html
   id: def.exponential-functor
-命題2.75:
-  class: proposition
-  name: 命題2.75
-  title: 指数対象に関する随伴
-  path: category/index.html
-  id: 命題2.75
 命題2.76:
   class: proposition
   name: 命題2.76
-  title: ''
+  title: 指数対象に関する随伴
   path: category/index.html
   id: 命題2.76
 命題2.77:
@@ -460,24 +460,18 @@ def.exponential-functor:
   title: ''
   path: category/index.html
   id: 命題2.77
-def.unit:
-  class: definition
-  name: 定義2.78
-  title: 単位射・余単位射
+命題2.78:
+  class: proposition
+  name: 命題2.78
+  title: ''
   path: category/index.html
-  id: def.unit
+  id: 命題2.78
 prop.triangle:
   class: theorem
   name: 定理2.79
   title: ''
   path: category/index.html
   id: prop.triangle
-命題2.80:
-  class: proposition
-  name: 命題2.80
-  title: ''
-  path: category/index.html
-  id: 命題2.80
 定義3.1:
   class: definition
   name: 定義3.1
