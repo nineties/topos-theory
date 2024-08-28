@@ -454,24 +454,30 @@ def.exponential-functor:
   title: ''
   path: category/index.html
   id: 命題2.76
+命題2.77:
+  class: proposition
+  name: 命題2.77
+  title: ''
+  path: category/index.html
+  id: 命題2.77
 def.unit:
   class: definition
-  name: 定義2.77
+  name: 定義2.78
   title: 単位射・余単位射
   path: category/index.html
   id: def.unit
 prop.triangle:
   class: theorem
-  name: 定理2.78
+  name: 定理2.79
   title: ''
   path: category/index.html
   id: prop.triangle
-命題2.79:
+命題2.80:
   class: proposition
-  name: 命題2.79
+  name: 命題2.80
   title: ''
   path: category/index.html
-  id: 命題2.79
+  id: 命題2.80
 定義3.1:
   class: definition
   name: 定義3.1

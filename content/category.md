@@ -866,11 +866,12 @@ $\mathbf{Set}$ は双完備である。
 ### 連続性
 
 {{% definition title="連続関手" %}}
-関手 $F: \mathcal{C}\rightarrow\mathcal{D}$ が全ての小さな極限を保つ時、
-小圏 $\mathcal{J}$ について任意の関手 $G:\mathcal{J}\rightarrow\mathcal{C}$ が極限を持つ時、
+関手 $F: \mathcal{C}\rightarrow\mathcal{D}$ について、
+$\mathcal{J}$ を小圏として任意の関手 $G:\mathcal{J}\rightarrow\mathcal{C}$ が極限を持つ時、
 $F\circ G: \mathcal{J}\rightarrow\mathcal{D}$ も極限を持ち
 $$F(\varprojlim G) = \varprojlim F\circ G$$
 が成立するならば、$F$ は **連続(continuous)** であるという。
+同様に $F$ が小さな余極限を保つ時は **余連続(cocontinuous)** であるという。
 {{% /definition %}}
 
 ## 普遍性
@@ -1506,6 +1507,31 @@ $$ G\simeq G' $$
 左随伴についても、米田埋め込みの双対版を考えることで同様に示せる。$\square$
 {{% /details %}}
 
+随伴に関して、以下の性質は特に重要である。様々な概念が随伴で構成できる為、役に立つ場面が多い。
+
+{{% proposition %}}
+右随伴関手は連続、左随伴関手は余連続である。
+{{% /proposition %}}
+{{% details 証明 %}}
+随伴
+$$\xymatrix{
+\mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
+\ar@{}|{\perp} \"x\";\"y\"
+}$$
+が存在する時、$G$ が任意の小さい極限を持つならば、$x\in\mathcal{C}$、 $A:\mathcal{J}\rightarrow\mathcal{D}$ について、
+随伴関係と米田埋め込みの連続性から $x$ について自然な同型
+$$\mathcal{C}(x, G(\varprojlim A)) \simeq \mathcal{D}(F(x), \varprojlim A) \simeq \varprojlim\mathcal{D}(F(x), A(-)) \simeq \varprojlim\mathcal{C}(x, GA(-)) \simeq \mathcal{C}(x, \varprojlim GA)$$
+が存在する。従って米田の原理より $G(\varprojlim A)\simeq \varprojlim GA$。
+左随伴関手についても同様。 \square
+{{% /details %}}
+
+例えば、 随伴関係 $(-)\times a \dashv (-)^a$ から
+$$ (\varprojlim F)^a \simeq \varprojlim (-)^a \circ F, \quad (\varinjlim F)\times a \simeq \varinjlim ((-)\times a)\circ F$$
+が成り立つので、例えば
+$$ (x\times y)^a \simeq x^a \times y^a$$
+や
+$$ (x + y)\times a \simeq x\times a + y\times a$$
+が成立するといった事が示せる。
 
 (TBD)
 ので、component-wiseに書けば、任意の $h: F(a)\rightarrow b$ について
