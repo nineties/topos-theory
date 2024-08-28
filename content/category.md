@@ -1234,29 +1234,29 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 {{% definition title="指数対象" %}}
 有限積を持つ圏 $\mathcal{C}$ において関手
 $$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$$
-が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\epsilon:b^a\times a\rightarrow b$ と書く。
+が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\mathrm{ev}:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 
 ここで登場した $\mathcal{C}(-\times a, b)$ は $\mathcal{C}(-, b)\circ (-\times a)$ という2つの関手を合成したもので、 関手 $-\times a$ は $x\in\mathcal{C}$ を $x\times a$ に移し、 $f:x\rightarrow y$ を $f\times 1_a$ に移すような関手である。
 
 この定義を {{< refer prop.universal-construction >}}を用いて図式を用いた定義に翻訳すると、任意の $f:x\times a\rightarrow b$ に対して
-$$ f = \mathcal{C}(u\times a, b)(\epsilon) = (-\circ (u\times 1_a))(\epsilon) = \epsilon \circ (u\times 1_a) $$
+$$ f = \mathcal{C}(u\times a, b)(\mathrm{ev}) = (-\circ (u\times 1_a))(\mathrm{ev}) = \mathrm{ev} \circ (u\times 1_a) $$
 となるような $u: x\rightarrow b^a$ が一意に存在する、と言う事が指数対象の持つ普遍性となる。
 
 $$\xymatrix{
 x\times a \ar[d]\_{u\times 1_a} \ar[rd]^f & \\\\
-b^a\times a \ar[r]^{\epsilon} & b
+b^a\times a \ar[r]^{\mathrm{ev}} & b
 }$$
 
 {{% proposition %}}
 $\mathbf{Set}$ における指数対象 $b^a$ は $\mathbf{Set}(a,b)$ である。
 {{% /proposition %}}
 {{% details 証明 %}}
-評価射 $\epsilon: B^A\times A\rightarrow B$ を
-$$ \epsilon(f, a) = f(a)$$
+評価射 $\mathrm{ev}: B^A\times A\rightarrow B$ を
+$$ \mathrm{ev}(f, a) = f(a)$$
 によって定める。任意の $g:X\times A\rightarrow B$ について $u:X\rightarrow B^A$ が
 指数対象の図式の可換性を満たすとすると、任意の $(x,a)\in X\times A$ について
-$$ \epsilon\circ (u\times 1_a)(x, a) = g(x, a) \Leftrightarrow u(x)(a) = g(x, a)$$
+$$ \mathrm{ev}\circ (u\times 1_a)(x, a) = g(x, a) \Leftrightarrow u(x)(a) = g(x, a)$$
 であるから、これが成立する$ u(x) = (a\mapsto g(x, a))$が唯一つ存在する。
 $\square$
 {{% /details %}}
@@ -1473,13 +1473,13 @@ $$ \varinjlim \dashv \Delta $$
 
 {{% definition title="指数関手" label="def.exponential-functor" %}}
 任意の $x\in\mathcal{C}$ に対して、指数対象 $x^a$ が存在する時、 $x$ を $x^a$ に移し、 $\mathcal{C}$ の射 $f:x\rightarrow y$を
-指数対象の普遍性より射 $f\circ\epsilon: x^a\times a\rightarrow y$ に一意に対応する射 $u: x^a \rightarrow y^a$ に移す対応は関手
+指数対象の普遍性より射 $f\circ\mathrm{ev}: x^a\times a\rightarrow y$ に一意に対応する射 $u: x^a \rightarrow y^a$ に移す対応は関手
 $$ (-)^a: \mathcal{C}\rightarrow\mathcal{C} $$
 となる。これを **指数関手(exponential functor)** という。
 
 $$\xymatrix{
-x^a\times a \ar[d]\_{u\times 1_a} \ar[rd]^{f\circ\epsilon_x}& \\\\
-y^a\times a \ar[r]^{\epsilon_y} & b
+x^a\times a \ar[d]\_{u\times 1_a} \ar[rd]^{f\circ\mathrm{ev}\_x}& \\\\
+y^a\times a \ar[r]^{\mathrm{ev}\_y} & b
 }$$
 {{% /definition %}}
 
@@ -1662,4 +1662,4 @@ $$\begin{array}{rcccl}
 x\times a & \rightarrow & y             \\\\ \hline
 x         & \rightarrow & y^a
 \end{array}$$
-の余単位射が$\mathrm{ev}: y^a\times a\rightarrow y$ である。
+の余単位射が評価射$\mathrm{ev}: y^a\times a\rightarrow y$ である。
