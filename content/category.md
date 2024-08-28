@@ -1633,3 +1633,33 @@ $$\begin{align\*}
 $$\eta_a = \overline{1\_{F(a)}}, \epsilon_b = \overline{1\_{G(b)}}$$
 である。$\square$
 {{% /details %}}
+
+単位射・余単位射の具体的な例を見てみよう。例えば随伴
+
+$$\begin{array}{rcccl}
+\Delta(x) & \rightarrow & F             \\\\ \hline
+x         & \rightarrow & \varprojlim F
+\end{array}$$
+
+の単位射は
+
+$$\begin{array}{rcccl}
+\Delta(x) & \rightarrow & \Delta(x)             \\\\ \hline
+x         & \rightarrow & \varprojlim \Delta(x)
+\end{array}$$
+
+の上の恒等射に対応する下の射である。 $\varprojlim \Delta(x) = x$ であることは容易にわかるから、下の対応する射は $1_x$ すなわち、 $\eta_x=1_x$ である。
+続いて、余単位射は
+
+$$\begin{array}{rcccl}
+\Delta(\varprojlim F) & \rightarrow & F             \\\\ \hline
+\varprojlim F         & \rightarrow & \varprojlim F
+\end{array}$$
+の下の恒等射に対応する上の射である。従って $\epsilon$ は極限錐 $\epsilon: \Delta(\varprojlim F)\rightarrow F$ である。
+
+同様に、随伴
+$$\begin{array}{rcccl}
+x\times a & \rightarrow & y             \\\\ \hline
+x         & \rightarrow & y^a
+\end{array}$$
+の余単位射が$\mathrm{ev}: y^a\times a\rightarrow y$ である。
