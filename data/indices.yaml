@@ -565,87 +565,99 @@ prop.representability-of-sub:
 th.limits-of-functor-categories:
   class: theorem
   name: 定理3.16
-  title: 関手圏の極限は点別に計算可能
+  title: 関手圏の極限は点別計算可能定理
   path: elementary-topos/index.html
   id: th.limits-of-functor-categories
-命題3.17:
+定義3.17:
+  class: definition
+  name: 定義3.17
+  title: 点での評価関手
+  path: elementary-topos/index.html
+  id: 定義3.17
+命題3.18:
   class: proposition
-  name: 命題3.17
+  name: 命題3.18
   title: ''
   path: elementary-topos/index.html
-  id: 命題3.17
-定義3.18:
-  class: definition
-  name: 定義3.18
-  title: 層
-  path: elementary-topos/index.html
-  id: 定義3.18
+  id: 命題3.18
 命題3.19:
   class: proposition
   name: 命題3.19
   title: ''
   path: elementary-topos/index.html
   id: 命題3.19
-命題3.20:
-  class: proposition
-  name: 命題3.20
-  title: ''
+定義3.20:
+  class: definition
+  name: 定義3.20
+  title: 層
   path: elementary-topos/index.html
-  id: 命題3.20
+  id: 定義3.20
 命題3.21:
   class: proposition
   name: 命題3.21
   title: ''
   path: elementary-topos/index.html
   id: 命題3.21
-定義3.22:
-  class: definition
-  name: 定義3.22
-  title: ハイティング代数
+命題3.22:
+  class: proposition
+  name: 命題3.22
+  title: ''
   path: elementary-topos/index.html
-  id: 定義3.22
+  id: 命題3.22
 命題3.23:
   class: proposition
   name: 命題3.23
   title: ''
   path: elementary-topos/index.html
   id: 命題3.23
-命題3.24:
+定義3.24:
+  class: definition
+  name: 定義3.24
+  title: ハイティング代数
+  path: elementary-topos/index.html
+  id: 定義3.24
+命題3.25:
   class: proposition
-  name: 命題3.24
+  name: 命題3.25
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.25
+命題3.26:
+  class: proposition
+  name: 命題3.26
   title: ド・モルガンの法則
   path: elementary-topos/index.html
-  id: 命題3.24
-例3.25:
+  id: 命題3.26
+例3.27:
   class: example
-  name: 例3.25
+  name: 例3.27
   title: ''
   path: elementary-topos/index.html
-  id: 例3.25
-定義3.26:
+  id: 例3.27
+定義3.28:
   class: definition
-  name: 定義3.26
+  name: 定義3.28
   title: ブール代数
   path: elementary-topos/index.html
-  id: 定義3.26
-命題3.27:
-  class: proposition
-  name: 命題3.27
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.27
-命題3.28:
-  class: proposition
-  name: 命題3.28
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.28
+  id: 定義3.28
 命題3.29:
   class: proposition
   name: 命題3.29
   title: ''
   path: elementary-topos/index.html
   id: 命題3.29
+命題3.30:
+  class: proposition
+  name: 命題3.30
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.30
+命題3.31:
+  class: proposition
+  name: 命題3.31
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.31
 定義1.1:
   class: definition
   name: 定義1.1

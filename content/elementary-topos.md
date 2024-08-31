@@ -320,7 +320,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 
 **前層(presheaf)** 及び **層(sheaf)** は元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念であるが、その圏論的一般化は非常に重要である。
 
-### 前層の圏
+### 前層
 
 {{% definition title="前層" %}}
 小圏 $\mathcal{C}$ の上の **前層(presheaf)** とは反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事である。
@@ -336,14 +336,15 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 
 これは以下の定理と $\mathbf{Set}$ が双完備であることから示される。
 
-{{% theorem title="関手圏の極限は点別に計算可能" label="th.limits-of-functor-categories" %}}
+{{% theorem title="関手圏の極限は点別計算可能定理" label="th.limits-of-functor-categories" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
-$a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
+$a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
 
-$$ \left(\varprojlim\_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim_{i\in\mathcal{J}} F(i)(a) $$
+$$ \left(\varprojlim\_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim\_{i\in\mathcal{J}} F(i)(a) $$
 
 である。余極限についても同様。
 {{% /theorem %}}
+
 {{% details 証明 %}}
 
 全ての $a\in\mathcal{C}$ について $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が存在するとする。
@@ -392,68 +393,60 @@ H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@
 この射の族 $\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim\_{i\in\mathcal{J}}F(i)$ である。$\square$
 {{% /details %}}
 
-{{% proposition %}}
-前層の圏はカルテシアン閉圏である。
+この定理を、評価関手というものを用いて言い直すこともできる。
 
+{{% definition title="点での評価関手" %}}
+対象 $a\in\mathcal{D}$ を固定した時に、 $F: \mathcal{C}\rightarrow\mathcal{D}$ に $a$ を "代入" する操作$\mathrm{ev}\_a$ は関手 $\mathcal{D}^{\mathcal{C}}\rightarrow\mathcal{D}$ となる。
+$$\mathrm{ev}\_a: \mathcal{D}^{\mathcal{C}}\ni (F\xrightarrow{\phi}G) \longmapsto (F(a)\xrightarrow{\phi_a}G(a))\in\mathcal{D}$$
+これを **点 $a$ での評価関手(evaluation functor at point $a$)** という。
+{{% /definition %}}
+
+関手圏の極限の点別計算可能定理より以下が成り立つ。
+
+{{% proposition %}}
+点での評価関手は極限を保つ。
+$$ \mathrm{ev}\_a\left(\varprojlim F\right)\simeq \varprojlim \mathrm{ev}\_a\circ F $$
+{{% /proposition %}}
+
+{{% proposition %}}
 前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
 $$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q) $$
-である。
+であり常に存在する。従って $\mathrm{PSh}(\mathcal{C})$ はカルテシアン閉圏である。
 {{% /proposition %}}
+もし $q^p$ が存在するならば、米田の補題と指数対象の性質より、任意の $a\in\mathcal{C}$ に対して自然な同型
+$$ q^p(a) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)$$
+が存在する。従って
+$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q)$$
+である事が必要である事が分かる。
 {{% details 証明 %}}
-任意の $p,q,r\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ について、 $q,r$ に関して自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
-が存在することを示せば良い。
+$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q)$$
+とおく。また
+$$ \mathrm{ev}\_a: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)\times p(a) \ni (\phi, x)\longmapsto \phi_a(1_a, x) \in q(a) $$
+とおく。ここで $\\{\mathrm{ev}\_a\\}$ は自然変換 $\mathrm{ev}:q^p\times p\rightarrow q$ となっている。何故ならば任意の $f:b\rightarrow a$ に対して
 
-すなわち、自然変換 $\alpha: r\rightarrow q^p$ 、すなわち関数の族
-$\\{ \alpha_c: r(c) \rightarrow \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q)\\}\_{c\in\mathcal{C}}$
-と、自然変換 $\beta: r\times p\rightarrow q$ 、すなわち関数の族 $\\{\beta_c: r(c)\times p(c)\rightarrow q(c)\\}\_{c\in\mathcal{C}}$ の対応を考える。
+$$ \xymatrix{
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)\times p(a) \ar[d]\_{(-\circ (\mathcal{Y}(f)\times 1_p))\times p(f)} \ar[r]^-{\mathrm{ev}\_a} & q(a) \ar[d]^{q(f)} \\\\
+\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b)\times p, q)\times p(b)        \ar[r]^-{\mathrm{ev}\_b} & q(b) \\\\
+} $$
 
-ここで、$x\in r(c), y\in p(c)$ に対して
-$$\phi(\alpha)\_c: (x, y) \longmapsto \alpha_c(x)\_c(1_c, y) $$
-$x\in r(c), d\in\mathcal{C}, f\in \mathcal{Y}(c)(d)\simeq\mathbf{Set}(d, c), z\in p(d)$ に対して
-$$\psi(\beta)\_c: x\longmapsto \\{(f, z) \longmapsto \beta_d(r(f)(x), z)\\}\_{d\in\mathcal{D}}$$
+の右側を辿ると
+$$ (\phi, x) \longmapsto \phi_a(1_a, x) \longmapsto q(f)(\phi_a(1_a, x)) $$
+左側を辿ると
+$$ (\phi, x) \longmapsto (\phi\circ(\mathcal{Y}(f)\times 1_p), p(f)(x)) \longmapsto \phi_b\circ ((f\circ -)\times 1\_{p(b)})(1_b, p(f)(x)) = \phi_b(f, p(f)(x)) $$
+となる。ここで $\phi:\mathcal{Y}(a)\times p\rightarrow q$ は自然変換であるから、以下が可換となる。
+$$ \xymatrix{
+\mathcal{C}(a, a)\times p(a) \ar[d]\_{(-\circ f)\times p(f)} \ar[r]^-{\phi_a} & q(a) \ar[d]^{q(f)} \\\\
+\mathcal{C}(b, a)\times p(b)                                 \ar[r]^-{\phi_b} & q(b)
+}$$ 
+よって$\phi_b(f, p(f)(x)) = q(f)(\phi_a(1_a, x))$ である。従って $\mathrm{ev}$ についての図式は可換であるから、 $\mathrm{ev}: q^p\times p\rightarrow q$ は自然変換である。
 
-とおくと
-
-$$ \psi\circ\phi(\alpha)\_c: x\longmapsto \\{(f, z) \longmapsto \alpha_d(r(f)(x))\_d(1_d, z)\\}\_{d\in\mathcal{D}}$$
-
-である。$\alpha$ は自然変換であるから以下が可換となるので
-
+最後に以上で定義された $q^p$ と $\mathrm{ev}: q^p\times p\rightarrow q$ が指数対象の普遍性、すなわち任意の $r: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $v: r\times p\rightarrow q$ に対して
+以下が可換となるような $u: r\rightarrow q^p$ がただ一つ存在することを示す。
 $$\xymatrix{
-r(c) \ar[d]\_{r(f)} \ar[r]^-{\alpha_c} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(c)\times p, q) \ar[d]^{-\circ(\mathcal{Y}(f)\times 1_p)} \\\\
-r(d)                \ar[r]^-{\alpha_d} & \mathbf{Set}^{\mathbf{C}^{\mathrm{op}}}(\mathcal{Y}(d)\times p, q)
+r\times p \ar[d]\_{u\times 1_p} \ar[rd]^{v} & \\\\
+q^p\times p \ar[r]^{\mathrm{ev}} & q
 }$$
-
-$$ \alpha_d(r(f)(x))\_d(1_d, z) = \alpha_c(x)\_d\circ(\mathcal{Y}(f)\times 1_p)(1_d, z) = \alpha_c(x)\_d(f,z)$$
-となるから、 $\psi\circ\phi(\alpha) = \alpha$ である。
-同様にして
-
-$$ \phi\circ\psi(\beta)\_c: (x,y) \longmapsto \beta_c(r(1_c)(x), y) = \beta_c(x,y) $$
-
-であるから $\phi\circ\psi(\beta) = \beta$ である。従って、以下は同型。
-$$ \phi: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p)\xrightarrow{\simeq}\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q)$$
-
-続いて、この同型の自然性を示す。 任意の $\sigma: r'\rightarrow r, \rho: q\rightarrow q'$ に対して、以下の可換性を示せば良い。
-$$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r,q^p) \ar[r]^{\phi} \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma, \rho^p)} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r\times p, q) \ar[d]^{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\sigma\times p, \rho)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r',{q'}^p) \ar[r]^{\phi} & \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(r'\times p, q')
-}$$
-
-任意の $\alpha: r\rightarrow q^p$ に対して、図式の右上を辿ったものの $c$-componentは
-
-$$(\rho\circ \phi(\alpha)\circ(\sigma\times 1_p))\_c: (x,y)\longmapsto \rho_c(\phi(\alpha)\_c(\sigma_c(x), y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c,y))$$
-
-である。左下を辿ったものは
-
-$$\phi(\rho^p\circ\alpha\circ\sigma)\_c: (x,y)\longmapsto (\rho^p\circ\alpha\circ\sigma)\_c(x)(1_c, y)=((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y)$$
-
-であり、
-$$\rho^p(f) = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, \rho)(f)=\rho \circ f\circ(\mathcal{Y}(-)\times 1_p) $$
-であるから
-
-$$((\rho^p)\_c(\alpha_c(\sigma_c(x))))(1_c, y) = \rho\_c(\alpha_c(\sigma_c(x))(\mathcal{Y}(1_c),y)) = \rho_c(\alpha_c(\sigma_c(x))(1_c, y))$$
-
-となる。以上より上記の図式は可換となる。$\square$
+(TBD)
 {{% /details %}}
 
 ### 層
