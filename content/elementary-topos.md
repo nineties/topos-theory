@@ -316,11 +316,10 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
 より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 
-## 層
+## 前層と層
 
-**前層(presheaf)** 及び **層(sheaf)** は元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念であるが、その圏論的一般化は非常に重要である。
-
-### 前層
+部分分類対象子を持つ条件は非常に厳しく、ほとんどの圏はトポスにならないが **前層(presheaf)** 及び **層(sheaf)** の圏はトポスでありかつ重要な例である。
+これらは元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念である。位相空間上の層については次章で説明する。
 
 {{% definition title="前層" %}}
 小圏 $\mathcal{C}$ の上の **前層(presheaf)** とは反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事である。
@@ -329,6 +328,8 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 {{% /definition %}}
 
 前層の圏はとても良い性質を持つ。
+
+### 完備性
 
 {{% proposition %}}
 前層の圏は双完備である。
@@ -408,6 +409,8 @@ $$\mathrm{ev}\_a: \mathcal{D}^{\mathcal{C}}\ni (F\xrightarrow{\phi}G) \longmapst
 $$ \mathrm{ev}\_a\left(\varprojlim F\right)\simeq \varprojlim \mathrm{ev}\_a\circ F $$
 {{% /proposition %}}
 
+### 指数対象の存在
+
 {{% proposition %}}
 前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
 $$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q) $$
@@ -432,7 +435,7 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
-### 層
+### 部分対象分類子の存在
 前層の圏はトポスであるのだが、その前準備として **層(sieve)** を導入する。
 
 {{% definition title="層" %}}
