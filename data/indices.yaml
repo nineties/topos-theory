@@ -358,24 +358,24 @@ prop.universal-construction:
   title: ''
   path: category/index.html
   id: prop.universal-construction
-定義2.61:
+定理2.61:
+  class: theorem
+  name: 定理2.61
+  title: 稠密性定理
+  path: category/index.html
+  id: 定理2.61
+定義2.62:
   class: definition
-  name: 定義2.61
+  name: 定義2.62
+  title: 要素の圏
+  path: category/index.html
+  id: 定義2.62
+定義2.63:
+  class: definition
+  name: 定義2.63
   title: 指数対象
   path: category/index.html
-  id: 定義2.61
-命題2.62:
-  class: proposition
-  name: 命題2.62
-  title: ''
-  path: category/index.html
-  id: 命題2.62
-命題2.63:
-  class: proposition
-  name: 命題2.63
-  title: ''
-  path: category/index.html
-  id: 命題2.63
+  id: 定義2.63
 命題2.64:
   class: proposition
   name: 命題2.64
@@ -388,93 +388,105 @@ prop.universal-construction:
   title: ''
   path: category/index.html
   id: 命題2.65
-定義2.66:
-  class: definition
-  name: 定義2.66
-  title: 分配圏
+命題2.66:
+  class: proposition
+  name: 命題2.66
+  title: ''
   path: category/index.html
-  id: 定義2.66
+  id: 命題2.66
 命題2.67:
   class: proposition
   name: 命題2.67
   title: ''
   path: category/index.html
   id: 命題2.67
-命題2.68:
-  class: proposition
-  name: 命題2.68
-  title: ''
+定義2.68:
+  class: definition
+  name: 定義2.68
+  title: 分配圏
   path: category/index.html
-  id: 命題2.68
+  id: 定義2.68
 命題2.69:
   class: proposition
   name: 命題2.69
   title: ''
   path: category/index.html
   id: 命題2.69
-定義2.70:
+命題2.70:
+  class: proposition
+  name: 命題2.70
+  title: ''
+  path: category/index.html
+  id: 命題2.70
+命題2.71:
+  class: proposition
+  name: 命題2.71
+  title: ''
+  path: category/index.html
+  id: 命題2.71
+定義2.72:
   class: definition
-  name: 定義2.70
+  name: 定義2.72
   title: カルテシアン閉圏
   path: category/index.html
-  id: 定義2.70
+  id: 定義2.72
 prop.ccc-is-distributive:
   class: theorem
-  name: 定理2.71
+  name: 定理2.73
   title: ''
   path: category/index.html
   id: prop.ccc-is-distributive
 def.adjunction:
   class: definition
-  name: 定義2.72
+  name: 定義2.74
   title: 随伴
   path: category/index.html
   id: def.adjunction
 prop.adjunction-equality:
   class: proposition
-  name: 命題2.73
+  name: 命題2.75
   title: ''
   path: category/index.html
   id: prop.adjunction-equality
 def.limit-functor:
   class: definition
-  name: 定義2.74
+  name: 定義2.76
   title: 極限関手
   path: category/index.html
   id: def.limit-functor
-命題2.75:
-  class: proposition
-  name: 命題2.75
-  title: 極限に関する随伴
-  path: category/index.html
-  id: 命題2.75
-def.exponential-functor:
-  class: definition
-  name: 定義2.76
-  title: 指数関手
-  path: category/index.html
-  id: def.exponential-functor
 命題2.77:
   class: proposition
   name: 命題2.77
-  title: 指数対象に関する随伴
+  title: 極限に関する随伴
   path: category/index.html
   id: 命題2.77
-命題2.78:
-  class: proposition
-  name: 命題2.78
-  title: ''
+def.exponential-functor:
+  class: definition
+  name: 定義2.78
+  title: 指数関手
   path: category/index.html
-  id: 命題2.78
+  id: def.exponential-functor
 命題2.79:
   class: proposition
   name: 命題2.79
-  title: ''
+  title: 指数対象に関する随伴
   path: category/index.html
   id: 命題2.79
+命題2.80:
+  class: proposition
+  name: 命題2.80
+  title: ''
+  path: category/index.html
+  id: 命題2.80
+命題2.81:
+  class: proposition
+  name: 命題2.81
+  title: ''
+  path: category/index.html
+  id: 命題2.81
 prop.triangle:
   class: theorem
-  name: 定理2.80
+  name: 定理2.82
   title: ''
   path: category/index.html
   id: prop.triangle

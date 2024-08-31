@@ -1228,6 +1228,168 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 まとめると、関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b)$ が表現可能の時、これを表現する対象が $a\times b$ で、普遍要素が標準射影 $\pi_a:a\times b\rightarrow a, \pi_b:a\times b\rightarrow b$ である。
 同様にして、関手 $\varprojlim(\mathcal{Y}\circ F)$ を表現する対象が $\varprojlim F$ で、普遍要素が極限錐 $\phi:\Delta(\varprojlim F)\rightarrow F$ である。
 
+### 稠密性定理
+
+前層の圏 $\hat{\mathcal{C}}$ には表現可能関手とそうでない関手の2種類が存在する。稠密(ちゅうみつ)性定理はこれらの関係について述べたもので非常に役に立つ定理である。
+
+{{% theorem title="稠密性定理" %}}
+任意の前層 $F: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は表現可能関手の余極限である。
+すなわち、適当な図式 $d: \mathcal{J}\rightarrow\mathcal{C}$ が存在して
+$$ F \simeq \varinjlim\mathcal{Y}\circ d = \varinjlim\_{i\in\mathcal{J}}\mathcal{Y}(d_i) = \varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-, d_i) $$
+と表せる。
+{{% /theorem %}}
+
+これを証明する為に、まず **要素の圏** というものを考える。
+{{% definition title="要素の圏" %}}
+関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して、対象を$a\in\mathcal{C}$ と $x\in F(a)$ の組 $(a,x)$ 全て、
+射 $(a,x)\rightarrow (b,y)$ を $F(f)(y)=x$ となるような $f:a\rightarrow b$ によって定めた圏を $F$ の **要素の圏(category of elements)** といい、
+$\mathrm{el}(F)$ や　$ \int^{\mathcal{C}}F $ と書く。
+
+また、 $(a,x)$ を $a$ に移し、 $f: (a,x)\rightarrow (b,y)$ を $f:a\rightarrow b$ に移す対応は関手 $\int^{\mathcal{C}}F\rightarrow\mathcal{C}$ となる。
+これを **射影関手(projection functor)** といい、 $\pi_F$ と書く。
+{{% /definition %}}
+
+例えば $\mathcal{C}$ を対象が $a,b$ で恒等射以外の射が $f:b\rightarrow a$ のみの圏とし、 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (f0) at (-1.2, 1.5) node at (f0) [left] {$F(a)$};
+    \coordinate (f1) at (4.2, 1.5) node at (f1) [right] {$F(b)$};
+    \coordinate (x) at (0, 2) node at (x) [left] {$x$};
+    \coordinate (y) at (0, 1) node at (y) [left] {$y$};
+    \coordinate (p) at (3, 2) node at (p) [right] {$p$};
+    \coordinate (q) at (3, 1) node at (q) [right] {$q$};
+    \draw (-0.2, 1.5) circle [x radius=1, y radius = 1.2];
+    \draw (3.2, 1.5) circle [x radius=1, y radius = 1.2];
+    \draw [-latex] (x) to (p);
+    \draw [-latex] (y) to (p);
+  \end{tikzpicture}
+{{% /tikz %}}
+
+のような関手とすると、 $\int^{\mathcal{C}}F$ は以下のようなこれを"開いた"圏である。
+つまり、集合と関数を全て要素単位に開いて、対象と射で表し直した圏である。但し、射の向きに注意。
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2) node at (x) [left] {$(a, x)$};
+    \coordinate (y) at (0, 1) node at (y) [left] {$(a, y)$};
+    \coordinate (p) at (3, 2) node at (p) [right] {$(b, p)$};
+    \coordinate (q) at (3, 1) node at (q) [right] {$(b, q)$};
+    \draw [-latex] (p) to (x);
+    \draw [-latex] (p) to (y);
+  \end{tikzpicture}
+{{% /tikz %}}
+
+これを $\pi_F$ で $\mathcal{C}$ に射影すると以下のようになり
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2) node at (x) [left] {$a$};
+    \coordinate (y) at (0, 1) node at (y) [left] {$a$};
+    \coordinate (p) at (3, 2) node at (p) [right] {$b$};
+    \coordinate (q) at (3, 1) node at (q) [right] {$b$};
+    \draw [-latex] (p) to node [above] {$f$} (x);
+    \draw [-latex] (p) to node [below] {$f$} (y);
+  \end{tikzpicture}
+{{% /tikz %}}
+
+これを $\mathcal{Y}$ で $\hat{\mathcal{C}}$ に埋め込むと
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (x) at (0, 2) node at (x) [left] {$\mathcal{C}(-, a)$};
+    \coordinate (y) at (0, 1) node at (y) [left] {$\mathcal{C}(-, a)$};
+    \coordinate (p) at (3, 2) node at (p) [right] {$\mathcal{C}(-, b)$};
+    \coordinate (q) at (3, 1) node at (q) [right] {$\mathcal{C}(-, b)$};
+    \draw [-latex] (p) to node [above] {$f\circ-$} (x);
+    \draw [-latex] (p) to node [below] {$f\circ-$} (y);
+  \end{tikzpicture}
+{{% /tikz %}}
+
+となる。そして、この図式の余極限を取るとそれが $F$ と一致する。直感的に説明すると、極限錐
+は4つの自然変換 $\phi_x,\phi_y,\phi_p,\phi_q$ からなり、
+$$ \phi_p = \phi_x\circ(f\circ -) $$
+$$ \phi_p = \phi_y\circ(f\circ -) $$
+が成り立ち、これ以外に余分な情報を持たなものである。この錐が $F$ と同一の情報を持っている事が分かるだろう。
+
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (l) at (1.5, 4) node at (l) [above] {$\varinjlim\mathcal{C}(-, d_i)$};
+    \coordinate (x) at (0, 2) node at (x) [left] {$\mathcal{C}(-, a)$};
+    \coordinate (y) at (0, 1) node at (y) [left] {$\mathcal{C}(-, a)$};
+    \coordinate (p) at (3, 2) node at (p) [right] {$\mathcal{C}(-, b)$};
+    \coordinate (q) at (3, 1) node at (q) [right] {$\mathcal{C}(-, b)$};
+    \draw [-latex] (p) to node [above] {$f\circ-$} (x);
+    \draw [-latex] (p) to node [below] {$f\circ-$} (y);
+    \draw [-latex] (x) to node [above] {$\phi_x$} (l);
+    \draw [-latex] (y) to node [above] {$\phi_y$} (l);
+    \draw [-latex] (p) to node [above] {$\phi_p$} (l);
+    \draw [-latex] (q) to node [above] {$\phi_q$} (l);
+  \end{tikzpicture}
+{{% /tikz %}}
+
+すなわち、極限錐の側面の自然変換の集合 $\\{\Delta(\varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-,d_i))\rightarrow \mathcal{C}(-, a)\\}$ が $F(a)$ と一致し、
+側面の可換性として、 $F(f): F(b)\rightarrow F(a)$ が表現されるわけである。では証明する。
+
+{{% details 証明 %}}
+関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して、
+$$ d: \int^{\mathcal{C}}F \xrightarrow{\pi_F} \mathcal{C} $$
+とすると
+$$ F \simeq \varinjlim\mathcal{Y}\circ d = \varinjlim\_{(a,x)\in\int^{\mathcal{C}}F}\mathcal{C}(-, d\_{a,x}) $$
+であることを示す。以下、 $\mathcal{J} = \int^{\mathcal{C}}F$ とおく。
+
+まず、錐 $\phi: \mathcal{Y}\circ d\rightarrow\Delta(F)$ を定める。これは自然変換の族
+$$ \\{\phi\_{a,x}: \mathcal{C}(-, d\_{a,x})\rightarrow F\\}\_{(a,x)\in\mathcal{J}}$$
+であって、$\phi\_{a,x}$ は射の族
+$$ \\{\phi\_{a,x,p}: \mathcal{C}(p, d\_{a,x})\rightarrow F(p) \\}\_{p\in\mathcal{C}} $$
+である。ここで $d\_{a,x}=a$ であることに注意して
+$$ \phi\_{a,x,p}(f: p\rightarrow a) = F(f)(x) $$
+と定める。こうして定義した $\phi$ が自然変換であることは簡単に示せるので省略する。
+
+後は $G:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を頂点とする錐 $\psi: \mathcal{Y}\circ d\rightarrow\Delta(F)$ に対して
+以下の図式(A)が可換となる $u: F\rightarrow G$ がただ一つに定まることを示せば良い。
+$$\xymatrix{
+\Delta(F) \ar[r]^{\Delta(u)} & \Delta(G) \\\\
+\mathcal{Y}\circ d \ar[u]^{\phi} \ar[ur]\_{\psi} & 
+}$$
+この時、全ての$a,p\in\mathcal{C}$, $x\in F(a)$ に対して以下が可換である必要がある。
+$$\xymatrix{
+F(p) \ar[r]^{u_p} & G(p) \\\\
+\mathcal{C}(p, a) \ar[u]^{\phi\_{a,x,p}} \ar[ur]\_{\psi\_{a,x,p}} & 
+}$$
+特に
+$$\xymatrix{
+F(a) \ar[r]^{u_a} & G(a) \\\\
+\mathcal{C}(a, a) \ar[u]^{\phi\_{a,x,a}} \ar[ur]\_{\psi\_{a,x,a}} & 
+}$$
+が可換であるので、左下に $1_a$ を入れると $\phi\_{a,x,a}(1_a) = F(1_a)(x) = x$ であるから
+$$ u_a(x) = \psi\_{a,x,a}(1_a)$$
+である必要がある。ここで $x\in F(a)$ は $F(a)$ 全体にわたるので $u_a$、そして $u$ は一意に定まる。
+
+このとき、以下の図式(B)の左下に $f: p\rightarrow a$ を代入すると
+$$\xymatrix{
+F(p) \ar[r]^{u_p} & G(p) \\\\
+\mathcal{C}(p, a) \ar[u]^{\phi\_{a,x,p}} \ar[ur]\_{\psi\_{a,x,p}} & 
+}$$
+$$ u_p(\phi\_{a,x,p}(f)) = u_p(F(f)(x)) = \psi\_{p,F(f)(x),p}(1_p)$$
+である。ここで $\psi$ は自然変換であるから、 $\mathcal{J}$ の射 $(p,F(f)(x)) \xrightarrow{f} (a,x)$に関して以下が可換。
+$$\xymatrix{
+G \ar[r]^{1_G} & G \\\\ 
+\mathcal{Y}(d\_{p,F(f)(x)}) \ar[r]^-{f\circ-} \ar[u]^{\psi\_{p,F(f)(x)}} & \mathcal{Y}(d\_{a,x}) \ar[u]\_{\psi\_{a,x}}
+}$$
+従って以下が可換
+$$\xymatrix{
+G(p) \ar[r]^{1\_{G(p)}} & G(p) \\\\
+\mathcal{C}(p, p) \ar[r]^-{f\circ-} \ar[u]^{\psi\_{p,F(f)(x),p}} & \mathcal{C}(p, a) \ar[u]\_{\psi\_{a,x,p}}
+}$$
+従って左下に $1_p$ を代入して
+$$ \psi\_{p,F(f)(x),p}(1_p) = \psi\_{a,x,p}(f)$$
+となるから図式(B)は可換。よって図式(A)も可換となる。$u$ が自然変換であることは簡単に示せるから省略する。
+以上より図式(A)を可換とする$u:F\rightarrow G$ は一意に定まるから $F$ は余極限の普遍性を満たし、余極限が同型を除いて一意であることから
+$$ F \simeq \varinjlim\mathcal{Y}\circ d $$
+である。 $\square$
+{{% /details %}}
+
 ## 指数対象
 
 極限とは異なる普遍性をもつ対象に **指数対象(exponential object)** がある。指数対象は "関数" のような性質を持つ対象のことで、"引数" を与えて "結果" を得る事が出来る。
