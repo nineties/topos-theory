@@ -419,34 +419,17 @@ $$ q^p(a) \simeq \hat{\mathcal{C}}(\mathcal{Y}(a), q^p)\simeq\hat{\mathcal{C}}(\
 $$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q)$$
 である事が必要である事が分かる。
 {{% details 証明 %}}
-$$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q)$$
-とおく。また
-$$ \mathrm{ev}\_a: \hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)\times p(a) \ni (\phi, x)\longmapsto \phi_a(1_a, x) \in q(a) $$
-とおく。ここで $\\{\mathrm{ev}\_a\\}$ は自然変換 $\mathrm{ev}:q^p\times p\rightarrow q$ となっている。何故ならば任意の $f:b\rightarrow a$ に対して
-
-$$ \xymatrix{
-\hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)\times p(a) \ar[d]\_{(-\circ (\mathcal{Y}(f)\times 1_p))\times p(f)} \ar[r]^-{\mathrm{ev}\_a} & q(a) \ar[d]^{q(f)} \\\\
-\hat{\mathcal{C}}(\mathcal{Y}(b)\times p, q)\times p(b)        \ar[r]^-{\mathrm{ev}\_b} & q(b) \\\\
-} $$
-
-の右側を辿ると
-$$ (\phi, x) \longmapsto \phi_a(1_a, x) \longmapsto q(f)(\phi_a(1_a, x)) $$
-左側を辿ると
-$$ (\phi, x) \longmapsto (\phi\circ(\mathcal{Y}(f)\times 1_p), p(f)(x)) \longmapsto \phi_b\circ ((f\circ -)\times 1\_{p(b)})(1_b, p(f)(x)) = \phi_b(f, p(f)(x)) $$
-となる。ここで $\phi:\mathcal{Y}(a)\times p\rightarrow q$ は自然変換であるから、以下が可換となる。
-$$ \xymatrix{
-\mathcal{C}(a, a)\times p(a) \ar[d]\_{(-\circ f)\times p(f)} \ar[r]^-{\phi_a} & q(a) \ar[d]^{q(f)} \\\\
-\mathcal{C}(b, a)\times p(b)                                 \ar[r]^-{\phi_b} & q(b)
-}$$ 
-よって$\phi_b(f, p(f)(x)) = q(f)(\phi_a(1_a, x))$ である。従って $\mathrm{ev}$ についての図式は可換であるから、 $\mathrm{ev}: q^p\times p\rightarrow q$ は自然変換である。
-
-最後に以上で定義された $q^p$ と $\mathrm{ev}: q^p\times p\rightarrow q$ が指数対象の普遍性、すなわち任意の $r: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ と $v: r\times p\rightarrow q$ に対して
-以下が可換となるような $u: r\rightarrow q^p$ がただ一つ存在することを示す。
-$$\xymatrix{
-r\times p \ar[d]\_{u\times 1_p} \ar[rd]^{v} & \\\\
-q^p\times p \ar[r]^{\mathrm{ev}} & q
-}$$
-(TBD)
+$x: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ について自然な同型
+$\hat{\mathcal{C}}(x\times p, q) \simeq\hat{\mathcal{C}}(x, q^p)$
+の成立を示せば良い。{{< refer th.density-theorem >}}より適当な図式 $d:\mathcal{J}\rightarrow\mathcal{C}$ が存在して
+$ x = \varinjlim\_{i\in\mathcal{J}}\mathcal{Y}(d_i)$
+と書けるので、これと {{< refer prop.yoneda-preserves-limits >}}の双対版、米田の補題を用いて
+$$\begin{aligned}
+\hat{\mathcal{C}}(x, q^p) &\simeq \hat{\mathcal{C}}\left(\varinjlim\_{i\in\mathcal{J}}\mathcal{Y}(d_i), q^p\right)\simeq\varprojlim\_{i\in\mathcal{J}} \hat{\mathcal{C}}(\mathcal{Y}(d_i), q^p)
+\simeq \varprojlim\_{i\in\mathcal{J}} q^p(d_i) = \varprojlim\_{i\in\mathcal{J}}\hat{\mathcal{C}}(\mathcal{Y}(d_i)\times p, q) \\\\
+&\simeq \hat{\mathcal{C}}\left(\varinjlim\_{i\in\mathcal{J}}\mathcal{Y}(d_i)\times p, q\right) = \hat{\mathcal{C}}(x\times p, q)
+\end{aligned}$$
+$\square$
 {{% /details %}}
 
 ### 層

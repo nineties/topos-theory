@@ -358,12 +358,12 @@ prop.universal-construction:
   title: ''
   path: category/index.html
   id: prop.universal-construction
-定理2.61:
+th.density-theorem:
   class: theorem
   name: 定理2.61
   title: 稠密性定理
   path: category/index.html
-  id: 定理2.61
+  id: th.density-theorem
 定義2.62:
   class: definition
   name: 定義2.62

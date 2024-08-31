@@ -1232,7 +1232,7 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 
 前層の圏 $\hat{\mathcal{C}}$ には表現可能関手とそうでない関手の2種類が存在する。稠密(ちゅうみつ)性定理はこれらの関係について述べたもので非常に役に立つ定理である。
 
-{{% theorem title="稠密性定理" %}}
+{{% theorem title="稠密性定理" label="th.density-theorem" %}}
 任意の前層 $F: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は表現可能関手の余極限である。
 すなわち、適当な図式 $d: \mathcal{J}\rightarrow\mathcal{C}$ が存在して
 $$ F \simeq \varinjlim\mathcal{Y}\circ d = \varinjlim\_{i\in\mathcal{J}}\mathcal{Y}(d_i) = \varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-, d_i) $$
