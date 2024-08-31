@@ -148,222 +148,222 @@ prop.embedding:
   title: 射圏
   path: category/index.html
   id: 例2.25
-定義2.26:
-  class: definition
-  name: 定義2.26
-  title: 圏の同型
+例2.26:
+  class: example
+  name: 例2.26
+  title: 前層の圏
   path: category/index.html
-  id: 定義2.26
+  id: 例2.26
 定義2.27:
   class: definition
   name: 定義2.27
-  title: 圏の同値
+  title: 圏の同型
   path: category/index.html
   id: 定義2.27
-命題2.28:
+定義2.28:
+  class: definition
+  name: 定義2.28
+  title: 圏の同値
+  path: category/index.html
+  id: 定義2.28
+命題2.29:
   class: proposition
-  name: 命題2.28
+  name: 命題2.29
   title: ''
   path: category/index.html
-  id: 命題2.28
-定義2.29:
+  id: 命題2.29
+定義2.30:
   class: definition
-  name: 定義2.29
+  name: 定義2.30
   title: 終対象・始対象
   path: category/index.html
-  id: 定義2.29
-命題2.30:
+  id: 定義2.30
+命題2.31:
   class: proposition
-  name: 命題2.30
+  name: 命題2.31
   title: ''
   path: category/index.html
-  id: 命題2.30
-定義2.31:
+  id: 命題2.31
+定義2.32:
   class: definition
-  name: 定義2.31
+  name: 定義2.32
   title: 積
   path: category/index.html
-  id: 定義2.31
-例2.32:
+  id: 定義2.32
+例2.33:
   class: example
-  name: 例2.32
+  name: 例2.33
   title: ''
   path: category/index.html
-  id: 例2.32
-定義2.33:
+  id: 例2.33
+定義2.34:
   class: definition
-  name: 定義2.33
+  name: 定義2.34
   title: 余積
   path: category/index.html
-  id: 定義2.33
-例2.34:
+  id: 定義2.34
+例2.35:
   class: example
-  name: 例2.34
+  name: 例2.35
   title: ''
   path: category/index.html
-  id: 例2.34
-定義2.35:
-  class: definition
-  name: 定義2.35
-  title: 錐
-  path: category/index.html
-  id: 定義2.35
+  id: 例2.35
 定義2.36:
   class: definition
   name: 定義2.36
-  title: 対角関手
+  title: 錐
   path: category/index.html
   id: 定義2.36
 定義2.37:
   class: definition
   name: 定義2.37
-  title: 錐の圏
+  title: 対角関手
   path: category/index.html
   id: 定義2.37
 定義2.38:
   class: definition
   name: 定義2.38
-  title: 極限
+  title: 錐の圏
   path: category/index.html
   id: 定義2.38
 定義2.39:
   class: definition
   name: 定義2.39
-  title: 積・余積
+  title: 極限
   path: category/index.html
   id: 定義2.39
 定義2.40:
   class: definition
   name: 定義2.40
-  title: イコライザ・コイコライザ
+  title: 積・余積
   path: category/index.html
   id: 定義2.40
 定義2.41:
   class: definition
   name: 定義2.41
-  title: 引き戻し・押し出し
+  title: イコライザ・コイコライザ
   path: category/index.html
   id: 定義2.41
 定義2.42:
   class: definition
   name: 定義2.42
-  title: 完備性
+  title: 引き戻し・押し出し
   path: category/index.html
   id: 定義2.42
-定理2.43:
+定義2.43:
+  class: definition
+  name: 定義2.43
+  title: 完備性
+  path: category/index.html
+  id: 定義2.43
+定理2.44:
   class: theorem
-  name: 定理2.43
+  name: 定理2.44
   title: 極限の存在定理
   path: category/index.html
-  id: 定理2.43
-命題2.44:
+  id: 定理2.44
+命題2.45:
   class: proposition
-  name: 命題2.44
+  name: 命題2.45
   title: ''
   path: category/index.html
-  id: 命題2.44
-定義2.45:
-  class: definition
-  name: 定義2.45
-  title: 連続関手
-  path: category/index.html
-  id: 定義2.45
+  id: 命題2.45
 定義2.46:
   class: definition
   name: 定義2.46
-  title: 共変Hom関手
+  title: 連続関手
   path: category/index.html
   id: 定義2.46
 定義2.47:
   class: definition
   name: 定義2.47
-  title: 反変Hom関手
+  title: 共変Hom関手
   path: category/index.html
   id: 定義2.47
 定義2.48:
   class: definition
   name: 定義2.48
-  title: 表現可能関手
+  title: 反変Hom関手
   path: category/index.html
   id: 定義2.48
 定義2.49:
   class: definition
   name: 定義2.49
-  title: 米田埋め込み
+  title: 表現可能関手
   path: category/index.html
   id: 定義2.49
-定理2.50:
+定義2.50:
+  class: definition
+  name: 定義2.50
+  title: 米田埋め込み
+  path: category/index.html
+  id: 定義2.50
+定理2.51:
   class: theorem
-  name: 定理2.50
+  name: 定理2.51
   title: 米田の補題
   path: category/index.html
-  id: 定理2.50
-命題2.51:
-  class: proposition
-  name: 命題2.51
-  title: ''
-  path: category/index.html
-  id: 命題2.51
+  id: 定理2.51
 命題2.52:
   class: proposition
   name: 命題2.52
-  title: 米田の原理
+  title: ''
   path: category/index.html
   id: 命題2.52
 命題2.53:
   class: proposition
   name: 命題2.53
-  title: ''
+  title: 米田の原理
   path: category/index.html
   id: 命題2.53
-prop.yoneda-preserves-limits:
+命題2.54:
   class: proposition
   name: 命題2.54
+  title: ''
+  path: category/index.html
+  id: 命題2.54
+prop.yoneda-preserves-limits:
+  class: proposition
+  name: 命題2.55
   title: ''
   path: category/index.html
   id: prop.yoneda-preserves-limits
 prop.yoneda-preserves-limits-examples:
   class: proposition
-  name: 命題2.55
-  title: ''
-  path: category/index.html
-  id: prop.yoneda-preserves-limits-examples
-命題2.56:
-  class: proposition
   name: 命題2.56
   title: ''
   path: category/index.html
-  id: 命題2.56
-定義2.57:
+  id: prop.yoneda-preserves-limits-examples
+命題2.57:
+  class: proposition
+  name: 命題2.57
+  title: ''
+  path: category/index.html
+  id: 命題2.57
+定義2.58:
   class: definition
-  name: 定義2.57
+  name: 定義2.58
   title: 普遍要素
   path: category/index.html
-  id: 定義2.57
-命題2.58:
-  class: proposition
-  name: 命題2.58
-  title: 普遍要素・普遍的構成
-  path: category/index.html
-  id: 命題2.58
-prop.universal-construction:
+  id: 定義2.58
+命題2.59:
   class: proposition
   name: 命題2.59
+  title: 普遍要素・普遍的構成
+  path: category/index.html
+  id: 命題2.59
+prop.universal-construction:
+  class: proposition
+  name: 命題2.60
   title: ''
   path: category/index.html
   id: prop.universal-construction
-定義2.60:
+定義2.61:
   class: definition
-  name: 定義2.60
+  name: 定義2.61
   title: 指数対象
   path: category/index.html
-  id: 定義2.60
-命題2.61:
-  class: proposition
-  name: 命題2.61
-  title: ''
-  path: category/index.html
-  id: 命題2.61
+  id: 定義2.61
 命題2.62:
   class: proposition
   name: 命題2.62
@@ -382,18 +382,18 @@ prop.universal-construction:
   title: ''
   path: category/index.html
   id: 命題2.64
-定義2.65:
-  class: definition
-  name: 定義2.65
-  title: 分配圏
-  path: category/index.html
-  id: 定義2.65
-命題2.66:
+命題2.65:
   class: proposition
-  name: 命題2.66
+  name: 命題2.65
   title: ''
   path: category/index.html
-  id: 命題2.66
+  id: 命題2.65
+定義2.66:
+  class: definition
+  name: 定義2.66
+  title: 分配圏
+  path: category/index.html
+  id: 定義2.66
 命題2.67:
   class: proposition
   name: 命題2.67
@@ -406,58 +406,58 @@ prop.universal-construction:
   title: ''
   path: category/index.html
   id: 命題2.68
-定義2.69:
+命題2.69:
+  class: proposition
+  name: 命題2.69
+  title: ''
+  path: category/index.html
+  id: 命題2.69
+定義2.70:
   class: definition
-  name: 定義2.69
+  name: 定義2.70
   title: カルテシアン閉圏
   path: category/index.html
-  id: 定義2.69
+  id: 定義2.70
 prop.ccc-is-distributive:
   class: theorem
-  name: 定理2.70
+  name: 定理2.71
   title: ''
   path: category/index.html
   id: prop.ccc-is-distributive
 def.adjunction:
   class: definition
-  name: 定義2.71
+  name: 定義2.72
   title: 随伴
   path: category/index.html
   id: def.adjunction
 prop.adjunction-equality:
   class: proposition
-  name: 命題2.72
+  name: 命題2.73
   title: ''
   path: category/index.html
   id: prop.adjunction-equality
 def.limit-functor:
   class: definition
-  name: 定義2.73
+  name: 定義2.74
   title: 極限関手
   path: category/index.html
   id: def.limit-functor
-命題2.74:
+命題2.75:
   class: proposition
-  name: 命題2.74
+  name: 命題2.75
   title: 極限に関する随伴
   path: category/index.html
-  id: 命題2.74
+  id: 命題2.75
 def.exponential-functor:
   class: definition
-  name: 定義2.75
+  name: 定義2.76
   title: 指数関手
   path: category/index.html
   id: def.exponential-functor
-命題2.76:
-  class: proposition
-  name: 命題2.76
-  title: 指数対象に関する随伴
-  path: category/index.html
-  id: 命題2.76
 命題2.77:
   class: proposition
   name: 命題2.77
-  title: ''
+  title: 指数対象に関する随伴
   path: category/index.html
   id: 命題2.77
 命題2.78:
@@ -466,9 +466,15 @@ def.exponential-functor:
   title: ''
   path: category/index.html
   id: 命題2.78
+命題2.79:
+  class: proposition
+  name: 命題2.79
+  title: ''
+  path: category/index.html
+  id: 命題2.79
 prop.triangle:
   class: theorem
-  name: 定理2.79
+  name: 定理2.80
   title: ''
   path: category/index.html
   id: prop.triangle

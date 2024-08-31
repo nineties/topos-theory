@@ -407,6 +407,10 @@ b          \ar[r]_q & d          \\\\
 }$$
 {{% /example %}}
 
+{{% example title="前層の圏" %}}
+関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい、 $\hat{\mathcal{C}}$ や $\mathrm{PSh}(\mathcal{C})$ と書く。
+{{% /example %}}
+
 ### 同型・圏同値
 
 2つの圏 $\mathcal{C},\mathcal{D}$ が何らかの意味で同じであるという事を表す方法として、 **同型**、**圏同値** という異なる関係性がある。これらの違いをしっかり理解したいので、合わせてここで紹介する。
@@ -968,9 +972,9 @@ $$
 Emily Riehlによれば米田の補題は"圏論の最も重要な成果"である。
 
 {{% definition title="米田埋め込み" %}}
-局所小圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を
+局所小圏 $\mathcal{C}$ について、関手 $\mathcal{Y}:\mathcal{C}\rightarrow\hat{\mathcal{C}}$ を
 $$ \mathcal{Y}(a) = \mathcal{C}(-, a) $$
-$$ \mathcal{Y}(f): \mathcal{C}(-, a)\ni (g\circ -)\longmapsto (f\circ g\circ -)\in\mathcal{C}(-, b)$$
+$$ \mathcal{Y}(f) = f\circ -$$
 にて定めたものを **米田埋め込み(Yoneda embedding)** という。
 {{% /definition %}}
 
@@ -992,30 +996,30 @@ b          && \cdots \ar[r] & \mathcal{C}(x, b) \ar[r] & \mathcal{C}(y, b) \ar[r
 \ar@{.}(25,-26);(25,-14)
 }$$
 
-反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
+反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を **前層(presheaf)** とも呼ぶと既に述べたが、米田埋め込みは圏 $\mathcal{C}$ を前層の圏 $\hat{\mathcal{C}}$ に埋め込む操作であると言うこともできる。前層の圏については次章で詳しく説明するがとても良い性質をもった圏である。
 
 {{% theorem title="米田の補題" %}}
 局所小圏 $\mathcal{C}$ と関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ 、$a\in\mathcal{C}$ について $a,F$ について自然な同型
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a) \qquad (\alpha\mapsto\alpha_a(1_a))$$
+$$ \hat{\mathcal{C}}(\mathcal{Y}(a),F)\simeq F(a) \qquad (\alpha\mapsto\alpha_a(1_a))$$
 が成り立つ。
 {{% /theorem %}}
 
 米田の補題の同型が $a$ について自然であるというのは、任意の $f:b\rightarrow a$ について以下が可換である事であり、
 
 $$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(f), F)} & F(a) \ar[d]^{F(f)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b), F) \ar[r]^(.6){\simeq} & F(b)
+\hat{\mathcal{C}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\hat{\mathcal{C}}(\mathcal{Y}(f), F)} & F(a) \ar[d]^{F(f)} \\\\
+\hat{\mathcal{C}}(\mathcal{Y}(b), F) \ar[r]^(.6){\simeq} & F(b)
 }$$
 
 $F$ について自然であるというのは、任意の $\rho:F\rightarrow G$ について以下が可換となる事である。
 
 $$\xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), G) \ar[r]^(.6){\simeq} & G(a)
+\hat{\mathcal{C}}(\mathcal{Y}(a), F) \ar[r]^(.6){\simeq}  \ar[d]\_{\hat{\mathcal{C}}(\mathcal{Y}(a), \rho)} & F(a) \ar[d]^{\rho_a} \\\\
+\hat{\mathcal{C}}(\mathcal{Y}(a), G) \ar[r]^(.6){\simeq} & G(a)
 }$$
 
 {{% details 証明 %}}
-$\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
+$\alpha\in\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
 
 $$\xymatrix{
 \mathcal{C}(x, a) \ar[r]^{\alpha_x}  \ar[d]\_{-\circ f} & F(x) \ar[d]^{F(f)} \\\\
@@ -1026,8 +1030,8 @@ $$\xymatrix{
 $$ \alpha_y(h\circ f) = F(f)(\alpha_x(h)) $$
 である。ここで
 
-$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
-$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
+$$ \phi\_{a,F}: \hat{\mathcal{C}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\hat{\mathcal{C}}(\mathcal{Y}(a),F)$$
 
 とおくと
 
@@ -1036,7 +1040,7 @@ $$\phi\_{a,F}\circ\psi\_{a,F}(x) = F(1_a)(x) = 1\_{F(a)}(x) = x$$
 
 であるので $\phi\_{a,F},\psi\_{a,F}$ は同型写像。
 
-続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
+続いて同型の自然性を確認する。任意の$f: b\rightarrow a$ と $\alpha\in\hat{\mathcal{C}}(\mathcal{Y}(a), F)$ について
 
 $$
 F(f)(\phi\_{a,F}(\alpha)) = F(f)(\alpha_a(1_a)) = \alpha_b(1_a\circ f) = \alpha_b(f)
@@ -1047,7 +1051,7 @@ $$
 
 より、
 $F(f)(\phi\_{a,F}(\alpha)) = \phi\_{b,F}(\alpha\circ \mathcal{Y}(f)) $ であるから、
-$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), F)$ について
+$\phi\_{a,F}$ は $a$ について自然。続いて、任意の $\rho:F\rightarrow G$ と $\alpha\in\hat{\mathcal{C}}(\mathcal{Y}(a), F)$ について
 
 $$
 \rho_a(\phi\_{a,F}(\alpha)) = \rho_a(\alpha_a(1_a)) = \rho_a\circ\alpha_a(1_a)
@@ -1079,7 +1083,7 @@ F(0) \ar@{<-}[r]    & \cdots \ar@{<-}[r] & F(a-1) \ar@{<-}[r]  & F(a) \ar@{<-}[r
 すると、先ほどと同様にして $\alpha\_{a+1}$ より右側は全て空関数となり、 $\alpha_a$ は $F(a)$ の要素数だけ存在する。そして、 $\alpha_0,\ldots,\alpha\_{a-1}$ は図式の可換性から $\alpha_a$ が定まれば自動的に決まる。
 従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\simeq F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から $F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を**生成する** ことが分かる。
 
-一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\simeq F(a)$ となるわけである。
+一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\hat{\mathcal{C}}(\mathcal{Y}(a),F)\simeq F(a)$ となるわけである。
 
 $$\xymatrix{
 \mathcal{C}(a, a) \ar[r]\ar[d]^{\alpha_a} & \mathcal{C}(x, a)\ar[d]^{\alpha_x} \\\\
@@ -1095,7 +1099,7 @@ F(a) \ar[r] & F(x)
 {{% /proposition %}}
 {{% details 証明 %}}
 米田の補題より、任意の $a,b\in\mathcal{C}$ について自然な全単射
-$$ \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq \mathcal{Y}(b)(a)=\mathcal{C}(a,b) $$
+$$ \hat{\mathcal{C}}(\mathcal{Y}(a),\mathcal{Y}(b))\simeq \mathcal{Y}(b)(a)=\mathcal{C}(a,b) $$
 が存在する。 $\square$
 {{% /details %}}
 
@@ -1128,7 +1132,7 @@ $$\mathcal{Y}(\varprojlim F)(x) = \mathcal{C}(x, \varprojlim F) \simeq\mathcal{C
 ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\simeq\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
 $$\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \simeq 
 \mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \simeq 
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
+\hat{\mathcal{C}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
 $$
 であり、米田の補題よりこれは
 $$ \varprojlim(\mathcal{Y}\circ F)(x)$$
@@ -1173,7 +1177,7 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 代数的なアナロジーが自由に使えるわけではないので注意。例えば $a\times 0=0$といった性質は一般には成り立たない。
 
-以上のように $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ は非常に良い性質を持っているので、米田埋め込みによって一旦議論の舞台を $\mathcal{C}$ から $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ に移すことで様々な議論が行いやすくなるわけである。
+以上のように $\hat{\mathcal{C}}$ は非常に良い性質を持っているので、米田埋め込みによって一旦議論の舞台を $\mathcal{C}$ から $\hat{\mathcal{C}}$ に移すことで様々な議論が行いやすくなるわけである。
 
 ### 普遍性・普遍要素・普遍的構成
 
@@ -1188,10 +1192,10 @@ $$ \mathcal{Y}(a)\simeq F$$
 この $u$ を普遍要素と呼ぶ理由を説明する。米田の補題の所で説明したように、 $u$ のみから自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する事が可能である訳だが、特にこれが自然同型 $\mathcal{Y}(a)\simeq F$ の時には $F$ そのものを生成することが出来る。ということは、 $a\in\mathcal{C}$ と $u\in F(a)$ のみから、任意の $x\in\mathcal{C}$ について $F(x)$ の任意の要素を具体的に構成することができる。この性質を $u$ の **普遍性(universal property)** といい、この構成を **普遍的構成(universal construction)** という。
 
 
-普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
+普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
 
-$$ \phi\_{a,F}: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
-$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a),F)$$
+$$ \phi\_{a,F}: \hat{\mathcal{C}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
+$$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\hat{\mathcal{C}}(\mathcal{Y}(a),F)$$
 
 によって与えられるので、 $\alpha$ が同型射であるときに、対応する $u=\alpha_a(1_a)$ が普遍要素である。そして、 $\alpha_a$ は $\alpha_a: \mathcal{C}(a, a)\rightarrow F(a)$ という全単射であるので、この左辺の $1_a$ 対応する要素が普遍要素である。そして、
 $$ F(-)(u): \mathcal{C}(-, a)\rightarrow F$$
@@ -1233,7 +1237,7 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 
 {{% definition title="指数対象" %}}
 有限積を持つ圏 $\mathcal{C}$ において関手
-$$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$$
+$$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\hat{\mathcal{C}}$$
 が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\mathrm{ev}:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 

@@ -325,7 +325,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 {{% definition title="前層" %}}
 小圏 $\mathcal{C}$ の上の **前層(presheaf)** とは反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事である。
 
-また、前層を対象とする関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい $\mathrm{PSh}(\mathcal{C})$ と書く。
+また、前層を対象とする関手圏 $\hat{\mathcal{C}}$ を **前層の圏(category of preshaves)** といい $\mathrm{PSh}(\mathcal{C})$ と書く。
 {{% /definition %}}
 
 前層の圏はとても良い性質を持つ。
@@ -410,23 +410,23 @@ $$ \mathrm{ev}\_a\left(\varprojlim F\right)\simeq \varprojlim \mathrm{ev}\_a\cir
 
 {{% proposition %}}
 前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
-$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q) $$
+$$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q) $$
 であり常に存在する。従って $\mathrm{PSh}(\mathcal{C})$ はカルテシアン閉圏である。
 {{% /proposition %}}
 もし $q^p$ が存在するならば、米田の補題と指数対象の性質より、任意の $a\in\mathcal{C}$ に対して自然な同型
-$$ q^p(a) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a), q^p)\simeq\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)$$
+$$ q^p(a) \simeq \hat{\mathcal{C}}(\mathcal{Y}(a), q^p)\simeq\hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)$$
 が存在する。従って
-$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q)$$
+$$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q)$$
 である事が必要である事が分かる。
 {{% details 証明 %}}
-$$ q^p = \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(-)\times p, q)$$
+$$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q)$$
 とおく。また
-$$ \mathrm{ev}\_a: \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)\times p(a) \ni (\phi, x)\longmapsto \phi_a(1_a, x) \in q(a) $$
+$$ \mathrm{ev}\_a: \hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)\times p(a) \ni (\phi, x)\longmapsto \phi_a(1_a, x) \in q(a) $$
 とおく。ここで $\\{\mathrm{ev}\_a\\}$ は自然変換 $\mathrm{ev}:q^p\times p\rightarrow q$ となっている。何故ならば任意の $f:b\rightarrow a$ に対して
 
 $$ \xymatrix{
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(a)\times p, q)\times p(a) \ar[d]\_{(-\circ (\mathcal{Y}(f)\times 1_p))\times p(f)} \ar[r]^-{\mathrm{ev}\_a} & q(a) \ar[d]^{q(f)} \\\\
-\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(b)\times p, q)\times p(b)        \ar[r]^-{\mathrm{ev}\_b} & q(b) \\\\
+\hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)\times p(a) \ar[d]\_{(-\circ (\mathcal{Y}(f)\times 1_p))\times p(f)} \ar[r]^-{\mathrm{ev}\_a} & q(a) \ar[d]^{q(f)} \\\\
+\hat{\mathcal{C}}(\mathcal{Y}(b)\times p, q)\times p(b)        \ar[r]^-{\mathrm{ev}\_b} & q(b) \\\\
 } $$
 
 の右側を辿ると
@@ -479,13 +479,13 @@ $$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c) = [1\_{\mathcal{Y}(c)}]$$
 である。
 {{% /proposition %}}
 {{% details 証明 %}}
-まず、$\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで
+まず、$\hat{\mathcal{C}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで
 $$ 1(c) = \\{\ast\\}$$
 とおく。
 
 部分対象分類子 $\Omega$ が存在するならば、米田の補題より
-$$ \Omega(c) \simeq \mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) $$
-であり、 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}(\mathcal{Y}(c),\Omega) \simeq \mathrm{Sub}(\mathcal{Y}(c))$ であるから、$\Omega=\mathrm{Sub}(\mathcal{Y}(-))$ でなければならない事が分かる。
+$$ \Omega(c) \simeq \hat{\mathcal{C}}(\mathcal{Y}(c),\Omega) $$
+であり、 $\hat{\mathcal{C}}(\mathcal{Y}(c),\Omega) \simeq \mathrm{Sub}(\mathcal{Y}(c))$ であるから、$\Omega=\mathrm{Sub}(\mathcal{Y}(-))$ でなければならない事が分かる。
 
 実際に $\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
 $$\xymatrix{
