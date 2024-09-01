@@ -316,9 +316,9 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
 より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 
-## 前層と層
+## 前層の圏
 
-部分分類対象子を持つ条件は非常に厳しく、ほとんどの圏はトポスにならないが **前層(presheaf)** 及び **層(sheaf)** の圏はトポスでありかつ重要な例である。
+部分分類対象子を持つ条件は非常に厳しく、ほとんどの圏はトポスにならないが **前層(presheaf)** の圏はトポスでありかつ重要な例である。
 これらは元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念である。位相空間上の層については次章で説明する。
 
 {{% definition title="前層" %}}
@@ -435,11 +435,21 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
-### 部分対象分類子の存在
-前層の圏はトポスであるのだが、その前準備として **層(sieve)** を導入する。
+### 篩
+$\mathrm{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して
+$$ \Omega(a)\simeq \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $$
+となる。そして、 $\Omega$ は $\mathrm{Sub}$ を表現する対象なのであるから、任意の $x:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して
+$$ \hat{\mathcal{C}}(x, \Omega)\simeq\mathrm{Sub}(x)$$
+でなければならない。従って、これらを組み合わせて$ \Omega(a)\simeq \mathrm{Sub}(\mathcal{Y}(a))$ すなわち
+$$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
+でなければならない。
 
-{{% definition title="層" %}}
-小圏 $\mathcal{C}$ の対象 $c$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $c$ 上の **層(sieve)** という。
+ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
+ **コドメインが$a$である射**  からなる集合と同一視できそうである。これを **篩(sieve)** という。
+
+
+{{% definition title="篩" %}}
+小圏 $\mathcal{C}$ の対象 $c$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $c$ 上の **篩(sieve)** という。
 {{% /definition %}}
 
 (TBD)
