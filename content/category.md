@@ -1329,7 +1329,7 @@ $$ \phi_p = \phi_y\circ(f\circ -) $$
 {{% /tikz %}}
 
 すなわち、極限錐の側面の自然変換の集合 $\\{\Delta(\varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-,d_i))\rightarrow \mathcal{C}(-, a)\\}$ が $F(a)$ と一致し、
-側面の可換性として、 $F(f): F(b)\rightarrow F(a)$ が表現されるわけである。では証明する。
+側面の可換性として、 $F(f): F(a)\rightarrow F(b)$ が表現されるわけである。では証明する。
 
 {{% details 証明 %}}
 関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して、
