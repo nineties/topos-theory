@@ -607,7 +607,7 @@ th.limits-of-functor-categories:
 定義3.20:
   class: definition
   name: 定義3.20
-  title: 篩
+  title: ふるい
   path: elementary-topos/index.html
   id: 定義3.20
 命題3.21:
@@ -628,42 +628,42 @@ th.limits-of-functor-categories:
   title: ''
   path: elementary-topos/index.html
   id: 命題3.23
-定義3.24:
-  class: definition
-  name: 定義3.24
-  title: ハイティング代数
-  path: elementary-topos/index.html
-  id: 定義3.24
-命題3.25:
+命題3.24:
   class: proposition
-  name: 命題3.25
+  name: 命題3.24
   title: ''
   path: elementary-topos/index.html
-  id: 命題3.25
+  id: 命題3.24
+定義3.25:
+  class: definition
+  name: 定義3.25
+  title: ハイティング代数
+  path: elementary-topos/index.html
+  id: 定義3.25
 命題3.26:
   class: proposition
   name: 命題3.26
-  title: ド・モルガンの法則
+  title: ''
   path: elementary-topos/index.html
   id: 命題3.26
-例3.27:
+命題3.27:
+  class: proposition
+  name: 命題3.27
+  title: ド・モルガンの法則
+  path: elementary-topos/index.html
+  id: 命題3.27
+例3.28:
   class: example
-  name: 例3.27
+  name: 例3.28
   title: ''
   path: elementary-topos/index.html
-  id: 例3.27
-定義3.28:
+  id: 例3.28
+定義3.29:
   class: definition
-  name: 定義3.28
+  name: 定義3.29
   title: ブール代数
   path: elementary-topos/index.html
-  id: 定義3.28
-命題3.29:
-  class: proposition
-  name: 命題3.29
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.29
+  id: 定義3.29
 命題3.30:
   class: proposition
   name: 命題3.30
@@ -676,6 +676,12 @@ th.limits-of-functor-categories:
   title: ''
   path: elementary-topos/index.html
   id: 命題3.31
+命題3.32:
+  class: proposition
+  name: 命題3.32
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.32
 定義1.1:
   class: definition
   name: 定義1.1

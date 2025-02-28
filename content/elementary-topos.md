@@ -435,7 +435,7 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
-### 篩
+### 篩(ふるい)
 $\mathrm{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して
 $$ \Omega(a)\simeq \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $$
 となる。そして、 $\Omega$ は $\mathrm{Sub}$ を表現する対象なのであるから、任意の $x:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して
@@ -445,12 +445,61 @@ $$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
 でなければならない。
 
 ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
- **コドメインが$a$である射**  からなる集合と同一視できそうである。これを **篩(sieve)** という。
+ **コドメインが$a$である射**  からなる集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
 
-
-{{% definition title="篩" %}}
-小圏 $\mathcal{C}$ の対象 $c$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $c$ 上の **篩(sieve)** という。
+{{% definition title="ふるい" %}}
+小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $a$ 上の **ふるい(sieve)** という。$a$ 上のふるいを全て集めた集合は包含関係 $\subseteq$ に関して半順序集合となる。
 {{% /definition %}}
+例えば $\mathcal{C}$ が下図のような圏だとすると
+{{% tikz %}}
+  \begin{tikzpicture}
+    \coordinate (a) at (0, 1) node at (a) [above] {$a$};
+    \coordinate (b) at (0, 0) node at (b) {$\cdot$};
+    \coordinate (c) at (1, 0) node at (c) {$\cdot$};
+    \coordinate (d) at (1, 1) node at (d) {$\cdot$};
+    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (b) to node [left] {$f$} (a);
+    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [below] {$g$} (b);
+    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [above] {$h$} (a);
+    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (a) to node [above] {$i$} (d);
+  \end{tikzpicture}
+{{% /tikz %}}
+$a$ の上のふるいは以下の7つの集合となる。
+$$ \emptyset, \\{f\circ g\\}, \\{h\\}, \\{f, f\circ g\\}, \\{f\circ g, h\\}, \\{f, f\circ g, h\\}, \\{1_a, f, f\circ g, h\\}$$
+{{% proposition %}}
+小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上のふるい集合と半順序集合として同型
+{{% /proposition %}}
+{{% details 証明 %}}
+$[m: F\hookrightarrow \mathcal{Y}(a)] \in \mathrm{Sub}(\mathcal{Y}(a))$ に対して、
+$$ S_m = \bigcup\_{x\in\mathcal{C}}\mathrm{Im}(m_x) $$
+と定める。まず、これが同値類の代表元 $m$ の選び方によらない事を示す。
+$m: F\hookrightarrow\mathcal{Y}(a)$ と $n: G\hookrightarrow\mathcal{Y}(a)$ が同値だとすると、自然同型 $\phi: F\rightarrow G$ が存在して
+以下が可換。
+
+$$\xymatrix{
+    & \mathcal{Y}(a) &       \\\\
+F \ar@{^{(}->}[ru]^m \ar[rr]^{\phi} & & G \ar@{^{(}->}[lu]\_n
+}$$
+
+従って、以下が可換で $\phi_x$ は全単射。
+
+$$\xymatrix{
+    & \mathcal{C}(x, a) &       \\\\
+F(x) \ar@{^{(}->}[ru]^{m_x} \ar[rr]^{\phi_x} & & G(x) \ar@{^{(}->}[lu]\_{n_x}
+}$$
+
+よって $\mathrm{Im}(m_x) = \mathrm{Im}(n_x)$ であるから $S_m$ は $m$ の選び方によらない。
+
+続いて、 $S_m$ がふるいである事を示す。任意の $(f:x\rightarrow a)\in S_m$ と $g:y\rightarrow x$ をとる。
+$m$ は自然変換であるから以下が可換である。
+$$\xymatrix{
+F(x) \ar[r]^-{m_x} \ar[d]\_{F(g)} & \mathcal{C}(x, a) \ar[d]^{-\circ g} \\\\
+F(y) \ar[r]^-{m_y}               & \mathcal{C}(y, a)
+}$$
+$f$ は $\mathrm{Im}(m_x)$ の元であるから、適当な $z\in F(x)$ が存在して $f = m_x(z)$。よって図式を辿ると
+$$ f\circ g = m_y(F(g)(z)) $$
+であるから、 $f\circ g\in \mathrm{Im}(m_y)$。従って $f\circ g\in S_m$ であるから $S_m$ はふるいである。
+
+{{% /details %}}
 
 (TBD)
 
