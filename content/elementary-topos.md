@@ -337,7 +337,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 
 これは以下の定理と $\mathbf{Set}$ が双完備であることから示される。
 
-{{% theorem title="関手圏の極限は点別計算可能定理" label="th.limits-of-functor-categories" %}}
+{{% theorem title="関手圏の極限の点別計算定理" label="th.limits-of-functor-categories" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
 $a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
 
