@@ -453,10 +453,10 @@ $$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
 例えば $\mathcal{C}$ が下図のような圏だとすると
 {{% tikz %}}
   \begin{tikzpicture}
-    \coordinate (a) at (0, 1) node at (a) [above] {$a$};
+    \coordinate (a) at (0, 2) node at (a) [above] {$a$};
     \coordinate (b) at (0, 0) node at (b) {$\cdot$};
-    \coordinate (c) at (1, 0) node at (c) {$\cdot$};
-    \coordinate (d) at (1, 1) node at (d) {$\cdot$};
+    \coordinate (c) at (2, 0) node at (c) {$\cdot$};
+    \coordinate (d) at (2, 2) node at (d) {$\cdot$};
     \draw [-latex, shorten <= 2pt, shorten >= 2pt] (b) to node [left] {$f$} (a);
     \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [below] {$g$} (b);
     \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [above] {$h$} (a);
