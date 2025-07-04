@@ -67,7 +67,7 @@ $$
 
 70年代に、いくつかの人々(特にW. Lawvere、A. Joyal、G. Reyes、M. Makkai)の働きにより、任意の数学的理論 $\mathbb{T}$ (ある汎用的な形式のもの)には、その理論の「意味論的な核」、ある種の「理論のDNA」を表す、**分類トポス(classifying topos)** と呼ばれるトポス $E_{\mathbb{T}}$を標準的に関連付けることができることを見出した。
 
-逆に、全てのgrothendieck toposは何らかの理論の分類トポスになっている。従ってgrothendieck toposは、**森田同値性(Morita-equivalence)**による幾何学理論の同値類の **標準的な代表元** と見ることができる。
+逆に、全てのgrothendieck toposは何らかの理論の分類トポスになっている。従ってgrothendieck toposは、**森田同値性(Morita-equivalence)** による幾何学理論の同値類の **標準的な代表元** と見ることができる。
 
 ## ブリッジという考え方
 
