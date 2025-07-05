@@ -327,7 +327,26 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 また、前層を対象とする関手圏 $\hat{\mathcal{C}}$ を **前層の圏(category of preshaves)** といい $\mathrm{PSh}(\mathcal{C})$ と書く。
 {{% /definition %}}
 
-前層の圏はとても良い性質を持つ。
+高階な圏であるので、 {{< refer def.functor-as-a-diagram >}} の考え方を用いて開いて考えよう。
+まず前層 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は $\mathbf{Set}$ の中の $\mathcal{C}^{\mathrm{op}}$ の形の図式と同一視することが出来、前層の間の自然変換 $\phi: F\rightarrow G$ はこれら図式を(整合的に)繋ぐ射(関数)の集まりである。
+
+$$\xymatrix{
+F\_a \ar[d]^{\phi\_a} \ar[r] & F\_b \ar[r] \ar[d]^{\phi\_b} & F\_c \ar[d]^{\phi\_c}\\\\
+G\_a                  \ar[r] & G\_b \ar[r]                  & G\_c
+\ar@{.}(-5,7);(47,7)
+\ar@{.}(47,7);(47,-5)
+\ar@{.}(47,-5);(-5,-5)
+\ar@{.}(-5,-5);(-5,7)
+\ar@{.}(-5,-13);(47,-13)
+\ar@{.}(47,-13);(47,-25)
+\ar@{.}(47,-25);(-5,-25)
+\ar@{.}(-5,-25);(-5,-13)
+}$$
+
+特に $\mathcal{C}=\mathbf{1}$ の場合はこれは $\mathbf{Set}$ そのものであり、 $\mathrm{PSh}(\mathcal{C})$ は $\mathbf{Set}$ を自然に一般化した概念である。
+これが $\mathbf{Set}$ と同様の性質を持つことは容易に想像できるであろう。今後の定理とその証明にあたってもこのイメージを持っていると読みやすくなるだろう。
+
+では、前層の圏が初等トポスである事を示すために、有限完備であること、カルテシアン閉であること、部分対象分類子を持つことを順に示す。
 
 ### 完備性
 
@@ -409,7 +428,7 @@ $$\mathrm{ev}\_a: \mathcal{D}^{\mathcal{C}}\ni (F\xrightarrow{\phi}G) \longmapst
 $$ \mathrm{ev}\_a\left(\varprojlim F\right)\simeq \varprojlim \mathrm{ev}\_a\circ F $$
 {{% /proposition %}}
 
-### 指数対象の存在
+### 指数対象
 
 {{% proposition %}}
 前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
