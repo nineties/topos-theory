@@ -555,6 +555,8 @@ x \ar[ru]^m \ar[rr]^m & & a \ar[lu]\_{1_a}
 }$$
 {{% /details %}}
 
+### 部分対象分類子
+
 {{% proposition %}}
 前層の圏はトポスである。
 
