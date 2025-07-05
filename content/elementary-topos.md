@@ -490,8 +490,8 @@ $$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
 ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
  **コドメインが$a$である射**  からなる集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
 
-{{% definition title="ふるい" %}}
-小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $a$ 上の **ふるい(sieve)** という。$a$ 上のふるいを全て集めた集合は包含関係 $\subseteq$ に関して半順序集合となる。
+{{% definition title="篩(ふるい)" %}}
+小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $a$ 上の **篩(ふるい, sieve)** という。
 {{% /definition %}}
 例えば $\mathcal{C}$ が下図のような圏だとすると
 {{% tikz %}}
@@ -509,7 +509,7 @@ $$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
 $a$ の上のふるいは以下の7つの集合となる。
 $$ \emptyset, \\{f\circ g\\}, \\{h\\}, \\{f, f\circ g\\}, \\{f\circ g, h\\}, \\{f, f\circ g, h\\}, \\{1_a, f, f\circ g, h\\}$$
 {{% proposition %}}
-小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上のふるい集合と半順序集合として同型
+小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上の篩全ての集合と半順序集合として同型
 {{% /proposition %}}
 {{% details 証明 %}}
 $[m: F\hookrightarrow \mathcal{Y}(a)] \in \mathrm{Sub}(\mathcal{Y}(a))$ に対して、
@@ -540,11 +540,9 @@ F(y) \ar[r]^-{m_y}               & \mathcal{C}(y, a)
 }$$
 $f$ は $\mathrm{Im}(m_x)$ の元であるから、適当な $z\in F(x)$ が存在して $f = m_x(z)$。よって図式を辿ると
 $$ f\circ g = m_y(F(g)(z)) $$
-であるから、 $f\circ g\in \mathrm{Im}(m_y)$。従って $f\circ g\in S_m$ であるから $S_m$ はふるいである。
+であるから、 $f\circ g\in \mathrm{Im}(m_y)$。従って $f\circ g\in S_m$ であるから $S_m$ は篩である。$\square$
 
 {{% /details %}}
-
-(TBD)
 
 {{% proposition %}}
 部分対象の集合 $\mathrm{Sub}(a)$ は順序 $\leq$ に対して最大値をもち、その最大値は $[1_a]$ である。
