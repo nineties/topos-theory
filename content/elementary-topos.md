@@ -354,63 +354,87 @@ G\_a                  \ar[r] & G\_b \ar[r]                  & G\_c
 前層の圏は双完備である。
 {{% /proposition %}}
 
-これは以下の定理と $\mathbf{Set}$ が双完備であることから示される。
+従って、当然、有限完備である。これは以下の定理と $\mathbf{Set}$ が双完備であることから示される。
 
 {{% theorem title="関手圏の極限の点別計算定理" label="th.limits-of-functor-categories" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
-$a\in \mathcal{C}$ に固定した関手 $F(-)(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
+$a\in \mathcal{C}$ に固定した関手 $F\_{(-)}(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\displaystyle\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
 
-$$ \left(\varprojlim\_{i\in\mathcal{J}} F(i)\right)(a) \simeq \varprojlim\_{i\in\mathcal{J}} F(i)(a) $$
+$$ \left(\varprojlim\_{i\in\mathcal{J}} F\_i\right)(a) \simeq \varprojlim\_{i\in\mathcal{J}} F\_i(a) $$
 
 である。余極限についても同様。
 {{% /theorem %}}
 
+一見して分かりにくいが、これも同様に開いて考えれば難しくない。下図赤線で囲った部分のように、各対象ごとに個別に極限を求めたものが、関手圏の極限と一致するという定理である。
+
+$$\xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[d] \ar[r] & \varprojlim\_{i\in\mathcal{J}} F\_i(b) \ar[r] \ar[d] & \varprojlim\_{i\in\mathcal{J}} F\_i(c) \ar[d] & =\quad \varprojlim\_{i\in\mathcal{J}}F\_i \\\\
+F\_i(a) \ar[d] \ar[r] & F\_i(b) \ar[r] \ar[d] & F\_i(c) \ar[d] & \\\\
+F\_j(a)        \ar[r] & F\_j(b) \ar[r]        & F\_j(c)        &
+\ar@{.}(-15,7);(95,7)
+\ar@{.}(95,7);(95,-7)
+\ar@{.}(95,-7);(-15,-7)
+\ar@{.}(-15,-7);(-15,7)
+\ar@{.}(-15,-15);(95,-15)
+\ar@{.}(95,-15);(95,-28)
+\ar@{.}(95,-28);(-15,-28)
+\ar@{.}(-15,-28);(-15,-15)
+\ar@{.}(-15,-37);(95,-37)
+\ar@{.}(95,-37);(95,-50)
+\ar@{.}(95,-50);(-15,-50)
+\ar@{.}(-15,-50);(-15,-37)
+\ar@\[red\]@{.}(-17,9);(15,9)
+\ar@\[red\]@{.}(15,9);(15,-52)
+\ar@\[red\]@{.}(15,-52);(-17,-52)
+\ar@\[red\]@{.}(-17,-52);(-17,9)
+}$$
+
 {{% details 証明 %}}
 
-全ての $a\in\mathcal{C}$ について $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が存在するとする。
-$\mathcal{J}$ の射 $f: i\rightarrow j$ に対応する自然変換 $F(f):F(i)\rightarrow F(j)$ を $\mathcal{C}$ の射 $u: a\rightarrow b$ についてcomponent-wiseに描くと以下のようになり、これが全ての $f:i\rightarrow j$ と $u:a\rightarrow b$ について可換となる。
+全ての $a\in\mathcal{C}$ について $\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が存在するとする。
+$\mathcal{J}$ の射 $f: i\rightarrow j$ に対応する自然変換 $F\_f:F\_i\rightarrow F\_j$ を $\mathcal{C}$ の射 $u: a\rightarrow b$ についてcomponent-wiseに描くと以下のようになり、これが全ての $f:i\rightarrow j$ と $u:a\rightarrow b$ について可換となる。
 
 $$ \xymatrix{
-F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)}  & F(i)(b) \ar[d]^{F(f)_b} \\\\
-F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)
+F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)}  & F\_i(b) \ar[d]^{F\_f(b)} \\\\
+F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)
 }$$
 
-ここで $\varprojlim\_{i\in\mathcal{J}} F(i)(a)$ が存在するので、下図のような極限錐がそれぞれ存在する。
+ここで $\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が存在するので、下図のような極限錐がそれぞれ存在する。
 
 $$ \xymatrix{
-\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
-& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
-& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                &
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                &
 }$$
 
-ここで $\varprojlim\_{i\in\mathcal{J}}F(i)(a)$ の錐の側面に各 $F(i)(u)$ (図の水平の射) を合成したものは $F(-)(b):\mathcal{J}\rightarrow\mathcal{D}$ への錐となるので、下図が可換となる射 $\bar{u}: \varprojlim\_{i\in\mathcal{J}}F(i)(a)\rightarrow\varprojlim\_{i\in\mathcal{J}}F(i)(b)$ が唯一つ存在。
+ここで $\varprojlim\_{i\in\mathcal{J}}F\_i(a)$ の錐の側面に各 $F\_i(u)$ (図の水平の射) を合成したものは $F(-)(b):\mathcal{J}\rightarrow\mathcal{D}$ への錐となるので、下図が可換となる射 $\bar{u}: \varprojlim\_{i\in\mathcal{J}}F\_i(a)\rightarrow\varprojlim\_{i\in\mathcal{J}}F\_i(b)$ が唯一つ存在。
 
 $$ \xymatrix{
-\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
-& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
-& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                &
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                &
 }$$
 
-そこで、$\mathcal{C}$ の各対象 $a$ に $\varprojlim\_{i\in\mathcal{J}}F(i)(a)$ を、射 $u:a\rightarrow b$ に $\bar{u}$ を対応させる関係を考えるとこれは関手 $G: \mathcal{C}\rightarrow\mathcal{D}$ となる。これが $\varprojlim\_{i\in\mathcal{J}}F(i)$ である事を示す。
+そこで、$\mathcal{C}$ の各対象 $a$ に $\varprojlim\_{i\in\mathcal{J}}F\_i(a)$ を、射 $u:a\rightarrow b$ に $\bar{u}$ を対応させる関係を考えるとこれは関手 $G: \mathcal{C}\rightarrow\mathcal{D}$ となる。これが $\varprojlim\_{i\in\mathcal{J}}F\_i$ である事を示す。
 
 そこで任意の $H:\mathcal{C}\rightarrow\mathcal{D}$ から $F$ への錐を考える。
 $$ \xymatrix{
-\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
-& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
-& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                & \\\\
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                & \\\\
 H(a) \ar[ru] \ar@/^1pc/[ruu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu]
 }$$
 
-この左側だけに注目すると $\varprojlim_{i\in\mathcal{J}}$ についての普遍性より以下を可換にする射 $H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)$ が一意に存在。右側も同様。
+この左側だけに注目すると $\varprojlim_{i\in\mathcal{J}}$ についての普遍性より以下を可換にする射 $H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F\_i(a)$ が一意に存在。右側も同様。
 
 $$ \xymatrix{
-\varprojlim\_{i\in\mathcal{J}}F(i)(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F(i)(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
-& F(i)(a) \ar[d]\_{F(f)_a} \ar[r]^{F(i)(u)} & F(i)(b) \ar[d]^{F(f)_b}& \\\\
-& F(j)(a)                  \ar[r]\_{F(j)(u)} & F(j)(b)                & \\\\
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                & \\\\
 H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu] \ar@{.>}[uuu]
 }$$
 
-この射の族 $\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F(i)(a)\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim\_{i\in\mathcal{J}}F(i)$ である。$\square$
+この射の族 $\left\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F\_i(a)\right\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\simeq \varprojlim\_{i\in\mathcal{J}}F\_i$ である。$\square$
 {{% /details %}}
 
 この定理を、評価関手というものを用いて言い直すこともできる。
