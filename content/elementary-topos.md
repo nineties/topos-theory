@@ -478,7 +478,10 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
+特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\hat{\mathcal{C}}(p, q)$ と一致する事が分かる。
+
 ### 篩(ふるい)
+
 $\mathrm{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して
 $$ \Omega(a)\simeq \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $$
 となる。そして、 $\Omega$ は $\mathrm{Sub}$ を表現する対象なのであるから、任意の $x:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して
