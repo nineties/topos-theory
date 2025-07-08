@@ -478,7 +478,7 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
-特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\hat{\mathcal{C}}(p, q)$ と一致する事が分かる。
+特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\mathcal{C}(p, q)$ と一致する事が分かる。
 
 ### 篩(ふるい)
 
@@ -491,26 +491,47 @@ $$ \Omega \simeq \mathrm{Sub}(\mathcal{Y}(-)) $$
 でなければならない。
 
 ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
- **コドメインが$a$である射**  からなる集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
+ **コドメインが$a$である射**  からなる何らかの集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
 
 {{% definition title="篩(ふるい)" %}}
-小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (すなわち、右への合成について閉じている時)、これを $a$ 上の **篩(ふるい, sieve)** という。
+小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (前合成、precomposition について閉じている時)、これを $a$ 上の **篩(ふるい, sieve)** という。
 {{% /definition %}}
-例えば $\mathcal{C}$ が下図のような圏だとすると
+
+篩の具体例をいくつか見てみる。例えば以下のような圏 $\mathbf{2}$ において
+$$\xymatrix{ a \ar[r]^f & b } $$
+$a$ 上の篩は $\emptyset, \\{1_a\\}$ の2つ。 $b$ 上の篩は $\emptyset, \\{f\\}, \\{1_b, f\\}$ の3つである。
+
+
+位相空間 $X$ の開集合を対象とし、開集合の包含関係 $V\subseteq U$ を射 $V\rightarrow U$ とすると圏となる。
+この圏における開集合 $U$ 上の篩 $S$ とはどのようなものか考えると、$(V\rightarrow U)\in S$ であるならば、
+任意の $W\subseteq V$ である $W$ に対して $(W\rightarrow U)\in S$ となるような集合が $S$ である。
+この例で言うと、$U$ に含まれる開集合を $V$ に含まれるという条件でふるいにかけている、ようなイメージである。
 {{% tikz %}}
+  \usetikzlibrary{arrows,patterns}
   \begin{tikzpicture}
-    \coordinate (a) at (0, 2) node at (a) [above] {$a$};
-    \coordinate (b) at (0, 0) node at (b) {$\cdot$};
-    \coordinate (c) at (2, 0) node at (c) {$\cdot$};
-    \coordinate (d) at (2, 2) node at (d) {$\cdot$};
-    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (b) to node [left] {$f$} (a);
-    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [below] {$g$} (b);
-    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (c) to node [above] {$h$} (a);
-    \draw [-latex, shorten <= 2pt, shorten >= 2pt] (a) to node [above] {$i$} (d);
+  \tikzset{filledcircle/.style={draw, circle, fill=gray, minimum size=1.5cm, inner sep=0pt}}
+
+  % Draw outer set X
+  \draw[thick] (0,0) ellipse (4cm and 3cm);
+  \node at (3.5,2.5) {$X$};
+
+  % Draw inner set U
+  \draw[thick] (-1,0) ellipse (2.5cm and 2cm);
+  \node at (1,1.8) {$U$};
+
+  % Draw sets V and W inside U
+  \node[filledcircle,label=center:$V$] (V) at (-1,0) {};
+
   \end{tikzpicture}
 {{% /tikz %}}
-$a$ の上のふるいは以下の7つの集合となる。
-$$ \emptyset, \\{f\circ g\\}, \\{h\\}, \\{f, f\circ g\\}, \\{f\circ g, h\\}, \\{f, f\circ g, h\\}, \\{1_a, f, f\circ g, h\\}$$
+
+
+定義より明らかに以下が成立する。
+{{% proposition %}}
+小圏 $\mathcal{C}$ の対象 $a$ について $a$上の篩全ての集合は半順序集合となり、これは最大値を持つ。最大の篩は $1_a$ を含むものである。
+{{% /proposition %}}
+
+
 {{% proposition %}}
 小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上の篩全ての集合と半順序集合として同型
 {{% /proposition %}}
@@ -547,17 +568,6 @@ $$ f\circ g = m_y(F(g)(z)) $$
 
 {{% /details %}}
 
-{{% proposition %}}
-部分対象の集合 $\mathrm{Sub}(a)$ は順序 $\leq$ に対して最大値をもち、その最大値は $[1_a]$ である。
-{{% /proposition %}}
-{{% details 証明 %}}
-まず $1_a: a\rightarrow a$ は(左簡約可能であるから)モノ射なので $[1_a] \in\mathrm{Sub}(a)$ である。そして、任意のモノ射 $m: x\hookrightarrow a$ に対して、以下が可換であるから $[m]\leq[1_a]$ である。 $\square$
-$$\xymatrix{
-              & a &          \\\\
-x \ar[ru]^m \ar[rr]^m & & a \ar[lu]\_{1_a}
-}$$
-{{% /details %}}
-
 ### 部分対象分類子
 
 {{% proposition %}}
@@ -566,13 +576,24 @@ x \ar[ru]^m \ar[rr]^m & & a \ar[lu]\_{1_a}
 部分対象分類子 $\Omega$ は
 $$\Omega = \mathrm{Sub}(\mathcal{Y}(-))$$
 であり、射(自然変換) $\mathrm{true}:1 \rightarrow \Omega$ は
-$$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c) = [1\_{\mathcal{Y}(c)}]$$
-である。
+$$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c)$$
+である。また、モノ射 $m: A\hookrightarrow U$ に対応する分類射 $\chi: U\rightarrow\Omega$ は
+
+$\chi_c(x) = \\{f: y \rightarrow c \mid U(f)(x) \in A(y) \\}$
+
+で与えられる。
+
+$$\xymatrix{
+A \ar[r] \ar@{^{(}->}[d]\_{m} & 1 \ar[d]^{\mathrm{true}} \\\\
+U \ar[r]^{\chi} & \Omega
+}$$
+
 {{% /proposition %}}
+
+
 {{% details 証明 %}}
 まず、$\hat{\mathcal{C}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで
-$$ 1(c) = \\{\ast\\}$$
-とおく。
+$ 1(c) = \\{\ast\\}$ とおく。
 
 部分対象分類子 $\Omega$ が存在するならば、米田の補題より
 $$ \Omega(c) \simeq \hat{\mathcal{C}}(\mathcal{Y}(c),\Omega) $$
@@ -588,7 +609,7 @@ $$\xymatrix{
 A(c) \ar[r] \ar@{^{(}->}[d]\_{m_c} & \\{\ast\\} \ar[d]^{\mathrm{true}\_c} & \\\\
 U(c) \ar[r]^-{\chi_c} & \mathrm{Sub}(\mathcal{Y}(c))    & \text{in $\mathbf{Set}$}
 }$$
-が引き戻しとなるような $\chi_c$ が一意である事を示せば良い。
+が引き戻しとなるような $\chi_c$ が唯一つ存在する事を示せば良い。
 
 $$ \chi_c\circ m_c = [1\_{\mathcal{Y}(c)}] $$
 
