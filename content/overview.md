@@ -9,9 +9,9 @@ toc: true
 
 [元になったOlivia先生の講義スライド](https://www.oliviacaramello.com/Teaching/Lecture1.pdf)
 
-**トポス(topos)** を発明した **アレクサンドル・グロタンディーク (A. Grothendieck)** はトポス理論のテーマを以下のように述べている。 <font color="blue"> (要確認: この文章の出自) </font>
+**トポス(topos)** を発明した **アレクサンドル・グロタンディーク (A. Grothendieck)** は著作「Récoltes et Semailles（収穫と種まき）」の中でトポス理論のテーマを以下のように述べている。([Récoltes et Semaillesの英訳](https://web.ma.utexas.edu/users/slaoui/notes/recoltes_et_semailles.pdf))
 
-> "It is the **topos** theme which is this “bed” or “deep river” where come to be married geometry and algebra, topology and arithmetic, mathematical logic and category theory, the world of the “continuous” and that of “discontinuous” or discrete structures. It is what I have conceived of most broad to perceive with finesse, by the same language rich of geometric resonances, an “essence” which is common to situations most distant from each other coming from one region or another of the vast universe of mathematical things".  **A. Grothendieck**
+> "It is the **topos** theme which is this “bed” or “deep river” where come to be married geometry and algebra, topology and arithmetic, mathematical logic and category theory, the world of the “continuous” and that of “discontinuous” or discrete structures. It is what I have conceived of most broad to perceive with finesse, by the same language rich of geometric resonances, an “essence” which is common to situations most distant from each other coming from one region or another of the vast universe of mathematical things".
 
 これを日本語に翻訳すると以下のようになるだろう。
 
