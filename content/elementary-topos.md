@@ -579,11 +579,9 @@ $$\Omega = \mathrm{Sub}(\mathcal{Y}(-))$$
 $$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c)$$
 である。また、モノ射 $m: A\hookrightarrow U$ に対応する分類射 $\chi: U\rightarrow\Omega$ は
 
-$\chi_c(x) = \\{f: a \rightarrow c \mid U(f)(x) \in A(a) \\}$
+$\chi_c(x) = \\{f: a \rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\}$
 
-で与えられる。(ここで $\in$ は厳密には $U(f)(x) \in m_a(A(a))$ と書かれるべきであるが、
-$A(a)$ を $m_a$ によって $U(a)$ の部分集合とみなす文脈であるので簡便な記法を用いている。)
-
+で与えられる。
 
 $$\xymatrix{
 A \ar[r] \ar@{^{(}->}[d]\_{m} & 1 \ar[d]^{\mathrm{true}} \\\\
