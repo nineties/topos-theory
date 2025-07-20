@@ -611,7 +611,7 @@ U(c) \ar[r]^{U(f)} \ar[d]\_{\chi_c} & U(a) \ar[d]^{\chi_a} \\\\
 \Omega(c) \ar[r]^{\Omega(f)} & \Omega(a)
 }$$
 
-ここで $\Omega(f)(\chi_c(x)) = \mathrm{Sub}(\mathcal{Y}(f))(\chi_c(x))$ は $\mathcal{Y}(a)$ の部分対象 $\chi_c(x)$ の $\mathcal{Y}(f)=f\circ -$ に沿った引き戻しであるから $ \Omega(f)(\chi_c(x)) = \\{g:b\rightarrow a \mid f\circ g\in\chi_c(x)\\}$ である。
+ここで $\Omega(f)(\chi_c(x)) = \mathrm{Sub}(\mathcal{Y}(f))(\chi_c(x))$ は $\mathcal{Y}(c)$ の部分対象 $\chi_c(x)$ の $\mathcal{Y}(f)=f\circ -$ に沿った引き戻しであるから $ \Omega(f)(\chi_c(x)) = \\{g:b\rightarrow a \mid f\circ g\in\chi_c(x)\\}$ である。
 
 $$\xymatrix{
 \Omega(f)(\chi_c(x)) \ar[r] \ar[d] & \chi_c(x) \ar@{^{(}->}[d]^{\subseteq} \\\\
