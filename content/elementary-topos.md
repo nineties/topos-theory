@@ -632,9 +632,10 @@ $$ \chi_c(x) = \\{ f: a\rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\} $$
 {{% /details %}}
 
 ## ハイティング代数
+以上、集合論的な操作が出来る圏としてのトポスを導入したが、今後はその上でどのような数学が展開できるのかを見ていく。
 
-トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
-具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。トポスとの具体的な関わりについては後の章で説明するが、ここではハイティング代数の基本を紹介する。
+まず、トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
+具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。トポスとの具体的な関わりについては後の章で説明するが、ここでは準備としてハイティング代数の基本を紹介する。
 
 ### ハイティング代数
 
@@ -740,9 +741,17 @@ $$\neg a\wedge \neg b = \neg(a \vee b)$$
 {{% /example %}}
 
 開集合系の公理から有界束である事がすぐ分かる。そして開集合 $U,V$ に対して
-$U\cap W\subseteq V$ を満たす全ての開集合 $W$ の合併が指数対象 $V^U$ となる。そのような合併の存在は開集合の公理から保証される。
-
-また、開集合 $U$ の擬似補は $U\cap W\subseteq\emptyset$ すなわち $U$ と交わらない全ての開集合 $W$ の和集合となる。
+$$ (U\Rightarrow V) = \bigcup\\{ W\in\mathcal{O}(X) \mid U\cap W\subseteq V \\}$$
+となる。また $\bot = \emptyset$ であるので
+$$ \neg U = \bigcup\\{ W\in\mathcal{O}(x) \mid U\cap W = \emptyset \\}$$
+となる。例えば $\mathbb{R}$ 上の開集合として $U=(-\infty,0), V=(0,\infty)$ とすると
+$ \neg U = (0, \infty), \neg V= (-\infty, 0)$なので
+$$ \neg U \cap \neg V = \emptyset $$
+$$ \neg (U\cup V) = \neg\left((-\infty, 0)\cup(0,\infty)\right)=\emptyset$$
+より $\neg U\cap \neg V = \neg (U\cup V)$ だが
+$$ \neg U \cup \neg V = (-\infty, 0)\cup(0, \infty) $$
+$$ \neg (U\cap V) = \neg \emptyset = \mathbb{R}$$
+より $\neg U\cup\neg V \neq \neg (U\cap V)$ である。
 
 ### ブール代数
 
