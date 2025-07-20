@@ -1,3 +1,195 @@
+定義3.1:
+  class: definition
+  name: 定義3.1
+  title: モノ射の順序関係
+  path: elementary-topos/index.html
+  id: 定義3.1
+定義3.2:
+  class: definition
+  name: 定義3.2
+  title: 部分対象
+  path: elementary-topos/index.html
+  id: 定義3.2
+命題3.3:
+  class: proposition
+  name: 命題3.3
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.3
+定義3.4:
+  class: definition
+  name: 定義3.4
+  title: 引き戻し
+  path: elementary-topos/index.html
+  id: 定義3.4
+prop.pullback-preserves-monomorphism:
+  class: proposition
+  name: 命題3.5
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.pullback-preserves-monomorphism
+prop.pasting-law-of-pullbacks:
+  class: proposition
+  name: 命題3.6
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.pasting-law-of-pullbacks
+命題3.7:
+  class: proposition
+  name: 命題3.7
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.7
+定義3.8:
+  class: definition
+  name: 定義3.8
+  title: 部分対象分類子
+  path: elementary-topos/index.html
+  id: 定義3.8
+prop.subobject-classifying-arrow:
+  class: proposition
+  name: 命題3.9
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.subobject-classifying-arrow
+定義3.10:
+  class: definition
+  name: 定義3.10
+  title: 部分対象関手
+  path: elementary-topos/index.html
+  id: 定義3.10
+prop.representability-of-sub:
+  class: theorem
+  name: 定理3.11
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.representability-of-sub
+命題3.12:
+  class: proposition
+  name: 命題3.12
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.12
+定義3.13:
+  class: definition
+  name: 定義3.13
+  title: 初等トポス
+  path: elementary-topos/index.html
+  id: 定義3.13
+定義3.14:
+  class: definition
+  name: 定義3.14
+  title: 前層
+  path: elementary-topos/index.html
+  id: 定義3.14
+命題3.15:
+  class: proposition
+  name: 命題3.15
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.15
+th.limits-of-functor-categories:
+  class: theorem
+  name: 定理3.16
+  title: 関手圏の極限の点別計算定理
+  path: elementary-topos/index.html
+  id: th.limits-of-functor-categories
+定義3.17:
+  class: definition
+  name: 定義3.17
+  title: 点での評価関手
+  path: elementary-topos/index.html
+  id: 定義3.17
+命題3.18:
+  class: proposition
+  name: 命題3.18
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.18
+命題3.19:
+  class: proposition
+  name: 命題3.19
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.19
+定義3.20:
+  class: definition
+  name: 定義3.20
+  title: 篩(ふるい)
+  path: elementary-topos/index.html
+  id: 定義3.20
+prop.maximal-sieve:
+  class: proposition
+  name: 命題3.21
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.maximal-sieve
+prop.subfunctor-of-yoneda:
+  class: proposition
+  name: 命題3.22
+  title: ''
+  path: elementary-topos/index.html
+  id: prop.subfunctor-of-yoneda
+命題3.23:
+  class: proposition
+  name: 命題3.23
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.23
+命題3.24:
+  class: proposition
+  name: 命題3.24
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.24
+定義3.25:
+  class: definition
+  name: 定義3.25
+  title: ハイティング代数
+  path: elementary-topos/index.html
+  id: 定義3.25
+命題3.26:
+  class: proposition
+  name: 命題3.26
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.26
+命題3.27:
+  class: proposition
+  name: 命題3.27
+  title: ド・モルガンの法則
+  path: elementary-topos/index.html
+  id: 命題3.27
+例3.28:
+  class: example
+  name: 例3.28
+  title: ''
+  path: elementary-topos/index.html
+  id: 例3.28
+定義3.29:
+  class: definition
+  name: 定義3.29
+  title: ブール代数
+  path: elementary-topos/index.html
+  id: 定義3.29
+命題3.30:
+  class: proposition
+  name: 命題3.30
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.30
+命題3.31:
+  class: proposition
+  name: 命題3.31
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.31
+命題3.32:
+  class: proposition
+  name: 命題3.32
+  title: ''
+  path: elementary-topos/index.html
+  id: 命題3.32
 def.category:
   class: definition
   name: 定義2.1
@@ -490,198 +682,6 @@ prop.triangle:
   title: ''
   path: category/index.html
   id: prop.triangle
-定義3.1:
-  class: definition
-  name: 定義3.1
-  title: モノ射の順序関係
-  path: elementary-topos/index.html
-  id: 定義3.1
-定義3.2:
-  class: definition
-  name: 定義3.2
-  title: 部分対象
-  path: elementary-topos/index.html
-  id: 定義3.2
-命題3.3:
-  class: proposition
-  name: 命題3.3
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.3
-定義3.4:
-  class: definition
-  name: 定義3.4
-  title: 引き戻し
-  path: elementary-topos/index.html
-  id: 定義3.4
-prop.pullback-preserves-monomorphism:
-  class: proposition
-  name: 命題3.5
-  title: ''
-  path: elementary-topos/index.html
-  id: prop.pullback-preserves-monomorphism
-prop.pasting-law-of-pullbacks:
-  class: proposition
-  name: 命題3.6
-  title: ''
-  path: elementary-topos/index.html
-  id: prop.pasting-law-of-pullbacks
-命題3.7:
-  class: proposition
-  name: 命題3.7
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.7
-定義3.8:
-  class: definition
-  name: 定義3.8
-  title: 部分対象分類子
-  path: elementary-topos/index.html
-  id: 定義3.8
-prop.subobject-classifying-arrow:
-  class: proposition
-  name: 命題3.9
-  title: ''
-  path: elementary-topos/index.html
-  id: prop.subobject-classifying-arrow
-定義3.10:
-  class: definition
-  name: 定義3.10
-  title: 部分対象関手
-  path: elementary-topos/index.html
-  id: 定義3.10
-prop.representability-of-sub:
-  class: theorem
-  name: 定理3.11
-  title: ''
-  path: elementary-topos/index.html
-  id: prop.representability-of-sub
-命題3.12:
-  class: proposition
-  name: 命題3.12
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.12
-定義3.13:
-  class: definition
-  name: 定義3.13
-  title: 初等トポス
-  path: elementary-topos/index.html
-  id: 定義3.13
-定義3.14:
-  class: definition
-  name: 定義3.14
-  title: 前層
-  path: elementary-topos/index.html
-  id: 定義3.14
-命題3.15:
-  class: proposition
-  name: 命題3.15
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.15
-th.limits-of-functor-categories:
-  class: theorem
-  name: 定理3.16
-  title: 関手圏の極限は点別計算可能定理
-  path: elementary-topos/index.html
-  id: th.limits-of-functor-categories
-定義3.17:
-  class: definition
-  name: 定義3.17
-  title: 点での評価関手
-  path: elementary-topos/index.html
-  id: 定義3.17
-命題3.18:
-  class: proposition
-  name: 命題3.18
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.18
-命題3.19:
-  class: proposition
-  name: 命題3.19
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.19
-定義3.20:
-  class: definition
-  name: 定義3.20
-  title: ふるい
-  path: elementary-topos/index.html
-  id: 定義3.20
-命題3.21:
-  class: proposition
-  name: 命題3.21
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.21
-命題3.22:
-  class: proposition
-  name: 命題3.22
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.22
-命題3.23:
-  class: proposition
-  name: 命題3.23
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.23
-命題3.24:
-  class: proposition
-  name: 命題3.24
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.24
-定義3.25:
-  class: definition
-  name: 定義3.25
-  title: ハイティング代数
-  path: elementary-topos/index.html
-  id: 定義3.25
-命題3.26:
-  class: proposition
-  name: 命題3.26
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.26
-命題3.27:
-  class: proposition
-  name: 命題3.27
-  title: ド・モルガンの法則
-  path: elementary-topos/index.html
-  id: 命題3.27
-例3.28:
-  class: example
-  name: 例3.28
-  title: ''
-  path: elementary-topos/index.html
-  id: 例3.28
-定義3.29:
-  class: definition
-  name: 定義3.29
-  title: ブール代数
-  path: elementary-topos/index.html
-  id: 定義3.29
-命題3.30:
-  class: proposition
-  name: 命題3.30
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.30
-命題3.31:
-  class: proposition
-  name: 命題3.31
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.31
-命題3.32:
-  class: proposition
-  name: 命題3.32
-  title: ''
-  path: elementary-topos/index.html
-  id: 命題3.32
 定義1.1:
   class: definition
   name: 定義1.1

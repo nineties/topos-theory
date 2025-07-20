@@ -79,7 +79,7 @@ x \ar[rd]^{u} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
 & p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
 & a \ar[r]^{f} & c
 }$$
-$\bar{f}$ を $g$ に沿った $f$ の引き戻しとも言い、$g^\*f$ とも書く。 $\bar{g}$ についても同様。
+$p$ を $b$ の $f$ に沿った引き戻し、 $\bar{g}$ を  $g$ の $f$ に沿った引き戻しと言い、それぞれ $f^\ast b$ や $f^\ast g$ と書く。
 {{% /definition %}}
 
 $\mathbf{Set}$ における図式 $A\xrightarrow{f} C\xleftarrow{g} B$ に対する引き戻し $A\times_C B$ は
@@ -445,7 +445,7 @@ $$\mathrm{ev}\_a: \mathcal{D}^{\mathcal{C}}\ni (F\xrightarrow{\phi}G) \longmapst
 これを **点 $a$ での評価関手(evaluation functor at point $a$)** という。
 {{% /definition %}}
 
-関手圏の極限の点別計算可能定理より以下が成り立つ。
+関手圏の極限の点別計算定理より以下が成り立つ。
 
 {{% proposition %}}
 点での評価関手は極限を保つ。
@@ -527,12 +527,12 @@ $a$ 上の篩は $\emptyset, \\{1_a\\}$ の2つ。 $b$ 上の篩は $\emptyset, 
 
 
 定義より明らかに以下が成立する。
-{{% proposition %}}
+{{% proposition label="prop.maximal-sieve" %}}
 小圏 $\mathcal{C}$ の対象 $a$ について $a$上の篩全ての集合は半順序集合となり、これは最大値を持つ。最大の篩は $1_a$ を含むものである。
 {{% /proposition %}}
 
 
-{{% proposition %}}
+{{% proposition label="prop.subfunctor-of-yoneda" %}}
 小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上の篩全ての集合と半順序集合として同型
 {{% /proposition %}}
 {{% details 証明 %}}
@@ -571,16 +571,10 @@ $$ f\circ g = m_y(F(g)(z)) $$
 ### 部分対象分類子
 
 {{% proposition %}}
-前層の圏はトポスである。
-
-部分対象分類子 $\Omega$ は
-$$\Omega = \mathrm{Sub}(\mathcal{Y}(-))$$
-であり、射(自然変換) $\mathrm{true}:1 \rightarrow \Omega$ は
-$$ \mathrm{true}\_c(\ast) = \max\_{\leq}\Omega(c)$$
+前層の圏はトポスである。部分対象分類子は $\Omega = \mathrm{Sub}(\mathcal{Y}(-))$
+であり、射(自然変換) $\mathrm{true}:1 \rightarrow \Omega$ は $ \mathrm{true}\_c(\ast) = \max\Omega(c)$
 である。また、モノ射 $m: A\hookrightarrow U$ に対応する分類射 $\chi: U\rightarrow\Omega$ は
-
-$\chi_c(x) = \\{f: a \rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\}$
-
+$$\chi_c(x) = \\{f: a \rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\}$$
 で与えられる。
 
 $$\xymatrix{
@@ -590,29 +584,51 @@ U \ar[r]^{\chi} & \Omega
 
 {{% /proposition %}}
 
-
 {{% details 証明 %}}
-まず、$\hat{\mathcal{C}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで
-$ 1(c) = \\{\ast\\}$ とおく。
+まず、$\hat{\mathcal{C}}$ の終対象 $1:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は点別に計算できるので、任意の $c\in\mathcal{C}$ について $1(c)$ は $\mathbf{Set}$ の終対象である。そこで $ 1(c) = \\{\ast\\}$ とおく。
 
-部分対象分類子 $\Omega$ が存在するならば、米田の補題より
-$$ \Omega(c) \simeq \hat{\mathcal{C}}(\mathcal{Y}(c),\Omega) $$
-であり、 $\hat{\mathcal{C}}(\mathcal{Y}(c),\Omega) \simeq \mathrm{Sub}(\mathcal{Y}(c))$ であるから、$\Omega=\mathrm{Sub}(\mathcal{Y}(-))$ でなければならない事が分かる。
-
-実際に $\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
+$\Omega$ が部分対象分類子である事を示す為には、任意のモノ射 $m:A\hookrightarrow U$ に対して以下が引き戻しとなるような射 $\chi: U\rightarrow \Omega$ が唯一つ存在する事を示せば良い。
 $$\xymatrix{
 A \ar[r] \ar@{^{(}->}[d]\_{m} & 1 \ar[d]^{\mathrm{true}} \\\\
 U \ar[r]^{\chi} & \Omega
 }$$
-すなわち、引き戻しは点別に計算できるので、各 $c\in\mathcal{C}$ について
+すなわち、{{< refer th.limits-of-functor-categories >}}より、各 $c\in\mathcal{C}$ について
 $$\xymatrix{
-A(c) \ar[r] \ar@{^{(}->}[d]\_{m_c} & \\{\ast\\} \ar[d]^{\mathrm{true}\_c} & \\\\
-U(c) \ar[r]^-{\chi_c} & \mathrm{Sub}(\mathcal{Y}(c))    & \text{in $\mathbf{Set}$}
+A(c) \ar[r] \ar@{^{(}->}[d]\_{m_c} & \\{\ast\\} \ar[d]^{\mathrm{true}\_c} \\\\
+U(c) \ar[r]^-{\chi_c} & \mathrm{Sub}(\mathcal{Y}(c))
 }$$
-が引き戻しとなるような $\chi_c$ が唯一つ存在する事を示せば良い。
+が引き戻しとなるような $\chi_c$ が唯一つ存在する事を示せば良い。 $\mathbf{Set}$ であるので $\chi_c$ が満たす条件は
+{{< refer prop.maximal-sieve >}} 及び {{< refer prop.subfunctor-of-yoneda >}} より
+$$\begin{aligned}
+A(c) &\simeq \\{x\in U(c) \mid \chi_c(x) = \max_{\leq}(\mathrm{Sub}(\mathcal{Y}(c))\\} \\\\
+     & = \\{x \in U(c) \mid 1_c \in \chi_c(x)\\}
+\end{aligned}$$
+すなわち $A(c)\simeq \mathrm{Im}(m_c)$ であるので
+$$ 1_c\in\chi_c(x) \Leftrightarrow x \in \mathrm{Im}(m_c)$$
+である。ここで $\chi: U\rightarrow\Omega$ は自然変換であるから、任意の $f:a\rightarrow c$ に対して以下が可換となるから、左上に $x$ を取って$ \Omega(f)(\chi_c(x)) = \chi_a(U(f)(x)) $ が成り立つ。
+$$\xymatrix{
+U(c) \ar[r]^{U(f)} \ar[d]\_{\chi_c} & U(a) \ar[d]^{\chi_a} \\\\
+\Omega(c) \ar[r]^{\Omega(f)} & \Omega(a)
+}$$
 
-$$ \chi_c\circ m_c = [1\_{\mathcal{Y}(c)}] $$
+ここで $\Omega(f)(\chi_c(x)) = \mathrm{Sub}(\mathcal{Y}(f))(\chi_c(x))$ は $\mathcal{Y}(a)$ の部分対象 $\chi_c(x)$ の $\mathcal{Y}(f)=f\circ -$ に沿った引き戻しであるから $ \Omega(f)(\chi_c(x)) = \\{g:b\rightarrow a \mid f\circ g\in\chi_c(x)\\}$ である。
 
+$$\xymatrix{
+\Omega(f)(\chi_c(x)) \ar[r] \ar[d] & \chi_c(x) \ar@{^{(}->}[d]^{\subseteq} \\\\
+\mathcal{Y}(a) \ar[r]^{f\circ -} & \mathcal{Y}(c)
+}$$
+
+これから $f \in \chi_c(x) \Leftrightarrow 1_c \in \Omega(f)(\chi_c(x))$ である。
+
+以上より
+
+$$ f\in \chi_c(x) \Leftrightarrow 1_c\in \Omega(f)(\chi_c(x)) = \chi_a(U(f)(x)) \Leftrightarrow U(f)(x) \in \mathrm{Im}(m_a)$$
+
+となるから
+
+$$ \chi_c(x) = \\{ f: a\rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\} $$
+
+と分類射が一意に定まる。$\square$
 {{% /details %}}
 
 ## ハイティング代数
