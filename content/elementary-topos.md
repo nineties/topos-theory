@@ -5,14 +5,14 @@ section: 3
 toc: true
 ---
 
-# 初等トポス
+## 初等トポス
 
 集合論において、集合 $U$ の部分集合 $X$ は特性関数 $\chi$ によって表現する事ができる。
 $$ X = \\{x\in U\mid\chi(x)\\}$$
 初等トポスとはカルテシアン閉圏のうち、このような構成が可能である圏の事であり、集合論的な操作を行うことができる圏である。
 $\chi(x)$ が真であるとはつまり "$x\in X$"であるという事であるので、初等トポスとは集合への元の帰属関係 $\in$ を表現する事が出来る圏だと言っても良い。
 
-## 部分対象
+### 部分対象
 
 まず集合の包含関係 $X\subseteq U$ を圏論的に一般化する。
 $\mathbf{Set}$ においてはこれは包含写像 $X\hookrightarrow{} U$ によって表現できる。包含写像は単射であるが、 $\mathbf{Set}$ における単射はモノ射であるので、一般化する場合にもモノ射を用いる。ただし、モノ射の中には包含写像以外の物も含まれるのでこれを分類するという操作が必要となる。
@@ -61,7 +61,7 @@ $$ m\circ 1_x = m\circ g\circ f$$
 
 $\mathbf{Set}$ における対象 $a$ の部分対象全体と $a$の部分集合全体は一対一に対応する。すなわち、部分対象 $m$ に対応する部分集合とは関数 $m$ の像であり、部分対象の順序 $\leq$ は部分集合の包含関係 $\subseteq$ と対応する。また $\mathbf{Set}$ は冪化可能である。
 
-## 引き戻し
+### 引き戻し
 $$ X = \\{x\in U\mid\chi(x)\\}$$
 
 を圏論的に定式化する為には **引き戻し(pullback)** を用いる事ができる。引き戻しとは $\mathcal{J}$ が $\bullet\rightarrow\bullet\leftarrow\bullet$ の形の時の図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ に対する極限を言うのだった。これを、具体的に書き下すと以下の定義となる。
@@ -145,7 +145,7 @@ y \ar[r]^{1_y} & y
 {{% /proposition %}}
 これの証明は簡単なので省略する。
 
-## 部分対象分類子
+### 部分対象分類子
 
 引き戻しの図式の一方を定数関数 $\mathrm{true}: 1\rightarrow \\{\mathrm{true}, \mathrm{false}\\}$ 、もう一方を特性関数とすれば冒頭で説明した部分集合の構成が出来る。すなわち、以下において $Y$ が引き戻しならば($X\times 1\simeq X$ であるから)
 
@@ -206,7 +206,7 @@ $\mathrm{true}:1\rightarrow\Omega$ はモノであるので、 $\chi^\*\mathrm{t
 また、 $\phi([m:x\xhookrightarrow{}u])=\phi([n:y\xhookrightarrow{}u]) = \chi$ であるとすると、引き戻しは同型を除いて一意であることから、同型射 $\alpha:x\rightarrow y$ が存在して $m=n\circ \alpha$ となること。すなわち $m\sim n$ であることが示される。よって $[m:x\xhookrightarrow{}u]=[n:y\xhookrightarrow{}u]$ であるから $\phi$ は単射。 $\square$
 {{% /details %}}
 
-## 部分対象関手
+### 部分対象関手
 
 $x\in\mathcal{C}$ の部分対象の集まりを$\mathrm{Sub}(x)$ と表すと、{{< refer prop.subobject-classifying-arrow >}} より同型
 
@@ -287,7 +287,7 @@ y \ar[rd]^{\alpha} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
 {{% /proposition %}}
 これは表現可能関手を表現する対象であるから明らか。
 
-## 初等トポス
+### 初等トポス
 
 以上より初等トポスを定義する事ができる。
 
@@ -316,7 +316,7 @@ $$ \Omega^x \simeq \Omega^a \times \Omega ^b $$
 を満たす $x$ として $x$ を定めることで $a+b$ を定義できそうに思われる。
 より一般化すると関手 $\Omega^{(-)}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{C}$ の性質を用いる事が出来そうであるが、実際の証明は大変複雑である。本章最終節にてこの証明を記載する。
 
-# 前層の圏
+## 前層の圏
 
 部分分類対象子を持つ条件は非常に厳しく、ほとんどの圏はトポスにならないが **前層(presheaf)** の圏はトポスでありかつ重要な例である。
 これらは元々、位相空間の上に紐づけられた数学対象を研究する道具として生まれた概念である。位相空間上の層については次章で説明する。
@@ -348,7 +348,7 @@ G\_a                  \ar[r] & G\_b \ar[r]                  & G\_c
 
 では、前層の圏が初等トポスである事を示すために、有限完備であること、カルテシアン閉であること、部分対象分類子を持つことを順に示す。
 
-## 完備性
+### 完備性
 
 {{% proposition %}}
 前層の圏は双完備である。
@@ -452,7 +452,7 @@ $$\mathrm{ev}\_a: \mathcal{D}^{\mathcal{C}}\ni (F\xrightarrow{\phi}G) \longmapst
 $$ \mathrm{ev}\_a\left(\varprojlim F\right)\simeq \varprojlim \mathrm{ev}\_a\circ F $$
 {{% /proposition %}}
 
-## 指数対象
+### 指数対象
 
 {{% proposition %}}
 前層 $p,q:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対する指数対象は
@@ -480,7 +480,7 @@ $\square$
 
 特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\mathcal{C}(p, q)$ と一致する事が分かる。
 
-## 篩(ふるい)
+### 篩(ふるい)
 
 $\mathrm{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して
 $$ \Omega(a)\simeq \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $$
@@ -568,7 +568,7 @@ $$ f\circ g = m_y(F(g)(z)) $$
 
 {{% /details %}}
 
-## 部分対象分類子
+### 部分対象分類子
 
 {{% proposition %}}
 前層の圏はトポスである。部分対象分類子は $\Omega = \mathrm{Sub}(\mathcal{Y}(-))$
@@ -631,13 +631,13 @@ $$ \chi_c(x) = \\{ f: a\rightarrow c \mid U(f)(x) \in \mathrm{Im}(m_a) \\} $$
 と分類射が一意に定まる。$\square$
 {{% /details %}}
 
-# ハイティング代数
+## ハイティング代数
 以上、集合論的な操作が出来る圏としてのトポスを導入したが、今後はその上でどのような数学が展開できるのかを見ていく。
 
 まず、トポスは **直観主義論理(Intuitionistic Logic)** のモデルとしての構造をもつ。
 具体的には、ブール代数を一般化した概念である **ハイティング代数(Heyting algebra)** の構造をもつ。トポスとの具体的な関わりについては後の章で説明するが、ここでは準備としてハイティング代数の基本を紹介する。
 
-## ハイティング代数
+### ハイティング代数
 
 すでに述べたが、対象 $a,b$ の間に射が高々一つしかない圏 $\mathcal{C}$ を **半順序集合(partially ordered set, poset)** という。射$a\rightarrow b$ を $a\leq b$ と書くと、半順序集合の公理
 
@@ -753,7 +753,7 @@ $$ \neg U \cup \neg V = (-\infty, 0)\cup(0, \infty) $$
 $$ \neg (U\cap V) = \neg \emptyset = \mathbb{R}$$
 より $\neg U\cup\neg V \neq \neg (U\cap V)$ である。
 
-## ブール代数
+### ブール代数
 
 ハイティング代数のうち、 排中律を満たすものをブール代数という。
 古典論理の意味論に用いられものがブール代数である。
