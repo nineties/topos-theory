@@ -5,7 +5,7 @@ section: 2
 toc: true
 ---
 
-## 圏論の概要
+# 圏論の概要
 
 **圏論(category theory)** は、1942-45年にSamuel EilenbergとSaunders Mac Laneによって代数的位相幾何学の研究の中で発明された数学の一分野であり、数学的概念を表現し議論するための抽象的な言語を提供する。
 圏論の諸概念は、それらの例を数学のあらゆる分野で見つけることができる。
@@ -15,11 +15,11 @@ toc: true
 圏論が発明されて以来、そのアプローチは数学者が各々の主題を捉える方法に深いパラダイムシフトをもたらし、以前ではほとんど不可能だった重要な発見への道を開いた。
 圏論の大きな成果の一つがトポス理論であり、これは全面的に圏論の言語で書かれた理論である。
 
-## 圏
+# 圏
 
 最初に、圏の定義を行う。圏とは集合と関数の概念を抽象化した **対象と射** からなり、関数の合成を抽象化した演算を持つものである。集合と関数全体、ベクトル空間と線形写像全体、群と群準同型写像全体など様々なものを圏と見なすことができる。
 
-### 圏の定義
+## 圏の定義
 
 {{% definition title="圏" label="def.category" %}}
 **圏(category)** $\mathcal{C}$ とは **対象(object)** の類 $\mathrm{Ob}(\mathcal{C})$ と各対象 $a, b$ ごとに定められた **射(arrow)** の類 $\mathcal{C}(a,b)$ からなる。 $\mathcal{C}(a,b)$ の事を、**hom類(hom-class)** (集合である場合には **hom集合(hom-set)**) と呼び、$\mathrm{Hom}\_{\mathcal{C}}(a,b)$ と書くこともある。また、射 $f\in\mathcal{C}(a, b)$ を $f:a\rightarrow b$ と書いたり、以下のような矢印の図式で表したりする。
@@ -127,7 +127,7 @@ $f: a\rightarrow b$ が同型射であるとし $g,h:b\rightarrow a$ は共に�
 圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ 書く。射の合成は要素毎に行う。
 {{% /definition %}}
 
-### 双対性
+## 双対性
 
 圏の射の向きを全て逆にした圏を双対圏という。
 
@@ -223,11 +223,11 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 
 ただし、この逆は成立しない。例えば、順序集合を$\leq$を射とする圏とみなしたとき、全ての射はモノかつエピだが同型射とは限らない。
 
-## 関手
+# 関手
 
 例えばベクトル空間の間に、その構造を保つ写像として線型写像が定義されるように、圏の間にも構造を保つ写像を定める事ができる。これを関手という。関手を用いると、異なる圏の間の関係性を述べる事ができるようになる。
 
-### 関手の定義
+## 関手の定義
 
 {{% definition title="関手" %}}
 圏 $\mathcal{C}$ から圏 $\mathcal{D}$ への **関手(functor)** もしくは **共変関手(covariant functor)** $F$ とは
@@ -261,7 +261,7 @@ $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\m
 関手 $\mathcal{C}\rightarrow\mathcal{D}$ であって、$\mathcal{C}$ の全ての対象をある対象 $a\in\mathcal{D}$ に、射を $1_a$ に移すものを **定数関手(constant functor)** という。対象 $a$ についての定数関手を同じ記号を用いて $a:\mathcal{C}\rightarrow\mathcal{D}$ と書くこともある。
 {{% /definition %}}
 
-### 図式としての関手
+## 図式としての関手
 
 今後の為に、関手を **図式(diagram)** とみなす考え方に慣れておいた方が良い。
 図式の方が視覚的なイメージを得やすい為、今後登場する抽象的・高階な概念や定理の理解がしやすくなる。
@@ -281,7 +281,7 @@ $$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
 
 準同型としての関手、図式としての関手、対象の一般化としての関手などの見方を状況によって使い分けられるようになると、様々な定理のイメージが掴みやすくなる。
 
-### 関手の性質
+## 関手の性質
 
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ によって $\mathcal{C}$ を $\mathcal{D}$ に移して $\mathcal{D}$ の中で $\mathcal{C}$ について調べるということがよく行われる。その為には、以下のような性質を持つ関手が重要となる。
 
@@ -316,11 +316,11 @@ $$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\cir
 である。そして $F$ は忠実であるから $g'\circ f'=1_a$ である。同様にして $f'\circ g'=1_b$ であるから $f',g'$ は同型射。従って $a\simeq b$ である。 $\square$
 {{% /details %}}
 
-## 自然変換
+# 自然変換
 
 関手の間の準同型の事を **自然変換(natural transformation)** という。また {{< refer def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
 
-### 自然変換・自然同型
+## 自然変換・自然同型
 
 {{% definition title="自然変換" %}}
 関手 $F,G:\mathcal{C}\rightarrow\mathcal{D}$ に対して、$F$ から $G$ への**自然変換(natural transformation)** $\phi:F\rightarrow G$ とは、$\mathcal{D}$の射の族 $\\{\phi_a: F(a)\rightarrow G(a)\\}\_{a\in\mathcal{C}}$ であり、任意の $\mathcal{C}$ の射 $f:a\rightarrow b$ に対して、以下の図式が可換となるものである。 $\phi_a$ を $\phi$ の **$a$コンポーネント($a$-component)** という。
@@ -376,7 +376,7 @@ F(b) \ar[r]^{\phi_b}                & G(b) \ar[r]^{\psi_b}               & H(b)
 
 そうすると、関手を対象とし自然変換を射とする圏を定める事が出来る。
 
-### 関手圏
+## 関手圏
 
 {{% definition title="関手圏" %}}
 圏 $\mathcal{C},\mathcal{D}$ について、関手 $\mathcal{C}\rightarrow \mathcal{D}$ を対象とし、それらの間の自然変換を射とする圏を **関手圏(functor category)** といい、 $\[\mathcal{C},\mathcal{D}\]$ や $\mathcal{D}^{\mathcal{C}}$ と書く。
@@ -411,7 +411,7 @@ b          \ar[r]_q & d          \\\\
 関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい、 $\hat{\mathcal{C}}$ や $\mathrm{PSh}(\mathcal{C})$ と書く。
 {{% /example %}}
 
-### 同型・圏同値
+## 同型・圏同値
 
 2つの圏 $\mathcal{C},\mathcal{D}$ が何らかの意味で同じであるという事を表す方法として、 **同型**、**圏同値** という異なる関係性がある。これらの違いをしっかり理解したいので、合わせてここで紹介する。
 
@@ -482,10 +482,10 @@ $$
 $FG\simeq 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\simeq F$ も得られるが $F$ が充満忠実であることから $GF\simeq 1\_{\mathcal{C}}$ となる。$\square$
 {{% /details %}}
 
-## 極限
+# 極限
 集合論における直積や直和のような概念は圏論においては **普遍性(universal property)** と呼ばれる性質を用いた **普遍的構成(universal construction)** という方法を用いて定義することができる。 **極限(limit)** は普遍的構成の特別なものであるが、非常に広範な数学的概念に共通する抽象概念である。まずは具体例として終対象・始対象、積・余積を例にあげた後に極限の定義や性質を紹介する。
 
-### 終対象・始対象
+## 終対象・始対象
 
 {{% definition title="終対象・始対象" %}}
 圏 $\mathcal{C}$ の **終対象(terminal object)** とは、任意の対象 $x\in\mathcal{C}$ に対して射 $x\rightarrow 1$ が唯一つ存在するような対象 $1\in\mathcal{C}$ の事である。
@@ -520,7 +520,7 @@ $$\xymatrix{
 $\square$
 {{% /details %}}
 
-### 積・余積
+## 積・余積
 
 集合 $A,B$ の直積 $A\times B$ および直和 $A\oplus B$ を圏論的に一般化した概念が **積(product)** と **余積(coproduct)** である。
 
@@ -591,7 +591,7 @@ $$ u((0, x)) = f(x), u((1, x)) = g(x)$$
 
 先ほど、積の例としてあげた $\min\\{a,b\\}$, $a\cap b$, $a\wedge b$ の圏論的双対は $\max\\{a, b\\}$, $a\cup b$, $a\vee b$ であり、これらは直感的にも理解しやすいと思う。しかし、集合の直積と直和の間の双対性は、集合論的な定義においてはなかなか認識し難い関係であり面白い。但し、集合の直和以外の直和概念一般には言えないので注意。例えば環の直和は余積ではなく、積となる。
 
-### 極限
+## 極限
 
 終対象・始対象、積・余積を抽象化した概念が **極限(limit)** である。これがどのようなものか理解するために、具体例として積についてに考える。積の図式は少し書き直してみると以下のように書くことができるが、この点線で囲まれた $a\xleftarrow{f} x \xrightarrow{g} b$ という形の図式を対象とする圏を考える事が出来る。
 そして、$u:x\rightarrow a\times b$ がただ一つ存在するという事は、対象 $a\xleftarrow{\pi_a} a\times b\xrightarrow{\pi_b}b$ がその圏の終対象であることとして表現する事が出来る。
@@ -766,7 +766,7 @@ $\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in
 
 上の定義のように、極限とは条件を満たす"錐"(極限錐という)の事であるが、極限錐の頂点の事をさして極限という場合もある。しかし、同型な極限錐の頂点同士も同型であるし、逆に $a\simeq b$ で $a$ が極限錐の頂点であるならば、 $b$ もそれと同型な極限錐の頂点となる事が簡単に示せるので、用語の濫用は実用上は問題とならない。
 
-### 極限の例
+## 極限の例
 
 既に紹介した終対象・始対象、積・余積も極限・余極限の例である。まず $\mathcal{J}$ として空圏(対象も射も空集合の圏)をとった極限が終対象、余極限が始対象である。そして、積・余積は次のように一般化できる。
 
@@ -800,7 +800,7 @@ a \ar[r]                     & c        && a \ar[u]  & c \ar[l] \ar[u]
 
 引き戻しは、後ほど初等トポスを定義する際に重要な道具となる。そこで再びその特徴について掘り下げて説明する。
 
-#### $\mathbf{Set}$ における極限
+### $\mathbf{Set}$ における極限
 
 $\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという良い性質を持っている。
 まず
@@ -824,7 +824,7 @@ $$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
 $$ A+\_C B = (A+B)/{\sim}$$
 である。
 
-### 完備性
+## 完備性
 
 前節のように $\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという良い性質を持っている。このような圏の性質を **完備性(completeness)** という。
 
@@ -867,7 +867,7 @@ F(i) \ar[r]_{F(f)} & F(j)
 $\mathbf{Set}$ は双完備である。
 {{% /proposition %}}
 
-### 連続性
+## 連続性
 
 {{% definition title="連続関手" %}}
 関手 $F: \mathcal{C}\rightarrow\mathcal{D}$ について、
@@ -878,13 +878,13 @@ $$F(\varprojlim G) = \varprojlim F\circ G$$
 同様に $F$ が小さな余極限を保つ時は **余連続(cocontinuous)** であるという。
 {{% /definition %}}
 
-## 普遍性
+# 普遍性
 
 本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。前節で説明した極限も普遍性を用いた構成の一つである。
 
 普遍性の説明には複数の方法があるが、ここではエミリー・リール(Emily Riehl)による **表現可能関手(representable functor)** を用いた説明を行う。
 
-### Hom関手
+## Hom関手
 圏論の語彙では、対象や射が具体的に何であるか(例えばベクトル空間や線型写像であるといったこと)を特定し、その性質(例えばベクトル空間の定理)を用いて議論を行う事が基本的には出来ない。従って、圏論においてある対象 $a\in\mathcal{C}$ について調べる時には $a$に向かう射の集合 $\mathcal{C}(x, a)$や、 $a$ から出る射の集合 $\mathcal{C}(a, x)$ について調べる事が主要な手段となる。そこで **Hom関手(hom-functor)** という概念が登場する。
 
 $\mathcal{C}$ を局所小圏とすると、任意の $a,x\in\mathcal{C}$ について $\mathcal{C}(a, x)$ は集合になる。
@@ -931,7 +931,7 @@ $$
 
 証明は共変Hom関手と同様なので省略。「共変」「反変」は誤解の恐れがない場合は省略する事が多い。
 
-### 表現可能関手
+## 表現可能関手
 Hom関手 $\mathcal{C}(a, -), \mathcal{C}(-, a)$ は、対象 $a$ 一つのみでその全てが表現される。この意味でHom関手 $\mathcal{C}(a, -), \mathcal{C}(-, a)$ 及びこれらと自然同型な関手は **表現可能(representable)** であると言われ、 $a$ をそれを **表現する対象(representing object)** という。
 
 {{% definition title="表現可能関手" %}}
@@ -966,7 +966,7 @@ $$
 
 以上は非常にシンプルな例であるが、$a\in\mathcal{C}$ と表現可能関手 $\mathcal{C}(-, a)$ が、その周囲の射も含め綺麗に対応している事が分かるであろう。誤解を恐れずに言えば $a$ と $\mathcal{C}(-, a)$ は同じものの異なる表現であると言える。続く節で **米田埋め込み(Yoneda embedding)** としてこれを説明する。
 
-### 米田埋め込み・米田の補題
+## 米田埋め込み・米田の補題
 
 表現可能関手の定義では自然変換 $\mathcal{C}(-, a)\rightarrow F$ や $\mathcal{C}(a, -)\rightarrow F$ が使われるが、これらに関する非常に重要な定理が **米田の補題(Yoneda's Lemma)** である。
 Emily Riehlによれば米田の補題は"圏論の最も重要な成果"である。
@@ -1090,7 +1090,7 @@ $$\xymatrix{
 F(a) \ar[r] & F(x)
 }$$
 
-### 米田埋め込みの性質
+## 米田埋め込みの性質
 
 米田埋め込みが"埋め込み"と呼ばれるのに相応しいのは以下の命題より。
 
@@ -1179,7 +1179,7 @@ $$ \mathcal{Y}(a\times 1)(x)\simeq \mathcal{C}(x, a\times 1) \simeq\mathcal{C}(x
 
 以上のように $\hat{\mathcal{C}}$ は非常に良い性質を持っているので、米田埋め込みによって一旦議論の舞台を $\mathcal{C}$ から $\hat{\mathcal{C}}$ に移すことで様々な議論が行いやすくなるわけである。
 
-### 普遍性・普遍要素・普遍的構成
+## 普遍性・普遍要素・普遍的構成
 
 米田の補題より、 自然同型 $\mathcal{Y}(a)\simeq F$ に対応する要素 $u\in F(a)$ が存在する。これを $F$ の普遍要素という。
 
@@ -1228,7 +1228,7 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 まとめると、関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b)$ が表現可能の時、これを表現する対象が $a\times b$ で、普遍要素が標準射影 $\pi_a:a\times b\rightarrow a, \pi_b:a\times b\rightarrow b$ である。
 同様にして、関手 $\varprojlim(\mathcal{Y}\circ F)$ を表現する対象が $\varprojlim F$ で、普遍要素が極限錐 $\phi:\Delta(\varprojlim F)\rightarrow F$ である。
 
-### 稠密性定理
+## 稠密性定理
 
 前層の圏 $\hat{\mathcal{C}}$ には表現可能関手とそうでない関手の2種類が存在する。稠密(ちゅうみつ)性定理はこれらの関係について述べたもので非常に役に立つ定理である。
 
@@ -1390,12 +1390,12 @@ $$ F \simeq \varinjlim\mathcal{Y}\circ d $$
 である。 $\square$
 {{% /details %}}
 
-## 指数対象
+# 指数対象
 
 極限とは異なる普遍性をもつ対象に **指数対象(exponential object)** がある。指数対象は "関数" のような性質を持つ対象のことで、"引数" を与えて "結果" を得る事が出来る。
 すなわち $f$ と $a$ から $f(a)$ を得るような操作を圏論的に一般化したものである。
 
-### 指数対象の定義
+## 指数対象の定義
 
 {{% definition title="指数対象" %}}
 有限積を持つ圏 $\mathcal{C}$ において関手
@@ -1427,7 +1427,7 @@ $$ \mathrm{ev}\circ (u\times 1_a)(x, a) = g(x, a) \Leftrightarrow u(x)(a) = g(x,
 $\square$
 {{% /details %}}
 
-### 指数対象の性質
+## 指数対象の性質
 
 指数対象が $a^b$ と書かれるのは指数法則と類似した性質を満たす為である。
 
@@ -1521,7 +1521,7 @@ $$\mathcal{C}(x, a^0) \simeq \mathcal{C}(x\times 0, a) \simeq \mathcal{C}(0, a)$
 が存在するが、$0$が始対象であることから最右辺の要素数は1である。したがって射 $x\rightarrow a^0$ も唯一つしか存在しない為 $a^0$ は終対象である。したがって $a^0\simeq 1$ $\square$
 {{% /details %}}
 
-### カルテシアン閉圏
+## カルテシアン閉圏
 
 {{% definition title="カルテシアン閉圏" %}}
 任意の有限積と指数対象を持つ圏を **カルテシアン閉圏(cartesian closed category)** もしくは **デカルト閉圏** という。
@@ -1545,7 +1545,7 @@ $$\begin{align\*}
 が存在するので米田の原理より $a\times b+a\times c\simeq a\times(b+c)$ である。 $\square$
 {{% /details %}}
 
-## 随伴
+# 随伴
 普遍的構成の一種である **随伴(adjunction)** は二つの圏 $\mathcal{C},\mathcal{D}$ を相互に繋ぐ関手
 $$ F: \mathcal{C}\rightleftarrows\mathcal{D}: G$$
 の間の関係であるが、
@@ -1555,7 +1555,7 @@ $$ F: \mathcal{C}\rightleftarrows\mathcal{D}: G$$
 
 とマクレーンが言っているように、数学の様々な場所で普遍的に現れるものである。様々な数学的概念を随伴として表現する事ができる。
 
-### 随伴の定義
+## 随伴の定義
 
 {{% definition title="随伴" label="def.adjunction" %}}
 圏 $\mathcal{C}$ と $\mathcal{D}$ の間の **随伴(adjunction)** とは、
@@ -1601,7 +1601,7 @@ $$ \overline{g\circ h \circ F(f)} = G(g)\circ\overline{h}\circ f $$
 $$ \overline{F(a')\xrightarrow{F(f)} F(a)\xrightarrow{h}b\xrightarrow{g} b'} = a'\xrightarrow{f}a\xrightarrow{\overline{h}} G(b)\xrightarrow{G(g)} G(b') $$
 {{% /proposition %}}
 
-### 随伴の例
+## 随伴の例
 
 任意の関手 $F:\mathcal{J}\rightarrow \mathcal{C}$ について極限が存在する場合、
 $\varprojlim:\mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$
@@ -1661,7 +1661,7 @@ x         & \rightarrow & y^a & \text{in $\mathcal{C}$}
 $$ (-)\times a \dashv (-)^a $$
 {{% /proposition %}}
 
-### 随伴の性質
+## 随伴の性質
 
 {{% proposition %}}
 ある関手の右随伴が存在するならば、それは自然同型を除いて一意に定まる。
@@ -1707,7 +1707,7 @@ $$\mathcal{C}(x, G(\varprojlim A)) \simeq \mathcal{D}(F(x), \varprojlim A) \sime
 $$ (\varprojlim F)^a \simeq \varprojlim (-)^a \circ F, \quad (\varinjlim F)\times a \simeq \varinjlim ((-)\times a)\circ F$$
 が成り立つので $ (x\times y)^a \simeq x^a \times y^a$ や $ (x + y)\times a \simeq x\times a + y\times a$ が成立するといった事が示せる。
 
-### 三角等式
+## 三角等式
 
 {{% theorem label="prop.triangle" %}}
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
