@@ -30,3 +30,8 @@ $$ \rho^U_V: F(U)\rightarrow F(V) $$
 $s \in F(U)$ の時 $\rho^U_V(s)$ の代わりに $s|_V$ と書くこともある。
 {{% /definition %}}
 
+この定義は以下の圏論的な定義と一致する。
+
+{{% proposition %}}
+位相空間 $X$ の開集合系 $\mathcal{O}(X)$ を包含関係 $\subseteq$ によって圏とみなしたものを $\mathcal{C}$ (これは小圏である)とすると関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ は $X$ 上の前層である。
+{{% /proposition %}}
