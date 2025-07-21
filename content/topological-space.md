@@ -16,11 +16,6 @@ toc: true
 ここで **与えられた地図から範囲を狭めた新たな地図を作る整合的な操作** を備えたものを **前層(presheaf)** という。
 すなわち、$U\supseteq V$ の時に、地図 $\mathcal{F}(U)$ の範囲を絞って $\mathcal{F}(V)$ を作る **制限写像(restriction map)** と呼ばれる写像 $\rho^U_V$ を備えており、これが範囲を絞る操作について整合的であるものである。
 
-$$\xymatrix{
-U \ar[r]^{\supseteq} \ar[d]^{\mathcal{F}} & V \ar[d]^{\mathcal{F}}\\\\
-\mathcal{F}(U) \ar[r]^{\rho^U_V} & \mathcal{F}(V)
-}$$
-
 {{% definition title="位相空間上の前層" %}}
 位相空間$X$ 上の層 $\mathcal{F}$ とは、各開集合 $U\in\mathcal{O}(X)$ に集合 $\mathcal{F}(U)$ を対応させるものであり、
 任意の $U\supseteq V\ (U,V\in\mathcal{O}(X))$ に対して以下の条件を満たす **制限写像(restriction map)** 
