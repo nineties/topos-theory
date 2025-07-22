@@ -76,7 +76,13 @@ $$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overse
 
 {{% definition title="位相空間上の層(連続性利用)" %}}
 位相空間 $X$ 上の前層 $F$ が **層(sheaf)** であるとは、 $\mathcal{O}_X^{\mathrm{op}}$ の **余完備充満部分圏(cocomplete full subcategory)** $J$ に対して以下が成立することである。
-$$ F\left(\varprojlim\_{U\in J}U\right) = \varprojlim\_{U\in J}F(U)$$
+$$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
 {{% /definition %}}
+
+この定義の状況を図示すると以下の様になる。 $J$ が余完備であるというのは任意の $U\_{\alpha},U\_{\beta}\in J$ に対して $U\_{\alpha}\cap U\_{\beta} \in J$ ということで、充満であるというのは開集合の間の包含関係を漏らさず $J$ に持ってきているということである。そして
+$$\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_{\lambda}$$
+であるので、上記の定義は位相空間 $X$ 上での領域の貼り合わせと、対応する数学的対象 $\\{F(U\_{\lambda})\\}$ の貼り合わせが整合的であるという事を言っており、直感的にも理解しやすい定義となっている。
+
+{{< figure src="../images/sheaf-using-continuous-functor.png" width="60%" >}}
 
 
