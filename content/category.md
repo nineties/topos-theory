@@ -70,7 +70,6 @@ $$
 }
 $$
 
-
 圏論では射の等式の代わりに **可換図式(commutative diagram)**  を用いる事が多い。
 図式が可換であるとは、図式内の射の列の合成射は始点と終点が一致するならば経路の選び方によらず一致するということ。
 例えば $g\circ f=h$ であるということを「以下の図式が可換である」などと表現する。
@@ -125,6 +124,14 @@ $f: a\rightarrow b$ が同型射であるとし $g,h:b\rightarrow a$ は共に�
 
 {{% definition title="積圏" %}}
 圏 $\mathcal{C},\mathcal{D}$ に対して $\mathcal{C},\mathcal{D}$ の対象の組 $(a,b)$ を対象とし、射の組 $(f,g)$ を射とする圏を **積圏(product category)** といい $\mathcal{C}\times\mathcal{D}$ 書く。射の合成は要素毎に行う。
+{{% /definition %}}
+
+圏の一部だけを取り出したものを部分圏という。
+
+{{% definition title="部分圏" %}}
+圏 $\mathcal{C}$ の対象の類の部分類、射の類の部分類からなり圏の条件を満たす圏 $\mathcal{D}$ を $\mathcal{C}$ の **部分圏(subcategory)** という。
+
+任意の対象 $a,b\in\mathcal{D}$ に対して $\mathcal{D}(a,b) = \mathcal{C}(a,b)$ である部分圏 $\mathcal{D}$ を **充満部分圏(full subcategory)** という。
 {{% /definition %}}
 
 ### 双対性
