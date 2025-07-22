@@ -737,11 +737,11 @@ $$\neg a\wedge \neg b = \neg(a \vee b)$$
 {{% /details %}}
 
 {{% example %}}
-位相空間 $X$ の開集合系 $\mathcal{O}(X)$ を包含関係によって半順序集合と見なしたものはハイティング代数となる。
+位相空間 $X$ の開集合系 $\mathcal{O}\_X$ を包含関係によって半順序集合と見なしたものはハイティング代数となる。
 {{% /example %}}
 
 開集合系の公理から有界束である事がすぐ分かる。そして開集合 $U,V$ に対して
-$$ (U\Rightarrow V) = \bigcup\\{ W\in\mathcal{O}(X) \mid U\cap W\subseteq V \\}$$
+$$ (U\Rightarrow V) = \bigcup\\{ W\in\mathcal{O}_X \mid U\cap W\subseteq V \\}$$
 となる。また $\bot = \emptyset$ であるので
 $$ \neg U = \bigcup\\{ W\in\mathcal{O}(x) \mid U\cap W = \emptyset \\}$$
 となる。例えば $\mathbb{R}$ 上の開集合として $U=(-\infty,0), V=(0,\infty)$ とすると

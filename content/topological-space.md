@@ -9,7 +9,7 @@ toc: true
 
 **前層(presheaf)** 及び **層(sheaf)** の概念は元々は位相空間上の数学的対象について調べる手段として誕生し、それを圏論的に一般化したものが前章の前層の定義である。本章では位相空間上の前層・層について説明していく。
 
-位相空間 $X$ 上の前層・層 $F$ とは各開集合 $U\in\mathcal{O}(X)$ に集合 $F(U)$ を紐づけるものであり、特定の条件を満たすものである。例えば $X$ を地球表面とした時 $F$ は地球表面上の領域 $U$ に対して何らかの数学的対象 $F(U)$ を紐づけるものである。例えば地球表面上の温度分布に関心があるならば $F(U)$ は二次元の連続関数の集合といった感じである。
+位相空間 $X$ 上の前層・層 $F$ とは各開集合 $U\in\mathcal{O}_X$ に集合 $F(U)$ を紐づけるものであり、特定の条件を満たすものである。例えば $X$ を地球表面とした時 $F$ は地球表面上の領域 $U$ に対して何らかの数学的対象 $F(U)$ を紐づけるものである。例えば地球表面上の温度分布に関心があるならば $F(U)$ は二次元の連続関数の集合といった感じである。
 ここで注意したいのは $F$ は特定の状況を与えるものではなく、数学の舞台を設定するものである。温度分布の例で言うならば、$F(U)$ はあらゆる状況の集合であって元$s\in F(U)$ が特定の状況を表す。この元 $s$ のことを **切断(section)** と言う。
 
 {{< figure src="../images/earth-and-map.png" width="30%" >}}
@@ -19,8 +19,8 @@ toc: true
 位相空間 $X$ 上の前層とは **注目する範囲を狭める操作** を備えたものである。すなわち、$U\supseteq V$ の時に、$F(U)$ から $F(V)$ を作る **制限写像(restriction map)** と呼ばれる写像 $\rho^U_V$ を備えており、これが範囲を操作について整合的であるものである。
 
 {{% definition title="位相空間上の前層" %}}
-位相空間$X$ 上の層 $F$ とは、各開集合 $U\in\mathcal{O}(X)$ に集合 $F(U)$ を対応させるものであり、
-任意の $U\supseteq V\ (U,V\in\mathcal{O}(X))$ に対して以下の条件を満たす **制限写像(restriction map)** 
+位相空間$X$ 上の層 $F$ とは、各開集合 $U\in\mathcal{O}_X$ に集合 $F(U)$ を対応させるものであり、
+任意の $U\supseteq V\ (U,V\in\mathcal{O}_X)$ に対して以下の条件を満たす **制限写像(restriction map)** 
 $$ \rho^U_V: F(U)\rightarrow F(V) $$
 を備えるものである。
 
@@ -30,12 +30,12 @@ $$ \rho^U_V: F(U)\rightarrow F(V) $$
 $F(U)$ の元を **切断(section)** と呼ぶ。$s \in F(U)$ の時 $\rho^U_V(s)$ の代わりに $s|_V$ と書くこともある。
 {{% /definition %}}
 
-この定義は $X$ の開集合系 $\mathcal{O}(X)$ を包含関係 $\subseteq$ によって圏とみなした時 $F$ 及び $\rho$ が$\mathcal{O}(X)^{\mathrm{op}}$ から $\mathbf{Set}$ への関手であるといっている事に他ならず、圏論的な前層の定義と一致する。この時 $F(U\supseteq V) = \rho^U_V$ である。
+この定義は $X$ の開集合系 $\mathcal{O}_X$ を包含関係 $\subseteq$ によって圏とみなした時 $F$ 及び $\rho$ が$\mathcal{O}_X^{\mathrm{op}}$ から $\mathbf{Set}$ への関手であるといっている事に他ならず、圏論的な前層の定義と一致する。この時 $F(U\supseteq V) = \rho^U_V$ である。
 
 ### 層
 前層のうち、局所的な数学対象を貼り合わせて大域的な数学対象を矛盾なく構成できるものを層という。
 
-{{% definition title="位相空間上の層" %}}
+{{% definition title="位相空間上の層(切断利用)" %}}
 位相空間 $X$ 上の前層 $F$ で以下の条件を満たすものを **層(sheaf)** という。
 
 1. $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断 $s,t\in F(U)$ について、全ての $\lambda\in \Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるならば $s = t$ である。
@@ -62,12 +62,21 @@ $$F(U) \simeq \\{(s_1, s_2) \in F(U_1)\times F(U_2) \mid \rho^{U_1}\_{U_1\cap U_
 $$ F(U) \simeq \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap U_2}\right)$$
 と書くことができる。
 
-より一般には任意の開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、全ての共通部分で一致する切断の族 $\\{s\_{\lambda}\\}$ とそれらを貼り合わせた $s\in F(U)$ が一対一に対応すると言う事なので、以下のように書く事ができる。この定義では切断 $s\in F(U)$ を明示的に使わないので、後に位相空間以外にもこれを一般化する事が出来る。
+より一般には任意の開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、全ての共通部分で一致する切断の族 $\\{s\_{\lambda}\\}$ とそれらを貼り合わせた $s\in F(U)$ が一対一に対応すると言う事なので、以下のように書く事ができる。この定義では切断 $s\in F(U)$ を明示的に使わないので、後に位相空間以外にも一般化する事が出来る。
 
-{{% definition title="位相空間上の層(イコライザを用いた定義)" %}}
-位相空間 $X$ 上の層 $F$ が以下の条件を満たすときこれを **層(sieve)** という。
+{{% definition title="位相空間上の層(イコライザ利用)" %}}
+位相空間 $X$ 上の層 $F$ が以下の条件を満たすときこれを **層(sheaf)** という。
 
 $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$について
 $$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overset{p}{\underset{q}{\rightrightarrows}}\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})\\right)$$
-が成り立つ。但し $p$ は $\rho^{U\_{\alpha}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。 $q$ は$\rho^{U\_{\beta}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。
+が成り立つ。但し $p$ は $\rho^{U\_{\alpha}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの、 $q$ は$\rho^{U\_{\beta}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。
 {{% /definition %}}
+
+この定義は切断を用いた定義の素直な翻訳であるが、より抽象度の高い定義として関手の連続性を用いた以下のような定義も可能である。
+
+{{% definition title="位相空間上の層(連続性利用)" %}}
+位相空間 $X$ 上の前層 $F$ が **層(sheaf)** であるとは、 $\mathcal{O}_X^{\mathrm{op}}$ の **余完備充満部分圏(cocomplete full subcategory)** $J$ に対して以下が成立することである。
+$$ F\left(\varprojlim\_{U\in J}U\right) = \varprojlim\_{U\in J}F(U)$$
+{{% /definition %}}
+
+
