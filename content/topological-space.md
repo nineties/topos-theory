@@ -44,3 +44,30 @@ $F(U)$ の元を **切断(section)** と呼ぶ。$s \in F(U)$ の時 $\rho^U_V(s
 {{% /definition %}}
 
 1つめの条件は $F(U)$ の切断はその局所的な情報のみから一意に定まるということをいっている。2つめの条件は重なる部分で一致する切断は貼り合わせて一つの大きな切断にする事が出来るということをいっている。
+
+層の具体例は様々あり
+
+- 位相空間上の実数値連続関数
+- 代数多様体上の正則関数
+- 微分可能多様体上の微分可能関数
+- 複素多様体上のホロモーフィック関数
+
+などである。
+
+### 層の圏論的定義
+
+簡単なケースとして $U=U_1\cup U_2$ の場合を考えると、 $F$ が層であることは共通部分で一致する $s_1,s_2$ の組とそれを貼り合わせた $s\in F(U)$ が一対一に対応すると言うことであって
+$$F(U) \simeq \\{(s_1, s_2) \in F(U_1)\times F(U_2) \mid \rho^{U_1}\_{U_1\cap U_2}(s_1) = \rho^{U_2}\_{U_1\cap U_2}(s_2)\\}$$
+が成り立つ事と同値である。これはイコライザを用いて
+$$ F(U) \simeq \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap U_2}\right)$$
+と書くことができる。
+
+より一般には任意の開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、全ての共通部分で一致する切断の族 $\\{s\_{\lambda}\\}$ とそれらを貼り合わせた $s\in F(U)$ が一対一に対応すると言う事なので、以下のように書く事ができる。この定義では切断 $s\in F(U)$ を明示的に使わないので、後に位相空間以外にもこれを一般化する事が出来る。
+
+{{% definition title="位相空間上の層(イコライザを用いた定義)" %}}
+位相空間 $X$ 上の層 $F$ が以下の条件を満たすときこれを **層(sieve)** という。
+
+$X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$について
+$$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overset{p}{\underset{q}{\rightrightarrows}}\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})\\right)$$
+が成り立つ。但し $p$ は $\rho^{U\_{\alpha}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。 $q$ は$\rho^{U\_{\beta}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。
+{{% /definition %}}
