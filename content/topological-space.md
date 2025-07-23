@@ -74,6 +74,55 @@ $$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overse
 が成り立つ。但し $p$ は $\rho^{U\_{\alpha}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの、 $q$ は$\rho^{U\_{\beta}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。
 {{% /definition %}}
 
+{{% details 同値性の証明 %}}
+位相空間上の層の切断を用いた定義を①、イコライザを用いた定義を②とする。
+
+(①$\Rightarrow$ ②)
+
+位相空間 $X$ 上の前層 $F$ が定義①を満たすとする。開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して
+$$e(s) = \\{s|\_{U\_{\lambda}}\\}\_{\lambda\in\Lambda},\quad
+p(\\{s\_{\lambda}\\}\_{\lambda\in\Lambda}) = \\{s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}}\\}\_{\alpha,\beta\in\Lambda},\quad
+q(\\{s\_{\lambda}\\}\_{\lambda\in\Lambda}) = \\{s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}\\}\_{\alpha,\beta\in\Lambda}$$
+とおくと、$F$ が前層であることより下の図式は可換である。
+
+$$\xymatrix{
+F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+ある集合 $A$ 及び関数 $f: A\ni x\mapsto \\{f\_{\lambda}(x)\\}\_{\lambda\in\Lambda} \in \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda})$ が以下を可換にするとする。
+
+$$\xymatrix{
+A \ar[r]^-f & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+すると各 $x\in A$ に対して $f\_{\alpha}(x)|\_{U\_{\alpha}\cap U\_{\beta}}=f\_{\beta}(x)|\_{U\_{\alpha}\cap U\_{\beta}} \quad (\alpha,\beta\in\Lambda)$ であるので、定義①の条件2よりある $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = f\_{\lambda}\quad (\lambda\in\Lambda)$ となる。また条件１よりこれを満たす $s$ は一意に存在する。
+
+従って任意の $A,f$ に対して、以下の図式が可換となるような $u: A\ni x \mapsto s\in F(U)$ が一意に存在するので、これはイコライザの定義を満たし $F(U)\simeq\mathrm{eq}(p, q)$ である。
+$$\xymatrix{
+A \ar[d]^-u \ar[rd]^{f} & & \\\\
+F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+(②$\Rightarrow$ ①)
+
+位相空間 $X$ 上の前層 $F$ が定義②を満たすとする。開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断 $s,t\in F(U)$ について、全ての $\lambda\in\Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとする。すると、以下の図式は $u=s$ としても $u=t$ としても可換となるが、 $u$ の一意性より $s=t$ である。従って定義①の条件１が示された。
+
+$$\xymatrix{
+1 \ar[d]^-u \ar[rd]^{\\{s|\_{U\_{\lambda}}\\}} & & \\\\
+F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+そして、切断の族 $s\_{\lambda}\in F(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるならば、以下の図式が可換となる $s\in F(U)$ が存在し、この時 $s|\_{U\_{\lambda}} = s\_{\lambda}$ となる。従って定義①の条件２も示された。
+
+$$\xymatrix{
+1 \ar[d]^-s \ar[rd]^{\\{s\_{\lambda}\\}} & & \\\\
+F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+$\square$
+
+{{% /details %}}
+
 この定義は切断を用いた定義の素直な翻訳であるが、より抽象度の高い定義として関手の連続性を用いた以下のような定義も可能である。
 
 {{% definition title="位相空間上の層(連続性利用)" %}}
@@ -86,5 +135,3 @@ $$\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_
 であるので、上記の定義は位相空間 $X$ 上での領域の貼り合わせと、対応する数学的対象 $\\{F(U\_{\lambda})\\}$ の貼り合わせが整合的であるという事を言っており、直感的にも理解しやすい定義となっている。
 
 {{< figure src="../images/sheaf-using-continuous-functor.png" width="60%" >}}
-
-
