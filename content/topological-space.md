@@ -89,17 +89,17 @@ $$\xymatrix{
 F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
 }$$
 
-ある集合 $A$ 及び関数 $f: A\ni x\mapsto \\{f\_{\lambda}(x)\\}\_{\lambda\in\Lambda} \in \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda})$ が以下を可換にするとする。
+ある集合 $A$ 及び関数 $f: x\mapsto \\{f\_{\lambda}(x)\\}\_{\lambda\in\Lambda}$ が以下を可換にするとする。
 
 $$\xymatrix{
 A \ar[r]^-f & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
 }$$
 
-すると各 $x\in A$ に対して $f\_{\alpha}(x)|\_{U\_{\alpha}\cap U\_{\beta}}=f\_{\beta}(x)|\_{U\_{\alpha}\cap U\_{\beta}} \quad (\alpha,\beta\in\Lambda)$ であるので、定義①の条件2よりある $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = f\_{\lambda}\quad (\lambda\in\Lambda)$ となる。また条件１よりこれを満たす $s$ は一意に存在する。
+すると各 $x\in A$ に対して $f\_{\alpha}(x)|\_{U\_{\alpha}\cap U\_{\beta}}=f\_{\beta}(x)|\_{U\_{\alpha}\cap U\_{\beta}} \quad (\alpha,\beta\in\Lambda)$ であるので、定義①の条件2よりある $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = f\_{\lambda}(x)\quad (\lambda\in\Lambda)$ となる。また条件１よりこれを満たす $s$ は一意である。
 
 従って任意の $A,f$ に対して、以下の図式が可換となるような $u: A\ni x \mapsto s\in F(U)$ が一意に存在するので、これはイコライザの定義を満たし $F(U)\simeq\mathrm{eq}(p, q)$ である。
 $$\xymatrix{
-A \ar[d]^-u \ar[rd]^{f} & & \\\\
+A \ar@{.>}[d]^-{\exists! u} \ar[rd]^{f} & & \\\\
 F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
 }$$
 
@@ -129,6 +129,85 @@ $\square$
 位相空間 $X$ 上の前層 $F$ が **層(sheaf)** であるとは、 $\mathcal{O}_X^{\mathrm{op}}$ の **余完備充満部分圏(cocomplete full subcategory)** $J$ に対して以下が成立することである。
 $$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
 {{% /definition %}}
+
+{{% details 同値性の証明 %}}
+位相空間上の層の切断を用いた定義を①、連続性を用いた定義を③とする。
+
+(①$\Rightarrow$ ③)
+
+位相空間 $X$ 上の前層 $F$ が定義①を満たすとする。$\mathcal{O}^{\mathrm{op}}\_X$ の余完備充満部分圏 $J$ に対して
+
+$$U = \varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_{\lambda}$$
+
+とおくと$\\{U\_{\lambda}\\}$ は $U\in\mathcal{O}^{\mathrm{op}}\_X$ の開被覆になっている。まず、任意の$J$ の対象 $U\_{\alpha}\supseteq U\_{\beta}$ に対して $F$ が前層であることより以下は可換。
+
+
+$$\xymatrix{
+F(U) \ar[d]_{\rho^U\_{U\_{\alpha}}} \ar[rd]^{\rho^U\_{U\_{\beta}}} & \\\\
+F(U\_{\alpha}) \ar[r]\_{\rho^{U\_{\alpha}}\_{U\_{\beta}}} & F(U\_{\beta})
+}$$
+
+ここで、任意の$J$ の対象 $U\_{\alpha}\supseteq U\_{\beta}$ に対して以下が可換となるような $A$ と $\\{f\_{U\_{\lambda}}\\}$ が存在したと仮定する。
+
+$$\xymatrix{
+A \ar[d]_{f\_{U\_{\alpha}}} \ar[rd]^{f\_{U\_{\beta}}} & \\\\
+F(U\_{\alpha}) \ar[r]\_{\rho^{U\_{\alpha}}\_{U\_{\beta}}} & F(U\_{\beta})
+}$$
+
+任意の $x\in A$ に対して $s\_{\lambda} = f\_{U\_{\lambda}}(x)$ とおくと、任意の $J$ の対象 $U\_{\alpha},U\_{\beta}$ に対して、 $J$ が余完備であることから $U\_{\alpha}\cap U\_{\beta}$ が存在し、以下の図式が共に可換となるから
+$$ s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}} = f\_{U\_{\alpha}\cap U\_{\beta}}(x)$$
+
+$$\xymatrix{
+A \ar[d]\_{f\_{U\_{\alpha}}} \ar[rd]^{f\_{U\_{\alpha}\cap U\_{\beta}}} & & A \ar[d]\_{f\_{U\_{\beta}}} \ar[rd]^{f\_{U\_{\alpha}\cap U\_{\beta}}} & \\\\
+F(U\_{\alpha}) \ar[r] & F(U\_{\alpha}\cap U\_{\beta}) & F(U\_{\beta}) \ar[r] & F(U\_{\alpha}\cap U\_{\beta})
+}$$
+
+従って定義①の条件2より $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = s\_{\lambda}$ となる。この対応 $x\mapsto s$ を $u$ とすると以下の図式が可換となり、条件１よりこのような $u$ は唯一つに定まる。従って $F(U) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$ である。
+
+$$\xymatrix{
+A \ar[d] \ar[rd] \ar@{.>}[r]^{\exists! u} & F(U) \ar[ld] \ar[d]\\\\
+F(U\_{\alpha}) \ar[r] & F(U\_{\beta})
+}$$
+
+(③$\Rightarrow$ ①)
+
+位相空間 $X$ 上の前層 $F$ が定義③を満たすとする。任意の開集合 $U\in\mathcal{O}^{\mathrm{op}}\_X$ と開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、いずれかの $U\_{\lambda}$ に含まれる開集合全てを対象とする $\mathcal{O}^{\mathrm{op}}\_X$ の充満部分圏を $J$ とする。混同を避ける為 $J$ の対象を $V\_{\lambda}$ と表記する。$J$ が余完備である事は簡単にわかり
+
+$$ F\left(\varprojlim\_{V\_{\lambda}\in J}V\_{\lambda}\right) \simeq \varprojlim\_{V\_{\lambda}\in J}F(V\_{\lambda})$$
+
+である。ここで、切断 $s,t\in F(U)$ について、全ての $\lambda\in\Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとすると、 $F$ が前層であることにより任意の $V\in J$ に対して $s|\_V = t|\_V$ である。任意の $J$ の対象 $V\_{\alpha}\supseteq V\_{\beta}$ に対して、 以下は可換であるからこれは $1$ を頂点とする錐。
+
+$$\xymatrix{
+1 \ar[d]\_{s|\_{V\_{\alpha}}} \ar[rd]^-{s|\_{V\_{\beta}}} & \\\\
+F(V\_{\alpha}) \ar[r] & F(V\_{\beta})
+}$$
+
+従って、任意の $V\in J$ について以下が可換となるような $u$ が一意に存在するが、これは $u=s$ としても $u=t$ としても可換。従って $s=t$ であるので定義①の条件１が示された。
+$$\xymatrix{
+1 \ar[d]\_{s|\_V} \ar@{.>}[r]^-{\exists u} & F(U) \ar[ld]^{\rho^U\_V} \\\\
+F(V) &
+}$$
+
+続いて、切断の族 $\\{s\_{\lambda}\\}\_{\lambda\in\Lambda}$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。ここで各 $V\in J$ について $V\subseteq U\_{\lambda}$ となる $U\_{\lambda}$ を用いて $ t\_V = s\_{\lambda}|\_V$ となる族 $\\{t\_V\\}\_{V\in J}$ を定める。 ここで $V\subseteq U\_{\alpha}$ かつ $V\subseteq U\_{\beta}$ の時には $V\subseteq U\_{\alpha}\cap U\_{\beta}$ であるので
+$$ s\_{\alpha}|\_V = s\_{\beta}|\_V $$
+であるから $t\_V$ は $\lambda$ の選び方によらず well-defined である。この時、任意の $V\_{\alpha}\supseteq V\_{\beta}$ に対して以下が可換となるので、
+
+$$\xymatrix{
+1 \ar[d]\_{t\_{V\_{\alpha}}} \ar[rd]^-{t\_{V\_{\beta}}} & \\\\
+F(V\_{\alpha}) \ar[r] & F(V\_{\beta})
+}$$
+
+任意の $V\in J$ に対して、以下が可換となる $s \in F(U)$ がただ一つ存在する。そして、全ての $\lambda\in\Lambda$ に対して
+$$ s|\_{U\_{\lambda}} = \rho^U\_{U\_{\lambda}}(s) = t\_{U\_{\lambda}} = s\_{\lambda}|\_{U\_{\lambda}} = s\_{\lambda}$$
+であるから定義①の条件２も示された。
+
+$$\xymatrix{
+1 \ar[d]\_{t\_V} \ar@{.>}[r]^-{\exists s} & F(U) \ar[ld]^{\rho^U\_V} \\\\
+F(V) &
+}$$
+
+$\square$
+{{% /details %}}
 
 この定義の状況を図示すると以下の様になる。 $J$ が余完備であるというのは任意の $U\_{\alpha},U\_{\beta}\in J$ に対して $U\_{\alpha}\cap U\_{\beta} \in J$ ということで、充満であるというのは開集合の間の包含関係を漏らさず $J$ に持ってきているということである。そして
 $$\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_{\lambda}$$
