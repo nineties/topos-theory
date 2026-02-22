@@ -48,11 +48,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -62,6 +57,11 @@ jobs:
           hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
           python3 make_index.py
           hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

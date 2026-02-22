@@ -1,5 +1,5 @@
 {{ $url := "https://kroki.io/tikz/svg/" }}
-{{ $body := printf "\\documentclass{article}\\usepackage{amsmath}\\usepackage{tikz}\\usetikzlibrary{math}\\usepackage[active,tightpage]{preview}\\PreviewEnvironment{tikzpicture}\\begin{document}%s\\end{document}" .Inner }}
+{{ $body := printf "\\documentclass{article}\n\\usepackage{amsmath}\n\\usepackage{tikz}\n\\usetikzlibrary{math}\n\\usepackage[active,tightpage]{preview}\n\\PreviewEnvironment{tikzpicture}\n\\begin{document}\n%s\n\\end{document}" .Inner }}
 {{ $opts := dict
     "method" "post"
     "body" $body
@@ -8,3 +8,4 @@
 {{ with resources.GetRemote $url $opts }}
 <img src="{{ .Permalink }}">
 {{ end }}
+
