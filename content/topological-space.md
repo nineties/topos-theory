@@ -68,7 +68,7 @@ $$ F(U) \simeq \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap 
 と書くことができる。より一般には任意の開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、全ての共通部分で一致する切断の族 $\\{s\_{\lambda}\\}$ とそれらを貼り合わせた $s\in F(U)$ が一対一に対応すると言う事である。この定義では切断 $s\in F(U)$ を明示的に使わないので、後に位相空間以外にも一般化する事が出来る。
 
 {{% definition title="位相空間上の層(イコライザ利用)" %}}
-位相空間 $X$ 上の層 $F$ が以下の条件を満たすときこれを **層(sheaf)** という。
+位相空間 $X$ 上の前層 $F$ が以下の条件を満たすときこれを **層(sheaf)** という。
 
 $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$について
 $$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overset{p}{\underset{q}{\rightrightarrows}}\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})\\right)$$
