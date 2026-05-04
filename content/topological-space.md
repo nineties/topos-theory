@@ -131,6 +131,13 @@ $\square$
 $$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
 {{% /definition %}}
 
+この定義の状況を図示すると以下の様になる。 $J$ が余完備であるというのは任意の $U\_{\alpha},U\_{\beta}\in J$ に対して $U\_{\alpha}\cap U\_{\beta} \in J$ ということで、充満であるというのは開集合の間の包含関係を漏らさず $J$ に持ってきているということである。そして
+$$\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_{\lambda}$$
+であるので、上記の定義は位相空間 $X$ 上での領域の貼り合わせと、対応する数学的対象 $\\{F(U\_{\lambda})\\}$ の貼り合わせが整合的であるという事を言っており、直感的にも理解しやすい定義となっている。
+
+{{< figure src="../images/sheaf-using-continuous-functor.png" width="60%" >}}
+
+
 {{% details 同値性の証明 %}}
 位相空間上の層の切断を用いた定義を①、連続性を用いた定義を③とする。
 
@@ -209,12 +216,6 @@ F(V) &
 
 $\square$
 {{% /details %}}
-
-この定義の状況を図示すると以下の様になる。 $J$ が余完備であるというのは任意の $U\_{\alpha},U\_{\beta}\in J$ に対して $U\_{\alpha}\cap U\_{\beta} \in J$ ということで、充満であるというのは開集合の間の包含関係を漏らさず $J$ に持ってきているということである。そして
-$$\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda} = \bigcup\_{U\_{\lambda}\in J}U\_{\lambda}$$
-であるので、上記の定義は位相空間 $X$ 上での領域の貼り合わせと、対応する数学的対象 $\\{F(U\_{\lambda})\\}$ の貼り合わせが整合的であるという事を言っており、直感的にも理解しやすい定義となっている。
-
-{{< figure src="../images/sheaf-using-continuous-functor.png" width="60%" >}}
 
 ### 束の断面の層
 位相空間 $E, B$ に対して連続写像 $\pi: E\rightarrow B$ を$B$ 上の **束(bundle)** という。
