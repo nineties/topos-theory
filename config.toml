@@ -6,6 +6,7 @@ theme = "hugo-book"
 publishDir = "docs"
 defaultContentLanguage = "ja"
 enableGitInfo = true
+timeout = "180s"
 
 [params]
 BookTheme = 'light'
