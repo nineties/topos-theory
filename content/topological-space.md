@@ -239,10 +239,33 @@ $ \pi(s(x)) = x $
 $U$ 上の断面は $U$ 上で定義された連続関数 $y=g(x)$ で $g(0)\neq 0$ を満たすもの事である。
 
 {{% definition title="束の断面のなす層" %}}
-束 $\pi: E\rightarrow B$ が与えられた時、開集合 $U\subseteq \mathcal{O}_B$ に $U$ 上の断面の集合 $\Gamma_{\pi}(U)$ を対応させ、
-$V\subseteq U$ に制限写像 $\rho^U_V: \Gamma_{\pi}(U)\rightarrow\Gamma_{\pi}(V)$ を対応させる対応関係は関手
+束 $\pi: E\rightarrow B$ が与えられた時、開集合 $U\subseteq \mathcal{O}\_B$ に $U$ 上の断面の集合 $\Gamma\_{\pi}(U)$ を対応させ、
+$V\subseteq U$ に制限写像 $\rho^U\_V: \Gamma\_{\pi}(U)\rightarrow\Gamma\_{\pi}(V)$ を対応させる対応関係は関手
 
-$$ \Gamma_{\pi}: \mathcal{O}^{\mathrm{op}}_B \rightarrow \mathbf{Set} $$
+$$ \Gamma\_{\pi}: \mathcal{O}^{\mathrm{op}}\_B \rightarrow \mathbf{Set} $$
 
 になり、これは$B$ 上の層である。
 {{% /definition %}}
+
+{{% details 証明 %}}
+制限写像の性質から関手であることは明らかなので、層である事を示す。
+
+$B$ の任意の開集合 $U$ とその開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面) $s,t\in\Gamma\_{\pi}(U)$ について、
+全ての $\lambda\in \Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとする。
+
+断面の定義より $s,t$ は連続写像 $U\rightarrow E$である。ここで任意の $x\in U$ について、 $x\in U\_{\lambda}$ となる $\lambda$ が存在し、この時
+$$ s(x) = s|\_{U\_{\lambda}}(x) = t|\_{U\_{\lambda}}(x) = t(x)$$
+となる。よって全ての $x\in U$ で値が等しいので $s=t$ である。
+
+
+続いて、$B$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面)の族 $s\_{\lambda}\in \Gamma\_{\pi}(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。
+
+この時、写像 $s:U\rightarrow E$ を$x\in U$ に対して $x\in U\_{\lambda}$ となる $\lambda$ を用いて $s(x) = s\_{\lambda}(x)$ と定める。
+重なる部分で $s\_{\lambda}$ の値は等しいので、これはwell-definedである。
+また、各点 $x\in U$ の十分小さな近傍では $s$ はいずれかの $s\_{\lambda}$ と一致し、 $s\_{\lambda}$ は連続写像であるから、 $s$ も連続写像である。
+そして、各点 $x\in U$ である $\lambda$ について
+$$ \pi(s(x)) = \pi(s\_{\lambda}(x)) = x \quad (x \in U\_{\lambda})$$
+となるので $\pi\circ s$ は包含写像 $U\rightarrow B$となる。したがって $s\in\Gamma\_{\pi}(U)$ である。
+
+$\square$
+{{% /details %}}
