@@ -217,15 +217,13 @@ F(V) &
 $\square$
 {{% /details %}}
 
-### 束の断面の層
-位相空間 $E, B$ に対して連続写像 $\pi: E\rightarrow B$ を$B$ 上の **束(bundle)** という。
-この時 $E$ を **全空間(total space)**、 $B$ を **底空間(base space)** という。
-
+### 位相空間上の層の例: 束の断面のなす層
 
 {{% definition title="位相空間上の束の断面の層" %}}
 位相空間 $E, B$ に対して連続写像 $\pi: E\rightarrow B$ を$B$ 上の **束(bundle)** という。
+この時 $E$ を **全空間(total space)**、 $B$ を **底空間(base space)** という。
 
-位相空間 $B$ の任意の開集合 $U$ と、切断 $\pi: E\rightarrow B$ に対して、 $\pi\circ s: U\rightarrow B$ が包含写像となるような $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
+底空間 $B$ の任意の開集合 $U$ と、束 $\pi: E\rightarrow B$ に対して、 $\pi\circ s: U\rightarrow B$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
 
-束 $p$ に対して、$U$ 上の断面全てを集めた集合を $ \Gamma\_{\pi}U$ とすると $\Gamma\_{\pi}$ は関手 $\mathcal{O}\_{X}^{\mathrm{op}}\rightarrow\mathbf{Set}$ になっており、これは $X$ 上の層である。
+束 $\pi$ に対して、$U$ 上の断面全てを集めた集合を $ \Gamma\_{\pi}U$ とすると $\Gamma\_{\pi}$ は関手 $\mathcal{O}\_{X}^{\mathrm{op}}\rightarrow\mathbf{Set}$ になっており、これは $X$ 上の層である。
 {{% /definition %}}
