@@ -217,13 +217,32 @@ F(V) &
 $\square$
 {{% /details %}}
 
-### 位相空間上の層の例: 束の断面のなす層
+### 束の断面のなす層
 
-{{% definition title="位相空間上の束の断面の層" %}}
+{{% definition title="束の断面" %}}
 位相空間 $E, B$ に対して連続写像 $\pi: E\rightarrow B$ を$B$ 上の **束(bundle)** という。
 この時 $E$ を **全空間(total space)**、 $B$ を **底空間(base space)** という。
 
 底空間 $B$ の任意の開集合 $U$ と、束 $\pi: E\rightarrow B$ に対して、 $\pi\circ s: U\rightarrow B$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
+{{% /definition %}}
 
-束 $\pi$ に対して、$U$ 上の断面全てを集めた集合を $ \Gamma\_{\pi}U$ とすると $\Gamma\_{\pi}$ は関手 $\mathcal{O}\_{X}^{\mathrm{op}}\rightarrow\mathbf{Set}$ になっており、これは $X$ 上の層である。
+例えば全空間を$xy$平面($\mathbb{R}^2$), 底空間を$x$軸($\mathbb{R}$)として、束 $\pi(x, y) = x$ について考える。
+$\pi$ に対する開集合 $U\subseteq\mathbb{R}$上の 断面 $s$ とはどのようなものであるかというと、
+$ s(x) = (f(x), g(x)) $
+なる連続関数であって、
+$ \pi(s(x)) = x $
+を満たすものであるから $f(x)=x$ であれば良くて、 $s(x) = (x, g(x))$ と表される。
+すなわち、この場合の $U$ 上の断面とは $U$ 上で定義された連続関数 $y=g(x)$ のことである。
+
+
+同様に全空間を $xy$ 平面から **原点を除いた** 空間とし、同じく $\pi$ を束とすると
+$U$ 上の断面は $U$ 上で定義された連続関数 $y=g(x)$ で $g(0)\neq 0$ を満たすもの事である。
+
+{{% definition title="束の断面のなす層" %}}
+束 $\pi: E\rightarrow B$ が与えられた時、開集合 $U\subseteq \mathcal{O}_B$ に $U$ 上の断面の集合 $\Gamma_{\pi}(U)$ を対応させ、
+$V\subseteq U$ に制限写像 $\rho^U_V: \Gamma_{\pi}(U)\rightarrow\Gamma_{\pi}(V)$ を対応させる対応関係は関手
+
+$$ \Gamma_{\pi}: \mathcal{O}^{\mathrm{op}}_B \rightarrow \mathbf{Set} $$
+
+になり、これは$B$ 上の層である。
 {{% /definition %}}
