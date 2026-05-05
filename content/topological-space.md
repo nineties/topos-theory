@@ -219,40 +219,45 @@ F(V) &
 $\square$
 {{% /details %}}
 
-### 束の断面のなす層
+## エタールバンドル
 
-{{% definition title="束の断面" %}}
-位相空間 $E, B$ に対して連続写像 $\pi: E\rightarrow B$ を$B$ 上の **束(bundle)** という。
-この時 $E$ を **全空間(total space)**、 $B$ を **底空間(base space)** という。
+### バンドルの断面の層
 
-底空間 $B$ の任意の開集合 $U$ と、束 $\pi: E\rightarrow B$ に対して、 $\pi\circ s: U\rightarrow B$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
+{{% definition title="バンドルの断面" %}}
+位相空間 $E, X$ に対して連続写像 $\pi: E\rightarrow X$ を$X$ 上の **束,バンドル(bundle)** という。
+この時 $E$ を **全空間(total space)**、 $X$ を **底空間(base space)** という。
+
+底空間 $X$ の任意の開集合 $U$ と、バンドル $\pi: E\rightarrow X$ に対して、 $\pi\circ s: U\rightarrow X$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
 {{% /definition %}}
 
-例えば全空間を$xy$平面($\mathbb{R}^2$), 底空間を$x$軸($\mathbb{R}$)として、束 $\pi(x, y) = x$ について考える。
+例えば全空間を$xy$平面($\mathbb{R}^2$), 底空間を$x$軸($\mathbb{R}$)として、バンドル $\pi(x, y) = x$ について考える。
 $\pi$ に対する開集合 $U\subseteq\mathbb{R}$上の 断面 $s$ とはどのようなものであるかというと、
 $ s(x) = (f(x), g(x)) $
 なる連続関数であって、
 $ \pi(s(x)) = x $
 を満たすものであるから $f(x)=x$ であれば良くて、 $s(x) = (x, g(x))$ と表される。
 すなわち、この場合の $U$ 上の断面とは $U$ 上で定義された連続関数 $y=g(x)$ のことである。
+連続関数の集合は層となる。
 
-
-同様に全空間を $xy$ 平面から **原点を除いた** 空間とし、同じく $\pi$ を束とすると
+同様に全空間を $xy$ 平面から原点を除いた空間とし、同じく $\pi$ をバンドルとすると
 $U$ 上の断面は $U$ 上で定義された連続関数 $y=g(x)$ で $g(0)\neq 0$ を満たすもの事である。
+$g(0)\neq 0$ を満たす為、これらの断面をつなぎ合わせてより大きな断面を作る操作が矛盾なくできることがわかる。
 
-{{% definition title="束の断面のなす層" %}}
-束 $\pi: E\rightarrow B$ が与えられた時、開集合 $U\subseteq \mathcal{O}\_B$ に $U$ 上の断面の集合 $\Gamma\_{\pi}(U)$ を対応させ、
+このようにバンドルの断面の集合は自動的に層となる。
+
+{{% definition title="バンドルの断面の層" %}}
+バンドル $\pi: E\rightarrow X$ が与えられた時、開集合 $U\subseteq \mathcal{O}\_X$ に $U$ 上の断面の集合 $\Gamma\_{\pi}(U)$ を対応させ、
 $V\subseteq U$ に制限写像 $\rho^U\_V: \Gamma\_{\pi}(U)\rightarrow\Gamma\_{\pi}(V)$ を対応させる対応関係は関手
 
-$$ \Gamma\_{\pi}: \mathcal{O}^{\mathrm{op}}\_B \rightarrow \mathbf{Set} $$
+$$ \Gamma\_{\pi}: \mathcal{O}^{\mathrm{op}}\_X \rightarrow \mathbf{Set} $$
 
-になり、これは$B$ 上の層である。
+になり、これは$X$ 上の層である。
 {{% /definition %}}
 
 {{% details 証明 %}}
 制限写像の性質から関手であることは明らかなので、層である事を示す。
 
-$B$ の任意の開集合 $U$ とその開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面) $s,t\in\Gamma\_{\pi}(U)$ について、
+$X$ の任意の開集合 $U$ とその開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面) $s,t\in\Gamma\_{\pi}(U)$ について、
 全ての $\lambda\in \Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとする。
 
 断面の定義より $s,t$ は連続写像 $U\rightarrow E$である。ここで任意の $x\in U$ について、 $x\in U\_{\lambda}$ となる $\lambda$ が存在し、この時
@@ -260,14 +265,78 @@ $$ s(x) = s|\_{U\_{\lambda}}(x) = t|\_{U\_{\lambda}}(x) = t(x)$$
 となる。よって全ての $x\in U$ で値が等しいので $s=t$ である。
 
 
-続いて、$B$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面)の族 $s\_{\lambda}\in \Gamma\_{\pi}(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。
+続いて、$X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面)の族 $s\_{\lambda}\in \Gamma\_{\pi}(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。
 
 この時、写像 $s:U\rightarrow E$ を$x\in U$ に対して $x\in U\_{\lambda}$ となる $\lambda$ を用いて $s(x) = s\_{\lambda}(x)$ と定める。
 重なる部分で $s\_{\lambda}$ の値は等しいので、これはwell-definedである。
 また、各点 $x\in U$ の十分小さな近傍では $s$ はいずれかの $s\_{\lambda}$ と一致し、 $s\_{\lambda}$ は連続写像であるから、 $s$ も連続写像である。
 そして、各点 $x\in U$ である $\lambda$ について
 $$ \pi(s(x)) = \pi(s\_{\lambda}(x)) = x \quad (x \in U\_{\lambda})$$
-となるので $\pi\circ s$ は包含写像 $U\rightarrow B$となる。したがって $s\in\Gamma\_{\pi}(U)$ である。
+となるので $\pi\circ s$ は包含写像 $U\rightarrow X$となる。したがって $s\in\Gamma\_{\pi}(U)$ である。
 
 $\square$
 {{% /details %}}
+
+### 前層の芽のバンドル
+
+バンドル$\pi:E\rightarrow X$ の断面の層は、各切断 $s\in\Gamma\_{\pi}(U)$ が具体的な連続写像 $s:U\rightarrow E$ であり、非常に扱いやすい。
+一方で、一般的な位相空間 $X$ 上の前層 $F$ はもっと抽象的なものであり直接は扱いにくいが、 $F$ の情報を元にして **エタールバンドル(étale bundle)** というバンドルを構成する事ができ、同様の議論が可能になる。
+
+前層 $F$ の切断をある点 $x$ における局所的な振る舞いで分類するという事を考える。この同値類を $F$ の $x$ における **芽(germ)** といい、
+芽の集合を **茎(stalk)** という。すなわち、前層 $F$ の $x$ 上の茎とは、 $F$ の $x$ における局所的な情報を集めた集合である。
+
+{{% definition title="前層の芽と茎" %}}
+位相空間 $X$ 上の前層 $F:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ の点 $x\in X$ 上の二つの切断、すなわち、
+$$s\in F(U), t\in F(V)\quad (x\in U,x\in V,U\in\mathcal{O}\_X,V\in\mathcal{O}\_X)$$
+が $x$ の近傍で一致する時、すなわち、ある開集合 $W\subseteq U\cap V$ が存在して $s|\_W=t|\_W$ となるとき、
+$s$ と $t$ は **$x$で同じ芽を持つ** といい $s\sim\_x t$ と書く。
+
+$s\sim\_x t$ は同値関係であり、この関係による同値類を **$F$の$x$上の芽(germ)** という。
+切断 $s$ を代表元とする芽を $\mathrm{germ}\_x(s)$ や $s\_x$ と書く。
+
+また、$x$上の $F$ の芽すべての集合
+
+$$ F\_x = \\{ s\_x \mid U\in\mathcal{O}\_X, s\in F(U), x\in U\\} $$
+
+を **$F$の$x$上の茎(stalk)** という。
+{{% /definition %}}
+
+茎 $F\_x$ には $F$ の $x$ における局所的な情報が詰まっているので、これを $x\in X$ に渡って集める事で $F$ 全体の情報をもつ位相空間を構成する事ができる。
+
+{{% definition title="前層の芽のバンドル" %}}
+位相空間 $X$ 上の前層 $F$ の茎 $F\_x\ (x\in X)$ の直和
+$$ \Lambda\_F = \coprod\_{x\in X}F\_x = \\{(x, r) \mid x\in X, r\in F\_x \\} $$
+に、開集合 $U\in\mathcal{O}\_X$ と切断 $s\in F(U)$ から定まる集合 $ s(U) = \\{ (x, s\_x) \mid x\in U \\}$ の族
+$$ \\{ s(U) \mid U\in\mathcal{O}\_X, s\in F(U) \\} $$
+を開基とする位相を入れた位相空間について、
+$\Lambda\_F$ から $X$ への射影
+
+$$ \pi: \Lambda\_F\ni(x, r)\mapsto x\in X $$
+
+は連続写像となる。これを 前層$F$ の**芽のバンドル(bundle of germs)** という。
+{{% /definition %}}
+
+{{% details 連続性の証明 %}}
+任意の開集合 $U\in\mathcal{O}\_X$ に対して $\pi^{-1}(U)$ が $\Lambda\_F$ の開集合である事を示せば良い。
+
+任意の $(x, r)\in\pi^{-1}(U)$ に対して、 $r$ は $x$ 上の芽であるからある $x$ の近傍 $V$ と切断 $s\in F(V)$ が存在して
+$r=s\_x$ であるが、芽の定義よりこの $V$ は $V\subseteq U$ となるように選ぶ事ができる。この時 $(x, r)\in s(V)$ であるから
+$$ \pi^{-1}(U)\subseteq \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
+となる。
+
+逆に $ (x,r)\in \bigcup\_{V\subseteq U, s\in F(V)} s(V) $ であるとすると、ある開集合 $V\subseteq U$ と切断 $s\in F(V)$ が存在して
+$(x, r)\in s(V)$ であるが、この時 $x\in V\subseteq U$ であるので $x\in U$、すなわち $\pi(x, r)=x\in U$ であるから $(x, r)\in\pi^{-1}(U)$ である。
+すなわち
+$$ \pi^{-1}(U)\supseteq \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
+
+したがって
+$$ \pi^{-1}(U) = \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
+であり、これは $\Lambda\_F$ の開基の元の合併であるから開集合である。 $\square$
+{{% /details %}}
+
+### エタールバンドル
+
+さて、 芽のバンドル $\Lambda\_F$ が $F$ 全体の情報をもつ位相空間である、という事を述べたが具体的にどのような性質を持つのか調べていく。
+
+{{% definition title="エタール空間" %}}
+{{% /definition %}}
