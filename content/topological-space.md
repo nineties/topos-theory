@@ -395,3 +395,28 @@ $$ \Lambda\_F = \\{(x, r) \mid x\in X, r\in\\{0, 1\\}\\} $$
 $\Lambda\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ で $0$ 、 $V$ で $1$ を取るような断面が存在することができ、こちらの空間では断面同士を矛盾なく貼り合わせる事ができる。
 
 {{< figure src="../images/etale-bundle-of-constant-presheaf.png" width="30%" >}}
+
+## 層とエタールバンドルの関係
+
+### $\Lambda$ と $\Gamma$ の随伴関係
+
+前節でバンドル $\pi:E\rightarrow X$ から $\Gamma\_{\pi}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
+前層 $F: \mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ から、バンドル$\pi:\Lambda\_F\rightarrow X$ を作る操作について述べたが、実はこれらは随伴関係にある。 
+
+具体的には、 位相空間と連続写像のなす圏を $\mathbf{Top}$ と書き、位相空間 $X$ 上の前層の圏を $\mathrm{PSh}(X)$ と書くと、随伴関係
+
+$$\xymatrix{
+\mathrm{PSh}(X) \ar@/^4pt/[r]^{\Lambda}\_{}=\"x\" & \mathbf{Top}/X \ar@/^4pt/[l]^{\Gamma}\_{}=\"y\"
+\ar@{}|{\perp} \"x\";\"y\"
+}$$
+
+が成り立つ。ここで $\mathbf{Top}/X$ はスライス圏である。本節ではこれを示す。
+
+{{% definition title="スライスカテゴリ" %}}
+圏 $\mathcal{C}$ とその対象 $a$ について、$\mathcal{C}$ の射 $x\rightarrow a$ を対象とし、
+以下が果敢となる射 $f:y\rightarrow x$ を、 $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
+$$\xymatrix{
+x \ar[rd] &   & y \ar[ll]\_{f} \ar[ld] \\\\
+  & a &   \\\\
+}$$
+{{% /definition %}}
