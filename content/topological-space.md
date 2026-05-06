@@ -338,5 +338,41 @@ $$ \pi^{-1}(U) = \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
 
 さて、 芽のバンドル $\Lambda\_F$ が $F$ 全体の情報をもつ位相空間である、という事を述べたが具体的にどのような性質を持つのか調べていく。
 
-{{% definition title="エタール空間" %}}
+{{% definition title="エタールバンドル" %}}
+バンドル $\pi: E\rightarrow X$ が **エタール(étale)** もしくは **エタールバンドル(étale bundle)** であるとは、
+これが **局所同相写像(local homeomorphism)** すなわち、
+任意の点 $x\in E$ に対してある近傍 $V$ が存在して
+$$ \pi|\_{V}: V\rightarrow \pi(V) $$
+が同相写像となることである。
 {{% /definition %}}
+
+局所同相だが同相ではないエタールバンドルの例は
+$$ \pi: \mathbb{R}\ni \theta \mapsto (\cos\theta,\sin\theta) \in S^1 $$
+などである。写像全体としては、例えば $\theta=0,2\pi$ が同じ点に潰れるので同相ではないが、局所的に見れば線分と円弧であって同相である。
+
+ここで、次の事が言える。すなわち、 $\Lambda\_F$ は単に位相空間であるだけでなく、$X$ と局所同相なのである。
+これにより抽象的な前層 $F$ から具体的な幾何学的考察を行いやすい空間を構成することができた。
+
+{{% proposition %}}
+前層 $F$ の芽のバンドル $\pi:\Lambda\_F\rightarrow X$ はエタールである。
+{{% /proposition %}}
+{{% details 証明 %}}
+$\Lambda\_F$ の任意の開基の元 $s(U)$ について $\pi|\_{s(U)}: s(U)\rightarrow U$ が同相写像であることを示せば十分である。
+ここで $\pi(s(U))=U$ である事は容易に分かる。
+
+($\pi|\_{s(U)}$ の全単射性)
+任意の $x\in U$ に対して、 $(x, s\_x) \in s(U)$ であって $\pi|\_{s(U)}(x, s\_x) = x$ であるから、 $\pi|\_{s(U)}$ は全射。
+そして $\pi|\_{s(U)}(x, s\_x) = \pi|\_{s(U)}(y, s\_y)$ であるとすると、$\pi$ の定義から $x=y$ であるので $\pi|\_{s(U)}$ は単射。
+
+($\pi|\_{s(U)}$ の連続性)
+$\pi$ が連続写像であるので、その制限である $\pi|\_{s(U)}$ も連続。
+
+($\left(\pi|\_{s(U)}\right)^{-1}$ の連続性)
+任意の開集合 $W\subseteq s(U)$ について
+$\left(\left(\pi|\_{s(U)}\right)^{-1}\right)^{-1}(W) = \pi|\_{s(U)}(W)$
+が開集合である事を示せば良い。ここで $s(U)$ の定義からある $X$ の開集合 $V\subseteq U$ が存在して $W=s(V)$ と表される事が分かるので
+$$\pi|\_{s(U)}(W) = \pi|\_{s(U)}(s(V)) = \pi(s(V)) = V$$
+である。よって$\left(\left(\pi|\_{s(U)}\right)^{-1}\right)^{-1}(W)$ は $X$ の開集合なので $\left(\pi|\_{s(U)}\right)^{-1}$ は連続。
+
+$\square$
+{{% /details %}}
