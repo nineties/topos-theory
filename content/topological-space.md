@@ -413,10 +413,44 @@ $$\xymatrix{
 が成り立つ。ここで $\mathbf{Top}/X$ はスライス圏である。本節ではこれを示す。
 
 {{% definition title="スライスカテゴリ" %}}
-圏 $\mathcal{C}$ とその対象 $a$ について、$\mathcal{C}$ の射 $x\rightarrow a$ を対象とし、
-以下が果敢となる射 $f:y\rightarrow x$ を、 $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
+圏 $\mathcal{C}$ とその対象 $a$ について、$\mathcal{C}$ の $a$ に向かう射 $x\rightarrow a$ を対象とし、
+以下が可換となる射 $f:x\rightarrow y$ を、 $x\rightarrow a$ から $y\rightarrow a$ への射とする圏を **スライス圏(slice category)** といい $\mathcal{C}/a$ と書く。
 $$\xymatrix{
-x \ar[rd] &   & y \ar[ll]\_{f} \ar[ld] \\\\
+x \ar[rd] \ar[rr]^{f} &   & y\ar[ld] \\\\
   & a &   \\\\
 }$$
 {{% /definition %}}
+
+まずは $\Gamma$ 及び $\Lambda$ が関手である事を示す。対象の対応はすでに述べたとおりであるので射の対応を定める必要がある。
+
+#### $\Gamma$ の関手性
+
+まず、以下の図式で示した $\mathbf{Top}/X$ の射 $f$ に対する射 $\Gamma\_f: \Gamma\_p\rightarrow\Gamma\_q$ について考える。
+
+$$\xymatrix{
+(A\xrightarrow{p}X) \ar[r] \ar[d]\_{f} & \Gamma\_p \ar[d]^{\Gamma\_f} \\\\
+(B\xrightarrow{q}X) \ar[r]             & \Gamma\_q
+}$$
+
+$\Gamma\_p,\Gamma\_q$ は関手 $\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ であるから、$\Gamma\_f$ は自然変換であって、その $U\in\mathcal{O}\_X^{\mathrm{op}}$ 成分を定めれば良い。ここで $s\in\Gamma\_p(U)$ は $s:U\rightarrow A$ なる連続写像であるから、これと連続写像$f:A\rightarrow B$ を合成して $f\circ s: U\rightarrow B$ なる連続写像を得ることができる。そこで
+
+$$ \Gamma\_f(U): \Gamma\_p(U)\ni s \longmapsto f\circ s \in\Gamma\_q(U)$$
+
+と定めると、任意の $X$ 開集合 $V\subseteq U$ に対して以下は可換であるから $\Gamma\_f$ は自然変換である。
+$$\xymatrix{
+\Gamma\_p(U) \ar[r]^{f\circ -} \ar[d]\_{\rho^U\_V} & \Gamma\_q(U) \ar[d]^{\rho^U\_V} \\\\
+\Gamma\_p(V) \ar[r]^{f\circ -} & \Gamma\_q(V)
+}$$
+
+$\Gamma\_f$ の定義から、これが関手となることは明らか。
+
+{{< figure src="../images/sections-functor.png" width="50%" >}}
+
+#### $\Lambda$ の関手性
+
+続いて、以下の図式で示した $\mathrm{PSh}(X)$ の射 $\theta$ に対する射 $\Lambda\_{\theta}:\Lambda\_F\rightarrow\Lambda\_G$ について考える。
+
+$$\xymatrix{
+F \ar[r] \ar[d]\_{\theta} & \Lambda\_F \ar[d]^{\Lambda\_{\theta}} \\\\
+G \ar[r]                  & \Lambda\_G
+}$$
