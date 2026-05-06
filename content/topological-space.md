@@ -391,7 +391,7 @@ $\square$
 
 $$ \Lambda\_F = \\{(x, r) \mid x\in X, r\in\\{0, 1\\}\\} $$
 
-となるので、 $\Lambda\_F$ は各点で $0$ か $1$ を取るような空間であり、値を忘れる射影 $\pi:\Lambda\_F\rightarrow X$ がエタールバンドルである。
+となるので、 $\Lambda\_F$ は各点で $0$ や $1$ を取るような空間であり、値を忘れる射影 $\pi:\Lambda\_F\rightarrow X$ がエタールバンドルである。
 $\Lambda\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ で $0$ 、 $V$ で $1$ を取るような断面が存在することができ、こちらの空間では断面同士を矛盾なく貼り合わせる事ができる。
 
 {{< figure src="../images/etale-bundle-of-constant-presheaf.png" width="30%" >}}
