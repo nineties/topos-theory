@@ -378,12 +378,12 @@ $E\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ 
 
 {{< figure src="../images/etale-bundle-of-constant-presheaf.png" width="30%" >}}
 
-## 層とエタールバンドルの関係
+## 層とエタールバンドル
 
-### $\Lambda$ と $\Gamma$ の随伴関係
+### $\Lambda$ と $\Gamma$ の随伴
 
-前節でバンドル $\pi:E\rightarrow X$ から $\Gamma\_{\pi}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
-前層 $F: \mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ から、バンドル$\Lambda\_F:E\_F\rightarrow X$ を作る操作について述べたが、実はこれらは随伴関係にある。 
+前節でバンドル $\pi:E\rightarrow X$ から層 $\Gamma\_{\pi}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
+前層 $F: \mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ から、エタールバンドル$\Lambda\_F:E\_F\rightarrow X$ を作る操作について述べたが、実はこれらは随伴関係にある。
 
 具体的には、 位相空間と連続写像のなす圏を $\mathbf{Top}$ と書き、位相空間 $X$ 上の前層の圏を $\mathrm{PSh}(X)$ と書くと、随伴関係
 
