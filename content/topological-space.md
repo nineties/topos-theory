@@ -305,32 +305,20 @@ $$ F\_x = \\{ s\_x \mid U\in\mathcal{O}\_X, s\in F(U), x\in U\\} $$
 
 {{% definition title="前層の芽のバンドル" %}}
 位相空間 $X$ 上の前層 $F$ の茎 $F\_x\ (x\in X)$ の直和
-$$ E\_F = \coprod\_{x\in X}F\_x = \\{(x, r) \mid x\in X, r\in F\_x \\} $$
-に、開集合 $U\in\mathcal{O}\_X$ と切断 $s\in F(U)$ から定まる集合 $ s(U) = \\{ (x, s\_x) \mid x\in U \\}$ の族
+$$ E\_F = \coprod\_{x\in X}F\_x = \\{s\_x \mid x\in X, s\_x\in F\_x \\} $$
+に、開集合 $U\in\mathcal{O}\_X$ と切断 $s\in F(U)$ から定まる集合 $ s(U) = \\{ s\_x \mid x\in U \\}$ の族
 $ \\{ s(U) \mid U\in\mathcal{O}\_X, s\in F(U) \\} $ を開基とする位相を入れた位相空間について、
 $E\_F$ から $X$ への射影
 
-$$ \Lambda\_F: E\_F\ni(x, r)\mapsto x\in X $$
+$$ \Lambda\_F: E\_F\ni s\_x\mapsto x\in X $$
 
 は連続写像となる。これを 前層$F$ の**芽のバンドル(bundle of germs)** という。
 {{% /definition %}}
 
 {{% details 連続性の証明 %}}
-任意の開集合 $U\in\mathcal{O}\_X$ に対して $\Lambda\_F^{-1}(U)$ が $E\_F$ の開集合である事を示せば良い。
-
-任意の $(x, r)\in\Lambda\_F^{-1}(U)$ に対して、 $r$ は $x$ 上の芽であるからある $x$ の近傍 $V$ と切断 $s\in F(V)$ が存在して
-$r=s\_x$ であるが、芽の定義よりこの $V$ は $V\subseteq U$ となるように選ぶ事ができる。この時 $(x, r)\in s(V)$ であるから
-$$ \Lambda\_F^{-1}(U)\subseteq \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
-となる。
-
-逆に $ (x,r)\in \bigcup\_{V\subseteq U, s\in F(V)} s(V) $ であるとすると、ある開集合 $V\subseteq U$ と切断 $s\in F(V)$ が存在して
-$(x, r)\in s(V)$ であるが、この時 $x\in V\subseteq U$ であるので $x\in U$、すなわち $\Lambda\_F(x, r)=x\in U$ であるから $(x, r)\in\Lambda\_F^{-1}(U)$ である。
-すなわち
-$$ \Lambda\_F^{-1}(U)\supseteq \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
-
-したがって
+任意の開集合 $U\in\mathcal{O}\_X$ に対して $\Lambda\_F^{-1}(U)$ は $x\in U$ の上の芽全ての集合であるので
 $$ \Lambda\_F^{-1}(U) = \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
-であり、これは $E\_F$ の開基の元の合併であるから開集合である。 $\square$
+と表せる。これは $E\_F$ の開基の元の合併であるから開集合であるので $\Lambda\_F$ は連続。 $\square$
 {{% /details %}}
 
 ### エタールバンドル
@@ -356,17 +344,13 @@ $$ \pi: \mathbb{R}\ni \theta \mapsto (\cos\theta,\sin\theta) \in S^1 $$
 前層 $F$ の芽のバンドル $\Lambda\_F:E\_F\rightarrow X$ はエタールである。
 {{% /proposition %}}
 {{% details 証明 %}}
-$E\_F$ の任意の開基の元 $s(U)$ について $\Lambda\_F|\_{s(U)}: s(U)\rightarrow U$ が同相写像であることを示せば十分である。
-ここで $\Lambda\_F(s(U))=U$ である事は容易に分かる。
+$E\_F$ の任意の開基の元 $s(U)$ について
+$\Lambda\_F|\_{s(U)}: s(U)\rightarrow U\quad(\because\Lambda\_F(s(U))=U)$ が同相写像であることを示せば十分である。
 
-($\Lambda\_F|\_{s(U)}$ の全単射性)
-任意の $x\in U$ に対して、 $(x, s\_x) \in s(U)$ であって $\Lambda\_F|\_{s(U)}(x, s\_x) = x$ であるから、 $\Lambda\_F|\_{s(U)}$ は全射。
-そして $\Lambda\_F|\_{s(U)}(x, s\_x) = \Lambda\_F|\_{s(U)}(y, s\_y)$ であるとすると、$\Lambda\_F$ の定義から $x=y$ であるので $\Lambda\_F|\_{s(U)}$ は単射。
+$s$ が固定されているので、 $\Lambda\_F|\_{s(U)}(s\_x)=x$ の全単射性は明らかである。
+また、$\Lambda\_F$ が連続写像であるので、その制限である $\Lambda\_F|\_{s(U)}$ も連続である。
+よって、$\left(\Lambda\_F|\_{s(U)}\right)^{-1}$ の連続性を示せば良い。
 
-($\Lambda\_F|\_{s(U)}$ の連続性)
-$\Lambda\_F$ が連続写像であるので、その制限である $\Lambda\_F|\_{s(U)}$ も連続。
-
-($\left(\Lambda\_F|\_{s(U)}\right)^{-1}$ の連続性)
 任意の開集合 $W\subseteq s(U)$ について
 $\left(\left(\Lambda\_F|\_{s(U)}\right)^{-1}\right)^{-1}(W) = \Lambda\_F|\_{s(U)}(W)$
 が開集合である事を示せば良い。ここで $s(U)$ の定義からある $X$ の開集合 $V\subseteq U$ が存在して $W=s(V)$ と表される事が分かるので
@@ -387,7 +371,7 @@ $\square$
 
 この時、任意の $x\in X$ 上の芽は $0$ か $1$ であり、 $x$ 上の茎は $\\{0, 1\\}$ である。そして
 
-$$ E\_F = \\{(x, r) \mid x\in X, r\in\\{0, 1\\}\\} $$
+$$ E\_F = \\{s\_x \mid x\in X, r\in\\{0, 1\\}\\} $$
 
 となるので、 $E\_F$ は各点で $0$ や $1$ を取るような空間であり、値を忘れる射影 $\Lambda\_F:E\_F\rightarrow X$ がエタールバンドルである。
 $E\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ で $0$ 、 $V$ で $1$ を取るような断面が存在することができ、こちらの空間では断面同士を矛盾なく貼り合わせる事ができる。
@@ -441,10 +425,10 @@ $$\xymatrix{
 \Gamma\_p(V) \ar[r]^{f\circ -} & \Gamma\_q(V)
 }$$
 
-{{% definition title="関手 $\Lambda$" %}}
+{{% definition title="関手 $\Lambda$" label="def.lambda-functor" %}}
 $\mathrm{PSh}(X)$ の対象 $F$ に $F$ の芽のバンドル $(\Lambda\_F:E\_F\rightarrow X)\in\mathbf{Top}/X$ を対応させ、
-自然変換 $\theta: F\rightarrow G$ に対して、以下の写像 (これは $x$ の近傍 $U$ 及び切断 $s\in F(U)$ の選び方によらずwell-defined)
-$$ \Lambda\_{\theta}: E\_F \ni (x, s\_x) \mapsto (x, \theta\_U(s)\_x) \in E\_G $$
+自然変換 $\theta: F\rightarrow G$ に、以下の写像 (これは $x$ の近傍 $U$ 及び切断 $s\in F(U)$ の選び方によらずwell-definedである)
+$$ \Lambda\_{\theta}: E\_F \ni s\_x \mapsto \theta\_U(s)\_x \in E\_G $$
 を対応させる対応は関手 $\Lambda:\mathrm{PSh}(X)\rightarrow\mathbf{Top}/X$ となる。
 {{% /definition %}}
 {{% details 証明 %}}
@@ -459,4 +443,127 @@ $$ \theta\_U(s)|\_W = \theta\_V(t)|\_W$$
 である。よって $\theta\_U(s)\_x = \theta\_V(t)\_x$ であるので、写像 $\Lambda\_{\theta}$ は $U$ 及び $s$ の選び方に寄らずwell-definedである。
 $\Lambda\_F = \Lambda\_G\circ \Lambda\_{\theta}$ である事は簡単に分かるので $\Lambda\_{\theta}$ は
 射 $\Lambda\_F\rightarrow\Lambda\_G$ である。 $\Lambda$ の関手性は明らか。 $\square$
+{{% /details %}}
+
+さて、 $\Lambda$ と $\Gamma$ が随伴である事を示す為に、まず以下の命題を示す。
+
+{{% proposition %}}
+位相空間 $X$ 上の前層 $F$, $X$ の開集合 $U$、切断 $s\in F(U)$ について、写像
+$$\sigma\_s: U\ni x \mapsto s\_x\in E\_F$$
+は連続である。
+{{% /proposition %}}
+
+{{% details 証明 %}}
+$E\_F$ の任意の開基の元 $t(V)$ に対して $\sigma\_s^{-1}(t(V))$ が $X$ の開集合であることを示せばよい。
+$$ x \in \sigma\_s^{-1}(t(V)) \Leftrightarrow x\in U\cap V, s\_x = t\_x \Leftrightarrow \text{$x$ の近傍 $W\subseteq U\cap V$が存在して} s|\_W = t|\_W$$
+であるから
+$$ \sigma\_s^{-1}(t(V)) = \bigcup\_{W\subseteq U\cap V, s|\_W = t|\_W} W$$
+と表せる。これは $X$ の開集合の合併であるから開集合である。 $\square$
+{{% /details %}}
+
+{{% theorem title="$\Lambda$ と $\Gamma$ の随伴関係" %}}
+$$ \Lambda \dashv \Gamma$$
+{{% /theorem %}}
+
+{{% details 証明 %}}
+関手 $F\in\mathrm{PSh}(X)$ とバンドル $(p:A\rightarrow X)\in\mathbf{Top}/X$ に対して、自然な同型
+$$(\mathbf{Top}/X)(\Lambda\_F, p) \simeq (\mathrm{PSh}(X))(F, \Gamma\_p)$$
+が存在する事を示せば良い。
+
+**(左から右への写像)**
+
+左辺から右辺への対応を
+$$ \phi: (f:\Lambda\_F\rightarrow p) \mapsto \\{F(U)\ni s\mapsto f\circ\sigma\_s \in\Gamma\_p(U)\\}\_{U\in\mathcal{O}\_X}$$
+と定める。これが正しく写像である事を確認する。
+
+まず、 $f$ は以下が可換となる連続写像であったから、任意の $s\_x\in E\_F, s\in F(U)$ に対して $p\circ f(s\_x) = x$ である。
+$$\xymatrix{
+E\_F \ar[r]^{f} \ar[rd]\_{\Lambda\_F} & A \ar[d]^{p}\\\\
+                                      & X
+}$$
+この時 $\sigma\_s: U\rightarrow E\_F$ であったから $f\circ\sigma\_s: U\rightarrow A$ であって、任意の $x\in U$ に対して
+$$ p\circ (f\circ\sigma\_s)(x) = p\circ f(s\_x) = x $$
+となるので $p\circ(f\circ\sigma\_s): U\rightarrow X$ は包含写像。従って $f\circ\sigma\_s\in\Gamma\_p(U)$ である。
+
+続いて $\phi(f)$ が自然変換 $F\rightarrow\Gamma\_p$ となることを確認する。以下の可換図式において任意の $s\in F(U)$ に対して時計回りに辿ると
+$ (f\circ\sigma\_s)|\_V$ 反時計回りに辿ると $ f\circ\sigma\_{s|\_V} $
+$$\xymatrix{
+F(U) \ar[d]\_{\rho^U\_V} \ar[r]^{\phi(f)\_U} & \Gamma\_p(U) \ar[d]^{\rho^U\_V} \\\\
+F(V)                     \ar[r]^{\phi(f)\_V} & \Gamma\_p(V)
+}$$
+ここで $x \in V$ に対して $ (f\circ\sigma\_s)|\_V(x) = f(s\_x), \quad (f\circ\sigma\_{s|\_V})(x) = f((s|\_V)\_x) $
+であるが $s\_x = (s|\_V)\_x$ であるので これらは等しい。従って、上の図式は可換であり $\phi(f)$ は自然変換 $F\rightarrow\Gamma\_p$ である。
+以上より $\phi$ は正しく左辺から右辺への写像である。
+
+**(右から左への写像)**
+
+右辺から左辺への対応を $x$ の近傍 $U$、 切断 $s\in F(U)$ を用いて
+$$ \psi: (\theta:F\rightarrow\Gamma\_p)\mapsto (E\_F\ni s\_x \mapsto \theta\_U(s)(x) \in A)$$
+と定める。これが正しく写像である事を示す。
+
+まず {{< refer def.lambda-functor >}} の証明で述べた様に $\theta\_U(s)$ は $U$ と $s$ の選び方に寄らずwell-definedである。
+また、 $\theta\_U:F(U)\rightarrow \Gamma\_p(U)$ であるので $\theta\_U(s) \in\Gamma\_p(U)$ すなわち $\theta\_U(s)$ は $p$ の断面 $U\rightarrow A$
+であるので $\theta\_U(s)(x) \in A$ である。
+
+続いて写像 $h: E\_F\ni s\_x \mapsto \theta\_U(s)(x) \in A$ が連続写像である事を示す。その為には、 $E\_F$ の任意の開基の元 $s(U)$ に対して
+$ h|\_{s(U)}: s(U) \rightarrow A$ が連続である事を示せば十分である。ここで
+
+$$ h|\_{s(U)}(s\_x) = \theta\_U(s)(x) = \theta\_U(s)\circ \Lambda\_F|\_{s(U)}(s_x) $$
+
+であり、 $\Lambda\_F|\_{s(U)}$ は連続写像 $\Lambda\_F:E\_F\rightarrow X$ の制限であるので連続。また $\theta\_U(s)\in\Gamma\_p(U)$ なのでこれも連続。
+従って、これらの合成である $h|\_{s(U)}$ も連続である。
+
+**(全単射であること)**
+
+(以後、簡単に復元できる情報は省いた簡略的な表記を用いる。)
+続いて任意の $f:\Lambda\_F\rightarrow p$ と $s\_x\in E_f$ に対して
+$$
+\psi\circ\phi(f) = \psi\left(\\{s\mapsto f\circ\sigma\_s\\}\_U\right)
+= (s\_x \mapsto f\circ\sigma\_s(x))
+= (s\_x \mapsto f(s\_x))
+= f
+$$
+であり、任意の $\theta:F\rightarrow\Gamma\_p$ に対して
+$$
+\begin{align*}
+\phi\circ\psi(\theta) &= \phi\left(s\_x\mapsto\theta\_U(s)(x)\right) \\\\
+                      &= \\{t\mapsto ((s\_x \mapsto \theta\_U(s)(x))\circ\sigma\_t)\\}\_V \\\\
+                      &= \\{t\mapsto (x\mapsto ((s\_x \mapsto \theta\_U(s)(x))\circ\sigma\_t)(x))\\}\_V \\\\
+                      &= \\{t\mapsto (x\mapsto (s\_x \mapsto \theta\_U(s)(x))(t\_x))\\}\_V \\\\
+                      &= \\{t\mapsto (x\mapsto \theta\_V(t)(x)\\}\_V \\\\
+                      &= \\{t\mapsto \theta\_V(t)\\}\_V \\\\
+                      &= \\{\theta\_V\\}\_V \\\\
+                      &= \theta
+\end{align*}
+$$
+であるので $\phi, \psi$ は全単射である。
+ 
+**(自然性)**
+
+関手 $F,G\in\mathrm{PSh}(X)$ と自然変換 $\xi: G\rightarrow F$ 及び、
+バンドル $(p:A\rightarrow X), (q: B\rightarrow X) \in \mathbf{Top}/X$ 及び、射 $f:p\rightarrow q$ に対して、以下が可換である事を示せば良い。
+
+$$\xymatrix{
+(\mathbf{Top}/X)(\Lambda\_F, p) \ar[r]^{\phi} \ar[d]\_{(\mathbf{Top}/X)(\Lambda\_{\xi}, f)} & (\mathrm{PSh}(X))(F, \Gamma\_p) \ar[d]^{(\mathrm{PSh}(X))(\xi, \Gamma\_f)}\\\\
+(\mathbf{Top}/X)(\Lambda\_G, q) \ar[r]^{\phi} & (\mathrm{PSh}(X))(G, \Gamma\_q)
+}$$
+
+左上に $h:\Lambda\_F \rightarrow p$ を取り、時計回りに辿ると
+
+$$\Gamma\_{f}\circ\\{ s \mapsto h\circ\sigma\_s \\}\_U\circ\xi
+= \\{ s \mapsto f\circ h\circ\sigma\_{\xi\_U(s)} \\}\_U
+$$
+
+反時計回りに辿ると
+
+$$ \phi(f\circ h\circ\Lambda\_{\xi})
+= \\{s\mapsto f\circ h\circ\Lambda\_{\xi}\circ\sigma\_s\\}\_U
+$$
+
+という自然変換 $G\rightarrow\Gamma\_q$ を得る。ここで任意の$X$の開集合 $U$、切断 $t\in G(U)$、 $x\in U$ に対して
+$$ (s \mapsto f\circ h\circ\sigma\_{\xi\_U(s)})(t)(x) = f\circ h\circ\sigma\_{\xi\_U(t)}(x) = f\circ h\left(\xi\_U(t)\_x\right) $$
+$$ (s\mapsto f\circ h\circ\Lambda\_{\xi}\circ\sigma\_s)(t)(x) = f\circ h\circ\Lambda\_{\xi}(t\_x) = f\circ h\left(\xi\_U(t)\_x\right) $$
+であるから、先ほどの図式は可換。
+
+以上。 $\square$
 {{% /details %}}
