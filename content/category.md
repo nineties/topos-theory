@@ -415,7 +415,7 @@ b          \ar[r]_q & d          \\\\
 {{% /example %}}
 
 {{% example title="前層の圏" %}}
-関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい、 $\hat{\mathcal{C}}$ や $\mathrm{PSh}(\mathcal{C})$ と書く。
+関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい、 $\hat{\mathcal{C}}$ や $\mathbf{PSh}(\mathcal{C})$ と書く。
 {{% /example %}}
 
 ### 同型・圏同値

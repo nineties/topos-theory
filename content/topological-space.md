@@ -385,10 +385,10 @@ $E\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ 
 前節でバンドル $\pi:E\rightarrow X$ から層 $\Gamma\_{\pi}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
 前層 $F: \mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ から、エタールバンドル$\Lambda\_F:E\_F\rightarrow X$ を作る操作について述べたが、実はこれらは随伴関係にある。
 
-具体的には、 位相空間と連続写像のなす圏を $\mathbf{Top}$ と書き、位相空間 $X$ 上の前層の圏を $\mathrm{PSh}(X)$ と書くと、随伴関係
+具体的には、 位相空間と連続写像のなす圏を $\mathbf{Top}$ と書き、位相空間 $X$ 上の前層の圏を $\mathbf{PSh}(X)$ と書くと、随伴関係
 
 $$\xymatrix{
-\mathrm{PSh}(X) \ar@/^4pt/[r]^{\Lambda}\_{}=\"x\" & \mathbf{Top}/X \ar@/^4pt/[l]^{\Gamma}\_{}=\"y\"
+\mathbf{PSh}(X) \ar@/^4pt/[r]^{\Lambda}\_{}=\"x\" & \mathbf{Top}/X \ar@/^4pt/[l]^{\Gamma}\_{}=\"y\"
 \ar@{}|{\perp} \"x\";\"y\"
 }$$
 
@@ -406,12 +406,12 @@ x \ar[rd] \ar[rr]^{f} &   & y\ar[ld] \\\\
 まずは $\Gamma$ 及び $\Lambda$ が関手である事を示す。対象の対応はすでに述べたとおりであるので射の対応を定める必要がある。
 
 {{% definition title="関手 $\Gamma$ " %}}
-$\mathbf{Top}/X$ の対象 $p: A\rightarrow X$ に関手 $\Gamma\_p \in \mathrm{PSh}(X)$ を対応させ、
+$\mathbf{Top}/X$ の対象 $p: A\rightarrow X$ に関手 $\Gamma\_p \in \mathbf{PSh}(X)$ を対応させ、
 射$ f: (A\xrightarrow{p}X) \rightarrow (B\xrightarrow{q}X) $ に$U\in\mathcal{O}\_X^{\mathrm{op}}$ 成分が
 
 $$ \Gamma\_f(U): \Gamma\_p(U)\ni s \longmapsto f\circ s \in\Gamma\_q(U)$$
 
-で定まる自然変換 $\Gamma\_f: \Gamma\_p\rightarrow\Gamma\_q$ を対応させる対応は関手 $\Gamma:\mathbf{Top}/X\rightarrow\mathrm{PSh}(X)$ となる。
+で定まる自然変換 $\Gamma\_f: \Gamma\_p\rightarrow\Gamma\_q$ を対応させる対応は関手 $\Gamma:\mathbf{Top}/X\rightarrow\mathbf{PSh}(X)$ となる。
 {{% /definition %}}
 
 複雑に見えるが、以下の図のように非常にシンプルである。
@@ -426,10 +426,10 @@ $$\xymatrix{
 }$$
 
 {{% definition title="関手 $\Lambda$" label="def.lambda-functor" %}}
-$\mathrm{PSh}(X)$ の対象 $F$ に $F$ の芽のバンドル $(\Lambda\_F:E\_F\rightarrow X)\in\mathbf{Top}/X$ を対応させ、
+$\mathbf{PSh}(X)$ の対象 $F$ に $F$ の芽のバンドル $(\Lambda\_F:E\_F\rightarrow X)\in\mathbf{Top}/X$ を対応させ、
 自然変換 $\theta: F\rightarrow G$ に、以下の写像 (これは $x$ の近傍 $U$ 及び切断 $s\in F(U)$ の選び方によらずwell-definedである)
 $$ \Lambda\_{\theta}: E\_F \ni s\_x \mapsto \theta\_U(s)\_x \in E\_G $$
-を対応させる対応は関手 $\Lambda:\mathrm{PSh}(X)\rightarrow\mathbf{Top}/X$ となる。
+を対応させる対応は関手 $\Lambda:\mathbf{PSh}(X)\rightarrow\mathbf{Top}/X$ となる。
 {{% /definition %}}
 {{% details 証明 %}}
 $x$ の近傍 $U,V$ と切断 $s\in F(U), t\in F(V)$ に対して $s\_x = t\_x$ であるとする。この時、 $x$ の近傍 $W\subseteq U\cap V$ が存在して $s|\_W = t|\_W$ である。
@@ -466,8 +466,8 @@ $$ \Lambda \dashv \Gamma$$
 {{% /theorem %}}
 
 {{% details 証明 %}}
-関手 $F\in\mathrm{PSh}(X)$ とバンドル $(p:A\rightarrow X)\in\mathbf{Top}/X$ に対して、自然な同型
-$$(\mathbf{Top}/X)(\Lambda\_F, p) \simeq (\mathrm{PSh}(X))(F, \Gamma\_p)$$
+関手 $F\in\mathbf{PSh}(X)$ とバンドル $(p:A\rightarrow X)\in\mathbf{Top}/X$ に対して、自然な同型
+$$(\mathbf{Top}/X)(\Lambda\_F, p) \simeq (\mathbf{PSh}(X))(F, \Gamma\_p)$$
 が存在する事を示せば良い。
 
 **(左から右への写像)**
@@ -540,12 +540,12 @@ $$
  
 **(自然性)**
 
-関手 $F,G\in\mathrm{PSh}(X)$ と自然変換 $\xi: G\rightarrow F$ 及び、
+関手 $F,G\in\mathbf{PSh}(X)$ と自然変換 $\xi: G\rightarrow F$ 及び、
 バンドル $(p:A\rightarrow X), (q: B\rightarrow X) \in \mathbf{Top}/X$ 及び、射 $f:p\rightarrow q$ に対して、以下が可換である事を示せば良い。
 
 $$\xymatrix{
-(\mathbf{Top}/X)(\Lambda\_F, p) \ar[r]^{\phi} \ar[d]\_{(\mathbf{Top}/X)(\Lambda\_{\xi}, f)} & (\mathrm{PSh}(X))(F, \Gamma\_p) \ar[d]^{(\mathrm{PSh}(X))(\xi, \Gamma\_f)}\\\\
-(\mathbf{Top}/X)(\Lambda\_G, q) \ar[r]^{\phi} & (\mathrm{PSh}(X))(G, \Gamma\_q)
+(\mathbf{Top}/X)(\Lambda\_F, p) \ar[r]^{\phi} \ar[d]\_{(\mathbf{Top}/X)(\Lambda\_{\xi}, f)} & (\mathbf{PSh}(X))(F, \Gamma\_p) \ar[d]^{(\mathbf{PSh}(X))(\xi, \Gamma\_f)}\\\\
+(\mathbf{Top}/X)(\Lambda\_G, q) \ar[r]^{\phi} & (\mathbf{PSh}(X))(G, \Gamma\_q)
 }$$
 
 左上に $h:\Lambda\_F \rightarrow p$ を取り、時計回りに辿ると
