@@ -1,4 +1,5 @@
-{{ $url := "https://kroki.io/tikz/svg/" }}
+{{ $base := or (os.Getenv "HUGO_KROKI_URL") "https://kroki.io" }}
+{{ $url := printf "%s/tikz/svg/" $base }}
 {{ $body := printf "\\documentclass{article}\n\\usepackage{amsmath}\n\\usepackage{tikz}\n\\usetikzlibrary{math}\n\\usepackage[active,tightpage]{preview}\n\\PreviewEnvironment{tikzpicture}\n\\begin{document}\n%s\n\\end{document}" .Inner }}
 {{ $opts := dict
     "method" "post"

@@ -31,8 +31,14 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    services:
+      kroki:
+        image: yuzutech/kroki:0.30.1
+        ports:
+          - 8000:8000
     env:
       HUGO_VERSION: 0.116.0
+      HUGO_KROKI_URL: http://localhost:8000
     steps:
       - name: Install Python packages
         run: |
