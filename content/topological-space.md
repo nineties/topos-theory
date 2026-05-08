@@ -61,11 +61,11 @@ $F(U)$ の元を **切断(section)** と呼ぶ。$s \in F(U)$ の時 $\rho^U_V(s
 
 簡単なケースとして 開被覆$U=U_1\cup U_2$ の場合を考えると、 $F$ が層であるならば重なる部分で一致する $s_1,s_2$ の組とそれを貼り合わせた $s\in F(U)$ が一対一に対応している。すなわち、
 
-$$F(U) \simeq \\{(s_1, s_2) \in F(U_1)\times F(U_2) \mid \rho^{U_1}\_{U_1\cap U_2}(s_1) = \rho^{U_2}\_{U_1\cap U_2}(s_2)\\}$$
+$$F(U) \cong \\{(s_1, s_2) \in F(U_1)\times F(U_2) \mid \rho^{U_1}\_{U_1\cap U_2}(s_1) = \rho^{U_2}\_{U_1\cap U_2}(s_2)\\}$$
 
 であり、 $s|\_{U_1}=s_1$ 及び $s|\_{U_2}=s_2$ を満たす射影 $\rho^U\_{U_1}: F(U)\rightarrow F(U_1)$ 及び $\rho^U\_{U_2}: F(U)\rightarrow F(U_2)$ が備わっているということなので、これは $\mathbf{Set}$ においてはイコライザを用いて
 
-$$ F(U) \simeq \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap U_2}\right)$$
+$$ F(U) \cong \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap U_2}\right)$$
 
 と書くことができる。より一般には任意の開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、全ての共通部分で一致する切断の族 $\\{s\_{\lambda}\\}$ とそれらを貼り合わせた $s\in F(U)$ が一対一に対応すると言う事である。この定義では切断 $s\in F(U)$ を明示的に使わないので、後に位相空間以外にも一般化する事が出来る。
 
@@ -73,7 +73,7 @@ $$ F(U) \simeq \mathrm{eq}\left(\rho^{U_1}\_{U_1\cap U_2}, \rho^{U_2}\_{U_1\cap 
 位相空間 $X$ 上の前層 $F$ が以下の条件を満たすときこれを **層(sheaf)** という。
 
 $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$について
-$$ F(U) \simeq \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overset{p}{\underset{q}{\rightrightarrows}}\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})\\right)$$
+$$ F(U) \cong \mathrm{eq}\left(\prod\_{\lambda\in\Lambda}F(U\_{\lambda})\overset{p}{\underset{q}{\rightrightarrows}}\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})\\right)$$
 が成り立つ。但し $p$ は $\rho^{U\_{\alpha}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの、 $q$ は$\rho^{U\_{\beta}}\_{U\_{\alpha}\cap U\_{\beta}}$ を束ねたもの。
 {{% /definition %}}
 
@@ -100,7 +100,7 @@ A \ar[r]^-f & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[
 
 すると各 $x\in A$ に対して $f\_{\alpha}(x)|\_{U\_{\alpha}\cap U\_{\beta}}=f\_{\beta}(x)|\_{U\_{\alpha}\cap U\_{\beta}} \quad (\alpha,\beta\in\Lambda)$ であるので、定義①の条件2よりある $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = f\_{\lambda}(x)\quad (\lambda\in\Lambda)$ となる。また条件１よりこれを満たす $s$ は一意である。
 
-従って任意の $A,f$ に対して、以下の図式が可換となるような $u: A\ni x \mapsto s\in F(U)$ が一意に存在するので、これはイコライザの定義を満たし $F(U)\simeq\mathrm{eq}(p, q)$ である。
+従って任意の $A,f$ に対して、以下の図式が可換となるような $u: A\ni x \mapsto s\in F(U)$ が一意に存在するので、これはイコライザの定義を満たし $F(U)\cong\mathrm{eq}(p, q)$ である。
 $$\xymatrix{
 A \ar@{.>}[d]^-{\exists! u} \ar[rd]^{f} & & \\\\
 F(U) \ar[r]^-e & \displaystyle\prod\_{\lambda\in\Lambda}F(U\_{\lambda}) \ar@<+2pt>[r]^-{p} \ar@<-2pt>[r]\_-{q} &\displaystyle\prod\_{\alpha,\beta\in\Lambda}F(U\_{\alpha}\cap U\_{\beta})
@@ -130,7 +130,7 @@ $\square$
 
 {{% definition title="位相空間上の層(連続性利用)" %}}
 位相空間 $X$ 上の前層 $F$ が **層(sheaf)** であるとは、 $\mathcal{O}_X^{\mathrm{op}}$ の **余完備充満部分圏(cocomplete full subcategory)** $J$ に対して以下が成立することである。
-$$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
+$$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \cong \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
 {{% /definition %}}
 
 この定義の状況を図示すると以下の様になる。 $J$ が余完備であるというのは任意の $U\_{\alpha},U\_{\beta}\in J$ に対して $U\_{\alpha}\cap U\_{\beta} \in J$ ということで、充満であるというのは開集合の間の包含関係を漏らさず $J$ に持ってきているということである。そして
@@ -172,7 +172,7 @@ A \ar[d]\_{f\_{U\_{\alpha}}} \ar[rd]^{f\_{U\_{\alpha}\cap U\_{\beta}}} & & A \ar
 F(U\_{\alpha}) \ar[r] & F(U\_{\alpha}\cap U\_{\beta}) & F(U\_{\beta}) \ar[r] & F(U\_{\alpha}\cap U\_{\beta})
 }$$
 
-従って定義①の条件2より $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = s\_{\lambda}$ となる。この対応 $x\mapsto s$ を $u$ とすると以下の図式が可換となり、条件１よりこのような $u$ は唯一つに定まる。従って $F(U) \simeq \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$ である。
+従って定義①の条件2より $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = s\_{\lambda}$ となる。この対応 $x\mapsto s$ を $u$ とすると以下の図式が可換となり、条件１よりこのような $u$ は唯一つに定まる。従って $F(U) \cong \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$ である。
 
 $$\xymatrix{
 A \ar[d] \ar[rd] \ar@{.>}[r]^{\exists! u} & F(U) \ar[ld] \ar[d]\\\\
@@ -183,7 +183,7 @@ F(U\_{\alpha}) \ar[r] & F(U\_{\beta})
 
 位相空間 $X$ 上の前層 $F$ が定義③を満たすとする。任意の開集合 $U\in\mathcal{O}^{\mathrm{op}}\_X$ と開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$ に対して、いずれかの $U\_{\lambda}$ に含まれる開集合全てを対象とする $\mathcal{O}^{\mathrm{op}}\_X$ の充満部分圏を $J$ とする。混同を避ける為 $J$ の対象を $V\_{\lambda}$ と表記する。$J$ が余完備である事は簡単にわかり
 
-$$ F\left(\varprojlim\_{V\_{\lambda}\in J}V\_{\lambda}\right) \simeq \varprojlim\_{V\_{\lambda}\in J}F(V\_{\lambda})$$
+$$ F\left(\varprojlim\_{V\_{\lambda}\in J}V\_{\lambda}\right) \cong \varprojlim\_{V\_{\lambda}\in J}F(V\_{\lambda})$$
 
 である。ここで、切断 $s,t\in F(U)$ について、全ての $\lambda\in\Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとすると、 $F$ が前層であることにより任意の $V\in J$ に対して $s|\_V = t|\_V$ である。任意の $J$ の対象 $V\_{\alpha}\supseteq V\_{\beta}$ に対して、 以下は可換であるからこれは $1$ を頂点とする錐。
 
@@ -467,7 +467,7 @@ $$ \Lambda \dashv \Gamma$$
 
 {{% details 証明 %}}
 関手 $F\in\mathbf{PSh}(X)$ とバンドル $(p:A\rightarrow X)\in\mathbf{Top}/X$ に対して、自然な同型
-$$(\mathbf{Top}/X)(\Lambda\_F, p) \simeq (\mathbf{PSh}(X))(F, \Gamma\_p)$$
+$$(\mathbf{Top}/X)(\Lambda\_F, p) \cong (\mathbf{PSh}(X))(F, \Gamma\_p)$$
 が存在する事を示せば良い。
 
 **(左から右への写像)**
@@ -567,3 +567,15 @@ $$ (s\mapsto f\circ h\circ\Lambda\_{\xi}\circ\sigma\_s)(t)(x) = f\circ h\circ\La
 
 以上。 $\square$
 {{% /details %}}
+
+### 層とエタールバンドル
+
+{{% theorem %}}
+$X$ を位相空間とする。
+
+- $\mathbf{Top}/X$ の対象をエタールバンドルのみに制限した充満部分圏 $\mathbf{Etale}(X)$
+- $\mathbf{PSh}(X)$ の対象を層のみに制限した充満部分圏 $\mathbf{Sh}(X)$ 
+
+について圏同値
+{{% /theorem %}}
+
