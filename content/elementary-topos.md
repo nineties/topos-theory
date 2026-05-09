@@ -36,7 +36,8 @@ $n$ がモノである事よりこの図式が成立するような $f:x\rightar
 {{% definition title="部分対象" %}}
 コドメインが $a\in\mathcal{C}$ であるモノ射 $m: x\hookrightarrow a, n: y\hookrightarrow a$ の同値関係 $m\sim n$ を
 $$ m\leq n\text{かつ} n\leq m$$
-によって定める。このとき、コドメインが $a$ であるモノ射全体を同値関係 $\sim$ で割った同値類を $a$ の **部分対象(subobject)** という。以下, 代表元が $m$ の同値類を $[m]$ と書く。
+によって定める。このとき、コドメインが $a$ であるモノ射全体を同値関係 $\sim$ で割った同値類を $a$ の **部分対象(subobject)** という。
+誤解の恐れがない場合、$m$ を代表元とする同値類を $m$ を表記することもある。
 
 対象 $a$ の部分対象全体は $\leq$ によって 半順序(partially ordered) となる。任意の対象 $a\in\mathcal{C}$ の部分対象全体の類が集合となる圏は **冪化可能(well-powered)** であるという。
 {{% /definition %}}
@@ -201,9 +202,9 @@ z \ar[rd]^{\alpha^{-1}\circ v} \ar@{.>}@/^1pc/[rrd] \ar@/^-1pc/[rdd]\_{f}& & \\\
 }$$
 すると $m$ がモノであることにより、この図式が可換となる $z$ から $x$ への射は $\alpha^{-1}\circ v$ ただ一つとなるので、 $u\xhookleftarrow{m}x\rightarrow 1$ は $u\xrightarrow{\chi_n}\Omega\xleftarrow{\mathrm{true}}1$の引き戻しとなっている。すなわち $\chi_n$ は $m$ の分類射になっていて、分類射の一意性から $\chi_m = \chi_n$。
 
-続いて $\phi:[m:x\xhookrightarrow{}u]\mapsto\chi_x$ が全単射である事を示す。まず、$\mathcal{C}$ は有限完備であるから任意の射 $\chi:u\rightarrow \Omega$ に対して引き戻し $\chi^\*\mathrm{true}$ が存在する。
+続いて $\phi:(m:x\xhookrightarrow{}u)\mapsto\chi_x$ が全単射である事を示す。まず、$\mathcal{C}$ は有限完備であるから任意の射 $\chi:u\rightarrow \Omega$ に対して引き戻し $\chi^\*\mathrm{true}$ が存在する。
 $\mathrm{true}:1\rightarrow\Omega$ はモノであるので、 $\chi^\*\mathrm{true}$ もモノであるから、これを代表元とする部分対象が存在する。よって $\phi$ は全射。
-また、 $\phi([m:x\xhookrightarrow{}u])=\phi([n:y\xhookrightarrow{}u]) = \chi$ であるとすると、引き戻しは同型を除いて一意であることから、同型射 $\alpha:x\rightarrow y$ が存在して $m=n\circ \alpha$ となること。すなわち $m\sim n$ であることが示される。よって $[m:x\xhookrightarrow{}u]=[n:y\xhookrightarrow{}u]$ であるから $\phi$ は単射。 $\square$
+また、 $\phi(m:x\xhookrightarrow{}u)=\phi(n:y\xhookrightarrow{}u) = \chi$ であるとすると、引き戻しは同型を除いて一意であることから、同型射 $\alpha:x\rightarrow y$ が存在して $m=n\circ \alpha$ となること。すなわち $m\sim n$ であることが示される。よって $\phi$ は単射。 $\square$
 {{% /details %}}
 
 ### 部分対象関手
@@ -230,15 +231,15 @@ x \ar[r]\_f & y
 {{% theorem label="prop.representability-of-sub" %}}
 圏 $\mathcal{C}$ が有限完備かつ局所小である時、部分対象関手 $\mathrm{Sub}:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ が表現可能であることと、部分対象分類子 $\mathrm{true}:1\rightarrow\Omega$ が存在することは同値。
 
-また、$\mathrm{Sub}$ を表現する対象が $\Omega$ であり、普遍要素が $[\mathrm{true}:1 \rightarrow\Omega]\in\mathrm{Sub}(\Omega)$ である。
+また、$\mathrm{Sub}$ を表現する対象が $\Omega$ であり、普遍要素が $(\mathrm{true}:1 \rightarrow\Omega)\in\mathrm{Sub}(\Omega)$ である。
 {{% /theorem %}}
 
 {{% details 証明 %}}
 $\mathrm{Sub}$ が表現可能関手である事と、 $\mathrm{Sub}$に関して普遍的構成が存在することは同値であるから、部分対象分類子が存在する条件と普遍的構成が存在する条件が一致する事を示せば良い。
 
-$\mathrm{Sub}$ の普遍的構成とは {{< refer prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $[\mathrm{true}:t\hookrightarrow\Omega]\in\mathrm{Sub}(\Omega)$ が存在して、
-任意の対象 $u\in\mathcal{C}$ と任意の要素 $[m:x\hookrightarrow u] \in \mathrm{Sub}(u)$ について
-$$ [m] = \mathrm{Sub}(\chi)([\mathrm{true}]) $$
+$\mathrm{Sub}$ の普遍的構成とは {{< refer prop.universal-construction >}} より、ある対象 $\Omega\in\mathcal{C}$ とある要素 $(\mathrm{true}:t\hookrightarrow\Omega)\in\mathrm{Sub}(\Omega)$ が存在して、
+任意の対象 $u\in\mathcal{C}$ と任意の要素 $(m:x\hookrightarrow u) \in \mathrm{Sub}(u)$ について
+$$ m = \mathrm{Sub}(\chi)(\mathrm{true}) $$
 となるような $\chi:u\rightarrow\Omega$ が唯一つ存在するという事である。
 
 すなわち、$\mathrm{Sub}(\chi)$ とは $\chi$ に沿った引き戻しの事であったから、任意のモノ射 $m:x\xhookrightarrow{}u$ に対して、以下の図式が引き戻しとなるような $\chi$ が唯一つ存在する事が
@@ -302,7 +303,7 @@ y \ar[rd]^{\alpha} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha}& & \\\\
 | 有限積         | $\prod\_{i\in\mathcal{J}}A_i$                       | $\pi_i:\prod\_{i\in\mathcal{J}}A_i\rightarrow A_i$ |
 | イコライザ     | $\mathrm{eq}(f,g) = \\{x \in X \mid f(x)=g(x)\\}$   | $i: \mathrm{eq}(f,g)\hookrightarrow X$ |
 | 指数対象       | $Y^X = \\{f: X\rightarrow Y\\}$                     | $\epsilon: X\times Y^X\rightarrow Y$ |
-| 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$        | $[\mathrm{true}: 1\rightarrow\Omega]$ |
+| 部分対象分類子 | $\Omega=\\{\mathrm{true}, \mathrm{false}\\}$        | $\mathrm{true}: 1\rightarrow\Omega$ |
 
 そして、(驚くべき事ではあるが)初等トポスは有限余完備でもある。
 この定理の証明は非常に困難な道のりを辿るので、本章末尾に記載することにするが、ここではその雰囲気のみ紹介する。もし、初等トポス $\mathcal{C}$ が有限余完備であるならば、 {{< refer prop.ccc-is-distributive >}} より分配圏となるので、例えば
