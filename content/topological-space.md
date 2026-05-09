@@ -224,32 +224,32 @@ $\square$
 ### バンドルの断面の層
 
 {{% definition title="バンドルの断面" %}}
-位相空間 $E, X$ に対して連続写像 $\pi: E\rightarrow X$ を$X$ 上の **束,バンドル(bundle)** という。
+位相空間 $E, X$ に対して連続写像 $p: E\rightarrow X$ を$X$ 上の **束,バンドル(bundle)** という。
 この時 $E$ を **全空間(total space)**、 $X$ を **底空間(base space)** という。
 
-底空間 $X$ の任意の開集合 $U$ と、バンドル $\pi: E\rightarrow X$ に対して、 $\pi\circ s: U\rightarrow X$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の **断面(cross section)** という。
+底空間 $X$ の任意の開集合 $U$ と、バンドル $p: E\rightarrow X$ に対して、 $p\circ s: U\rightarrow X$ が包含写像となるような 連続写像 $s: U\rightarrow E$ を $U$ 上の $p$ の **断面(cross section)** という。
 {{% /definition %}}
 
-例えば全空間を$xy$平面($\mathbb{R}^2$), 底空間を$x$軸($\mathbb{R}$)として、バンドル $\pi(x, y) = x$ について考える。(位相はユークリッド空間としての通常の位相とする。)
+例えば全空間を$xy$平面($\mathbb{R}^2$), 底空間を$x$軸($\mathbb{R}$)として、バンドル $p(x, y) = x$ について考える。(位相はユークリッド空間としての通常の位相とする。)
 
-$\pi$ に対する開集合 $U\subseteq\mathbb{R}$上の 断面 $s$ とはどのようなものであるかというと、
+$p$ に対する開集合 $U\subseteq\mathbb{R}$上の 断面 $s$ とはどのようなものであるかというと、
 $ s(x) = (f(x), g(x)) $
 なる連続関数であって、
-$ \pi(s(x)) = x $
+$ p(s(x)) = x $
 を満たすものであるから $f(x)=x$ であれば良くて、 $s(x) = (x, g(x))$ と表される。
 すなわち、この場合の $U$ 上の断面とは $U$ 上で定義された連続関数 $y=g(x)$ のことである。
 
-同様に全空間を $xy$ 平面から原点を除いた空間とし、同じく $\pi$ をバンドルとすると
+同様に全空間を $xy$ 平面から原点を除いた空間とし、同じく $p$ をバンドルとすると
 $U$ 上の断面は $U$ 上で定義された連続関数 $y=g(x)$ で $g(0)\neq 0$ を満たすもの事である。
 $g(0)\neq 0$ を満たす為、これらの断面をつなぎ合わせてより大きな断面を作る操作が矛盾なくできることがわかる。
 
 バンドルの断面の集合は自動的に層となる。上の二つの例でも $\mathbb{R}$ 上で定義された連続関数の集合や、 原点で $0$ にならない連続関数の集合がいずれも層の条件を満たす事が分かると思う。
 
 {{% definition title="バンドルの断面の層" label="def.sheaf-of-bundles" %}}
-バンドル $\pi: E\rightarrow X$ が与えられた時、開集合 $U\subseteq \mathcal{O}\_X$ に $U$ 上の断面の集合 $\Gamma\_{\pi}(U)$ を対応させ、
-$V\subseteq U$ に制限写像 $\rho^U\_V: \Gamma\_{\pi}(U)\rightarrow\Gamma\_{\pi}(V)$ を対応させる対応関係は関手
+バンドル $p: E\rightarrow X$ が与えられた時、開集合 $U\subseteq \mathcal{O}\_X$ に $U$ 上の断面の集合 $\Gamma\_{p}(U)$ を対応させ、
+$V\subseteq U$ に制限写像 $\rho^U\_V: \Gamma\_{p}(U)\rightarrow\Gamma\_{p}(V)$ を対応させる対応関係は関手
 
-$$ \Gamma\_{\pi}: \mathcal{O}^{\mathrm{op}}\_X \rightarrow \mathbf{Set} $$
+$$ \Gamma\_{p}: \mathcal{O}^{\mathrm{op}}\_X \rightarrow \mathbf{Set} $$
 
 になり、これは$X$ 上の層である。
 {{% /definition %}}
@@ -257,7 +257,7 @@ $$ \Gamma\_{\pi}: \mathcal{O}^{\mathrm{op}}\_X \rightarrow \mathbf{Set} $$
 {{% details 証明 %}}
 制限写像の性質から関手であることは明らかなので、層である事を示す。
 
-$X$ の任意の開集合 $U$ とその開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面) $s,t\in\Gamma\_{\pi}(U)$ について、
+$X$ の任意の開集合 $U$ とその開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面) $s,t\in\Gamma\_{p}(U)$ について、
 全ての $\lambda\in \Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるとする。
 
 断面の定義より $s,t$ は連続写像 $U\rightarrow E$である。ここで任意の $x\in U$ について、 $x\in U\_{\lambda}$ となる $\lambda$ が存在し、この時
@@ -265,21 +265,21 @@ $$ s(x) = s|\_{U\_{\lambda}}(x) = t|\_{U\_{\lambda}}(x) = t(x)$$
 となる。よって全ての $x\in U$ で値が等しいので $s=t$ である。
 
 
-続いて、$X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面)の族 $s\_{\lambda}\in \Gamma\_{\pi}(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。
+続いて、$X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断(断面)の族 $s\_{\lambda}\in \Gamma\_{p}(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda$ で $s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\beta}}$ であるとする。
 
 この時、写像 $s:U\rightarrow E$ を$x\in U$ に対して $x\in U\_{\lambda}$ となる $\lambda$ を用いて $s(x) = s\_{\lambda}(x)$ と定める。
 重なる部分で $s\_{\lambda}$ の値は等しいので、これはwell-definedである。
 また、各点 $x\in U$ の十分小さな近傍では $s$ はいずれかの $s\_{\lambda}$ と一致し、 $s\_{\lambda}$ は連続写像であるから、 $s$ も連続写像である。
 そして、各点 $x\in U$ である $\lambda$ について
-$$ \pi(s(x)) = \pi(s\_{\lambda}(x)) = x \quad (x \in U\_{\lambda})$$
-となるので $\pi\circ s$ は包含写像 $U\rightarrow X$となる。したがって $s\in\Gamma\_{\pi}(U)$ である。
+$$ p(s(x)) = p(s\_{\lambda}(x)) = x \quad (x \in U\_{\lambda})$$
+となるので $p\circ s$ は包含写像 $U\rightarrow X$となる。したがって $s\in\Gamma\_{p}(U)$ である。
 
 $\square$
 {{% /details %}}
 
 ### 前層の芽のバンドル
 
-バンドル$\pi:E\rightarrow X$ の断面の層は、各切断 $s\in\Gamma\_{\pi}(U)$ が具体的な連続写像 $s:U\rightarrow E$ であり、非常に扱いやすい。
+バンドル$p:E\rightarrow X$ の断面の層は、各切断 $s\in\Gamma\_{p}(U)$ が具体的な連続写像 $s:U\rightarrow E$ であり、非常に扱いやすい。
 一方で、一般的な位相空間 $X$ 上の前層 $F$ はもっと抽象的なものであり直接は扱いにくいが、 $F$ の情報を元にして **エタールバンドル(étale bundle)** というバンドルを構成する事ができ、同様の議論が可能になる。
 
 前層 $F$ の切断をある点 $x$ における局所的な振る舞いで分類するという事を考える。この同値類を $F$ の $x$ における **芽(germ)** といい、
@@ -326,16 +326,16 @@ $$ \Lambda\_F^{-1}(U) = \bigcup\_{V\subseteq U, s\in F(V)} s(V) $$
 さて、 芽のバンドル $\Lambda\_F$ が $F$ 全体の情報をもつバンドルである、という事を述べたが具体的にどのような性質を持つのか調べていく。
 
 {{% definition title="エタールバンドル" %}}
-バンドル $\pi: E\rightarrow X$ が **エタール(étale)** もしくは **エタールバンドル(étale bundle)** であるとは、
+バンドル $p: E\rightarrow X$ が **エタール(étale)** もしくは **エタールバンドル(étale bundle)** であるとは、
 これが **局所同相写像(local homeomorphism)** すなわち、
 任意の点 $x\in E$ に対してある近傍 $V$ が存在して
-$$ \pi|\_{V}: V\rightarrow \pi(V) $$
+$$ p|\_{V}: V\rightarrow p(V) $$
 が同相写像となることである。
 {{% /definition %}}
 
 局所同相だが同相ではないエタールバンドルの例は
-$$ \pi: \mathbb{R}\ni \theta \mapsto (\cos\theta,\sin\theta) \in S^1 $$
-などである。写像全体としては、例えば $\theta=0,2\pi$ が同じ点に潰れるので同相ではないが、局所的に見れば線分と円弧であって同相である。
+$$ p: \mathbb{R}\ni \theta \mapsto (\cos\theta,\sin\theta) \in S^1 $$
+などである。写像全体としては、例えば $\theta=0,2p$ が同じ点に潰れるので同相ではないが、局所的に見れば線分と円弧であって同相である。
 
 ここで、次の事が言える。すなわち、 $E\_F$ は単に位相空間であるだけでなく、$X$ と局所同相なのである。
 これにより抽象的な前層 $F$ から具体的な幾何学的考察を行いやすい空間を構成することができた。
@@ -382,7 +382,7 @@ $E\_F$ では、互いに交わらない$X$ の開集合 $U,V$ に対して $U$ 
 
 ### $\Lambda$ と $\Gamma$ の随伴
 
-前節でバンドル $\pi:E\rightarrow X$ から層 $\Gamma\_{\pi}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
+前節でバンドル $p:E\rightarrow X$ から層 $\Gamma\_{p}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ を作る操作と、
 前層 $F: \mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ から、エタールバンドル$\Lambda\_F:E\_F\rightarrow X$ を作る操作について述べたが、実はこれらは随伴関係にある。
 
 具体的には、 位相空間と連続写像のなす圏を $\mathbf{Top}$ と書き、位相空間 $X$ 上の前層の圏を $\mathbf{PSh}(X)$ と書くと、随伴関係
