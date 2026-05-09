@@ -670,3 +670,26 @@ $$ \epsilon\_p(s(U)) = \\{s(x) | x\in U\\} = s(U)$$
 $$ \mathbf{Etale}(X) \simeq \mathbf{Sh}(X) $$
 である。 $\square$
 {{% /details %}}
+
+## 前層の層化
+
+任意の前層 $F$ から 層$\Gamma\_{\Lambda\_F}$ を得ることができるが、これを $F$ の **層化(associated sheaf)** と呼ぶ。 これは以下の意味で、 $F$ から作れる層の中で最も普遍的なものである。また、関手 $\Gamma\Lambda:\mathbf{PSh}(X)\rightarrow\mathbf{PSh}(X)$ を **層化関手(associated sheaf functor)** と呼ぶ。
+
+{{% proposition %}}
+$F$ を前層とする。 任意の層 $G$ と自然変換 $\theta: F\rightarrow G$ に対して、以下が可換となる自然変換 $\phi: \Gamma\_{\Lambda\_F}\rightarrow G$ が唯一つ存在する。
+
+$$\xymatrix{
+F    \ar[d]\_{\eta\_F} \ar[rd]^{\theta} & \\\\
+\Gamma\_{\Lambda\_F} \ar@{.>}[r]^{\exists!\phi} & G
+}$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$U\in\mathcal{O}\_X$ とする。
+$$\xymatrix{
+F(U)    \ar[d]\_{(\eta\_F)\_U} \ar[rd]^{\theta\_U} & \\\\
+\Gamma\_{\Lambda\_F}(U) \ar@{.>}[r]^{\exists!\phi\_U} & G(U)
+}$$
+
+TBD
+
+{{% /details %}}
