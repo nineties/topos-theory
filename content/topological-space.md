@@ -40,7 +40,7 @@ $F(U)$ の元を **切断(section)** と呼ぶ。$s \in F(U)$ の時 $\rho^U_V(s
 前層のうち、局所的な数学対象を貼り合わせて大域的な数学対象を矛盾なく構成できるものを層という。
 
 {{% definition title="位相空間上の層(切断利用)" %}}
-位相空間 $X$ 上の前層 $F$ で以下の条件を満たすものを **層(sheaf)** という。
+位相空間 $X$ 上の前層 $F$ で以下の条件(貼り合わせの公理)を満たすものを **層(sheaf)** という。
 
 1. $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断 $s,t\in F(U)$ について、全ての $\lambda\in \Lambda$ で $s|\_{U\_{\lambda}} = t|\_{U\_{\lambda}}$ であるならば $s = t$ である。
 
@@ -128,7 +128,7 @@ $\square$
 
 この定義は切断を用いた定義の素直な翻訳であるが、より抽象度の高い定義として関手の連続性を用いた以下のような定義も可能である。
 
-{{% definition title="位相空間上の層(連続性利用)" %}}
+{{% definition title="位相空間上の層(連続性利用)" label="def.sheaf-as-limit" %}}
 位相空間 $X$ 上の前層 $F$ が **層(sheaf)** であるとは、 $\mathcal{O}_X^{\mathrm{op}}$ の **余完備充満部分圏(cocomplete full subcategory)** $J$ に対して以下が成立することである。
 $$ F\left(\varprojlim\_{U\_{\lambda}\in J}U\_{\lambda}\right) \cong \varprojlim\_{U\_{\lambda}\in J}F(U\_{\lambda})$$
 {{% /definition %}}
@@ -300,6 +300,16 @@ $$ F\_x = \\{ s\_x \mid U\in\mathcal{O}\_X, s\in F(U), x\in U\\} $$
 
 を **$F$の$x$上の茎(stalk)** という。
 {{% /definition %}}
+
+層の貼り合わせの公理は、芽を用いて以下のように表現し直す事が出来る。
+
+{{% proposition label="prop.pasting-law-in-germs" %}}
+位相空間 $X$ 上の前層 $F$ が層である事と、以下を満たす事は同値。
+
+1. $X$ の任意の開集合 $U$、切断 $s,t\in F(U)$ について、全ての $x\in U$ で $s\_x = t\_x$ であるならば $s=t$ である。
+
+2. $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断の族 $s\_{\lambda}\in F(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda, x\in U\_{\alpha}\cap U\_{\beta}$ で $(s\_{\alpha})\_x = (s\_{\beta})\_x$ であるならば、ある切断 $s\in F(U)$ が存在し全ての $\lambda\in\Lambda, x\in U\_{\lambda}$ に対して $s\_x = (s\_{\lambda})\_x$
+{{% /proposition %}}
 
 茎 $F\_x$ には $F$ の $x$ における局所的な情報が詰まっているので、これを $x\in X$ に渡って集める事で $F$ 全体の情報をもつ位相空間およびバンドルを構成する事ができる。
 
@@ -604,7 +614,7 @@ $\Lambda,\Gamma$ により、位相空間 $X$ 上の前層の圏と、$X$ を底
 - 任意の層 $F$ について、あるエタールバンドル $p$ が存在して $F\cong \Gamma\_p$
 - 任意のエタールバンドル $p$ について、ある層 $F$ が存在して $p\cong \Lambda\_F$
 
-である。つまり、前層 $F$ が貼り合わせの条件を満たすということと、バンドル $p$ が局所同相であるということが同じ事を言っているという事がわかる。
+である。つまり、前層 $F$ が貼り合わせの公理を満たすということと、バンドル $p$ が局所同相であるということが同じ事を言っているという事がわかる。
 
 {{% theorem %}}
 $X$ を位相空間とする。
@@ -672,6 +682,7 @@ $$ \mathbf{Etale}(X) \simeq \mathbf{Sh}(X) $$
 {{% /details %}}
 
 ## 前層の層化
+### 層化関手
 
 任意の前層 $F$ から 層$\Gamma\_{\Lambda\_F}$ を得ることができるが、これを $F$ の **層化(associated sheaf)** と呼ぶ。 これは以下の意味で、 $F$ から作れる層の中で最も普遍的なものである。また、関手 $\Gamma\Lambda:\mathbf{PSh}(X)\rightarrow\mathbf{PSh}(X)$ を **層化関手(associated sheaf functor)** と呼ぶ。
 
@@ -684,12 +695,73 @@ F    \ar[d]\_{\eta\_F} \ar[rd]^{\theta} & \\\\
 }$$
 {{% /proposition %}}
 {{% details 証明 %}}
-$U\in\mathcal{O}\_X$ とする。
-$$\xymatrix{
-F(U)    \ar[d]\_{(\eta\_F)\_U} \ar[rd]^{\theta\_U} & \\\\
-\Gamma\_{\Lambda\_F}(U) \ar@{.>}[r]^{\exists!\phi\_U} & G(U)
-}$$
+自然変換 $\theta: F\rightarrow G$ より
+$\Gamma\_{\Lambda\_{\theta}}: \Gamma\_{\Lambda\_F} \rightarrow \Gamma\_{\Lambda\_G}$
+を得る。ここで $G$ は層であるから $\eta\_G: G\rightarrow\Gamma\_{\Lambda\_G}$ は同型射なので $\eta\_G^{-1}$ が存在し、
+$$\phi = \eta\_G^{-1}\circ\Gamma\_{\Lambda\_{\theta}}$$
+という射$\Gamma\_{\Lambda\_F}\rightarrow G$ が存在する。この時、任意の切断 $s\in F(U)$ について
 
-TBD
+$$
+(\phi\circ\eta\_F)\_U(s) = \phi\_U(\sigma\_s 
+                         = (\eta\_G^{-1}\circ\Gamma\_{\Lambda\_{\theta}})\_U(\sigma\_s)
+                         = (\eta\_G^{-1})\_U(\Lambda\_{\theta}\circ\sigma\_s)
+                         = (\eta\_G^{-1})\_U(x\mapsto \theta\_U(s)\_x)
+                         = \theta\_U(s)
+$$
+である。従って $\phi\circ\eta\_F = \theta$である。
 
+ここで $\phi:\Gamma\_{\Lambda\_F}\rightarrow G$ が $\phi\circ\eta\_F = \theta$ を満たすとする。
+$f\in\Gamma\_{\Lambda\_F}(U)$ とすると、これは $\Lambda\_F$ の断面 $f: U\rightarrow E\_F$ であるが、
+$\Lambda\_F:E\_F\rightarrow X$ は局所同相であるので、 $f$ も局所同相。すると $f(U)$ は開集合であるので、適当な開基の元の合併
+$$ f(U) = \bigcup\_{\lambda} s\_{\lambda}(U\_{\lambda})\quad (s\_{\lambda}\in F(U\_{\lambda})$$
+で表せる。この $f(U)$ の開被覆を十分細かくとれば、任意の $\lambda$ に対して $ p|\_{s\_{\lambda}(U\_{\lambda})}: s\_{\lambda}(U\_{\lambda}) \rightarrow U\_{\lambda}$ は同相写像であって $(p|\_{s\_{\lambda}(U\_{\lambda})})\circ f|\_{U\_{\lambda}}$ は恒等写像であるので
+$ f|\_{U\_{\lambda}} = (p|\_{s\_{\lambda}(U\_{\lambda})})^{-1} = \sigma\_{s\_{\lambda}} $
+である。
+
+ここで $(\phi\circ\eta\_F)\_{U\_{\lambda}} = \theta\_{U\_{\lambda}}$ に $s\_{\lambda}$ を代入すると
+$\phi\_{U\_{\lambda}}(\sigma\_{s\_{\lambda}}) = \theta\_{U\_{\lambda}}(s\_{\lambda})$
+であり、 $\phi$ は自然変換であるので
+$$\phi(f)|\_{U\_{\lambda}} = \phi\_{U\_{\lambda}}(f|\_{U\_{\lambda}}) = \theta\_{U\_{\lambda}}(s\_{\lambda})$$
+である。従って、任意の $\alpha,\beta$ に対して
+$$ (\theta\_{U\_{\alpha}}(s\_{\alpha}))|\_{U\_{\alpha}\cap U\_{\beta}}
+= (\theta\_{U\_{\beta}}(s\_{\beta}))|\_{U\_{\beta}\cap U\_{\beta}}
+= \phi(f)|\_{U\_{\alpha}\cap U\_{\beta}}
+$$
+
+である。よって $G$ は層であるから $\\{\theta\_{U\_{\lambda}}(s\_{\lambda})\\}$ を貼り合わせた切断 $t\in G(U)$ が一意に存在する。よって任意の $\lambda$ で
+$$\phi(f)|\_{U\_{\lambda}} = \theta\_{U\_{\lambda}}(s\_{\lambda}) = t|\_{U\_{\lambda}}$$
+であるから $\phi(f) = t$ である。従って、このような $\phi$ は唯一つに定まる。 $\square$
+{{% /details %}}
+
+{{% proposition %}}
+$i: \mathbf{Sh}(X)\rightarrow\mathbf{PSh}(X)$ を包含関手とすると
+$$ \Gamma\Lambda \dashv i $$
+である。
+{{% /proposition %}}
+
+これは $\theta: F\rightarrow i(G)$ と $\phi:\Gamma\_{\Lambda\_F}\rightarrow G$ が一対一に対応することから分かる。自然性も簡単に示せるので証明は省略する。
+これから層化関手は余連続である事が分かる。
+
+### 極限と余極限
+
+{{% proposition %}}
+$\mathbf{PSh}(X)$ の部分圏としての $\mathbf{Sh}(X)$ は任意の小さな極限を取る操作に対して閉じている。
+
+すなわち任意の小さな圏 $I$ と関手 $F: I\rightarrow\mathbf{PSh}(X)$ について、
+$F\_i\ (i\in I)$ が全て層であるならば $\varprojlim\_{i\in I} F\_i$ も層である。
+{{% /proposition %}}
+{{% details 証明 %}}
+前層の圏は完備であることに注意する。
+
+$F\_i\ (i\in J)$ が全て層であるとすると、任意の $\mathcal{O}\_X^{\mathrm{op}}$ の余完備充満部分圏 $J$ に対して、
+$$\begin{align*}
+\varprojlim\_{i\in I} F\_i\left(\varprojlim\_{U\_j\in J}U\_j\right)
+& \cong \varprojlim\_{i\in I}\varprojlim\_{U\_j\in J}F\_i(U\_j) \quad (\because\text{$F\_i$ は層}) \\\\
+& \cong \varprojlim\_{U\_j\in J}\varprojlim\_{i\in I}F\_i(U\_j) \quad (\because\text{極限は交換できる}) \\\\
+\end{align*}$$
+が成り立つ。極限は交換できるという性質は右随伴が極限を保存する事と、極限が対角関手の右随伴である({{< refer prop.limit-as-adjoint >}})ことから言える。
+
+従って、 $F =\varprojlim\_{i\in I} F\_i$ と置くと
+$$ F\left(\varprojlim\_{U\_j\in J}U\_j\right) \cong \varprojlim\_{U\_j\in J}F(U\_j)$$
+が成り立つので $F$ は層である。({{< refer def.sheaf-as-limit >}})
 {{% /details %}}

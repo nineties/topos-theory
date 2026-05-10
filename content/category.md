@@ -1634,7 +1634,7 @@ x & \rightarrow & \varprojlim F & \text{in $\mathcal{C}$}
 
 余極限に関しても同様で $\varprojlim,\varinjlim$ と対角関手の間に随伴関係が存在する事が分かる。
 
-{{% proposition title="極限に関する随伴" %}}
+{{% proposition title="極限に関する随伴" label="prop.limit-as-adjoint" %}}
 小圏 $\mathcal{J}$ について $F:J\rightarrow\mathcal{C}$ の極限が全て存在する時
 $$ \Delta \dashv \varprojlim $$
 である。同様に余極限が全て存在する時
