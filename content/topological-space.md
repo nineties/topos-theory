@@ -681,7 +681,7 @@ $$ \mathbf{Etale}(X) \simeq \mathbf{Sh}(X) $$
 である。 $\square$
 {{% /details %}}
 
-## 前層の層化
+## 層の圏
 ### 層化関手
 
 任意の前層 $F$ から 層$\Gamma\_{\Lambda\_F}$ を得ることができるが、これを $F$ の **層化(associated sheaf)** と呼ぶ。 これは以下の意味で、 $F$ から作れる層の中で最も普遍的なものである。また、関手 $\Gamma\Lambda:\mathbf{PSh}(X)\rightarrow\mathbf{PSh}(X)$ を **層化関手(associated sheaf functor)** と呼ぶ。
@@ -740,28 +740,58 @@ $$ \Gamma\Lambda \dashv i $$
 {{% /proposition %}}
 
 これは $\theta: F\rightarrow i(G)$ と $\phi:\Gamma\_{\Lambda\_F}\rightarrow G$ が一対一に対応することから分かる。自然性も簡単に示せるので証明は省略する。
-これから層化関手は余連続である事が分かる。
 
 ### 極限と余極限
+前層の圏と同様に層の圏も双完備となる。すなわち、任意の小さな極限と余極限が存在する。但し、極限と余極限で状況は異なる。
+以後、どの圏での極限か分かるように $\lim$ の上に圏を表記する記法を用いる。
 
 {{% proposition %}}
-$\mathbf{PSh}(X)$ の部分圏としての $\mathbf{Sh}(X)$ は任意の小さな極限を取る操作に対して閉じている。
-
-すなわち任意の小さな圏 $I$ と関手 $F: I\rightarrow\mathbf{PSh}(X)$ について、
-$F\_i\ (i\in I)$ が全て層であるならば $\varprojlim\_{i\in I} F\_i$ も層である。
+$\mathbf{Sh}(X)$ での小さな極限は常に存在し、 $\mathbf{PSh}(X)$ で求めた極限と一致する。
+$$ i\left(\overset{\scriptsize\mathbf{Sh}(X)}{\varprojlim\_{j\in J}} F\_j\right) \cong
+\overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}} i(F\_j)$$
+である。 一方、$\mathbf{Sh}(X)$ での小さな余極限も常に存在するが、
+$$ \overset{\scriptsize\mathbf{Sh}(X)}{\varinjlim\_{j\in J}} F\_j \cong \Gamma\Lambda\left(\overset{\scriptsize\mathbf{PSh}(X)}{\varinjlim\_{j\in J}} i(F\_j)\right)$$
+である。
 {{% /proposition %}}
 {{% details 証明 %}}
-前層の圏は完備であることに注意する。
+まず $\mathbf{PSh}(X)$ の圏は双完備であることに注意する。
 
-$F\_i\ (i\in J)$ が全て層であるとすると、任意の $\mathcal{O}\_X^{\mathrm{op}}$ の余完備充満部分圏 $J$ に対して、
+**(極限の存在)**
+
+$J$ を小圏とする。 $F\_j\ (j\in J)$ は層であるので、  $\mathcal{O}\_X^{\mathrm{op}}$ の任意の余完備充満部分圏 $K$ に対して
 $$\begin{align*}
-\varprojlim\_{i\in I} F\_i\left(\varprojlim\_{U\_j\in J}U\_j\right)
-& \cong \varprojlim\_{i\in I}\varprojlim\_{U\_j\in J}F\_i(U\_j) \quad (\because\text{$F\_i$ は層}) \\\\
-& \cong \varprojlim\_{U\_j\in J}\varprojlim\_{i\in I}F\_i(U\_j) \quad (\because\text{極限は交換できる}) \\\\
-\end{align*}$$
-が成り立つ。極限は交換できるという性質は右随伴が極限を保存する事と、極限が対角関手の右随伴である({{< refer prop.limit-as-adjoint >}})ことから言える。
+\overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}}i(F\_j)\left(\varprojlim\_{U\_k\in K}U\_k\right)
+& \cong \overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}}\varprojlim\_{U\_k\in K} i(F\_j)(U\_k) (\because\text{{{< refer def.sheaf-as-limit >}}})\\\\
+& \cong \varprojlim\_{U\_k\in K}\overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}}i(F\_j)(U\_k) (\because\text{極限は交換できる}) \\\\
+\\end{align*}$$
+が成り立つ。ここで、極限は対角関手の右随伴({{< refer prop.limit-as-adjoint >}})であり、右随伴は極限を保存することから、極限の交換が可能である事を利用している。
+従って、再び {{< refer def.sheaf-as-limit >}} より $\overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}}i(F\_j)$ は層である。
+よって $\mathbf{Sh}(X)$ が $\mathbf{PSh}(X)$ の充満部分圏であることより
 
-従って、 $F =\varprojlim\_{i\in I} F\_i$ と置くと
-$$ F\left(\varprojlim\_{U\_j\in J}U\_j\right) \cong \varprojlim\_{U\_j\in J}F(U\_j)$$
-が成り立つので $F$ は層である。({{< refer def.sheaf-as-limit >}})
+$$ i\left(\overset{\scriptsize\mathbf{Sh}(X)}{\varprojlim\_{j\in J}} F\_j\right) \cong
+\overset{\scriptsize\mathbf{PSh}(X)}{\varprojlim\_{j\in J}} i(F\_j)$$
+である。
+
+**(余極限の存在)**
+
+$J$ を小圏とする。任意の $\\{i(F\_j)\\}$ を底とする錐 $\\{i(F\_j)\rightarrow G\\}$ に対して、以下が可換となる
+射 $\overset{\scriptsize\mathbf{PSh}(X)}{\varinjlim\_{j\in J}} i(F\_j) \rightarrow i(G)$ が唯一つ存在する。
+$$\xymatrix{
+\overset{\scriptsize\mathbf{PSh}(X)}{\varinjlim\_{j\in J}} i(F\_j) \ar@{.>}[r]^-{\exists!} & i(G)\\\\
+i(F\_j) \ar[u] \ar[ur]
+}$$
+
+この全体を $\Gamma\Lambda$ で $\mathbf{Sh}(X)$ に移すと、層 $G$ に対しては $\Gamma\Lambda(G)\cong G$ であるから、
+$\mathbf{Sh}(X)$ における $\\{F\_j\\}$ とする錐の圏の射が得られる。
+
+$$\xymatrix{
+\Gamma\Lambda\left(\overset{\scriptsize\mathbf{PSh}(X)}{\varinjlim\_{j\in J}} i(F\_j)\right) \ar@{.>}[r]^-{\exists u} & G\\\\
+F\_j \ar[u] \ar[ur]
+}$$
+
+ここで $\Gamma\Lambda\dashv i$ であるから、自然な同型
+$$ \mathbf{Sh}(X)(\Gamma\Lambda(H), G) \cong \mathbf{PSh}(X)(H, i(G))$$
+が存在する。よって $u$ が一意であることが分かるから
+$\Gamma\Lambda\left(\overset{\scriptsize\mathbf{PSh}(X)}{\varinjlim\_{j\in J}} i(F\_j)\right)$
+が $\mathbf{Sh}(X)$ における余極限であることが示された。 $\square$
 {{% /details %}}
