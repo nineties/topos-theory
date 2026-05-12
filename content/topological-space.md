@@ -884,3 +884,27 @@ $F$ が層であることより、ある切断 $s\in F(U)$ が存在して $s|\_
 
 従って $G$ は貼り合わせの公理を満たすので層である。 $\square$
 {{% /details %}}
+
+$\mathbf{PSh}(X)$ の終対象 $1$ は層であるので、その部分層の集合 $\mathrm{Sub}\_{\mathbf{Sh}(X)}(1)$ を考える事ができるが、これが $X$ の開集合の集合と同型になる。
+より具体的には、フレームという代数構造として同型である事が言えるが、その解説は後の章に回して、ここでは一対一対応のみを示す。
+
+{{% proposition %}}
+$$ \mathrm{Sub}\_{\mathbf{Sh}(X)}(1) \cong \mathcal{O}\_X $$
+{{% /proposition %}}
+{{% details 証明 %}}
+$1$ の部分層 $F \xhookrightarrow{} 1$ の$U$ 成分は $F(U)\subseteq 1\quad(\text{一点集合})$ を満たすので、各開集合 $U$ について $F(U)=1$ であるか $F(U)=\emptyset$ であるかのいずれかである。そこで
+
+$$\phi(F) = \bigcup\\{U \in\mathcal{O}\_X \mid F(U)\neq\emptyset \\}$$
+
+とすると写像 $\phi: \mathrm{Sub}\_{\mathbf{Sh}(X)}(1) \rightarrow \mathcal{O}\_X $ が得られる。
+
+また、
+
+$$ \psi(U)(V) = \begin{cases}
+1 & (V\subseteq U) \\\\
+\emptyset & (V\not\subseteq U)
+\end{cases}$$
+
+と定めると写像 $\psi: \mathcal{O}\_X \rightarrow\mathrm{Sub}\_{\mathbf{Sh}(X)}(1)$ が得られる。
+$\phi\circ\psi = 1, \psi\circ\phi= 1$ は容易に示す事ができる。 $\square$
+{{% /details %}}
