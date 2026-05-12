@@ -301,7 +301,13 @@ $$ F\_x = \\{ s\_x \mid U\in\mathcal{O}\_X, s\in F(U), x\in U\\} $$
 を **$F$の$x$上の茎(stalk)** という。
 {{% /definition %}}
 
-層の貼り合わせの公理は、芽を用いて以下のように表現し直す事が出来る。
+{{% proposition %}}
+位相空間 $X$ 上の任意の $F$ と、任意の点 $x\in X$ について、
+$$ F\_x = \varinjlim\_{x\in U}F(U) $$
+ここで添字圏は $x$の開近傍全てに $\mathcal{O}\_X^{\mathrm{op}}$ と同じ射を入れた圏である。
+{{% /proposition %}}
+
+証明は簡単なので割愛する。層の貼り合わせの公理は、芽を用いて以下のように表現し直す事が出来る。
 
 {{% proposition label="prop.pasting-law-in-germs" %}}
 位相空間 $X$ 上の前層 $F$ が層である事と、以下を満たす事は同値。
@@ -310,13 +316,6 @@ $$ F\_x = \\{ s\_x \mid U\in\mathcal{O}\_X, s\in F(U), x\in U\\} $$
 
 2. $X$ の任意の開集合 $U$ と、その開被覆 $U=\bigcup\_{\lambda\in\Lambda}U\_{\lambda}$、切断の族 $s\_{\lambda}\in F(U\_{\lambda})$ について、任意の $\alpha,\beta\in\Lambda, x\in U\_{\alpha}\cap U\_{\beta}$ で $(s\_{\alpha})\_x = (s\_{\beta})\_x$ であるならば、ある切断 $s\in F(U)$ が存在し全ての $\lambda\in\Lambda, x\in U\_{\lambda}$ に対して $s\_x = (s\_{\lambda})\_x$
 {{% /proposition %}}
-
-{{% proposition %}}
-位相空間 $X$ 上の任意の $F$ と、任意の点 $x\in X$ について、
-$$ F\_x = \varinjlim\_{x\in U}F(U) $$
-(添字圏は $x$の開近傍全てに $\mathcal{O}\_X^{\mathrm{op}}$ と同じ射を入れた圏)
-{{% /proposition %}}
-
 
 茎 $F\_x$ には $F$ の $x$ における局所的な情報が詰まっているので、これを $x\in X$ に渡って集める事で $F$ 全体の情報をもつ位相空間およびバンドルを構成する事ができる。
 
@@ -826,3 +825,62 @@ $$
 {{% /definition %}}
 
 $\mathrm{Sky}\_x(A)$ が層である事や、 $\mathrm{Sky}\_x$ の関手性は明らかなので証明は省略する。
+
+{{% proposition %}}
+層を $x$ 上の茎に移す関手 $\mathrm{Stalk}\_x:\mathbf{Sh}(X)\rightarrow\mathbf{Set}$ について
+$$ \mathrm{Stalk}\_x\dashv\mathrm{Sky}\_x $$
+{{% /proposition %}}
+厳密な証明は単純な上に場合分けが頻出して面倒なので省くが、以下のように理解する事ができる。
+
+この随伴は、層$F$ と集合 $A$ に関して自然な同型
+$$\mathbf{Set}(\mathrm{Stalk}\_x(F), A) \cong \mathbf{Sh}(X)(F,\mathrm{Sky}\_x(A))$$
+が存在するという事を言っている。ここで
+
+$$
+\mathbf{Set}(\mathrm{Stalk}\_x(F), A) \cong\mathbf{Set}(\varinjlim\_{x\in U}F(U), A)
+                                      \cong \varprojlim\_{x\in U}\mathbf{Set}(F(U), A)
+$$
+
+であるから、先ほどの同型は以下のように書き直せる。
+
+$$\varprojlim\_{x\in U}\mathbf{Set}(F(U), A) \cong \mathbf{Sh}(X)(F,\mathrm{Sky}\_x(A))$$
+
+自然変換 $F\rightarrow\mathrm{Sky}\_x(A)$ は $x\in U$ の時には$F(U)\rightarrow A$ という写像であり、 $x\not\in U$ の時には一点に潰す情報を持たない写像 $F(U)\rightarrow 1$ であるので、この両辺共に写像の族 $\\{F(U)\rightarrow A\\}\_{x\in U}$ のみの情報から構成されているという事が分かる。
+
+{{% definition title="部分層" %}}
+層 $F$ の部分関手 $G$ (すなわち、モノ射 $G\xhookrightarrow{} F$ が存在する $G$) であって、層であるものを $F$ の **部分層(subsheaf)** という。
+{{% /definition %}}
+
+{{% proposition %}}
+層 $F$ の部分関手 $G$ が層であることは、以下と同値。
+
+任意の断面 $s\in F(U)$ と開被覆 $U=\bigcup\_{\lambda}U\_{\lambda}$ に対して
+$$ s\in G(U) \Leftrightarrow \forall\lambda. s|\_{U\_{\lambda}}\in G(U\_{\lambda})$$
+が成り立つ。
+{{% /proposition %}}
+{{% details 証明 %}}
+$G$ を層 $F$ の部分関手であるとする。
+
+**(必要性)**
+
+$G$ が層であるとする。
+$ s\in G(U) \Rightarrow \forall\lambda. s|\_{U\_{\lambda}}\in G(U\_{\lambda})$
+は明らか。$\forall\lambda. s|\_{U\_{\lambda}}\in G(U\_{\lambda})$ であるとすると、$G$ は層であるから
+これらを貼り合わせた切断 $t\in G(U)$ が存在する。 ここで $G(U)\subseteq F(U)$ の部分集合であるから
+$t\in F(U)$ であるので、貼り合わせの一意性より $s=t$ である。
+
+**(十分性)**
+
+任意の断面 $s\in F(U)$ と開被覆 $U=\bigcup\_{\lambda}U\_{\lambda}$ に対して
+$$ s\in G(U) \Leftrightarrow \forall\lambda. s|\_{U\_{\lambda}}\in G(U\_{\lambda})$$
+が成り立つとする。
+
+任意の開被覆$U=\bigcup\_{\lambda}U\_{\lambda}$ と断面 $s,t\in G(U)$ について、全ての $\lambda$ で$s|\_{U\_{\lambda}}=t|\_{U\_{lambda}}$ であるとする。
+この時 $G(U)\subseteq F(U)$ であるので $F$ が層である事から $s=t$ である。
+
+また、任意の開被覆$U=\bigcup\_{\lambda}U\_{\lambda}$ と切断の族 $s\_{\lambda}\in G(U\_{\lambda})$ について、任意の $\alpha,\beta$ で
+$s\_{\alpha}|\_{U\_{\alpha}\cap U\_{\beta}} = s\_{\beta}|\_{U\_{\alpha}\cap U\_{\breta}}$ であるとする。この時、これらの切断は $F(U\_{\lambda})$ の元でもあるので
+$F$ が層であることより、ある切断 $s\in F(U)$ が存在して $s|\_{U\_{\lambda}} = s\_{\lambda} \in G(U\_{\lambda})$ である。そして、仮定した条件より $s \in G(U)$ である。
+
+従って $G$ は貼り合わせの公理を満たすので層である。 $\square$
+{{% /details %}}
