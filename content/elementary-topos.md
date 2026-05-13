@@ -494,7 +494,7 @@ $$ \Omega \cong \mathrm{Sub}(\mathcal{Y}(-)) $$
 ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
  **コドメインが$a$である射**  からなる何らかの集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
 
-{{% definition title="篩(ふるい)" %}}
+{{% definition title="篩(ふるい)" label="def.sieve" %}}
 小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (前合成、precomposition について閉じている時)、これを $a$ 上の **篩(ふるい, sieve)** という。
 {{% /definition %}}
 
