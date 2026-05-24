@@ -17,7 +17,7 @@ toc: true
 
 ## 圏
 
-最初に、圏の定義を行う。圏とは集合と関数の概念を抽象化した **対象と射** からなり、関数の合成を抽象化した演算を持つものである。集合と関数全体、ベクトル空間と線形写像全体、群と群準同型写像全体など様々なものを圏と見なすことができる。
+圏とは集合と関数の概念を抽象化した **対象と射** からなり、関数の合成を抽象化した演算を持つものである。集合と関数全体、ベクトル空間と線形写像全体、群と群準同型写像全体など様々なものを圏と見なすことができる。
 
 ### 圏の定義
 
@@ -38,8 +38,6 @@ $$ h\circ (g\circ f) = (h\circ g)\circ f$$
 射の類が全て集合である圏を **局所小圏(locally small category)**、対象の類も射の類も集合である圏を **小圏(small category)** という。
 {{% /definition %}}
 
-以上にように、圏とは対象と射によって定められるものであるが、対象と射は定義を満たすものであればどのようなものであっても構わない。
-
 例えば、以下のような数学的対象とその間の準同型写像を射とする圏が様々存在する。
 これらの圏は全て局所小圏であるが小圏ではない。
 
@@ -50,7 +48,9 @@ $$ h\circ (g\circ f) = (h\circ g)\circ f$$
 - $\mathbf{Mod}_R$: **R加群** と **加群の準同型写像**
 - $\mathbf{Vect}\_{K}$: **体 $K$ 上のベクトル空間** と **線型写像**
 
-小圏には例えば以下のようなものがある。
+これらの例は全て(何らかの性質を備えた)集合と写像からなる圏であるが、
+対象と射は定義を満たすものであればどのようなものであっても構わない。
+例えば以下のようなものも圏である。これらは小圏である。
 
 - **集合** : 射が恒等射のみである小圏。 **離散圏(discrete category)** ともいう。
 - **モノイド**: 対象が1つしかない小圏。
@@ -118,7 +118,13 @@ $f: a\rightarrow b$ が同型射の時、その逆射は一意に定まる。
 $f: a\rightarrow b$ が同型射であるとし $g,h:b\rightarrow a$ は共に逆射 であるとすると $ g = g\circ 1_b = g\circ f\circ h = 1_a\circ h = h $ $\square$
 {{% /details %}}
 
-簡単に示せるように同型関係は同値関係である。
+同型関係は同値関係である。すなわち任意の対象 $a,b,c$ に対して
+
+1. $a\cong a$
+2. $a\cong b, b\cong c \Rightarrow a\cong c$
+3. $a\cong b \Rightarrow b\cong a$
+
+が成り立つ。
 
 圏から新しい圏を作る様々な操作が可能である。最も基本的な構成として積圏がある。これは集合の直積を一般化したようなものである。(実際 $\mathcal{C},\mathcal{D}$ が離散圏なら $\mathcal{C}\times\mathcal{D}$ はその直積集合となる。)
 
@@ -246,9 +252,6 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 を満たすものである。
 {{% /definition %}}
 
-関手は様々な代数系における **準同型写像(homomorphism)** と同じものである。圏の代数系としての構造を定める恒等射、合成関係を保つ写像となっている。
-
-
 恒等写像であるような関手 $F$ を **恒等関手(identity functor)** といい $1\_\mathcal{C}:\mathcal{C}\rightarrow\mathcal{C}$ や $\mathrm{id}\_{\mathcal{C}}$ と書く。
 また、関手 $F:\mathcal{C}\rightarrow\mathcal{D}, G:\mathcal{D}\rightarrow\mathcal{E}$ に対して対象・射共に通常の関数合成を行うと$\mathcal{C}$ から $\mathcal{E}$ への関手が得られる。これを関手の合成といい $G\circ F:\mathcal{C}\rightarrow\mathcal{E}$ と書く。 $\circ$ を省略して $GF$ と書くこともある。すると、以下のような圏を構成できる事が分かる。
 
@@ -256,7 +259,7 @@ $\mathbf{Set}$ おいて同型射と全単射は一致する。
 小圏を対象、関手を射とすると(大きな)圏となる。これを $\mathbf{Cat}$ と書く。
 {{% /definition %}}
 
-射の向きが逆になるような対応を反変関手という。後ほど登場するが、反変関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ の事を **前層(presheaf)** といい、特に重要である。
+射の向きが逆になるような対応を反変関手という。
 
 {{% definition title="反変関手" %}}
 $\mathcal{C}^{\mathrm{op}}$ から $\mathcal{D}$ への関手 $F:\mathcal{C}^{\mathrm{op}}\rightarrow\mathcal{D}$ を、$\mathcal{C}$ から $\mathcal{D}$ への **反変関手(contravariant functor)** という。
@@ -284,9 +287,13 @@ $$\xymatrix{ \bullet \ar[r] & \bullet & \bullet \ar[l] }$$
 のような圏 であるとすると、関手 $F:\mathcal{J}\rightarrow\mathcal{C}$ は$\mathcal{C}$ の中の以下の形の図式と同一視することができる。
 $$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
 
-特に重要なのは、関手 $\mathbf{1}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象1つとみなす事ができるという事である。すなわち、関手の特別な場合として対象が含まれる訳であるから、**関手とは"対象"を一般化させた概念である** という事ができる。同様に、後ほど関手と関手の間の準同型である **自然変換(natural transformation)** という概念が出てくるが、これは射を一般化させた概念であると言える。すなわち、 **"対象と射"を一般化させた概念が"関手と自然変換"である** という見方ができる。
+特に重要なのは、関手 $\mathbf{1}\rightarrow\mathcal{C}$ は $\mathcal{C}$ の対象1つとみなす事ができるという事である。すなわち、**関手とは"対象"を一般化させた概念である** という事ができる。
 
-準同型としての関手、図式としての関手、対象の一般化としての関手などの見方を状況によって使い分けられるようになると、様々な定理のイメージが掴みやすくなる。
+- 圏の準同型としての関手
+- 図式としての関手
+- 対象の一般化としての関手
+
+などの見方を状況によって使い分けられるようになると、様々な定理のイメージが掴みやすくなる。
 
 ### 関手の性質
 
@@ -301,7 +308,7 @@ $$\xymatrix{ a \ar[r] & c & b \ar[l] }$$
 {{% /definition %}}
 
 本質的全射が全射と異なるのは $F(a)\cong b$ と $F(a)=b$ の違い。
-圏論では、同型な対象はその圏論的な性質によっては区別する事ができず、実質的に1つの対象と見なすことが自然である。よって、対象の厳密な一致ではなく同型 $\cong$ を用いて定められた性質の方がより本質的な性質となる。
+同型な対象はその圏論的な性質によっては区別する事ができない為、 圏論では **同型な対象は実質的に1つの対象と見なす** ことが自然である。よって、対象の厳密な一致ではなく同型 $\cong$ を用いて定められた性質の方がより本質的な性質となる。
 
 {{% proposition %}}
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が忠実であるならば、$F(f)$ がモノならば $f$ もモノ。同様に $F(f)$ がエピならば $f$ もエピ。
@@ -325,7 +332,7 @@ $$ g\circ f = 1\_{F(a)} \Rightarrow F(g')\circ F(f')=F(1_a) \Rightarrow F(g'\cir
 
 ## 自然変換
 
-関手の間の準同型の事を **自然変換(natural transformation)** という。また {{< refer def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
+関手の間の準同型の事を **自然変換(natural transformation)** という。 {{< refer def.functor-as-a-diagram >}}で述べたように、対象を一般化したものが関手であるとすると、射を一般化したものが自然変換である。
 
 ### 自然変換・自然同型
 
@@ -340,39 +347,9 @@ F(b) \ar[r]^{\phi_b} & G(b)
 $\phi_a$ が全て同型射であるとき $\phi$ を **自然同型(natural isomorphism)** もしくは **自然同値(natural equivalence)** という。また自然同型 $\phi:F\rightarrow G$ が存在する時 $F\cong G$ と書く。
 {{% /definition %}}
 
-複雑な定義に見えるが、関手を図式と思えばなんて事はなく、つまり $\mathcal{D}$ の中の $\mathcal{C}$ の形の図式の対応する点を同じ向きに繋ぐ
-射の族で、全体が可換であるような物を自然変換というのである。
+複雑な定義に見えるが、関手を図式と思えばなんて事はなく、つまり $\mathcal{D}$ の中の $\mathcal{C}$ の形の図式 $F$ と図式 $G$ と対応する点を繋ぐ $\phi$ があったときに、全体が可換であるような物を自然変換というのである。すなわち、 diagram chasingをする際に、 $F,G,\phi$ の中をどのような順序で辿っても得られる射は同じになる。
 
-{{% tikz %}}
-  \begin{tikzpicture}
-    \coordinate (xa) at (-1, 1.5) node at (xa) [above] {$F(a)$};
-    \coordinate (xb) at (1, 1.5) node at (xb) [above] {$F(b)$};
-    \coordinate (xc) at (1.5, 2.5);
-    \coordinate (xd) at (0, 3.5);
-    \coordinate (xe) at (-1.3, 2.7);
-    \coordinate (a)  at (-1, -1) node at (a) [below] {$G(a)$};
-    \coordinate (b)  at (1, -1) node at (b) [below] {$G(b)$};
-    \coordinate (c)  at (1.5, 0);
-    \coordinate (d)  at (0, 1);
-    \coordinate (e)  at (-1.3, 0.2);
-    \draw [-latex, thick] (xa) to node [above] {$F(f)$} (xb);
-    \draw [-latex, thick] (xa) to node [right] {$\phi_a$} (a);
-    \draw [-latex, thick] (xb) to node [left] {$\phi_b$} (b);
-    \draw [-latex] (xc) to (c);
-    \draw [-latex] (xd) to (d);
-    \draw [-latex] (xe) to (e);
-    \draw [-latex, thick] (a) to node [below] {$G(f)$} (b);
-    \draw (b) to (c);
-    \draw (c) to (d);
-    \draw (d) to (e);
-    \draw (e) to (a);
-    \draw (xb) to (xc);
-    \draw (xc) to (xd);
-    \draw (xd) to (xe);
-    \draw (xe) to (xa);
-  \end{tikzpicture}
-{{% /tikz %}}
-
+{{< figure src="../images/natural-transformation.png" width="20%" >}}
 
 関手 $F,G,H:\mathcal{C}\rightarrow\mathcal{D}$ の間に自然変換 $\phi:F\rightarrow G, \psi: G\rightarrow H$ が存在する時、下図の横の射をそれぞれ合成した射の族 $\\{\psi_a\circ\phi_a\\}$ は 自然変換 $F\rightarrow H$ となる。これを自然変換の合成といい $\psi\circ \phi$ と書く。
 
