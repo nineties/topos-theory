@@ -601,10 +601,10 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
     \coordinate (x) at (1.5, 1.5) node at (x) [above] {$x$};
     \coordinate (a) at (-1, -1) node at (a) [below] {$a$};
     \coordinate (b) at (1, -1) node at (b) [below] {$b$};
-    \draw [-latex] (x) to node [right] {\small $f$} (a);
-    \draw [-latex] (x) to node [right] {\small $g$} (b);
-    \draw [-latex, thick] (p) to node [left] {\small $\pi_a$} (a);
-    \draw [-latex, thick] (p) to node [left] {\small $\pi_b$} (b);
+    \draw [-latex] (x) to node [pos=0.25, left] {\small $f$} (a);
+    \draw [-latex] (x) to node [pos=0.25, right] {\small $g$} (b);
+    \draw [-latex, thick] (p) to node [pos=0.25, left] {\small $\pi_a$} (a);
+    \draw [-latex, thick] (p) to node [pos=0.25, right] {\small $\pi_b$} (b);
     \draw [-latex, dotted] (x) to node [above] {\small $u$} (p);
   \end{tikzpicture}
 {{% /tikz %}}
@@ -636,8 +636,8 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
 
 {{% tikz %}}
   \begin{tikzpicture}
-    \coordinate (xa) at (-1, 1.5) node at (xa) [above] {$x$};
-    \coordinate (xb) at (1, 1.5) node at (xb) [above] {$x$};
+    \coordinate (xa) at (-1, 1.5) node at (xa) [left] {$x$};
+    \coordinate (xb) at (1, 1.5) node at (xb) [right] {$x$};
     \coordinate (xc) at (1.5, 2.5);
     \coordinate (xd) at (0, 3.5);
     \coordinate (xe) at (-1.3, 2.7);
@@ -656,7 +656,7 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
     \draw (c) to (d);
     \draw (d) to (e);
     \draw (e) to (a);
-    \draw [-latex, thick] (xa) to node [above] {$1_x$} (xb);
+    \draw [-latex, thick] (xa) to node [pos=0.4,above] {$1_x$} (xb);
     \draw (xb) to (xc);
     \draw (xc) to (xd);
     \draw (xd) to (xe);
@@ -664,29 +664,20 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
   \end{tikzpicture}
 {{% /tikz %}}
 
-このように展開してみると、上面を形が $\mathcal{J}$ の定数関手 $x$ で表せる事がわかるだろう。これを $\Delta(x):\mathcal{J}\rightarrow\mathcal{C}$ という記号で書く事にする。すると、錐とは上面 $\Delta(x)$ から底面 $F$ への自然変換であるとして表す事ができる。また、この双対版として底面から上面への錐も考える事ができる。
+このように展開してみると、上面を形が $\mathcal{J}$ の定数関手 $x$ で表せる事がわかる。すると、錐とは上面 $x$ から底面 $F$ への自然変換であるとして表す事ができる。また、この双対版として底面から上面への錐も考える事ができる。
 
 {{% definition title="錐" %}}
-図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:\Delta(x)\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。同じ錐を $(x,\phi)$ とも書く。
-
-同様に、自然変換 $\phi:F\rightarrow\Delta(x)$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
-{{% /definition %}}
-
-定義が高階になり難しく見えるが、関手を図式と思えば二つの面 $\Delta(x)$ と $F$ を縦に繋いだものが錐なのだと自然に理解できるだろう。ところで、ここで登場した $\Delta$ はそれ自体が関手である。今後使うので定義をしておく。
-
-{{% definition title="対角関手" %}}
-圏 $\mathcal{J}$ と $\mathcal{C}$ について、対象 $x\in\mathcal{C}$ を定数関手 $x:\mathcal{J}\rightarrow\mathcal{C}$ に、射$f:x\rightarrow y$ をそれらの間の自然変換(これは $f$ と同一視可能)に移す対応は関手
-$$ \Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}} $$
-となる。これを **対角関手(diagonal functor)** という。
+図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:x\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。
+同様に、自然変換 $\phi:F\rightarrow x$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
 {{% /definition %}}
 
 そして、錐の頂点の間の射によって、錐から錐への射を定義する事で錐の圏が出来上がる。
 
 {{% definition title="錐の圏" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ への錐を対象とし、2つの錐
-$\phi:\Delta(x)\rightarrow F$ と $\psi:\Delta(y)\rightarrow F$ の間の射を、以下が可換となるような自然変換 $f:\Delta(x)\rightarrow\Delta(y)$ (これは射 $f:x\rightarrow y$ と同一) によって定めると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
+$\phi:x\rightarrow F$ と $\psi:y\rightarrow F$ の間の射を、以下が可換となるような自然変換 $f:x\rightarrow y$ (これは射 $f:x\rightarrow y$ と同一) によって定めると圏となる。これを **$F$ への錐の圏(category of cones to $F$)** という。
 $$\xymatrix{
-\Delta(x) \ar[r]^f \ar[d]\_{\phi} & \Delta(y) \ar[ld]^{\psi} \\\\
+x \ar[r]^f \ar[d]\_{\phi} & y \ar[ld]^{\psi} \\\\
 F & \\\\
 }$$
 
@@ -738,11 +729,11 @@ F & \\\\
 {{% /tikz %}}
 
 {{% definition title="極限" %}}
-$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $(\varprojlim F,\phi)$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ への錐の圏の終対象の頂点を $\varprojlim F$ と書き、錐 $\phi:\varprojlim F\rightarrow F$ を$F$の **極限(limit)** もしくは **射影的極限(projective limit)** という。また $\phi$ を **標準射影(canonical projection)** という。
 
-$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $(\varinjlim F,\psi)$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
+$F:\mathcal{J}\rightarrow\mathcal{C}$ からの錐の圏の始対象の頂点を $\varinjlim F$ と書き、 $\psi: F\rightarrow \varinjlim F$ を$F$の **余極限(colimit)** もしくは **帰納的極限(inductive limit)** という。また $\psi$ を **標準入射(canonical inclusion)** という。
 
-$\displaystyle\varprojlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i)$ とも書く。
+$\displaystyle\varprojlim F,\displaystyle\varinjlim F$ の代わりに、$\displaystyle \varprojlim\_{i\in\mathcal{J}}F(i),\displaystyle \varinjlim\_{i\in\mathcal{J}}F(i)$ とも書く。
 {{% /definition %}}
 
 極限は終対象であるから、同型を除いて一意に定まる。余極限も同様。
@@ -795,15 +786,22 @@ $\mathbf{Set}$ は任意の(小さい)極限や余極限が存在するという
 $$\mathrm{eq}(f,g) = \\{x\in A\mid f(x)=g(x)\\}$$
 すなわち、 $f=g$ の解集合である。コイコライザは $f(x)\sim g(x)\ (\forall x\in B)$ となるような最小の同値関係 $\sim$ による $B$ の商集合
 $$\mathrm{coeq}(f,g)= B/{\sim}$$
-である。これは少し分かり辛いので例を挙げる。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
+である。例えば $f,g:\mathbb{N}\rightarrow\mathbb{N}$ が $f(n) = n, g(n) = n + 2$ の場合は
 $$ 0 \sim 2 \sim 4 \cdots,\quad 1\sim 3\sim 5\cdots $$
-であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものが $\mathrm{coeq}(f,g)$ なので
-$$ \mathrm{coeq}(f,g) = \\{[0],[1]\\}$$
-となる。
+であるような最小の同値関係(すなわち $n$ の偶奇の一致)で$\mathbb{N}$を割ったものであり $ \mathrm{coeq}(f,g) = \\{0,1\\}$ となる。
 
 $A\xrightarrow{f}C\xleftarrow{g}B$ の引き戻しは
 $$A\times\_C B=\\{(x,y) \in A\times B \mid f(x)=g(y) \\}$$
-である。また $A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
+である。引き戻しは関数の **逆像(inverse image)の一般化** であると考えることもできる。例えば、写像 $f:A\rightarrow B$ と $B$ の部分集合 $C\subseteq B$ に対して
+以下は引き戻しの図式となる。
+
+$$\xymatrix{
+f^{-1}(C) \ar[r] \ar@{^{(}->}[d] & C \ar@{^{(}->}[d] \\\\
+A \ar[r]^f & B
+}$$
+
+
+$A\xleftarrow{f}C\xrightarrow{g}B$ の押し出しは $(0,f(x))\sim(1,g(x))\ (\forall x\in C)$ となるような最小の同値関係 $\sim$ による $A+B$ の商集合
 $$ A+\_C B = (A+B)/{\sim}$$
 である。
 
