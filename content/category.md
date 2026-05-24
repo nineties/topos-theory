@@ -1176,7 +1176,7 @@ $$ \mathcal{Y}(a)\cong F$$
 この $u$ を普遍要素と呼ぶ理由を説明する。米田の補題の所で説明したように、 $u$ のみから自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する事が可能である訳だが、特にこれが自然同型 $\mathcal{Y}(a)\cong F$ の時には $F$ そのものを生成することが出来る。ということは、 $a\in\mathcal{C}$ と $u\in F(a)$ のみから、任意の $x\in\mathcal{C}$ について $F(x)$ の任意の要素を具体的に構成することができる。この性質を $u$ の **普遍性(universal property)** といい、この構成を **普遍的構成(universal construction)** という。
 
 
-普遍要素 $u$ 及び、普遍構成について調べる。米田の補題の証明より $\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
+普遍要素 $u$ 及び、普遍的構成について調べる。米田の補題の証明より $\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
 
 $$ \phi\_{a,F}: \hat{\mathcal{C}}(\mathcal{Y}(a),F)\ni\alpha\longmapsto \alpha_a(1_a)\in F(a) $$
 $$ \psi\_{a,F}: F(a)\ni x \longmapsto F(-)(x)\in\hat{\mathcal{C}}(\mathcal{Y}(a),F)$$
