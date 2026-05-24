@@ -857,7 +857,7 @@ $\mathbf{Set}$ は双完備である。
 関手 $F: \mathcal{C}\rightarrow\mathcal{D}$ について、
 $\mathcal{J}$ を小圏として任意の関手 $G:\mathcal{J}\rightarrow\mathcal{C}$ が極限を持つ時、
 $F\circ G: \mathcal{J}\rightarrow\mathcal{D}$ も極限を持ち
-$$F(\varprojlim G) = \varprojlim F\circ G$$
+$$F(\varprojlim G) \cong \varprojlim F\circ G$$
 が成立するならば、$F$ は **連続(continuous)** であるという。
 同様に $F$ が小さな余極限を保つ時は **余連続(cocontinuous)** であるという。
 {{% /definition %}}
