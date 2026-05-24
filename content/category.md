@@ -832,6 +832,8 @@ t &= (\pi_j)\_{f:i\rightarrow j\in\mathcal{J}}
 
 {{% details 証明の概要 %}}
 $x\in\mathcal{C}$ と射 $\phi:x\rightarrow\prod\_{i\in\mathcal{J}}F(i)$ について以下の図式が可換であるとする。
+$$ x\xrightarrow{\phi} \prod\_{i\in\mathcal{J}}F(i)\overset{s}{\underset{t}{\rightrightarrows}}\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
+
 $$\xymatrix{
 x \ar[r]^{\phi} & \prod\_{i\in\mathcal{J}}F(i) \ar@<2pt>[r]^s \ar@<-2pt>[r]_t & \prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) 
 }$$
@@ -841,7 +843,8 @@ $$\xymatrix{
 x \ar[d]\_{\phi_i} \ar[rd]^{\phi_j} \\\\
 F(i) \ar[r]_{F(f)} & F(j)
 }$$
-すなわち、 $(x,\\{\phi_i\\})$ は $F$ への錐に他ならない。したがって、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。
+すなわち、射の族 $\\{\phi\_i\\}\_{i\in\mathcal{J}}$ は自然変換 $x\rightarrow F$ すなわち $F$ への錐に他ならない。
+従って、この図式に対するイコライザは $x$ から $F$ への錐の圏の終対象、すなわち$F$ の極限と一致する。$\square$
 {{% /details %}}
 
 {{% proposition %}}
