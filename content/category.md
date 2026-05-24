@@ -395,6 +395,12 @@ b          \ar[r]_q & d          \\\\
 関手圏 $\mathbf{Set}^{\mathcal{C}^{\mathrm{op}}}$ を **前層の圏(category of preshaves)** といい、 $\hat{\mathcal{C}}$ や $\mathbf{PSh}(\mathcal{C})$ と書く。
 {{% /example %}}
 
+{{% definition title="対角関手" %}}
+$\mathcal{C}$ の対象 $a$ を、 定数関手 $a: \mathcal{J}\rightarrow\mathcal{C}$ に移し、射 $f$ を全てのコンポーネントが $f$ である自然変換に移す対応は関手
+$$ \Delta: \mathcal{C}\rightarrow \mathcal{C}^{\mathcal{J}}$$
+である。これを **対角関手(diagonal functor)** という。
+{{% /definition %}}
+
 ### 圏の同型・同値
 
 2つの圏 $\mathcal{C},\mathcal{D}$ が何らかの意味で同じであるという事を表す方法として、 **同型**、**圏同値** という異なる関係性がある。これらの違いをしっかり理解したいので、合わせてここで紹介する。
@@ -669,6 +675,9 @@ a            & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b}            & b
 {{% definition title="錐" %}}
 図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ と対象 $x\in\mathcal{C}$ について、自然変換 $\phi:x\rightarrow F$ を **$x$ から $F$ への 錐(cone)** という。
 同様に、自然変換 $\phi:F\rightarrow x$ を **$F$ から $x$ への錐** もしくは **余錐(cocone)** という。
+
+(ここでは $x$ という記号を対象 $x\in \mathcal{C}$ と定数関手 $x:\mathcal{J}\rightarrow\mathcal{C}$ の両方に用いているが、混乱の恐れがある場合には対角関手を用いて
+$\phi:\Delta(x)\rightarrow F$ と表せばよい。)
 {{% /definition %}}
 
 そして、錐の頂点の間の射によって、錐から錐への射を定義する事で錐の圏が出来上がる。
@@ -817,7 +826,7 @@ $$ A+\_C B = (A+B)/{\sim}$$
 
 任意の極限を持つことを直接証明するのは難しいが、以下の定理より、積とイコライザもしくは余積とコイコライザを持つ事のみ示せば十分である。
 
-{{% theorem title="極限の存在定理" %}}
+{{% theorem title="極限の存在定理" label="th.existence-of-limits" %}}
 $\mathcal{C}$ が任意の並行射に対するイコライザと、圏 $\mathcal{J}$ の対象や射で添字付けられた任意の積を持つとする。この時、図式 $F:\mathcal{J}\rightarrow\mathcal{C}$ の極限は
 $$ s, t: \prod\_{i\in\mathcal{J}}F(i)\rightrightarrows\prod\_{f: i\rightarrow j\in\mathcal{J}}F(j) $$
 
@@ -861,6 +870,89 @@ $$F(\varprojlim G) \cong \varprojlim F\circ G$$
 が成立するならば、$F$ は **連続(continuous)** であるという。
 同様に $F$ が小さな余極限を保つ時は **余連続(cocontinuous)** であるという。
 {{% /definition %}}
+
+### 関手圏の極限
+
+{{% theorem title="関手圏の極限の点別計算定理" label="th.limits-of-functor-categories" %}}
+図式 $F:\mathcal{J}\rightarrow\mathcal{D}^{\mathcal{C}}$ について
+$a\in \mathcal{C}$ に固定した関手 $F\_{(-)}(a):\mathcal{J}\rightarrow\mathcal{D} $ の極限 $\displaystyle\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が全ての $a\in\mathcal{C}$ について存在するならば、$F$ の極限も存在し
+
+$$ \left(\varprojlim\_{i\in\mathcal{J}} F\_i\right)(a) \cong \varprojlim\_{i\in\mathcal{J}} F\_i(a) $$
+
+である。余極限についても同様。
+{{% /theorem %}}
+
+これは、下図赤線で囲った部分のように、各対象ごとに個別に極限を求めたものが、関手圏の極限と一致するという定理である。
+
+$$\xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[d] \ar[r] & \varprojlim\_{i\in\mathcal{J}} F\_i(b) \ar[r] \ar[d] & \varprojlim\_{i\in\mathcal{J}} F\_i(c) \ar[d] & =\quad \varprojlim\_{i\in\mathcal{J}}F\_i \\\\
+F\_i(a) \ar[d] \ar[r] & F\_i(b) \ar[r] \ar[d] & F\_i(c) \ar[d] & \\\\
+F\_j(a)        \ar[r] & F\_j(b) \ar[r]        & F\_j(c)        &
+\ar@{.}(-15,7);(95,7)
+\ar@{.}(95,7);(95,-7)
+\ar@{.}(95,-7);(-15,-7)
+\ar@{.}(-15,-7);(-15,7)
+\ar@{.}(-15,-15);(95,-15)
+\ar@{.}(95,-15);(95,-28)
+\ar@{.}(95,-28);(-15,-28)
+\ar@{.}(-15,-28);(-15,-15)
+\ar@{.}(-15,-37);(95,-37)
+\ar@{.}(95,-37);(95,-50)
+\ar@{.}(95,-50);(-15,-50)
+\ar@{.}(-15,-50);(-15,-37)
+\ar@\[red\]@{.}(-17,9);(15,9)
+\ar@\[red\]@{.}(15,9);(15,-52)
+\ar@\[red\]@{.}(15,-52);(-17,-52)
+\ar@\[red\]@{.}(-17,-52);(-17,9)
+}$$
+
+{{% details 証明 %}}
+
+全ての $a\in\mathcal{C}$ について $\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が存在するとする。
+$\mathcal{J}$ の射 $f: i\rightarrow j$ に対応する自然変換 $F\_f:F\_i\rightarrow F\_j$ を $\mathcal{C}$ の射 $u: a\rightarrow b$ についてcomponent-wiseに描くと以下のようになり、これが全ての $f:i\rightarrow j$ と $u:a\rightarrow b$ について可換となる。
+
+$$ \xymatrix{
+F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)}  & F\_i(b) \ar[d]^{F\_f(b)} \\\\
+F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)
+}$$
+
+ここで $\varprojlim\_{i\in\mathcal{J}} F\_i(a)$ が存在するので、下図のような極限錐がそれぞれ存在する。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                &
+}$$
+
+ここで $\varprojlim\_{i\in\mathcal{J}}F\_i(a)$ の錐の側面に各 $F\_i(u)$ (図の水平の射) を合成したものは $F(-)(b):\mathcal{J}\rightarrow\mathcal{D}$ への錐となるので、下図が可換となる射 $\bar{u}: \varprojlim\_{i\in\mathcal{J}}F\_i(a)\rightarrow\varprojlim\_{i\in\mathcal{J}}F\_i(b)$ が唯一つ存在。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                &
+}$$
+
+そこで、$\mathcal{C}$ の各対象 $a$ に $\varprojlim\_{i\in\mathcal{J}}F\_i(a)$ を、射 $u:a\rightarrow b$ に $\bar{u}$ を対応させる関係を考えるとこれは関手 $G: \mathcal{C}\rightarrow\mathcal{D}$ となる。これが $\varprojlim\_{i\in\mathcal{J}}F\_i$ である事を示す。
+
+そこで任意の $H:\mathcal{C}\rightarrow\mathcal{D}$ から $F$ への錐を考える。
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                & \\\\
+H(a) \ar[ru] \ar@/^1pc/[ruu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu]
+}$$
+
+この左側だけに注目すると $\varprojlim_{i\in\mathcal{J}}$ についての普遍性より以下を可換にする射 $H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F\_i(a)$ が一意に存在。右側も同様。
+
+$$ \xymatrix{
+\varprojlim\_{i\in\mathcal{J}}F\_i(a) \ar[rd] \ar@/_1pc/[rdd] \ar@{.>}[rrr]^{\bar{u}} &&& \varprojlim\_{i\in\mathcal{J}}F\_i(b) \ar[ld] \ar@/^1pc/[ldd] \\\\
+& F\_i(a) \ar[d]\_{F\_f(a)} \ar[r]^{F\_i(u)} & F\_i(b) \ar[d]^{F\_f(b)}& \\\\
+& F\_j(a)                  \ar[r]\_{F\_j(u)} & F\_j(b)                & \\\\
+H(a) \ar[ru] \ar@/^1pc/[ruu] \ar@{.>}[uuu] \ar[rrr]^{H(u)} &&& H(b) \ar[lu] \ar@/_1pc/[luu] \ar@{.>}[uuu]
+}$$
+
+この射の族 $\left\\{H(a)\rightarrow\varprojlim_{i\in\mathcal{J}}F\_i(a)\right\\}$ は自然変換 $H\rightarrow G$ となり、これが一意であるので $G\cong \varprojlim\_{i\in\mathcal{J}}F\_i$ である。$\square$
+{{% /details %}}
 
 ## 普遍性
 
@@ -948,7 +1040,65 @@ $$
 
 すると、先ほどと同様にして $m\leq n$ ならば $\mathbb{N}(-, m)\rightarrow\mathbb{N}(-, n)$ がただ一つ存在し、そうでなければ存在しないという事がわかる。これは $\mathbb{N}(m, n)$ の要素数と一致する。
 
-以上は非常にシンプルな例であるが、$a\in\mathcal{C}$ と表現可能関手 $\mathcal{C}(-, a)$ が、その周囲の射も含め綺麗に対応している事が分かるであろう。誤解を恐れずに言えば $a$ と $\mathcal{C}(-, a)$ は同じものの異なる表現であると言える。続く節で **米田埋め込み(Yoneda embedding)** としてこれを説明する。
+以上は非常にシンプルな例であるが、$a\in\mathcal{C}$ と表現可能関手 $\mathcal{C}(-, a)$ が、その周囲の射も含め綺麗に対応している事が分かるであろう。誤解を恐れずに言えば $a$ と $\mathcal{C}(-, a)$ は同じものの異なる表現であると言える。
+
+### 表現可能関手と極限
+
+極限は表現可能関手によって定める事ができる。
+
+{{% proposition %}}
+圏 $\mathcal{C}$ の終対象 $1$ は、定数関手 $\\{\ast\\}: \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する。すなわち
+$$ \\{\ast\\} \cong \mathcal{C}(-, 1) $$
+同様に、始対象 $0$ は、定数関手 $\\{\ast\\}: \mathcal{C}\rightarrow\mathbf{Set}$ を表現する。すなわち
+$$ \\{\ast\\}\cong\mathcal{C}(0, -)$$
+{{% /proposition %}}
+
+任意の $x\in\mathcal{C}$ に対して $\mathcal{C}(x, 1), \mathcal{C}(0, x)$ が一点集合であるということであり、終対象・始対象の定義と一致することがわかる。
+
+{{% proposition %}}
+圏 $\mathcal{C}$ の積 $a\times b$ は、関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b): \mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を表現する。すなわち
+$$ \mathcal{C}(-, a)\times\mathcal{C}(-, b) \cong \mathcal{C}(-, a\times b)$$
+同様に、余積 $a+b$ は、関手 $\mathcal{C}(a, -)\times\mathcal{C}(b, -): \mathcal{C}\rightarrow\mathbf{Set}$ を表現する。すなわち
+$$ \mathcal{C}(a, -)\times\mathcal{C}(b, -) \cong \mathcal{C}(a+b, -)$$
+{{% /proposition %}}
+
+積の定義より、任意の $x\in\mathcal{C}$ に対して 射の組 $(f, g) \in \mathcal{C}(x, a)\times\mathcal{C}(x, b)$ と、射 $\langle f, g\rangle \in \mathcal{C}(x, a\times b)$ が一対一に対応するので
+$$ \mathcal{C}(x, a)\times\mathcal{C}(x, b) \cong \mathcal{C}(x, a\times b)$$
+である事がわかる。さらに $\langle f,g\rangle $の一意性より、任意の $h:x\rightarrow y$ に対して $\langle f\circ h, g\circ h\rangle = \langle f, g\rangle\circ h$ が成り立つので以下が可換となる。
+$$ \xymatrix{
+\mathcal{C}(y,a)\times\mathcal{C}(y, b) \ar[d]^{(-\circ h)\times (-\circ h)} \ar[r] & \mathcal{C}(y, a\times b) \ar[d]^{-\circ h}\\\\
+\mathcal{C}(x,a)\times\mathcal{C}(x, b) \ar[r] & \mathcal{C}(x, a\times b)
+}$$
+よって以下が自然同型である事がわかる。
+$$ \mathcal{C}(-, a)\times\mathcal{C}(-, b) \cong \mathcal{C}(-, a\times b)$$
+以上を一般化すると以下の定理を得る。
+
+{{% theorem %}}
+図式 $F: \mathcal{J}\rightarrow\mathcal{C}$ の極限が存在する時
+$$ \varprojlim\_{i\in\mathcal{J}}\mathcal{C}(-, F(i))\cong\mathcal{C}(-, \varprojlim F)$$
+である。また、余極限が存在する時
+$$ \varprojlim\_{i\in\mathcal{J}}\mathcal{C}(F(i), -)\cong\mathcal{C}(\varinjlim F, -)$$
+である。
+{{% /theorem %}}
+{{% details 証明 %}}
+極限について示す。 {{< refer th.limits-of-functor-categories >}} と {{< refer th.existence-of-limits >}} より、任意の $x\in\mathcal{C}$ に対して
+$$ \left(\varprojlim\_{i\in\mathcal{J}}\mathcal{C}(-, F(i))\right)(x) \cong \varprojlim\_{i\in\mathcal{J}}\mathcal{C}(x, F(i)) 
+\cong \\{ (\phi\_i: x\rightarrow F(i))\_{i\in\mathcal{J}} \mid \forall (f:i\rightarrow j)\in\mathcal{J},F(f)\circ\phi\_i=\phi\_j  \\}
+$$
+であり、この右辺は $x$ から $F$ への錐全体の集合 $\mathcal{C}^{\mathcal{J}}(x, F)$ と同型である。従って、自然同型
+$$ \varprojlim\_{i\in\mathcal{J}}\mathcal{C}(-, F(i)) \cong \mathcal{C}^{\mathcal{J}}(-, F) $$
+を得る。あとは、自然同型
+$$ \mathcal{C}^{\mathcal{J}}(-, F) \cong \mathcal{C}(-, \varprojlim F)$$
+を示せばよい。まず、任意の $x$ について、錐 $x\rightarrow F$ と射 $x\rightarrow\varprojlim F$ は一対一に対応するので
+$$ \mathcal{C}^{\mathcal{J}}(x, F) \cong \mathcal{C}(x, \varprojlim F)$$
+そして、任意の $f:x\rightarrow y$ について以下の図式を考えると、錐の各側面に $f$ を合成して得られる錐と頂点に $f$ を合成して得られる錐は同一であるからこれは可換であるから、この同型は $x$ について自然である。
+$$ \xymatrix{
+\mathcal{C}^{\mathcal{J}}(y, F) \ar[r] \ar[d]^{-\circ f} & \mathcal{C}(y, \varprojlim F) \ar[d]^{-\circ f} \\\\
+\mathcal{C}^{\mathcal{J}}(x, F) \ar[r] & \mathcal{C}(x, \varprojlim F)
+}$$
+
+余極限は双対圏における極限であるので、 $\mathcal{C}^{\mathrm{op}}$ において上記の議論を適用すれば良い。 $\square$
+{{% /details %}}
 
 ### 米田埋め込み・米田の補題
 
@@ -962,7 +1112,7 @@ $$ \mathcal{Y}(f) = f\circ -$$
 にて定めたものを **米田埋め込み(Yoneda embedding)** という。
 {{% /definition %}}
 
-$\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えることで、この双対版も同様に考える事ができる。
+$\mathcal{Y}$ の関手性は明らかである。$\mathcal{C}$ を $\mathcal{C}^{\mathrm{op}}$ に置き換えることで、この双対版も同様に考える事ができる。
 非常に高階になってきて分かりにくいので、改めて関手を図式とみなすやり方で描いてみると下図のようになる。
 対象 $a,b$ を点線で囲まれた図式(表現可能関手)に写し、射 $f:a\rightarrow b$ をそれらを繋ぐ射の族(自然変換) に写す関手が米田埋め込みである。
 
@@ -1002,7 +1152,35 @@ $$\xymatrix{
 \hat{\mathcal{C}}(\mathcal{Y}(a), G) \ar[r]^(.6){\cong} & G(a)
 }$$
 
-{{% details 証明 %}}
+証明に入る前に、具体例を考えてみよう。まず、$\mathcal{C}$ が自然数の集合 $\mathbb{N}$ である場合を考えると、
+自然変換 $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ は、以下の縦の射の族である。ここで$0$ は空集合、 $1$ は単集合である。
+
+$$\xymatrix{
+0 \ar[d] & \cdots & 0 \ar[d] & 1 \ar[d] & 0 \ar[d] & \cdots \\\\
+F(0)     & \cdots & F(a-1)   & F(a)     & F(a+1) & \cdots
+}$$
+
+この自然変換がいくつあるかというと、$0\rightarrow F(x)$ は空関数しかあり得ないので一意に定まり、 $1\rightarrow F(a)$ は $F(a)$ の要素数だけ存在する。
+従って $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\cong F(a)$  である。
+
+$\mathbb{N}$ が順序集合の場合も考えよう。この場合の自然変換は以下の図式の縦の射の族となる。
+
+$$\xymatrix{
+1 \ar[d]^{\alpha_0} \ar@{<-}[r] & \cdots \ar@{<-}[r] & 1 \ar[d]^{\alpha\_{a-1}}\ar@{<-}[r] & 1 \ar[d]^{\alpha\_a}\ar@{<-}[r] & 0 \ar[d]^{\alpha\_{a+1}}\ar@{<-}[r] & \cdots \\\\
+F(0) \ar@{<-}[r]    & \cdots \ar@{<-}[r] & F(a-1) \ar@{<-}[r]  & F(a) \ar@{<-}[r]    & F(a+1) \ar@{<-}[r] & \cdots
+}$$
+すると、先ほどと同様にして $\alpha\_{a+1}$ より右側は全て空関数となり、 $\alpha_a$ は $F(a)$ の要素数だけ存在する。そして、 $\alpha_0,\ldots,\alpha\_{a-1}$ は図式の可換性から $\alpha_a$ が定まれば自動的に決まる。
+従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\cong F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から $F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を**生成する** ことが分かる。
+
+一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\hat{\mathcal{C}}(\mathcal{Y}(a),F)\cong F(a)$ となるわけである。
+
+$$\xymatrix{
+\mathcal{C}(a, a) \ar[r]\ar[d]^{\alpha_a} & \mathcal{C}(x, a)\ar[d]^{\alpha_x} \\\\
+F(a) \ar[r] & F(x)
+}$$
+
+
+{{% details 米田の補題の証明 %}}
 $\alpha\in\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ とする。 $\alpha$ は自然変換であるから任意の $f:y\rightarrow x$ について、以下が可換である。
 
 $$\xymatrix{
@@ -1047,33 +1225,6 @@ $$
 より$\rho_a(\phi\_{a,F}(\alpha)) =\phi\_{a,G}(\rho\circ\alpha)$ であるから $F$ についても自然。 $\square$
 {{% /details %}}
 
-米田の補題のイメージを掴むため、具体例を考えてみよう。まず、既に説明した $\mathcal{C}$ が自然数の集合 $\mathbb{N}$ である場合を考えると、
-自然変換 $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a),F)$ は、以下の縦の射の族である。ここで$0$ は空集合、 $1$ は単集合である。
-
-$$\xymatrix{
-0 \ar[d] & \cdots & 0 \ar[d] & 1 \ar[d] & 0 \ar[d] & \cdots \\\\
-F(0)     & \cdots & F(a-1)   & F(a)     & F(a+1) & \cdots
-}$$
-
-この自然変換がいくつあるかというと、　$0\rightarrow F(x)$ は空関数しかあり得ないので一意に定まり、 $1\rightarrow F(a)$ は $F(a)$ の要素数だけ存在する。
-従って $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\cong F(a)$  である。
-
-$\mathbb{N}$ が順序集合の場合も考えよう。この場合の自然変換は以下の図式の縦の射の族となる。
-
-$$\xymatrix{
-1 \ar[d]^{\alpha_0} \ar@{<-}[r] & \cdots \ar@{<-}[r] & 1 \ar[d]^{\alpha\_{a-1}}\ar@{<-}[r] & 1 \ar[d]^{\alpha\_a}\ar@{<-}[r] & 0 \ar[d]^{\alpha\_{a+1}}\ar@{<-}[r] & \cdots \\\\
-F(0) \ar@{<-}[r]    & \cdots \ar@{<-}[r] & F(a-1) \ar@{<-}[r]  & F(a) \ar@{<-}[r]    & F(a+1) \ar@{<-}[r] & \cdots
-}$$
-すると、先ほどと同様にして $\alpha\_{a+1}$ より右側は全て空関数となり、 $\alpha_a$ は $F(a)$ の要素数だけ存在する。そして、 $\alpha_0,\ldots,\alpha\_{a-1}$ は図式の可換性から $\alpha_a$ が定まれば自動的に決まる。
-従って、この場合も自然変換は $F(a)$ の要素数だけ存在し $\mathbf{Set}^{\mathbb{N}^{\mathrm{op}}}(\mathcal{Y}(a), F)\cong F(a)$ となる。また、この全単射が $\alpha\mapsto\alpha_a(1_a)$ で与えられることもわかるであろう。また、この例から $F(a)$ の要素が自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を**生成する** ことが分かる。
-
-一般の場合も同様で、任意の対象 $x\in\mathcal{C}$ について、射 $x\rightarrow a$ が存在しない時には、$\mathcal{C}(x, a)=\emptyset$ であるので、自然変換 $\mathcal{Y}(a)\rightarrow F$ の$x$コンポーネントは空関数に一意に定まる。射 $x\rightarrow a$ が存在する時には、射 $\mathcal{C}(a,a)\rightarrow\mathcal{C}(x,a)$ が存在するから以下の図式を考えることができて、図式の可換性から $\alpha_a(1_a) \in F(a)$ が決まれば、 $\alpha_x$ が一意に決まる。また、この特別な場合として$x=a$ の場合を考えれば $\alpha_a(1_a)$ が決まれば、 $\alpha_a$ 自身も一意に決まる。従って、 $\alpha_a(1_a) \in F(a)$ が自然変換 $\alpha$ 全体を生成するので、$\hat{\mathcal{C}}(\mathcal{Y}(a),F)\cong F(a)$ となるわけである。
-
-$$\xymatrix{
-\mathcal{C}(a, a) \ar[r]\ar[d]^{\alpha_a} & \mathcal{C}(x, a)\ar[d]^{\alpha_x} \\\\
-F(a) \ar[r] & F(x)
-}$$
-
 ### 米田埋め込みの性質
 
 米田埋め込みが"埋め込み"と呼ばれるのに相応しいのは以下の命題より。
@@ -1111,11 +1262,11 @@ $$ \mathcal{Y}(\varprojlim F) \cong \varprojlim (\mathcal{Y}\circ F)$$
 {{% /proposition %}}
 {{% details 証明 %}}
 $x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x) = \mathcal{C}(x, \varprojlim F) \cong\mathcal{C}^{\mathcal{J}}(\Delta(x), F)\cong \mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F)$$
+$$\mathcal{Y}(\varprojlim F)(x) = \mathcal{C}(x, \varprojlim F) \cong\mathcal{C}^{\mathcal{J}}(x, F)\cong \mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ x, \mathcal{Y}\circ F)$$
 が存在する。最後の同型は米田の原理による。
-ここで、対角関手 $\Delta$ について $\mathcal{Y}\circ\Delta(x)\cong\Delta(\mathcal{Y}(x))$ である事が簡単に分かるので
-$$\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ\Delta(x), \mathcal{Y}\circ F) \cong 
-\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\Delta(\mathcal{Y}(x)), \mathcal{Y}\circ F) \cong 
+ここで、$\mathcal{Y}\circ x\cong \mathcal{Y}(x)$ である事が簡単に分かるので
+$$\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ x, \mathcal{Y}\circ F) \cong 
+\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}(x), \mathcal{Y}\circ F) \cong 
 \hat{\mathcal{C}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
 $$
 であり、米田の補題よりこれは
