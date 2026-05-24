@@ -401,7 +401,7 @@ b          \ar[r]_q & d          \\\\
 
 {{% definition title="圏の同型" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同型(isomorphic)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で
-$$ G\circ F = 1\_{\mathcal{C}},\ F\circ G=1\_{\mathcal{D}}$$
+$$ GF = 1\_{\mathcal{C}},\ FG=1\_{\mathcal{D}}$$
 を満たすものが存在する事である。この時 $\mathcal{C}\cong\mathcal{D}$ と書く。
 {{% /definition %}}
 
@@ -410,7 +410,7 @@ $$ G\circ F = 1\_{\mathcal{C}},\ F\circ G=1\_{\mathcal{D}}$$
 
 {{% definition title="圏の同値" %}}
 圏 $\mathcal{C},\mathcal{D}$ が **同値(equivalent)** であるとは関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ で自然同型
-$$ G\circ F \cong 1\_{\mathcal{C}},\ F\circ G \cong 1\_{\mathcal{D}}$$
+$$ GF \cong 1\_{\mathcal{C}},\ FG \cong 1\_{\mathcal{D}}$$
 を満たすものが存在する事である。$F,G$ を **圏同値(equivalence of categories)** という。この時 $\mathcal{C}\simeq\mathcal{D}$ と書く。
 {{% /definition %}}
 
@@ -430,7 +430,7 @@ $$\xymatrix{
 
 {{% details 証明 %}}
 ($\Rightarrow$)
-$F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: G\circ F\rightarrow 1\_{\mathcal{C}}, \psi: F\circ G\rightarrow 1\_{\mathcal{D}}$ が存在するとする。
+$F:\mathcal{C}\rightarrow\mathcal{D}$ が圏同値、すなわち関手 $G:\mathcal{D}\rightarrow\mathcal{C}$ が存在して自然同型 $\phi: GF\rightarrow 1\_{\mathcal{C}}, \psi: FG\rightarrow 1\_{\mathcal{D}}$ が存在するとする。
 
 任意の$b\in\mathcal{D}$ に対して $a=G(b)$ とおけば $F(a)=FG(b)\cong 1\_{\mathcal{D}}(b) = b$。従って $F$ は本質的全射。
 
@@ -446,24 +446,24 @@ GF(b) \ar[r]\_{\phi_b} & b \\\\
 ($\Leftarrow$)
 $F:\mathcal{C}\rightarrow\mathcal{D}$ が充満忠実かつ本質的全射であるとする。
 
-本質的全射であることより、任意の $b\in\mathcal{D}$ に対してある $a\in\mathcal{C}$ が存在して $F(a)\cong b$ となる。選択公理を用いてそのような $a$ を各 $b$ について選ぶ事によって、対象間の写像 $G:\mathrm{Ob}(\mathcal{D})\rightarrow\mathrm{Ob}(\mathcal{C})$ を作る事が出来る。すなわち、任意の $b\in\mathcal{D}$ について $FG(b)\cong b$ である。
+本質的全射であることより、任意の $b\in\mathcal{D}$ に対してある $a\in\mathcal{C}$ が存在して $F(a)\cong b$ となる。選択公理を用いてそのような $a$ を各 $b$ について選ぶ事によって、対象間の写像 $G:\mathrm{Ob}(\mathcal{D})\rightarrow\mathrm{Ob}(\mathcal{C})$ を作る事が出来る。また同型射の族 $\psi\_b: FG(b)\rightarrow b$が得られる。
 
-これと、$F$ が充満忠実であることとより、任意の$x,y\in\mathcal{D}$ について全単射
+続いて、射の対応 $G:\mathcal{D}(a,b)\rightarrow\mathcal{C}(a,b)$ を定める。任意の $\mathcal{D}$ の射 $f:a\rightarrow b$ に対して
+$$ \psi\_b^{-1}\circ f\circ\psi\_a: FG(a)\rightarrow FG(b)$$
+という射が得られるが、 $F$ が忠実充満であるので
+$$ G(f) = F^{-1}(\psi\_b^{-1}\circ f\circ\psi\_a): G(a)\rightarrow G(b)$$
+という対応を定める事ができる。
 
-$$\mathcal{C}(G(x), G(y)) \cong \mathcal{D}(FG(x), FG(y)) \cong \mathcal{D}(x, y)$$
+$G$ の関手性は明らか。$\psi$ の定義より $\psi\_b\circ FG(f)= f\circ\psi_a$ が成り立つので $\psi$ は自然変換であり、 $\psi\_a$ は全て同型射だから $\psi$ は自然同型。
 
-が存在する。 この対応を射の対応 $G:\mathcal{D}(x,y)\rightarrow\mathcal{C}(G(x), G(y))$ とすると $G$ は関手となる。なぜならば、以下の図式の一番右に $1_x:x\rightarrow x$ を入れると、真ん中は $1_{FG(x)}=F(1_{G(x)})$ となる($\because$ $F$ は関手) ので対応する左の射は $1_{G(x)}$。すなわち $G(1_x)=1_{G(x)}$。
-
-同様に、この図式を2つ重ねる事により右側の $g\circ f$ に対応する真ん中の射は $FG(g)\circ FG(f)=F(G(g)\circ G(f))$ となるので、 対応する左の射は $G(g)\circ G(f)$。すなわち $G(g\circ f)=G(g)\circ G(f)$ となるから。
-$$
-\xymatrix{
-G(x) \ar[d]^{G(f)}=\"a\" & & FG(x) \ar[d]\_{FG(f)}=\"b\" \ar[r]^{\phi_x} & x \ar[d]_{f} \\\\
-G(y)               & & FG(y) \ar[r]\_{\phi_y}                & y
-\ar@{~>}^F \"a\";\"b\"
-}
-$$
-
-$FG\cong 1\_{\mathcal{D}}$ はこれまでの議論より明らか。これより右から$F$を合成して$FGF\cong F$ も得られるが $F$ が充満忠実であることから $GF\cong 1\_{\mathcal{C}}$ となる。$\square$
+あとは自然同型 $\phi: GF\rightarrow 1\_{\mathcal{C}}$ の存在を示せばよい。
+$F$ が忠実充満であることより $\psi\_{F(a)}: FGF(a)\rightarrow F(a)$ に対応する $\mathcal{C}$ の射が一意に定まるので
+$$ \phi\_{a} = F^{-1}(\psi\_{F(a)})$$ 
+と定める。 この時、任意の$\mathcal{C}$ の射 $f:a\rightarrow b$ に対して $\psi$ が自然変換であることより
+$$ F(f)\circ\psi\_{F(a)} = \psi\_{F(b)}\circ FGF(f)$$
+であり、$F$ が忠実充満であることより $F^{-1}(p\circ q)=F^{-1}(p)\circ F^{-1}(q)$ であることに注意すると
+$$ f\circ F^{-1}(\psi\_{F(a)}) = F^{-1}(\psi\_{F(b)})\circ GF(f)$$
+すなわち $ f\circ\phi\_a = \phi\_b\circ GF(f)$ であるので $\phi$ は自然変換。また同様に $F^{-1}$ が射の合成関係を保つことに注意すると $\phi\_{F(a)}$ が同型射であることより $\phi\_a$ も同型射。よって $\phi$ も自然同型。 $\square$
 {{% /details %}}
 
 ## 極限
