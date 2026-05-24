@@ -864,19 +864,19 @@ $$F(\varprojlim G) \cong \varprojlim F\circ G$$
 
 ## 普遍性
 
-本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。前節で説明した極限も普遍性を用いた構成の一つである。
+本節では圏論において非常に重要な概念である **普遍性(universal property)** と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。前節で説明した極限も普遍性を用いた構成(**普遍的構成(universal construction)**)の一つである。
 
 普遍性の説明には複数の方法があるが、ここではエミリー・リール(Emily Riehl)による **表現可能関手(representable functor)** を用いた説明を行う。
 
 ### Hom関手
-圏論の語彙では、対象や射が具体的に何であるか(例えばベクトル空間や線型写像であるといったこと)を特定し、その性質(例えばベクトル空間の定理)を用いて議論を行う事が基本的には出来ない。従って、圏論においてある対象 $a\in\mathcal{C}$ について調べる時には $a$に向かう射の集合 $\mathcal{C}(x, a)$や、 $a$ から出る射の集合 $\mathcal{C}(a, x)$ について調べる事が主要な手段となる。そこで **Hom関手(hom-functor)** という概念が登場する。
+圏論の語彙では、対象や射が具体的に何であるか(例えばベクトル空間や線型写像であるといったこと)を特定し、その性質(例えばベクトル空間の公理)を用いて議論を行う事が基本的には出来ない。従って、圏論においてある対象 $a\in\mathcal{C}$ について調べる時には $a$に向かう射の集合 $\mathcal{C}(x, a)$や、 $a$ から出る射の集合 $\mathcal{C}(a, x)$ について調べる事が主要な手段となる。そこで **Hom関手(hom-functor)** という概念が登場する。
 
 $\mathcal{C}$ を局所小圏とすると、任意の $a,x\in\mathcal{C}$ について $\mathcal{C}(a, x)$ は集合になる。
 すなわち $\mathbf{Set}$ の対象になるので、$x\longmapsto \mathcal{C}(a, x)$ という $\mathcal{C}$ から $\mathbf{Set}$ への対象の対応を得ることができる。このとき、射 $f:x\rightarrow y$ に対応する$\mathbf{Set}$ の射 $\mathcal{C}(a, f): \mathcal{C}(a, x)\rightarrow\mathcal{C}(a, y)$ も定める事ができて、この対応は関手となる。
 
 {{% definition title="共変Hom関手" %}}
 局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、 $x\in\mathcal{C}$ を $\mathcal{C}(a, x)$ に移し, $f: x\rightarrow y$ を
-$$\mathcal{C}(a,x) \ni g \mapsto f\circ g \in\mathcal{C}(a,y)$$
+$$\mathcal{C}(a, f): \mathcal{C}(a,x) \ni g \mapsto f\circ g \in\mathcal{C}(a,y)$$
 に移す対応 $\mathcal{C}(a, -)$ は関手$\mathcal{C}\rightarrow\mathbf{Set}$となる。
 これを **共変Hom関手(covariant hom functor)** という。
 
@@ -891,16 +891,16 @@ $$
 
 {{% details 関手であることの証明 %}}
 任意の $a,x\in\mathcal{C}$, $f:a\rightarrow x$ について
-$$ \mathcal{C}(a,-)(1_x): f\longmapsto 1_x\circ f = f$$
-であるから $ \mathcal{C}(a,-)(1_x) = 1_{\mathcal{C}(a,x)} $
+$$ \mathcal{C}(a,1_x): f\longmapsto 1_x\circ f = f$$
+であるから $ \mathcal{C}(a,1_x) = 1_{\mathcal{C}(a,x)} $
 また、任意の $f: x\rightarrow y, g:y\rightarrow z$ と $p:a\rightarrow x$ について
-$$ (\mathcal{C}(a,-)(g)\circ\mathcal{C}(a,-)(f))(p) = g\circ(f\circ p) = (g\circ f)\circ p = \mathcal{C}(a,-)(g\circ f)(p) $$
+$$ (\mathcal{C}(a,g)\circ\mathcal{C}(a,f))(p) = g\circ(f\circ p) = (g\circ f)\circ p = \mathcal{C}(a,g\circ f)(p) $$
 $\square$
 {{% /details %}}
 
 {{% definition title="反変Hom関手" %}}
 局所小圏 $\mathcal{C}$ と対象 $a\in\mathcal{C}$ に対して、 $x\in\mathcal{C}$ を $\mathcal{C}(x, a)$ に移し、 $f: x\rightarrow y$ を
-$$\mathcal{C}(y,a) \ni g \mapsto g\circ f \in\mathcal{C}(x,a)$$
+$$\mathcal{C}(f, a): \mathcal{C}(y,a) \ni g \mapsto g\circ f \in\mathcal{C}(x,a)$$
 に移す対応 $\mathcal{C}(-, a)$ は関手 $\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ となる。
 これを **反変Hom関手(contravariant hom functor)** という。
 
@@ -1174,7 +1174,6 @@ $$ \mathcal{Y}(a)\cong F$$
 {{% /definition %}}
 
 この $u$ を普遍要素と呼ぶ理由を説明する。米田の補題の所で説明したように、 $u$ のみから自然変換 $\mathcal{Y}(a)\rightarrow F$ 全体を生成する事が可能である訳だが、特にこれが自然同型 $\mathcal{Y}(a)\cong F$ の時には $F$ そのものを生成することが出来る。ということは、 $a\in\mathcal{C}$ と $u\in F(a)$ のみから、任意の $x\in\mathcal{C}$ について $F(x)$ の任意の要素を具体的に構成することができる。この性質を $u$ の **普遍性(universal property)** といい、この構成を **普遍的構成(universal construction)** という。
-
 
 普遍要素 $u$ 及び、普遍的構成について調べる。米田の補題の証明より $\hat{\mathcal{C}}(\mathcal{Y}(a),F)$ と $F(a)$ の同型は
 
