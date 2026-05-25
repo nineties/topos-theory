@@ -1,7 +1,7 @@
 ---
 title: 初等トポス
-weight: 4
-section: 3
+weight: 5
+section: 4
 toc: true
 ---
 

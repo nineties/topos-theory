@@ -1,7 +1,7 @@
 ---
 title: Grothendieckトポス
-weight: 6
-section: 5
+weight: 7
+section: 6
 toc: true
 ---
 
