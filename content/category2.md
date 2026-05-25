@@ -879,7 +879,7 @@ $$\mathcal{C}(x, G(\varprojlim A)) \cong \mathcal{D}(F(x), \varprojlim A) \cong 
 $$ (\varprojlim F)^a \cong \varprojlim (-)^a \circ F, \quad (\varinjlim F)\times a \cong \varinjlim ((-)\times a)\circ F$$
 が成り立つので $ (x\times y)^a \cong x^a \times y^a$ や $ (x + y)\times a \cong x\times a + y\times a$ が成立するといった事が示せる。
 
-### 三角等式・単位元
+### 三角等式・単位元・余単位元
 
 {{% theorem label="prop.triangle" %}}
 関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{C}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
@@ -988,6 +988,8 @@ $$ \mathcal{D}(FG(b), b) \cong \mathcal{C}(G(b), G(b))$$
 の右辺の $1\_{G(b)}$ に対応する左辺の射 $\epsilon\_b: GF(b)\rightarrow b$ で与えられる。
 {{% /proposition %}}
 
+### 単位元・余単位元の例
+
 単位射・余単位射の具体的な例を見てみよう。例えば随伴
 
 $$\begin{array}{rcccl}
@@ -1016,4 +1018,4 @@ $$\begin{array}{rcccl}
 x\times a & \rightarrow & y             \\\\ \hline
 x         & \rightarrow & y^a
 \end{array}$$
-の余単位射が評価射$\mathrm{ev}: y^a\times a\rightarrow y$ である。
+の余単位射は評価射 $\mathrm{ev}: y^a\times a\rightarrow y$ である。
