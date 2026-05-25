@@ -1253,32 +1253,17 @@ $$a\cong b\ \Leftrightarrow\ \mathcal{C}(-, a)\cong\mathcal{C}(-, b)\ \Leftright
 表現可能関手を表現する対象は同型を除いて一意である。
 {{% /proposition %}}
 
-また、以下が成り立つ。
+また、既に示した自然同型
+$$ \varprojlim\_{i\in\mathcal{J}}\mathcal{C}(-, F(i))\cong\mathcal{C}(-, \varprojlim F)$$
+は以下のようにも表現できる。
 
 {{% proposition label="prop.yoneda-preserves-limits" %}}
 米田埋め込みは連続である。すなわち自然同型
 $$ \mathcal{Y}(\varprojlim F) \cong \varprojlim (\mathcal{Y}\circ F)$$
 が存在する。
 {{% /proposition %}}
-{{% details 証明 %}}
-$x\in\mathcal{C}$ について自然な同型
-$$\mathcal{Y}(\varprojlim F)(x) = \mathcal{C}(x, \varprojlim F) \cong\mathcal{C}^{\mathcal{J}}(x, F)\cong \mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ x, \mathcal{Y}\circ F)$$
-が存在する。最後の同型は米田の原理による。
-ここで、$\mathcal{Y}\circ x\cong \mathcal{Y}(x)$ である事が簡単に分かるので
-$$\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}\circ x, \mathcal{Y}\circ F) \cong 
-\mathbf{Set}^{\left(\mathcal{C}^\mathcal{J}\right)^{\mathrm{op}}}(\mathcal{Y}(x), \mathcal{Y}\circ F) \cong 
-\hat{\mathcal{C}}(\mathcal{Y}(x), \varprojlim (\mathcal{Y}\circ F))
-$$
-であり、米田の補題よりこれは
-$$ \varprojlim(\mathcal{Y}\circ F)(x)$$
-と同型。したがって
-$$ \mathcal{Y}(\varprojlim F)(x) \cong \varprojlim(\mathcal{Y}\circ F)(x)$$
-であり、以上の同型は全て $x$ について自然であるので
-$$ \mathcal{Y}(\varprojlim F) \cong \varprojlim(\mathcal{Y}\circ F)$$
-となる。$\square$
-{{% /details %}}
-余極限は一般には保たれないので注意。
 
+余極限は一般には保たれないので注意。
 この命題の具体例をいくつか並べてみると以下のような等式を得る。
 
 {{% proposition label="prop.yoneda-preserves-limits-examples" %}}
@@ -1360,7 +1345,6 @@ a           & p \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 }$$
 
 まとめると、関手 $\mathcal{C}(-, a)\times\mathcal{C}(-, b)$ が表現可能の時、これを表現する対象が $a\times b$ で、普遍要素が標準射影 $\pi_a:a\times b\rightarrow a, \pi_b:a\times b\rightarrow b$ である。
-同様にして、関手 $\varprojlim(\mathcal{Y}\circ F)$ を表現する対象が $\varprojlim F$ で、普遍要素が極限錐 $\phi:\Delta(\varprojlim F)\rightarrow F$ である。
 
 ### 稠密性定理
 
@@ -1462,7 +1446,7 @@ $$ \phi_p = \phi_y\circ(f\circ -) $$
   \end{tikzpicture}
 {{% /tikz %}}
 
-すなわち、極限錐の側面の自然変換の集合 $\\{\Delta(\varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-,d_i))\rightarrow \mathcal{C}(-, a)\\}$ が $F(a)$ と一致し、
+すなわち、極限錐の側面の自然変換の集合 $\\{\varinjlim\_{i\in\mathcal{J}}\mathcal{C}(-,d_i)\rightarrow \mathcal{C}(-, a)\\}$ が $F(a)$ と一致し、
 側面の可換性として、 $F(f): F(a)\rightarrow F(b)$ が表現されるわけである。では証明する。
 
 {{% details 証明 %}}
@@ -1472,7 +1456,7 @@ $$ d: \int^{\mathcal{C}}F \xrightarrow{\pi_F} \mathcal{C} $$
 $$ F \cong \varinjlim\mathcal{Y}\circ d = \varinjlim\_{(a,x)\in\int^{\mathcal{C}}F}\mathcal{C}(-, d\_{a,x}) $$
 であることを示す。以下、 $\mathcal{J} = \int^{\mathcal{C}}F$ とおく。
 
-まず、錐 $\phi: \mathcal{Y}\circ d\rightarrow\Delta(F)$ を定める。これは自然変換の族
+まず、錐 $\phi: \mathcal{Y}\circ d\rightarrow F$ を定める。これは自然変換の族
 $$ \\{\phi\_{a,x}: \mathcal{C}(-, d\_{a,x})\rightarrow F\\}\_{(a,x)\in\mathcal{J}}$$
 であって、$\phi\_{a,x}$ は射の族
 $$ \\{\phi\_{a,x,p}: \mathcal{C}(p, d\_{a,x})\rightarrow F(p) \\}\_{p\in\mathcal{C}} $$
@@ -1480,10 +1464,10 @@ $$ \\{\phi\_{a,x,p}: \mathcal{C}(p, d\_{a,x})\rightarrow F(p) \\}\_{p\in\mathcal
 $$ \phi\_{a,x,p}(f: p\rightarrow a) = F(f)(x) $$
 と定める。こうして定義した $\phi$ が自然変換であることは簡単に示せるので省略する。
 
-後は $G:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を頂点とする錐 $\psi: \mathcal{Y}\circ d\rightarrow\Delta(F)$ に対して
+後は $G:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を頂点とする錐 $\psi: \mathcal{Y}\circ d\rightarrow F$ に対して
 以下の図式(A)が可換となる $u: F\rightarrow G$ がただ一つに定まることを示せば良い。
 $$\xymatrix{
-\Delta(F) \ar[r]^{\Delta(u)} & \Delta(G) \\\\
+F \ar[r]^{u} & G \\\\
 \mathcal{Y}\circ d \ar[u]^{\phi} \ar[ur]\_{\psi} & 
 }$$
 この時、全ての$a,p\in\mathcal{C}$, $x\in F(a)$ に対して以下が可換である必要がある。
@@ -1533,8 +1517,10 @@ $$ F \cong \varinjlim\mathcal{Y}\circ d $$
 
 {{% definition title="指数対象" %}}
 有限積を持つ圏 $\mathcal{C}$ において関手
-$$ \mathcal{C}(-\times a, b):\mathcal{C}\rightarrow\hat{\mathcal{C}}$$
-が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。また普遍要素を **評価射(evaluation map)** といい $\mathrm{ev}:b^a\times a\rightarrow b$ と書く。
+$$ \mathcal{C}(-\times a, b):\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$$
+が表現可能であるならば、これを表現する対象を **指数対象(exponential object)** といい $b^a$ と書く。すなわち、指数対象は自然同型
+$$ \mathcal{C}(-\times a, b) \cong \mathcal{C}(-, b^a)$$
+を与える対象である。また普遍要素を **評価射(evaluation map)** といい $\mathrm{ev}:b^a\times a\rightarrow b$ と書く。
 {{% /definition %}}
 
 ここで登場した $\mathcal{C}(-\times a, b)$ は $\mathcal{C}(-, b)\circ (-\times a)$ という2つの関手を合成したもので、 関手 $-\times a$ は $x\in\mathcal{C}$ を $x\times a$ に移し、 $f:x\rightarrow y$ を $f\times 1_a$ に移すような関手である。
@@ -1698,12 +1684,13 @@ $$ \mathcal{D}(F(a), b)\cong\mathcal{C}(a,G(b)) $$
 が存在するものをいう。
 
 この時 $F$ を $G$ の**左随伴(left adjoint)**、 $G$ を$F$ の **右随伴(right adjoint)** といい、 $F\dashv G$ と書く。以下のような図式で表現することもある。
-随伴関手、左随伴関手、右随伴関手という用語を使うこともある。
 
 $$\xymatrix{
 \mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
 \ar@{}|{\perp} \"x\";\"y\"
 }$$
+
+随伴関手、左随伴関手、右随伴関手という用語を使うこともある。
 {{% /definition %}}
 
 以下のように図示すると対応が分かりやすい。
@@ -1754,7 +1741,7 @@ $$ \varprojlim : \mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$$
 すると対角関手 $\Delta:\mathcal{C}\rightarrow\mathcal{C}^{\mathcal{J}}$ と極限関手 $\varinjlim:\mathcal{C}^{\mathcal{J}}\rightarrow\mathcal{C}$ に関して、
 以下の自然な同型対応がある事が分かる。
 
-$$\begin{array}{rcccl}
+$$\begin{array}{rccl}
 \Delta(x) & \rightarrow & F & \text{in $\mathcal{\mathcal{C}^{\mathcal{J}}}$}\\\\ \hline
 x & \rightarrow & \varprojlim F & \text{in $\mathcal{C}$}
 \end{array}$$
@@ -1841,10 +1828,10 @@ $$\mathcal{C}(x, G(\varprojlim A)) \cong \mathcal{D}(F(x), \varprojlim A) \cong 
 $$ (\varprojlim F)^a \cong \varprojlim (-)^a \circ F, \quad (\varinjlim F)\times a \cong \varinjlim ((-)\times a)\circ F$$
 が成り立つので $ (x\times y)^a \cong x^a \times y^a$ や $ (x + y)\times a \cong x\times a + y\times a$ が成立するといった事が示せる。
 
-### 三角等式
+### 三角等式・単位元
 
 {{% theorem label="prop.triangle" %}}
-関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{D}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
+関手 $F:\mathcal{C}\rightarrow\mathcal{D}$ と $G:\mathcal{D}\rightarrow\mathcal{C}$ が随伴 $F\dashv G$ であることは、自然変換 $\eta: 1\_{\mathcal{C}}\rightarrow GF$ と $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ が存在して、以下の図式(**三角等式(triangle identities)**) が可換となることと同値。
 
 $$\xymatrix{
 F \ar[r]^{F\eta} \ar[rd]\_{1_F} & FGF \ar[d]^{\epsilon F} & G \ar[r]^{\eta G} \ar[rd]\_{1_G} & GFG \ar[d]^{G \epsilon} \\\\
@@ -1898,7 +1885,7 @@ $$ G(a)\xrightarrow{\eta\_{G(a)}} GFG(a)\xrightarrow{G(\epsilon_a)} G(a) = G(a)\
 $$ a\xrightarrow{f}b \xrightarrow{\eta_b}GF(b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{GF(f)} GF(b)\qquad (\forall f:a\rightarrow b \in\mathcal{C})\qquad\cdots(C)$$
 $$ FG(a)\xrightarrow{\epsilon_a}a\xrightarrow{f}b = FG(a)\xrightarrow{FG(f)}FG(b)\xrightarrow{\epsilon_b}b \qquad(\forall f:a\rightarrow b \in\mathcal{D})\qquad\cdots(D)$$
 
-ここで写像 $\phi:\mathcal{D}(F(a),b)\leftrightarrow \mathcal{D}(a, G(b)):\psi$ を以下のように置く
+ここで写像 $\phi:\mathcal{D}(F(a),b)\leftrightarrow \mathcal{C}(a, G(b)):\psi$ を以下のように置く
 
 $$ \phi(F(a)\xrightarrow{h}b) = a\xrightarrow{\eta_a}GF(a)\xrightarrow{G(h)}G(b) $$
 $$ \psi(a\xrightarrow{h}G(b)) = F(a)\xrightarrow{F(h)}FG(b)\xrightarrow{\epsilon_b}b $$
@@ -1917,7 +1904,7 @@ $$\begin{align\*}
 &= a\xrightarrow{h}G(b)\xrightarrow{1\_{G(b)}} G(b) \\\\
 &= a\xrightarrow{h}G(b)
 \end{align\*}$$
-であるから $\phi,\psi$ は全単射 $\mathcal{D}(F(a),b)\leftrightarrows\mathcal{D}(a, G(b))$ である。以後$\phi(h),\psi(h)$ を $\bar{h}$ と書く。
+であるから $\phi,\psi$ は全単射 $\mathcal{D}(F(a),b)\leftrightarrows\mathcal{C}(a, G(b))$ である。以後$\phi(h),\psi(h)$ を $\bar{h}$ と書く。
 
 任意の $f:a'\rightarrow a, g:b\rightarrow b',h: F(a)\rightarrow b$ について
 
@@ -1933,6 +1920,22 @@ $$\begin{align\*}
 $$\eta_a = \overline{1\_{F(a)}}, \epsilon_b = \overline{1\_{G(b)}}$$
 である。$\square$
 {{% /details %}}
+
+今の証明から分かるように、単位元・余単位元は以下の関係から求められる。
+
+{{% proposition %}}
+$$\xymatrix{
+\mathcal{C} \ar@/^4pt/[r]^{F}\_{}=\"x\" & \mathcal{D} \ar@/^4pt/[l]^{G}\_{}=\"y\"
+\ar@{}|{\perp} \"x\";\"y\"
+}$$
+である時、単位射 $\eta:1\_{\mathcal{C}}\rightarrow GF$ の $a$コンポーネントは自然同型
+$$ \mathcal{D}(F(a), F(a)) \cong \mathcal{C}(a, GF(a))$$
+の左辺の $1\_{F(a)}$ に対応する右辺の射 $\eta\_a: a\rightarrow GF(a)$ で与えられる。
+
+同様に、余単位射 $\epsilon: FG\rightarrow 1\_{\mathcal{D}}$ の $b$ コンポーネントは自然同型
+$$ \mathcal{D}(FG(b), b) \cong \mathcal{C}(G(b), G(b))$$
+の右辺の $1\_{G(b)}$ に対応する左辺の射 $\epsilon\_b: GF(b)\rightarrow b$ で与えられる。
+{{% /proposition %}}
 
 単位射・余単位射の具体的な例を見てみよう。例えば随伴
 
