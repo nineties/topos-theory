@@ -58,7 +58,7 @@ $f\circ (g\circ h)\in S$
 $c$ 上の篩 $R,S$ と射 $f: d\rightarrow c$ に対して
 $$ f^{\ast}(R\cap S) = f^{\ast}(R)\cap f^{\ast}(S)$$
 {{% /proposition %}}
-これは $f\circ g\in R\cap \Leftrightarrow f\circ g\in R, f\circ g\in S$ である事より明らか。
+これは $f\circ g\in R\cap S\Leftrightarrow f\circ g\in R, f\circ g\in S$ である事より明らか。
 
 ### Grothendieck位相の定義
 
