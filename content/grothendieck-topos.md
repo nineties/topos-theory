@@ -36,7 +36,7 @@ $$ f\in S \Rightarrow f\circ g\in S$$
 {{% /definition %}}
 
 {{% definition %}}
-presieve $P$ に対して、 $P\subseteq S$ となる最小の篩を **Pによって生成される篩** という。
+presieve $P$ に対して、 $P\subseteq S$ となる最小の篩 $S$ を **Pによって生成される篩** という。
 {{% /definition %}}
 
 {{% proposition %}}
