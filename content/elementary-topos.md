@@ -76,7 +76,7 @@ x \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
 }$$
 以下の図式が可換となるような $u$ が唯一つ存在するような対象 $p$ と射 $\bar{f},\bar{g}$ の事である。
 $$\xymatrix{
-x \ar[rd]^{u} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
+x \ar[rd]^{\exists!u} \ar@/^1pc/[rrd]^{\beta} \ar@/^-1pc/[rdd]\_{\alpha} & & \\\\
 & p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
 & a \ar[r]^{f} & c
 }$$
@@ -96,9 +96,9 @@ B \ar[r]^{g}              & C
 
 {{% proposition label="prop.pullback-preserves-monomorphism" %}}
 引き戻しはモノ射を保存する。
-すなわち、以下が引き戻しの図式の時 $g$ がモノ射ならば $\bar{g}$ もモノ射。
+すなわち、 $g$ がモノ射ならば $f^\ast g$ もモノ射。
 $$\xymatrix{
-p \ar[r]^{\bar{f}} \ar[d]\_{\bar{g}} & b \ar[d]^{g} \\\\
+p \ar[r] \ar@{^{(}->}[d]\_{f^\ast g} & b \ar@{^{(}->}[d]^{g} \\\\
 a \ar[r]^{f} & c
 }$$
 {{% /proposition %}}
@@ -338,15 +338,7 @@ G\_a                  \ar[r] & G\_b \ar[r]                  & G\_c
 特に $\mathcal{C}=\mathbf{1}$ の場合はこれは $\mathbf{Set}$ そのものであり、 $\mathbf{PSh}(\mathcal{C})$ は $\mathbf{Set}$ を自然に一般化した概念である。
 これが $\mathbf{Set}$ と同様の性質を持つことは容易に想像できるであろう。今後の定理とその証明にあたってもこのイメージを持っていると読みやすくなるだろう。
 
-では、前層の圏が初等トポスである事を示すために、有限完備であること、カルテシアン閉であること、部分対象分類子を持つことを順に示す。
-
-### 完備性
-
-{{% proposition %}}
-前層の圏は双完備である。
-{{% /proposition %}}
-
-従って、当然、有限完備である。これは {{< refer th.limits-of-functor-categories >}} と $\mathbf{Set}$ が双完備であることから示される。
+では、 $\mathbf{PSh}(\mathcal{C})$ が初等トポスである事を示す。まず、 {{< refer th.limits-of-functor-categories >}} と $\mathbf{Set}$ が双完備であることより、 $\mathbf{PSh}(\mathcal{C})$ も双完備であるので、カルテシアン閉であることと部分対象分類子を持つことを示せば良い。
 
 ### 指数対象
 
@@ -355,7 +347,9 @@ G\_a                  \ar[r] & G\_b \ar[r]                  & G\_c
 $$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q) $$
 であり常に存在する。従って $\mathbf{PSh}(\mathcal{C})$ はカルテシアン閉圏である。
 {{% /proposition %}}
-もし $q^p$ が存在するならば、米田の補題と指数対象の性質より、任意の $a\in\mathcal{C}$ に対して自然な同型
+特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\mathcal{C}(p, q)$ と一致する事が分かる。
+
+さて、もし $q^p$ が存在するならば、米田の補題と指数対象の性質より、任意の $a\in\mathcal{C}$ に対して自然な同型
 $$ q^p(a) \cong \hat{\mathcal{C}}(\mathcal{Y}(a), q^p)\cong\hat{\mathcal{C}}(\mathcal{Y}(a)\times p, q)$$
 が存在する。従って
 $$ q^p = \hat{\mathcal{C}}(\mathcal{Y}(-)\times p, q)$$
@@ -374,95 +368,48 @@ $$\begin{aligned}
 $\square$
 {{% /details %}}
 
-特別な場合として $\mathcal{C}=\mathbf{1}$ の場合を考えてみると、$\mathcal{C}(p, q)$ と一致する事が分かる。
-
 ### 篩(ふるい)
 
-$\mathbf{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して
-$$ \Omega(a)\cong \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $$
-となる。そして、 $\Omega$ は $\mathrm{Sub}$ を表現する対象なのであるから、任意の $x:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して
-$$ \hat{\mathcal{C}}(x, \Omega)\cong\mathrm{Sub}(x)$$
-でなければならない。従って、これらを組み合わせて$ \Omega(a)\cong \mathrm{Sub}(\mathcal{Y}(a))$ すなわち
+$\mathbf{PSh}(\mathcal{C})$ が部分分類対象子 $\Omega$ を持つとすると、米田の補題より任意の $a\in\mathcal{C}$ に対して $ \Omega(a)\cong \hat{\mathcal{C}}(\mathcal{Y}(a), \Omega) $ となる。
+また、 $\Omega$ は $\mathrm{Sub}$ を表現する対象なので、任意の $x:\mathcal{C}^{\mathrm{op}}\rightarrow\mathbf{Set}$ に対して
+$ \hat{\mathcal{C}}(x, \Omega)\cong\mathrm{Sub}(x)$
+である。従って、これらを組み合わせて$ \Omega(a)\cong \mathrm{Sub}(\mathcal{Y}(a))$ すなわち
 $$ \Omega \cong \mathrm{Sub}(\mathcal{Y}(-)) $$
 でなければならない。
 
-ここで登場した表現可能関手の部分対象の集合 $\mathrm{Sub}(\mathcal{Y}(a)) = \mathrm{Sub}(\mathcal{C}(-, a))$ は
- **コドメインが$a$である射**  からなる何らかの集合と同一視できそうである。これを **ふるい(sieve)** という。漢字では篩と書く。
+ここで登場した表現可能関手 $\mathcal{Y}(a)$ の部分対象がどういうものか先に調べる。
 
 {{% definition title="篩(ふるい)" label="def.sieve" %}}
-小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が、任意の $f\in S$ と $f\circ g$ が定義される $g$ について $f\circ g\in S$ である時 (前合成、precomposition について閉じている時)、これを $a$ 上の **篩(ふるい, sieve)** という。
+表現可能関手 $\mathcal{Y}(a)=\mathrm{C}(-, a)$ の部分対象を $a$ 上の **篩(ふるい, sieve)** という。
+{{% /definition %}}
+
+部分対象 $S \xhookrightarrow{} \mathrm{C}(-, a)$ は自然変換であるので、
+代表元として、各 $S(x)$ を $\mathrm{C}(x, a)$ の部分集合、 $S(x)\xhookrightarrow{}\mathrm{C}(x, a)$ を包含写像として取れば、
+任意の $f:x\rightarrow y$ に対して以下が可換となる。
+
+$$\xymatrix{
+S(y) \ar@{^{(}->}[d]^{\subseteq} \ar[r]^{-\circ f} & S(x) \ar@{^{(}->}[d]^{\subseteq} \\\\
+\mathrm{C}(y, a)     \ar[r]^{-\circ f} & \mathrm{C}(x, a)
+}$$
+
+すなわち、 $S$ の満たす性質は前合成$-\circ f$ について閉じているという事である。
+
+{{% definition title="篩の別定義" label="def.sieve" %}}
+小圏 $\mathcal{C}$ の対象 $a$ をコドメインとする射の集合 $S$ が $a$ 上の **篩(ふるい, sieve)** であるとは、これが前合成(precomposition)について閉じている、すなわち
+任意の $f \in S$  と $f\circ g$ が定義できる $g$ について $f\circ g \in S$ である事をいう。
 {{% /definition %}}
 
 篩の具体例をいくつか見てみる。例えば以下のような圏において
 $$\xymatrix{ a \ar[r]^f & b } $$
 $a$ 上の篩は $\emptyset, \\{1_a\\}$ の2つ。 $b$ 上の篩は $\emptyset, \\{f\\}, \\{1_b, f\\}$ の3つである。
 
-
-位相空間 $X$ の開集合を対象とし、開集合の包含関係 $V\subseteq U$ を射 $V\rightarrow U$ とすると圏となる。
-この圏における開集合 $U$ 上の篩 $S$ とはどのようなものか考えると、$(V\rightarrow U)\in S$ であるならば、
-任意の $W\subseteq V$ である $W$ に対して $(W\rightarrow U)\in S$ となるような集合が $S$ である。
-この例で言うと、$U$ に含まれる開集合を $V$ に含まれるという条件でふるいにかけている、ようなイメージである。
-{{% tikz %}}
-  \usetikzlibrary{arrows,patterns}
-  \begin{tikzpicture}
-  \tikzset{filledcircle/.style={draw, circle, fill=gray, minimum size=1.5cm, inner sep=0pt}}
-
-  % Draw outer set X
-  \draw[thick] (0,0) ellipse (4cm and 3cm);
-  \node at (3.5,2.5) {$X$};
-
-  % Draw inner set U
-  \draw[thick] (-1,0) ellipse (2.5cm and 2cm);
-  \node at (1,1.8) {$U$};
-
-  % Draw sets V and W inside U
-  \node[filledcircle,label=center:$V$] (V) at (-1,0) {};
-
-  \end{tikzpicture}
-{{% /tikz %}}
-
+他には、位相空間 $X$ の開集合を対象とし、開集合の包含関係 $V\subseteq U$ を射 $V\rightarrow U$ とした
+圏における開集合 $U$ 上の篩 $S$ とは、 $V\subseteq U$ である開集合 $V$ に対して、その全ての部分開集合を集めた集合である。
 
 定義より明らかに以下が成立する。
 {{% proposition label="prop.maximal-sieve" %}}
 小圏 $\mathcal{C}$ の対象 $a$ について $a$上の篩全ての集合は半順序集合となり、これは最大値を持つ。最大の篩は $1_a$ を含むものである。
 {{% /proposition %}}
-
-
-{{% proposition label="prop.subfunctor-of-yoneda" %}}
-小圏 $\mathcal{C}$ の対象 $a$ について $\mathrm{Sub}(\mathcal{Y}(a))$ は $a$ 上の篩全ての集合と半順序集合として同型
-{{% /proposition %}}
-{{% details 証明 %}}
-$[m: F\hookrightarrow \mathcal{Y}(a)] \in \mathrm{Sub}(\mathcal{Y}(a))$ に対して、
-$$ S_m = \bigcup\_{x\in\mathcal{C}}\mathrm{Im}(m_x) $$
-と定める。まず、これが同値類の代表元 $m$ の選び方によらない事を示す。
-$m: F\hookrightarrow\mathcal{Y}(a)$ と $n: G\hookrightarrow\mathcal{Y}(a)$ が同値だとすると、自然同型 $\phi: F\rightarrow G$ が存在して
-以下が可換。
-
-$$\xymatrix{
-    & \mathcal{Y}(a) &       \\\\
-F \ar@{^{(}->}[ru]^m \ar[rr]^{\phi} & & G \ar@{^{(}->}[lu]\_n
-}$$
-
-従って、以下が可換で $\phi_x$ は全単射。
-
-$$\xymatrix{
-    & \mathcal{C}(x, a) &       \\\\
-F(x) \ar@{^{(}->}[ru]^{m_x} \ar[rr]^{\phi_x} & & G(x) \ar@{^{(}->}[lu]\_{n_x}
-}$$
-
-よって $\mathrm{Im}(m_x) = \mathrm{Im}(n_x)$ であるから $S_m$ は $m$ の選び方によらない。
-
-続いて、 $S_m$ がふるいである事を示す。任意の $(f:x\rightarrow a)\in S_m$ と $g:y\rightarrow x$ をとる。
-$m$ は自然変換であるから以下が可換である。
-$$\xymatrix{
-F(x) \ar[r]^-{m_x} \ar[d]\_{F(g)} & \mathcal{C}(x, a) \ar[d]^{-\circ g} \\\\
-F(y) \ar[r]^-{m_y}               & \mathcal{C}(y, a)
-}$$
-$f$ は $\mathrm{Im}(m_x)$ の元であるから、適当な $z\in F(x)$ が存在して $f = m_x(z)$。よって図式を辿ると
-$$ f\circ g = m_y(F(g)(z)) $$
-であるから、 $f\circ g\in \mathrm{Im}(m_y)$。従って $f\circ g\in S_m$ であるから $S_m$ は篩である。$\square$
-
-{{% /details %}}
 
 ### 部分対象分類子
 

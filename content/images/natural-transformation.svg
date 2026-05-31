@@ -9,6 +9,9 @@
    id="svg1"
    inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
    sodipodi:docname="natural-transformation.svg"
+   inkscape:export-filename="natural-transformation.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +96,10 @@
        ns3:preamble="/Users/nakamurakouichi/Library/Application Support/org.inkscape.Inkscape/config/inkscape/extensions/textext/default_packages.tex"
        ns3:scale="1.8710943426177369"
        ns3:alignment="middle center"
-       ns3:jacobian_sqrt="0.660081">
+       ns3:jacobian_sqrt="0.660081"
+       inkscape:export-filename="natural-transformation.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <defs
          id="defs3508">
         <g
