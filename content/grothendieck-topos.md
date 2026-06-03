@@ -121,19 +121,6 @@ $$f^{\ast}(R\cap S) = f^{\ast}(R)\cap f^{\ast}(S) = f^{\ast}(R)\cap M\_d = f^{\a
 である。 $\square$
 {{% /details %}}
 
-{{% proposition %}}
-$R,S$ が $c$ 上の篩であり、$R\subseteq S$ であるとき
-$$ R\in J(c) \Rightarrow S\in J(c)$$
-{{% /proposition %}}
-
-{{% details 証明 %}}
-$R,S$ が $c$ 上の篩であり、$R\subseteq S$、$R\in J(c)$ であるとする。
-
-任意の $(f:d\rightarrow c)\in R$ をとると $f\in S$ であるから
-$f^{\ast}(S) = M\_d$
-である。従って最大性公理より $f^{\ast}(S)=M\_d \in J(d)$ である。よって推移性公理より $S\in J(c)$ である。 $\square$
-{{% /details %}} 
-
 上記のGrothendieck位相の定義は $J$ が満たす抽象的な公理によって記述されていたが、
 被覆の細分・合成といった操作を直感的に扱いやすくする目的で、 **合成篩(composite sieve)** を用いた定義も用いられる。
 
