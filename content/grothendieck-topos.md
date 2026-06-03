@@ -174,6 +174,67 @@ $J$ が1.2.3.4.の条件を満たすとする。
 $\square$
 {{% /details %}}
 
+### Grothendieck前位相
+
+Grothendieck位相の定義は以上で十分であるが、具体的な計算を行う際に便利な幾つかの概念を定める。
+
+{{% definition title="Grothendieck前位相" %}}
+任意の引き戻しをもつ圏 $\mathcal{C}$ 上の **Grothendieck前位相(Grothendieck pretopology)** もしくは **Grothendieck位相の基底(Basis for Grothendieck topology)** とは、$\mathcal{C}$ の各対象 $c$ に、presieveの族 $K(c)$ を対応させる写像 $K$ であって、以下の公理を満たすものである。
+
+1. $1\_c \in K(c)$
+2. $\\{f\_i: c\_i \rightarrow c\\}\_{i \in I}\in K(c)$ であるならば任意の $g:d\rightarrow c$ に対して、
+   $\\{g^{\ast}(f\_i): c\_i\times\_c d\rightarrow d\\}\_{i \in I} \in K(d)$
+3. $\\{f\_i: c\_i \rightarrow c\\}\_{i \in I}\in K(c)$ かつ、各 $i\in I$ について $\\{g\_{ij}:d\_{ij}\rightarrow c\_i\\}\_{j\in I\_i}\in K(c\_i)$ であるならば、
+   $\\{f\_i\circ g\_{ij}: d\_{ij}\rightarrow c\\}\_{i \in I, j\in I\_i} \in K(c)$
+
+引き戻しを持つとは限らない圏においては条件2を以下のように緩めて良い。
+
+2. $\\{f\_i: c\_i \rightarrow c\\}\_{i \in I}\in K(c)$ であるならば任意の $g:d\rightarrow c$ に対して、
+   presieve $\\{h\_j: d\_j\rightarrow d\\}\_{j\in J} \in K(d)$ が存在して、任意の $j\in J$ について $g\circ h\_j=f\_i\circ k$ と分解できる。
+
+{{% /definition %}}
+
+前段の条件2.を満たすとき、後段の条件2.を満たすのは引き戻しの図式から明らかである。
+
+$$\xymatrix{
+c\_i\times\_c d \ar[d]\_{g^{\ast}(f\_i)} \ar[r] & c\_i \ar[d]^{f\_i} \\\\
+d \ar[r]^{g}                                   & c
+}$$
+
+{{% proposition title="Grothendieck前位相の生成する位相" %}}
+任意のGrothendieck前位相 $K$ に対して、$J$ を
+$$ R\in J(c) \Leftarrow \exists S\in K(c), S\subseteq R$$
+と定めると $J$ はGrothendieck位相である。
+{{% /proposition %}}
+{{% details 証明 %}}
+引き戻しを持つとは限らない圏 $\mathcal{C}$ について示す。 $K$ が $\mathcal{C}$ 上のGrothendieck前位相であるとし、
+$J$ を $ R\in J(c) \Leftarrow \exists S\in K(c), S\subseteq R$ で定める。
+
+(最大性公理)
+
+$1\_c \in K(c)$ より成立。
+
+(安定性公理)
+
+$S\in J(c)$ であるとする。すると $T\subseteq S$ なる $T\in K(c)$ が存在する。
+ここで$T=\\{f\_i:c\_i\rightarrow c\\}$ とすると、 任意の $g:d\rightarrow c$ に対して
+$U=\\{h\_j: d\_j\rightarrow d\\} \in K(d)$ が存在して、任意の $j\in J$ について $g\circ h\_j = f\_i\circ k$ と分解できる。
+よって $f\_i\in T\subseteq S$ より $fg\circ h\_j = f\_i\circ k \in S$ であるから $h\_j\in g^{\ast}(S)$ である。
+従って $U\subseteq g^{\ast}(S)$ であり、これと $U\in K(d)$ より $g^{\ast}(S)\in J(d)$ である。
+
+(推移性公理)
+
+$S\in J(c)$ であり、 $c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J(d)$ を満たすとする。
+すなわち、 $S=\\{f\_i:c\_i\rightarrow c\\}$ とすると、
+presieve $T\in K(c)\ {\rm s.t.}\ T\subseteq S$ が存在し任意の $i\in I$ に対して、presieve $U\_i\in K(c\_i)$ が存在して $U\_i\subseteq f\_i^{\ast}(R)$ であるとする。
+ここで $U\_i=\\{g\_{ij}:d\_{ij}\rightarrow c\_i\\}$ とすると $V=\\{f\_i\circ g\_{ij}: d\_{ij}\rightarrow c\\} \in K(c)$ である。
+ここで $g\_{ij}\in U\_i \subseteq f\_i^{\ast}(R)$ より $f\_i\circ g\_{ij} \in R$ であるから $V\subseteq R$ である。
+すなわち、 $V\in K(c), V\subseteq R$ より $R\in J(c)$ である。
+
+$\square$
+{{% /details %}}
+
+
 ### Grothendieck位相の例
 
 {{% definition title="自明な位相" %}}
