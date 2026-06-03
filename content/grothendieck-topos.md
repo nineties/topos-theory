@@ -15,7 +15,7 @@ toc: true
 
 ### 篩(ふるい)
 
-最初に、位相空間 $U$ の開被覆の抽象化を行う。まず、 $U$ に含まれる適当な開集合の集合 $\\{U\_{\lambda}\subseteq U\\}$ を抽象化した概念としてpresieveが定義される。
+最初に、位相空間 $U$ の開被覆の抽象化を行う。まず、 $U$ に含まれる適当な開集合の集合 $\\{U\_{\lambda}\subseteq U\\}\_{\lambda\in\Lambda}$ を抽象化した概念としてpresieveが定義される。
 
 {{% definition title="presieve" %}}
 圏 $\mathcal{C}$ と対象 $c\in\mathcal{C}$ に対して、 $c$ をコドメインとする射の族
@@ -32,12 +32,18 @@ $$ V\in S, W\subseteq V \Rightarrow W\in S$$
 {{% definition title="篩(ふるい)" %}}
 圏 $\mathcal{C}$ の対象 $c$ 上のpresieve $S$ が、前合成について閉じているとき、すなわち $f\circ g$ が定義される任意の $g$ に対して
 $$ f\in S \Rightarrow f\circ g\in S$$
-が成り立つ時、これを **篩(ふるい,sieve)** という。
+が成り立つ時、これを $c$ 上の **篩(ふるい,sieve)** という。
 {{% /definition %}}
+
+{{< refer def.sieve >}} でも述べたように、 $c$ 上の篩全体は $\mathcal{Y}(c)=\mathcal{C}(-, c)$ の部分対象全体と半順序集合として同型である。
+状況によって、定義を使い分ける事がある。
+$c$ 上の篩全体は最大値を持ち、それを $M\_c$ と書く。 既に述べたように $c$ 上の篩 $S$ が最大であることと、 $1\_c\in M\_c$ であることは同値である。
 
 {{% definition %}}
 presieve $P$ に対して、 $P\subseteq S$ となる最小の篩 $S$ を **Pによって生成される篩** という。
 {{% /definition %}}
+
+$M\_c$ が存在するので、任意のpresieveに対してそれが生成する篩が存在する。
 
 {{% proposition %}}
 $c$ 上の篩 $S$ と、射 $f: d\rightarrow c$ に対して
@@ -53,12 +59,26 @@ $f\circ (g\circ h)\in S$
 {{% /details %}}
 
 これは、$U$ 上の篩を $V\subseteq U$ に制限することで $V$ 上の篩を作るという操作の抽象化である。
+ここで $f^{\ast}$ という引き戻しと同じ表記を用いているのは、実際にこれが以下のような引き戻しであるからである。
+もしくは $S$ の $(f\circ -): M\_d\rightarrow M\_c$ による逆像が $f^{\ast}(S)$ であると言っても良い。
+
+$$\xymatrix{
+f^{\ast}(S) \ar[r] \ar@{^{(}->}[d] & S \ar@{^{(}->}[d] \\\\
+M\_d \ar[r]^{f\circ -} & M\_c
+}$$
+
+篩を部分関手とみなす場合には、以下のような引き戻しの図式となる。
+
+$$\xymatrix{
+f^{\ast}(S) \ar[r] \ar@{^{(}->}[d] & S \ar@{^{(}->}[d] \\\\
+\mathcal{Y}(d) \ar[r]^{\mathcal{Y}(f)} & \mathcal{Y}(c)
+}$$
 
 {{% proposition %}}
 $c$ 上の篩 $R,S$ と射 $f: d\rightarrow c$ に対して
 $$ f^{\ast}(R\cap S) = f^{\ast}(R)\cap f^{\ast}(S)$$
 {{% /proposition %}}
-これは $f\circ g\in R\cap S\Leftrightarrow f\circ g\in R, f\circ g\in S$ である事より明らか。
+これは逆像の性質より明らか。
 
 ### Grothendieck位相の定義
 
@@ -66,18 +86,18 @@ $$ f^{\ast}(R\cap S) = f^{\ast}(R)\cap f^{\ast}(S)$$
 圏$\mathcal{C}$ 上の **Grothendieck位相(Grothendieck topology)** とは、$\mathcal{C}$ の各対象 $c$ に、篩の族 $J(c)$ を対応させる写像 $J$ であって、
 以下の公理を満たすものである。
 
-1. **最大性公理(maximality axiom)**: 最大の篩 $M\_c$ (コドメインが $c$ の射全ての族) が $J(c)$ に含まれる。
-2. **安定性公理(stability axiom)**: $S\in J(c)$ であるならば、任意の $f:d\rightarrow c$ に対して $f^{\ast}(S)\in J(d)$。
-3. **推移性公理(transitivity axiom)**: $S\in J(c)$ であり、$c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J(d)$ を満たすならば、$R\in J(c)$ である。
+- **最大性公理(maximality axiom)**:  $M\_c \in J(c)$
+- **安定性公理(stability axiom)**: $S\in J(c)$ であるならば、任意の $f:d\rightarrow c$ に対して $f^{\ast}(S)\in J(d)$。
+- **推移性公理(transitivity axiom)**: $S\in J(c)$ であり、$c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J(d)$ を満たすならば、$R\in J(c)$ である。
 
 $J(c)$ の元を $c$ の **$J$被覆($J$-covering)** もしくは単に **被覆(covering)** と呼ぶ。
 {{% /definition %}}
 
 これらは、位相空間の場合の以下の性質をそれぞれ抽象化したものである。
 
-1. 任意の開集合 $U$ について $U$ 自身は $U$ の開被覆である。($M\_c$ がpresieve $\\{1\_c\\}$ によって生成される事に注意。これは $\\{U\subseteq U\\}$ という開被覆と対応している。)
-2. (被覆の範囲を狭めても被覆): 任意の開被覆 $U=\bigcup U\_{\lambda}$ が与えられた時、これをより小さい開集合 $V\subseteq U$ に制限した $\\{V\cap U\_{\lambda}\\}$ は $V$ の開被覆である。
-3. (被覆の各ピースを覆っているならば、全体も覆っている): 任意の開被覆 $U=\bigcup U\_{\lambda}$ と、$U$ の部分集合の族 $R=\\{V\_{\alpha}\subseteq U\\}$ が与えられた時、任意の $U\_{\lambda}\subseteq U$ について
+-  $U$ 自身は $U$ の開被覆である。
+- (被覆の範囲を狭めても被覆): 任意の開被覆 $U=\bigcup U\_{\lambda}$ が与えられた時、これをより小さい開集合 $V\subseteq U$ に制限した $\\{V\cap U\_{\lambda}\\}$ は $V$ の開被覆である。
+- (被覆の各ピースを覆っているならば、全体も覆っている): 任意の開被覆 $U=\bigcup U\_{\lambda}$ と、$U$ の部分集合の族 $R=\\{V\_{\alpha}\subseteq U\\}$ が与えられた時、任意の $U\_{\lambda}\subseteq U$ について
 $\\{U\_{\lambda}\cap V\_{\alpha}\\}$ が $U\_{\lambda}$ の開被覆になっているのであれば、 $R$ は $U$ の開被覆である。
 
 {{% definition title="景" %}}
@@ -113,6 +133,59 @@ $R,S$ が $c$ 上の篩であり、$R\subseteq S$、$R\in J(c)$ であるとす�
 $f^{\ast}(S) = M\_d$
 である。従って最大性公理より $f^{\ast}(S)=M\_d \in J(d)$ である。よって推移性公理より $S\in J(c)$ である。 $\square$
 {{% /details %}} 
+
+上記のGrothendieck位相の定義は $J$ が満たす抽象的な公理によって記述されていたが、
+被覆の細分・合成といった操作を直感的に扱いやすくする目的で、 **合成篩(composite sieve)** を用いた定義も用いられる。
+
+{{% definition title="合成篩を用いたGrothendieck位相の定義" %}}
+圏$\mathcal{C}$ 上の **Grothendieck位相(Grothendieck topology)** とは、$\mathcal{C}$ の各対象 $c$ に、篩の族 $J(c)$ を対応させる写像 $J$ であって、
+以下の公理を満たすものである。
+
+1. $M\_c\in J(c)$
+2. $c$ 上の篩 $S,T$ について $T\in J(c)$ かつ $T\subseteq S$ ならば $S\in J(c)$
+3. $R\in J(c)$ ならば、任意の $f:d\rightarrow c$ について、ある $S\in J(d)$ が存在して、全ての $g\in S$ について $f\circ g\in R$
+4. presieve $\\{f\_i:c\_i\rightarrow c\\}\_{i \in I}$ から生成された $S\in J(c)$ と、
+   presieve $\\{g\_{ij}: d\_{ij}\rightarrow c\_i\\}\_{j\in I\_i}$ から生成された $T\_i\in J(c\_i)$ について、
+   presieve $\\{f\_i\circ g\_{ij}: d\_{ij}\rightarrow c\\}\_{i\in I, j\in I\_i}$ から生成された **合成篩(composite sieve)** $R$ は $J(c)$ の元である。
+   また、この合成篩を $S*\\{T\_i\\}\_{i\in I}$ と書く。
+{{% /definition %}}　
+
+{{% details 定義の同値性の証明 %}}
+**($\Rightarrow$)**
+
+$J$ が3つの公理を満たすとする。
+
+1. 最大性公理そのものである。
+
+2. $c$ 上の篩 $S,T$ について $T\in J(c)$ かつ $T\subseteq S$ であるとする。
+任意の $(f:d\rightarrow c) \in T$ について、 $T\subseteq S$ より $f=f\circ 1\_d\in S$ であるから
+$1\_d \in f^{\ast}(S)$。すなわち、最大性公理より $f^{\ast}(S)=M\_d \in J(d)$ であるので、推移性公理より $S\in J(c)$ である。
+
+3. $R\in J(c)$ であるとする。任意の $f:d\rightarrow c$ について、安定性公理より $f^{\ast}(R)\in J(d)$ であり、$f^{\ast}(R)$ の定義より、任意の $g\in f^{\ast}(R)$ について $f\circ g\in R$ である。
+
+4. $S\in J(c)$ をpresieve $\\{f\_i:c\_i\rightarrow c\\}\_{i \in I}$ から生成された篩、
+   $T\_i\in J(c\_i)$ をpresieve $\\{g\_{ij}: d\_{ij}\rightarrow c\_i\\}\_{j\in I\_i}$ から生成された篩、
+   $R$ を presieve $\\{f\_i\circ g\_{ij}: d\_{ij}\rightarrow c\\}\_{i\in I, j\in I\_i}$ から生成された篩とする。
+   任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J(d)$ である事を示せば、推移性公理より $R\in J(c)$ となる。
+
+   ここで、 適当な $i\in I$ に対して $f=f\_i\circ h$ と書くことができて、引き戻しの性質より
+   $$f^{\ast}(R) = (f\_i\circ h)^{\ast}(R) = h^{\ast}(f\_i^{\ast}(R))$$
+   である。ここで任意の $k\in T\_i$ について、ある $j$ が存在して $k = g\_{ij}\circ u$ と書けるから、 $f\_i\circ k = (f\_i\circ g\_{ij})\circ u \in R$ である。
+   従って $k\in f\_i^{\ast}(R)$ であるから $T\_i\subseteq f\_i^{\ast}(R)$ である。
+
+   よって、 $T\_i\in J(c\_i)$ かつ $T\_i\subseteq f\_i^{\ast}(R)$ より $f\_i^{\ast}(R)\in J(c\_i)$ である。
+   従って、安定性公理より $h^{\ast}(f\_i^{\ast}(R)) = f^{\ast}(R) \in J(d)$ である。
+
+**($\Leftarrow$)**
+
+$J$ が1.2.3.4.の条件を満たすとする。
+
+- (最大性公理): 条件1.そのものである。
+- (安定性公理): $S\in J(c)$ であるとすると、任意の$f:d\rightarrow c$ に対して条件3.よりある $R\in J(d)$ が存在して、すべての$g\in R$ に対して $f\circ g\in S$ である。すなわち $g\in f^{\ast}(S)$ であるから $R\subseteq f^{\ast}(S)$ である。よって条件2.より $f^{\ast}(S)\in J(d)$。
+- (推移性公理): $c$ 上の篩 $S=\\{f\_i: c\_i\rightarrow c\\}\_{i\in I}$ について、 $S\in J(c)$ であり、 $c$ 上の篩 $R$ が任意の $f\_i \in S$ に対して $f\_{i}^{\ast}(R)\in J(c\_i)$ を満たすとする。ここで、 $T\_i = f\_{i}^{\ast}(R)$ とおき、その元を $T\_i = \\{g\_{ij}: d\_{ij}\rightarrow c\_i\\}\_{j \in I\_i}$ と書くと条件4.より合成篩 $S*\\{T\_i\\}\_{i\in I} = \\{f\_i\circ g\_{ij}: d\_{ij}\rightarrow c\\}\_{i\in I, j\in I\_i}$ は $J(c)$ の元である。ここで $g\_{ij}\in f\_{i}^{\ast}(R)$ より $f\_{i}\circ g\_{ij}\in R$ であるので、 $S*\\{T\_i\\}\_{i\in I}\subseteq R$ である。従って条件2.より $R\in J(c)$ である。
+
+$\square$
+{{% /details %}}
 
 ### Grothendieck位相の例
 
