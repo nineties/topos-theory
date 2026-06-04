@@ -310,6 +310,48 @@ $(g\circ h)^{\ast}(R)\in G\_D(x)$ かつ$ 1\_x^{\ast}((g\circ h)^{\ast}(R)) \sub
 $\square$
 {{% /details %}}
 
+実は $G\_D$ がGrothendieck位相である事の証明には $D$ がカバレッジである事実は不要である。
+$D$ がカバレッジであるという条件は、 $G\_D$ が $D$ を含むという事実の為に必要となる。
+
+{{% proposition %}}
+$$S\in D(c) \Rightarrow S\in G\_D(c)$$
+{{% /proposition %}}
+{{% details 証明 %}}
+$S\in D(c)$ であるとする。 $f:d\rightarrow c$ と $D$ について閉じている $d$ 上の篩 $T$ について $f^{\ast}(S)\subseteq T$ であるとする。
+$D$ がカバレッジであることより $f^{\ast}(S)\in D(d)$ である。ここで $T$ は $D$ について閉じているので
+$f^{\ast}(S)\in D(d)$ と $1\_d^{\ast}(f^{\ast}(S))\subseteq 1\_d^{\ast}(T)$ より $1\_d\in T$ である。従って $T=M\_d$ であるから $S\in G\_D(c)$ である。 $\square$
+{{% /details %}}
+
+{{% proposition %}}
+$G\_D$ は $D$ を含むGrothendieck位相のうち最小のものである。
+{{% /proposition %}}
+{{% details 証明 %}}
+$J$ を $D$ を含むGrothendieck位相とする。$S\in G\_D(c)$ とする。示すべきことは $S\in J(c)$ である。
+
+ここで
+$$ T=\\{f:d\rightarrow c \mid f^{\ast}(S)\in J(d)\\}$$
+と置く。$1\_c\in T$ である事を示せば $1\_c^{\ast}(S)=S\in J(d)$ が示されるので、$T=M\_c$ である事を示せば良い。
+
+($T$ が篩である事)
+
+$(f:d\rightarrow c)\in T$ と任意の $g:e\rightarrow d$ について安定性公理より
+$(f\circ g)^{\ast}(S) = g^{\ast}(f^{\ast}(S)) \in J(e)$ であるから $f\circ g \in T$。従って $T$ は $c$ 上の篩である。
+
+($T$ が $D$ について閉じている事)
+
+$g:e\rightarrow d$ と $Z\subseteq D(e)$ に対して $Z\subseteq g^{\ast}(T)$ であるとする。
+任意の $(h:x\rightarrow e)\in Z$ に対して $h\in g^{\ast}(T)\Leftrightarrow g\circ h\in T\Leftrightarrow (g\circ h)^{\ast}(S)=h^{\ast}(g^{\ast}(S))\in J(d)$ 
+である。従って推移性公理より $g^{\ast}(S) \in J(e)$ である。従って $T$ の定義より $g\in T$ である。
+よって $T$ は $D$ について閉じている。
+
+($1\_c^{\ast}(S)\subseteq T$である事)
+
+$(f:d\rightarrow c)\in S$ とすると、 $S$ が篩であることより $f^{\ast}(S)=M\_d$ である。よって最大性公理より $f^{\ast}(S)\in J(d)$ であるから $f\in T$。
+すなわち $S\subseteq T$ である。
+
+以上より、$G\_D$ の性質から $T=M\_c$ である。 $\square$
+{{% /details %}}
+
 ### Grothendieck位相の例
 
 {{% definition title="自明な位相" %}}
