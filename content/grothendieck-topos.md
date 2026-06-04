@@ -181,7 +181,7 @@ Grothendieck位相の定義は以上で十分であるが、具体的な計算�
 {{% definition title="Grothendieck前位相" %}}
 任意の引き戻しをもつ圏 $\mathcal{C}$ 上の **Grothendieck前位相(Grothendieck pretopology)** もしくは **Grothendieck位相の基底(Basis for Grothendieck topology)** とは、$\mathcal{C}$ の各対象 $c$ に、presieveの族 $K(c)$ を対応させる写像 $K$ であって、以下の公理を満たすものである。
 
-1. $1\_c \in K(c)$
+1. $\\{1\_c\\} \in K(c)$
 2. $\\{f\_i: c\_i \rightarrow c\\}\_{i \in I}\in K(c)$ であるならば任意の $g:d\rightarrow c$ に対して、
    $\\{g^{\ast}(f\_i): c\_i\times\_c d\rightarrow d\\}\_{i \in I} \in K(d)$
 3. $\\{f\_i: c\_i \rightarrow c\\}\_{i \in I}\in K(c)$ かつ、各 $i\in I$ について $\\{g\_{ij}:d\_{ij}\rightarrow c\_i\\}\_{j\in I\_i}\in K(c\_i)$ であるならば、
@@ -234,6 +234,81 @@ presieve $T\in K(c)\ {\rm s.t.}\ T\subseteq S$ が存在し任意の $i\in I$ �
 $\square$
 {{% /details %}}
 
+### カバレッジ
+
+Grothendieck位相の3つの公理のうち、最も重要なものは安定性公理である。
+安定性公理は開被覆を細かくしてく操作を抽象化したものであって後の章で述べる **局所性(locality)** という性質と密接に関わっている。
+また、以下に述べるように安定性公理さえ成り立てば、最大性公理と推移性公理は後から追加する事が可能である。
+
+{{% definition title="カバレッジ" %}}
+圏 $\mathcal{C}$ 上の **カバレッジ(coverage)** とは各対象 $c$ に篩の集合を対応させる写像 $D$ であって、任意の射 $f:d\rightarrow c$ に対して
+$$ S\in D(c) \Rightarrow f^{\ast}(S)\in D(d)$$
+を満たすものである。
+{{% /definition %}}
+
+{{% theorem title="カバレッジの生成するGrothendieck位相" %}}
+小圏 $\mathcal{C}$ 上のカバレッジ $D$ に対して、以下のように定められた $G\_D$ はGrothendieck位相である。
+
+$c$ 上の篩 $S$ が $G\_D(c)$ の要素である条件を、以下が成立することと定める。
+
+任意の $f:d\rightarrow c$ と $D$ に関して閉じている $d$ 上の篩 $T$ について、 $f^{\ast}(S)\subseteq T\Rightarrow T=M\_d$ である。
+
+ここで $T$ が $D$ に関して閉じているとは、任意の $g:e\rightarrow d$ と $Z\in D(e)$ に対して、
+$ Z \subseteq g^{\ast}(T) \Rightarrow g \in T $
+が成り立つことである。
+{{% /theorem %}}
+
+複雑であるので、証明の前に概要を説明する。
+
+まず「$T$ が $D$ に関して閉じている」条件を書き直すと
+$ (g\circ -)(Z)\subseteq T \Rightarrow g \in T$
+となるが、前合成 $(g\circ -)$ は $g$ をより狭い範囲に制限する操作を表すのだった。
+
+すなわち、この条件は $g$ をカバレッジ $Z$ に含まれる射で狭い範囲に制限したものが全て $T$ に含まれるならば、
+$g$ 自身も $T$ に含まれるという条件であり、細かい被覆を貼り合わせて大きな被覆が作れるということである。
+
+すなわち、 $S$ の条件は $f^{\ast}(S)\subseteq T$ の元を貼り合わせていったら $T=M\_d$ になると言う事を言っており、
+$S$ がそのような網羅性を持つ篩であるという事を要請するものである。
+
+{{% details Grothendieck位相であることの証明 %}}
+$D$ を小圏 $\mathcal{C}$ 上のカバレッジとする。
+
+(最大性公理)
+
+$f:d\rightarrow c$ と $D$ に関して閉じている $d$ 上の篩 $T$ について、
+$f^{\ast}(M\_c)\subseteq T$ であるとすると、$f\circ 1\_d \in M\_c$ より $1\_d \in f^{\ast}(M\_c)\subseteq T$ である。
+従って、 $T=M\_d$ となり条件を満たすので $M\_c \in G\_D(c)$ である。
+
+(安定性公理)
+
+$S\in G\_D(c), f:d\rightarrow c$ とする。
+
+$g:e\rightarrow d$ と $D$ に関して閉じている $e$ 上の篩 $T$ について、
+$g^{\ast}(f^{\ast}(S))\subseteq T$ であるとする。 すると $g^{\ast}(f^{\ast}(S)) = (f\circ g)^{\ast}(S)\subseteq T$ であるので
+$S$ の満たす条件より $T=M\_e$ である。従って $f^{\ast}(S)$ も $G\_D$ の条件を満たすので $f^{\ast}(S)\in G\_D(d)$である。
+
+(推移性公理)
+
+$S\in G\_D(c)$ であり、$c$上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R) \in G\_D(d)$を満たすとする。
+
+ここで $g:e\rightarrow c$ と $D$ について閉じている $e$ 上の篩 $T$ について、$g^{\ast}(R)\subseteq T$ とする。$T=M\_e$ を示すことが目標である。
+その為に $T$ を細分化した篩を考え、それらを貼り合わせるという方針で証明を行う。
+
+射 $(h:x\rightarrow e) \in g^{\ast}(S)$ で $T$ を制限した $x$ 上の篩 $h^{\ast}(T)$ を考える。
+任意の $(k:y\rightarrow x)$ と $Z\in D(y)$ に対して $Z\subseteq k^{\ast}(h^{\ast}(T)) = (h\circ k)^{\ast}(T)$ とすると
+$T$ が $D$ について閉じていることより $h\circ k\in T$ すなわち $k\in h^{\ast}(T)$ である。従って $h^{\ast}(T)$ も $D$ について閉じている。
+
+そして $g^{\ast}(R)\subseteq T$ であるので $h^{\ast}(g^{\ast}(R)) = (g\circ h)^{\ast}(R) \subseteq h^{\ast}(T)$ である。
+ここで $h\in g^{\ast}(S)$ より $g\circ h\in S$ であるから、仮定より $(g\circ h)^{\ast}(R)\in G\_D(x)$ である。
+そして、仮定より $g^{\ast}(R)\subseteq T$ であるので、両辺を $h$ で引き戻して $h^{\ast}(g^{\ast}(R))\subseteq h^{\ast}(T)$ すなわち、
+$ 1\_x^{\ast}((g\circ h)^{\ast}(R)) \subseteq h^{\ast}(T) $である。以上より、 $h^{\ast}(T)$ が $D$ について閉じており、
+$(g\circ h)^{\ast}(R)\in G\_D(x)$ かつ$ 1\_x^{\ast}((g\circ h)^{\ast}(R)) \subseteq h^{\ast}(T) $であるから $h^{\ast}(T) = M\_x$ である。
+
+ここで $h^{\ast}(T)=M\_x \Leftrightarrow 1\_x \in h^{\ast}(T) \Leftrightarrow h \in T$ である。すなわち、任意の $h\in g^{\ast}(S)$ に対して $h\in T$
+であるから $g^{\ast}(S)\subseteq T$ である。従って、$T$ が $D$ について閉じており、 $S\in G\_D(c)$ かつ $g^{\ast}(S)\subseteq T$ であることから $T=M\_e$ である。
+
+$\square$
+{{% /details %}}
 
 ### Grothendieck位相の例
 
