@@ -408,3 +408,41 @@ $$ \\{U\_{\lambda}\xhookrightarrow{}U\\} \in J(U) \Leftrightarrow U=\bigcup U\_{
 $$ \\{a\_{\lambda}\xhookrightarrow{}a\\} \in J(a) \Leftrightarrow a = \bigvee a\_{\lambda}$$
 となるように定めた $J$ は $\mathcal{H}$ 上のGrothendieck位相である。これを **標準位相(canonical topology)** という。
 {{% /definition %}}
+
+### 最小の被覆篩を持つGrothendieck位相
+
+通常のGrothendieck位相 $J$ には、 各対象の被覆が無数に含まれうるが、出来るだけ少ない被覆のみから構成される位相は取り扱いが優しい。
+
+{{% definition title="最小の被覆篩を持つGrothendieck位相" %}}
+圏 $\mathcal{C}$ の射からなる集合 $\mathcal{A}$ を以下の2つの条件を満たすものとする。
+
+- 左合成について閉じている。
+- **補完的(interpolative)** である: 任意の$\mathcal{A}$ の射は、他の $\mathcal{A}$ の2つの射の合成に分解できる。
+
+この時、以下で定義される $J\_{\mathcal{A}}$ はGrothendieck位相である。
+$$ S \in J\_{\mathcal{A}}(c) \Leftrightarrow (\forall f\in\mathcal{A},\mathrm{cod}(f)=c \Rightarrow f \in S) $$
+
+{{% /definition %}}
+{{% details 証明 %}}
+(最大性公理)
+
+$M\_c \in J\_{\mathcal{A}}(c)$ は明らか。
+
+(安定性公理)
+
+$S \in J\_{\mathcal{A}}(c)$ と $f:d\rightarrow c$ について $f^{\ast}(S) \in J\_{\mathcal{A}}(d)$ を示す。
+
+任意の $g\in\mathcal{A},\mathrm{cod}(g)=d$ に対して $\mathcal{A}$ は左合成について閉じているので $f\circ g \in \mathcal{A}$。
+従って、 $f\circ g\in\mathcal{A}, \mathrm{cod}(f\circ g)=c$ より $f\circ g\in S$。従って $g\in f^{\ast}(S)$ であるから $f^{\ast}(S)\in J\_{\mathcal{A}}(d)$ である。
+
+(推移性公理)
+
+$S \in J\_{\mathcal{A}}(c)$であり $c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J\_{\mathcal{A}}(d)$ であるとする。
+この時 $R\in J\_{\mathcal{A}}(c)$ すなわち、 任意の $g\in\mathcal{A},\mathrm{cod}(g)=c$ に対して $g\in R$ である事を示せば良い。
+
+ここで $\mathrm{A}$ が補完的であることより $g = h\circ k\ (h,k\in\mathcal{A}, h:d\rightarrow c, k: e\rightarrow d)$ と分解できる。
+すると $h\in\mathcal{A},\mathrm{cod}(h)=c$ より $h\in S$ となる。従って仮定より $h^{\ast}(R)\in J\_{\mathrm{A}}(d)$ である。
+よって $k\in\mathcal{A},\mathrm{cod}(k)=d$ より $k \in h^{\ast}(R)$ すなわち $g=h\circ k\in R$ となる。
+
+$\square$
+{{% /details %}}
