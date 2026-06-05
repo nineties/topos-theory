@@ -174,6 +174,8 @@ $J$ が1.2.3.4.の条件を満たすとする。
 $\square$
 {{% /details %}}
 
+合成篩を用いた定義の条件2は **単調性公理** とも呼ばれる。
+
 ### Grothendieck前位相
 
 Grothendieck位相の定義は以上で十分であるが、具体的な計算を行う際に便利な幾つかの概念を定める。
@@ -210,11 +212,11 @@ $$ R\in J(c) \Leftarrow \exists S\in K(c), S\subseteq R$$
 引き戻しを持つとは限らない圏 $\mathcal{C}$ について示す。 $K$ が $\mathcal{C}$ 上のGrothendieck前位相であるとし、
 $J$ を $ R\in J(c) \Leftarrow \exists S\in K(c), S\subseteq R$ で定める。
 
-(最大性公理)
+**(最大性公理)**
 
 $1\_c \in K(c)$ より成立。
 
-(安定性公理)
+**(安定性公理)**
 
 $S\in J(c)$ であるとする。すると $T\subseteq S$ なる $T\in K(c)$ が存在する。
 ここで$T=\\{f\_i:c\_i\rightarrow c\\}$ とすると、 任意の $g:d\rightarrow c$ に対して
@@ -222,7 +224,7 @@ $U=\\{h\_j: d\_j\rightarrow d\\} \in K(d)$ が存在して、任意の $j\in J$ 
 よって $f\_i\in T\subseteq S$ より $fg\circ h\_j = f\_i\circ k \in S$ であるから $h\_j\in g^{\ast}(S)$ である。
 従って $U\subseteq g^{\ast}(S)$ であり、これと $U\in K(d)$ より $g^{\ast}(S)\in J(d)$ である。
 
-(推移性公理)
+**(推移性公理)**
 
 $S\in J(c)$ であり、 $c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J(d)$ を満たすとする。
 すなわち、 $S=\\{f\_i:c\_i\rightarrow c\\}$ とすると、
@@ -273,13 +275,13 @@ $S$ がそのような網羅性を持つ篩であるという事を要請する�
 {{% details Grothendieck位相であることの証明 %}}
 $D$ を小圏 $\mathcal{C}$ 上のカバレッジとする。
 
-(最大性公理)
+**(最大性公理)**
 
 $f:d\rightarrow c$ と $D$ に関して閉じている $d$ 上の篩 $T$ について、
 $f^{\ast}(M\_c)\subseteq T$ であるとすると、$f\circ 1\_d \in M\_c$ より $1\_d \in f^{\ast}(M\_c)\subseteq T$ である。
 従って、 $T=M\_d$ となり条件を満たすので $M\_c \in G\_D(c)$ である。
 
-(安定性公理)
+**(安定性公理)**
 
 $S\in G\_D(c), f:d\rightarrow c$ とする。
 
@@ -287,7 +289,7 @@ $g:e\rightarrow d$ と $D$ に関して閉じている $e$ 上の篩 $T$ につ�
 $g^{\ast}(f^{\ast}(S))\subseteq T$ であるとする。 すると $g^{\ast}(f^{\ast}(S)) = (f\circ g)^{\ast}(S)\subseteq T$ であるので
 $S$ の満たす条件より $T=M\_e$ である。従って $f^{\ast}(S)$ も $G\_D$ の条件を満たすので $f^{\ast}(S)\in G\_D(d)$である。
 
-(推移性公理)
+**(推移性公理)**
 
 $S\in G\_D(c)$ であり、$c$上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R) \in G\_D(d)$を満たすとする。
 
@@ -332,19 +334,19 @@ $J$ を $D$ を含むGrothendieck位相とする。$S\in G\_D(c)$ とする。�
 $$ T=\\{f:d\rightarrow c \mid f^{\ast}(S)\in J(d)\\}$$
 と置く。$1\_c\in T$ である事を示せば $1\_c^{\ast}(S)=S\in J(d)$ が示されるので、$T=M\_c$ である事を示せば良い。
 
-($T$ が篩である事)
+**($T$ が篩である事)**
 
 $(f:d\rightarrow c)\in T$ と任意の $g:e\rightarrow d$ について安定性公理より
 $(f\circ g)^{\ast}(S) = g^{\ast}(f^{\ast}(S)) \in J(e)$ であるから $f\circ g \in T$。従って $T$ は $c$ 上の篩である。
 
-($T$ が $D$ について閉じている事)
+**($T$ が $D$ について閉じている事)**
 
 $g:e\rightarrow d$ と $Z\subseteq D(e)$ に対して $Z\subseteq g^{\ast}(T)$ であるとする。
 任意の $(h:x\rightarrow e)\in Z$ に対して $h\in g^{\ast}(T)\Leftrightarrow g\circ h\in T\Leftrightarrow (g\circ h)^{\ast}(S)=h^{\ast}(g^{\ast}(S))\in J(d)$ 
 である。従って推移性公理より $g^{\ast}(S) \in J(e)$ である。従って $T$ の定義より $g\in T$ である。
 よって $T$ は $D$ について閉じている。
 
-($1\_c^{\ast}(S)\subseteq T$である事)
+**($1\_c^{\ast}(S)\subseteq T$である事)**
 
 $(f:d\rightarrow c)\in S$ とすると、 $S$ が篩であることより $f^{\ast}(S)=M\_d$ である。よって最大性公理より $f^{\ast}(S)\in J(d)$ であるから $f\in T$。
 すなわち $S\subseteq T$ である。
@@ -409,7 +411,7 @@ $$ \\{a\_{\lambda}\xhookrightarrow{}a\\} \in J(a) \Leftrightarrow a = \bigvee a\
 となるように定めた $J$ は $\mathcal{H}$ 上のGrothendieck位相である。これを **標準位相(canonical topology)** という。
 {{% /definition %}}
 
-### 最小の被覆篩を持つGrothendieck位相
+### 最小の被覆篩を持つ位相
 
 通常のGrothendieck位相 $J$ には、 各対象の被覆が無数に含まれうるが、出来るだけ少ない被覆のみから構成される位相は取り扱いが優しい。
 
@@ -424,18 +426,18 @@ $$ S \in J\_{\mathcal{A}}(c) \Leftrightarrow (\forall f\in\mathcal{A},\mathrm{co
 
 {{% /definition %}}
 {{% details 証明 %}}
-(最大性公理)
+**(最大性公理)**
 
 $M\_c \in J\_{\mathcal{A}}(c)$ は明らか。
 
-(安定性公理)
+**(安定性公理)**
 
 $S \in J\_{\mathcal{A}}(c)$ と $f:d\rightarrow c$ について $f^{\ast}(S) \in J\_{\mathcal{A}}(d)$ を示す。
 
 任意の $g\in\mathcal{A},\mathrm{cod}(g)=d$ に対して $\mathcal{A}$ は左合成について閉じているので $f\circ g \in \mathcal{A}$。
 従って、 $f\circ g\in\mathcal{A}, \mathrm{cod}(f\circ g)=c$ より $f\circ g\in S$。従って $g\in f^{\ast}(S)$ であるから $f^{\ast}(S)\in J\_{\mathcal{A}}(d)$ である。
 
-(推移性公理)
+**(推移性公理)**
 
 $S \in J\_{\mathcal{A}}(c)$であり $c$ 上の篩 $R$ が任意の $(f:d\rightarrow c)\in S$ に対して $f^{\ast}(R)\in J\_{\mathcal{A}}(d)$ であるとする。
 この時 $R\in J\_{\mathcal{A}}(c)$ すなわち、 任意の $g\in\mathcal{A},\mathrm{cod}(g)=c$ に対して $g\in R$ である事を示せば良い。
@@ -443,6 +445,68 @@ $S \in J\_{\mathcal{A}}(c)$であり $c$ 上の篩 $R$ が任意の $(f:d\righta
 ここで $\mathrm{A}$ が補完的であることより $g = h\circ k\ (h,k\in\mathcal{A}, h:d\rightarrow c, k: e\rightarrow d)$ と分解できる。
 すると $h\in\mathcal{A},\mathrm{cod}(h)=c$ より $h\in S$ となる。従って仮定より $h^{\ast}(R)\in J\_{\mathrm{A}}(d)$ である。
 よって $k\in\mathcal{A},\mathrm{cod}(k)=d$ より $k \in h^{\ast}(R)$ すなわち $g=h\circ k\in R$ となる。
+
+$\square$
+{{% /details %}}
+
+このような $\mathrm{A}$ の例として、 圏 $\mathcal{C}$ の充満部分圏 $\mathcal{D}$ に対して、
+$$ \mathcal{A} = \\{f \mid \mathrm{dom}(f)\in\mathcal{D} \\}$$
+というものがある。 これが左合成によってドメインは変わらないので、これが左合成によって閉じているのは明らか。
+また、任意の $(f:a\rightarrow b)\in\mathcal{A}$ に対して, $f=f\circ 1\_a,\ f, 1\_a \in \mathcal{A}$ と分解できる。
+
+さて、 $J\_{\mathcal{A}}$ が最小の被覆篩を持つというのは以下の意味である。
+
+{{% proposition %}}
+$\mathcal{C}$ 上のGrothendieck位相 $J$ が任意の対象 $c$ について最小の被覆篩を持つ、すなわち $J(c)$ が包含関係について最小元を持つ、
+ということと、ある $\mathcal{A}$ について $J=J\_{\mathcal{A}}$ であることは同値。
+{{% /proposition %}}
+{{% details 証明 %}}
+**($\Rightarrow$)**
+
+$\mathcal{C}$ 上のGrothendieck位相 $J$ が任意の対象 $c$ について最小の被覆篩を持つとする。ここで
+$$\mathcal{A} = \bigcup\_{c\in\mathcal{C}} \min J(c)$$
+と置くと $J\_{\mathcal{A}}=J$ である事を示す。
+
+まず $\mathcal{A}$ が左合成について閉じていることを示す。
+$(f:a\rightarrow b)\in\mathcal{A}$ 、 $g:b\rightarrow c$ とする。安定性定理より
+$g^{\ast}(\min J(c)) \in J(b)$ であるので $\min J(b)\subset g^{\ast}(\min J(c))$ 。
+ここで $f\in\min J(b)$ であるから $f\in g^{\ast}(\min J(c))$ すなわち $g\circ f\in \min J(c)\subset\mathcal{A}$。
+従って $\mathcal{A}$ は左合成について閉じている。
+
+続いて $\mathcal{A}$ が補完的である事を示す。すなわち任意の$(f:d\rightarrow c)\in\mathcal{A}$ が $f=f\_1\circ f\_2$ と分解できることを示す。
+ここで
+$$ R=\\{h \mid \exists g\in\min J(c), k\in\min J(\mathrm{dom}(g)), h=g\circ k\\} $$
+とおく。これは、 $\mathcal{A}$ の射で分解できる $\mathrm{cod}(h)=c$ である $h$ の集合である。
+$\min J(\mathrm{dom}(g))$ が前合成について閉じていることより、 $R$ も前合成について閉じているから $R$ は $c$ 上の篩である。
+
+ここで $g\in\min J(c)$ で $R$ を引き戻すと、 $R$ の定義より
+$$ \min J(\mathrm{dom}(g)) \subset g^{\ast}(R)$$
+であるので、 単調性公理より $g^{\ast}(R)\in J(\mathrm{dom}(g))$ である。
+従って、推移性公理より $R \in J(c)$ である。従って $f \in \min J(c)\subseteq R$ であるから $R$ の定義より $f$ は $\mathrm{A}$ の射で分解可能である。
+
+最後に $J=J\_{\mathcal{A}}$ である事を示す。任意の対象 $c$ に対して
+$$\begin{align*}
+S\in J\_{\mathcal{A}}(c) &\Leftrightarrow (\forall f\in\mathcal{A},\mathrm{cod}(f)=c \Rightarrow f\in S) \\\\
+                         &\Leftrightarrow (\forall f \in \min J(c) \Rightarrow f\ in S) \\\\
+                         &\Leftrightarrow \min J(c) \subseteq S \\\\
+                         &\Leftrightarrow S\in J(c) \quad (\because\text{単調性公理})
+\end{align*}$$
+であるから $J=J\_{\mathrm{A}}$ である。
+
+**($\Leftrightarrow$)**
+
+$\mathcal{C}$ 上のGrothendieck位相 $J\_{\mathcal{A}}$ が任意の対象 $c$ について最小の被覆篩を持つことを示す。
+すなわち、 ある $S \in J\_{\mathcal{A}}(c)$ が存在して任意の $T\in J\_{\mathcal{A}}(c)$ に対して $S\subseteq T$ である事を示す。
+
+$\mathcal{A}$ の元のうち、コドメインが $c$ である射の集合を $\mathcal{A}\_c$ とする。ここで
+$$ S = \\{ f\circ g \mid f \in \mathcal{A}\_c, \mathrm{dom}(f)=\mathrm{cod}(g) \\}$$
+と定めた時、これが最小の被覆篩である事を示す。
+
+まず、 $S$ が篩であることは明らか。そして、任意の $f\in\mathcal{A}\_c$ について $f = f\circ 1\_{\mathrm{dom}(f)} \in S$ であるので
+$S \in J\_{\mathcal{A}}(c)$ である。
+
+続いて、$S$ が最小であることを示す。$T\in J\_{\mathcal{A}}(c)$ とすると、定義より $\mathcal{A}\_c \subseteq T$ 。
+ここで $f\circ g\in S$ であるとすると $f\in \mathcal{A}\_c\subseteq T$ であり、 $T$ が篩であることより $f\circ g\in T$ であるから $S\subseteq T$ である。
 
 $\square$
 {{% /details %}}
