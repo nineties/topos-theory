@@ -217,6 +217,57 @@ F(V) &
 $\square$
 {{% /details %}}
 
+### 開基上の層
+
+層は局所的な情報をつなぎ合わせて全体を再構成できる数学対象であるから、
+開基に対してのみ必要な情報を割り当てることで十分である。
+任意の開集合について考えるよりも、議論がシンプルになる場面があり、有用な定理である。
+
+{{% theorem title="開基上の層" %}}
+位相空間 $X$ の開基 $\mathcal{B}$ (これは $\mathcal{O}\_X$ の部分圏) について定められた反変関手 $F:\mathcal{B}^{\mathrm{op}}\rightarrow\mathbf{Set}$が、
+以下の条件を満たすとき $X$ 上の層 $\tilde{F}:\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ であって $\mathcal{B}$ 上に制限した $\tilde{F}|\_{\mathcal{B}}$ が $F$ と自然同型になるものが同型を除いて一意に存在する。
+
+**開基上の層の公理**: 任意の $U\in\mathcal{B}$ と、その開基の元による開被覆 $U=\bigcup\_{\lambda}U\_{\lambda}\quad(U\_{\lambda}\in\mathcal{B})$ に対し、以下が成立する。
+
+$$ F(U) \cong \varprojlim\_{\exists\lambda,V\subseteq U\_{\lambda}, V\in\mathcal{B}}F(V)$$
+{{% /theorem %}}
+{{% details 証明 %}}
+位相空間 $X$ 上の開基 $\mathcal{B}$ 上の反変関手 $F:\mathcal{B}^{\mathrm{op}}\rightarrow\mathbf{Set}$が、開基上の層の公理を満たすとする。ここで、$X$ の開集合 $U$ に対して
+
+$$\tilde{F}(U) = \varprojlim\_{B\subseteq U,B\in\mathcal{B}}F(B)$$
+
+と定める。$\mathbf{Set}$ は完備であるので、右辺は必ず存在する。
+ここで $U\supseteq V$ の時、添字圏 $\\{B\mid B\subseteq V,B\in\mathcal{B}\\}$ は $\\{B\mid B\subseteq U,B\in\mathcal{B}\\}$ の部分圏であるので、
+$\varprojlim\_{B\subseteq U,B\in\mathcal{B}}F(B)$ は底が $\\{B\mid B\subseteq V,B\in\mathcal{B}\\}$ である錐の頂点でもある。従って、普遍射
+$$ \varprojlim\_{B\subseteq U,B\in\mathcal{B}}F(B) \overset{\exists !}\rightarrow \varprojlim\_{B\subseteq V,B\in\mathcal{B}}F(B)$$
+が存在するので、これを制限射 $\tilde{F}(U)\rightarrow\tilde{F}(V)$ と定める。こうして定めた $\tilde{F}$ が反変関手 $\mathcal{O}\_X^{\mathrm{op}}\rightarrow\mathbf{Set}$ となることは明らか。
+
+次に $\tilde{F}$ が層であることを示す。示すべきことは任意の開被覆 $U=\bigcup\_{\lambda}U\_{\lambda}$ に対して
+$$ \tilde{F}(U)\cong \varprojlim\_{\exists\lambda, V\subseteq U\_{\lambda}}\tilde{F}(V)$$
+が成立することである。右辺は
+$$ \varprojlim\_{\exists\lambda, V\subseteq U\_{\lambda}}\left(\varprojlim\_{B\subseteq V,B\in\mathcal{B}}F(B)\right)\cong \varprojlim\_{\exists\lambda, B\subseteq V\subseteq U\_{\lambda}, B\in\mathcal{B}}F(B)=\varprojlim\_{\exists\lambda,B\subseteq U\_{\lambda},B\in\mathcal{B}}F(B)$$
+である。一方、左辺は
+$$ \tilde{F}(U) = \varprojlim\_{B\subseteq U,B\in\mathcal{B}}F(B)$$
+である。ここで $B$ の開被覆 $B=\bigcup\_{\alpha}C\_{\alpha}$ を十分細かく取れば、各 $C\_{\alpha}$ がいずれかの $U\_{\lambda}$ に含まれるようにすることができる。この時、開基上の層の公理より
+$$ F(B)\cong\varprojlim\_{\exists\alpha, V\subseteq C\_{\alpha}}F(V)$$
+であるので
+$$\tilde{F}(U) \cong \varprojlim\_{B\subseteq U,B\in\mathcal{B}}\left(\varprojlim\_{\exists\alpha, V\subseteq C\_{\alpha},V\in\mathcal{B}}F(V)\right)\cong\varprojlim\_{\exists\lambda, V\subseteq U\_{\lambda}, V\in\mathcal{B}}F(B)$$
+となる。以上より等式が示されたので $\tilde{F}$ は層である。
+
+最後に、 $U\in\mathcal{B}$ の時は $U$ 自身が $U$ の開基の元による開被覆であるから
+$$ \tilde{F}(U) = \varprojlim\_{B\subseteq U,B\in\mathcal{B}}F(B)\cong F(U)$$
+である。極限の普遍性からこれは $U$ に関して自然であるので $ \tilde{F}|\_{\mathcal{B}} \cong F $である。
+
+最後に、$G|\_{\mathcal{B}}\cong F$ を満たす層 $G$ が存在するとする。この時、$G$ が層であることより、任意の開集合$U$ に関して
+$$ G(U)\cong \varprojlim\_{B\subseteq U,B\in\mathcal{B}} G(B)$$
+である。ここで $G(B)\cong F(B)$ であるから
+$$ G(U)\cong \varprojlim\_{B\subseteq U,B\in\mathcal{B}} F(B)\cong\tilde{F}(U)$$
+である。この $U$ に関する自然性も極限の普遍性から導かれるので $G\cong \tilde{F}$ である。
+すなわち、 $F$ を拡張して得られる層は同型を除いて一意に定まる。
+
+$\square$
+{{% /details %}}
+
 ## エタールバンドル
 
 ### バンドルの断面の層
