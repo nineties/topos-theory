@@ -523,7 +523,7 @@ a           & a\times b \ar[l]\_{\pi_a} \ar[r]^{\pi_b} & b
 この $u$ を $\langle f, g\rangle$ とも書く。また、 $f:a\rightarrow b, g:c\rightarrow d$ に対して $a\times c, b\times d$ が存在するならば $u=\langle f\circ\pi_a, g\circ\pi_c\rangle$が存在するがこれを $f\times g$ と書く。
 $$\xymatrix{
             & a\times c \ar[ld]\_{f\circ\pi_a} \ar[rd]^{g\circ\pi_c} \ar@{.>}[d]^{f\times g} &\\\\
-b           & b\times d \ar[l]\_{\pi_c} \ar[r]^{\pi_d} & d
+b           & b\times d \ar[l]\_{\pi_b} \ar[r]^{\pi_d} & d
 }$$
 {{% /definition %}}
 
