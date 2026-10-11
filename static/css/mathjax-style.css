@@ -5,3 +5,11 @@ code.has-jax {
     border: inherit;
     color: inherit;
 }
+
+/* スマホ幅で長い数式・図式がページ全体を横にはみ出させないよう、式の中だけで横スクロールにする */
+mjx-container[display="true"] {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
