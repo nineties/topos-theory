@@ -3,6 +3,7 @@ title: はじめに
 weight: 1
 section: 0
 toc: true
+description: "トポス理論(Topos Theory)について勉強しながら書いたノート。Olivia Caramello先生の講義スライドをなぞりながら勉強した。講義ノートでは省略されている証明等も併せかなり加筆している。"
 ---
 
 ## はじめに

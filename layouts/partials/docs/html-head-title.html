@@ -1,0 +1,2 @@
+{{- /* hugo-book の同名 partial の上書き。front matter の seo_title があれば <title> だけそれを使う（メニューやページ内の表示は title のまま）。 */ -}}
+{{ with .Params.seo_title }}{{ . }}{{ else }}{{ partial "docs/title" $ }}{{ end }} | {{ .Site.Title -}}

@@ -3,6 +3,8 @@ title: 圏論I
 weight: 3
 section: 2
 toc: true
+description: "圏論(category theory)は、1942-45年にSamuel EilenbergとSaunders Mac Laneによって代数的位相幾何学の研究の中で発明された数学の一分野であり、数学的概念を表現し議論するための抽象的な言語を提供する。"
+seo_title: "圏論I: 圏・関手・自然変換・極限"
 ---
 
 ## 圏論の概要

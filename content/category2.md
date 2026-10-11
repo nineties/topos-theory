@@ -3,6 +3,8 @@ title: 圏論II
 weight: 4
 section: 3
 toc: true
+description: "圏論において非常に重要な概念である普遍性(universal property)と関連する諸概念について説明する。普遍性を用いると、圏論の様々な概念を統一的な方法で構成する事ができる。"
+seo_title: "圏論II: 普遍性・指数対象・随伴"
 ---
 
 ## 普遍性

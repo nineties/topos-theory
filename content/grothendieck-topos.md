@@ -3,6 +3,7 @@ title: Grothendieckトポス
 weight: 7
 section: 6
 toc: true
+description: "位相空間上の層の圏論的な抽象化について説明する。その為にはまず、位相空間の開集合系の性質の圏論的な抽象化を行う。"
 ---
 
 ## Grothendieck位相
